@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# environments
+.venv/
+venv/
+env/
+.conda/
+conda-meta/
+
+# secrets
+.env
+
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
