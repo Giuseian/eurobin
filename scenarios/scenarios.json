@@ -1,0 +1,81 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "box_near_pt_2",
+      "task": "Pick up the box.",
+      "images": [
+        "images/box_near_pt_2.png"
+      ]
+    },
+    {
+      "scenario_id": "box_near",
+      "task": "Pick up the box.",
+      "images": [
+        "images/box_near.png"
+      ]
+    },
+    {
+      "scenario_id": "glass_inside_box",
+      "task": "Pick up the box.",
+      "images": [
+        "images/glass_inside_box.png"
+      ]
+    },
+    {
+      "scenario_id": "single_glass_left",
+      "task": "Pick up the glass.",
+      "images": [
+        "images/single_glass_left.png"
+      ]
+    },
+    {
+      "scenario_id": "glass_near_box",
+      "task": "Pick up the box.",
+      "images": [
+        "images/glass_near_box.png"
+      ]
+    },
+    {
+      "scenario_id": "glass_on_box",
+      "task": "Pick up the box.",
+      "images": [
+        "images/glass_on_box.png"
+      ]
+    },
+    {
+      "scenario_id": "glass_right",
+      "task": "Pick up the glass.",
+      "images": [
+        "images/glass_right.png"
+      ]
+    },
+    {
+      "scenario_id": "single_box",
+      "task": "Pick up the box.",
+      "images": [
+        "images/single_box.png"
+      ]
+    },
+    {
+      "scenario_id": "stacked_boxes",
+      "task": "Pick up the dark box.",
+      "images": [
+        "images/stacked_boxes.jpeg"
+      ]
+    },
+    {
+      "scenario_id": "two_glasses_on_box",
+      "task": "Pick up the box.",
+      "images": [
+        "images/two_glasses_on_box.png"
+      ]
+    },
+    {
+      "scenario_id": "two_glasses",
+      "task": "Pick up the glasses",
+      "images": [
+        "images/two_glasses.png"
+      ]
+    }
+  ]
+}

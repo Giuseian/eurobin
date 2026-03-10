@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 import json
+import time 
 from datetime import datetime, timezone
 from mimetypes import guess_type
 from typing import Any
@@ -65,7 +66,13 @@ def run_single_experiment(
     if model_name not in {"o3", "gpt-5.2", "gpt-5.1"} and temperature is not None:
         request_kwargs["temperature"] = temperature
 
+    start_time = time.perf_counter()
+
     response = client.chat.completions.create(**request_kwargs)
+
+    end_time = time.perf_counter()
+
+    inference_time_sec = end_time - start_time
 
     raw_content = response.choices[0].message.content
     parsed_ok, parsed_json = try_parse_json(raw_content)
@@ -78,6 +85,7 @@ def run_single_experiment(
         "image_path": image_path,
         "task_text": task_text,
         "temperature": temperature,
+        "inference_time_sec": inference_time_sec,
         "raw_response": raw_content,
         "json_parse_ok": parsed_ok,
         "parsed_json": parsed_json,

@@ -12,6 +12,9 @@ conda-meta/
 # secrets
 .env
 
+#outputs
+outputs/outputs_giuse/*
+
 
 # OS
 .DS_Store
