@@ -1,0 +1,42 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "stacked_boxes_image",
+      "task": "Pick up the darker box.",
+      "images": [
+        "images/official_scenarios/stacked_boxes.png"
+      ]
+    },
+    {
+      "scenario_id": "2boxesaside_image",
+      "task": "Pick up the darker box.",
+      "images": [
+        "images/official_scenarios/2boxesaside.png"
+      ]
+    },
+    {
+      "scenario_id": "handover_image",
+      "task": "Place the cup on the extreme left side of the table.",
+      "images": [
+        "images/official_scenarios/handover.png"
+      ]
+    },
+    {
+      "scenario_id": "two_glasses_on_box_image",
+      "task": "Pick up the box.",
+      "images": [
+        "images/official_scenarios/two_glasses_on_box.png"
+      ]
+    },
+    {
+      "scenario_id": "two_two_tennis_image",
+      "task": "Place the tennis ball on the darker box.",
+      "images": [
+        "images/official_scenarios/two_two_tennis.png"
+      ]
+    }
+  ]
+}
+
+
+
