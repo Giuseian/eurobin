@@ -1,0 +1,31 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "sb_with_image",
+      "task": "Pick up the darker box.",
+      "images": [
+        "images/stacked_boxes.jpeg"
+      ]
+    },
+    {
+      "scenario_id": "sb_only_graph",
+      "task": "Pick up the darker box.",
+      "images": []
+    },
+    {
+      "scenario_id": "bc_with_image",
+      "task": "Pick up the darker box.",
+      "images": [
+        "images/2boxesaside.png"
+      ]
+    },
+    {
+      "scenario_id": "bc_only_graph",
+      "task": "Pick up the darker box.",
+      "images": []
+    }
+  ]
+}
+
+
+

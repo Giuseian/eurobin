@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:54.973963+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 7.543390028999056,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup (5x5x8 cm) is within reach of the right arm and has accessible left/right sides, with enough clearance to close the claw without contacting box_2.\",\n    \"Postcondition\": \"The cup is securely grasped by the right end-effector and lifted clear of the tabletop, removing the obstruction in front of box_2.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table, right side of box_2\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding the cup and there is a clear, stable area on the table to the right of box_2 so the cup will not interfere with access to box_1.\",\n    \"Postcondition\": \"The cup is placed on the table to the right of box_2 and released; the region around the boxes is less cluttered.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"Box_1 front face is accessible and the left end-effector can apply gentle contact without slipping; stabilization is needed because box_1’s right side is blocked by box_2, limiting grasp approach options.\",\n    \"Postcondition\": \"Box_1 is constrained against unintended sliding/rotation while a grasp is established.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1’s left side is accessible; its right side is adjacent to box_2, but there is sufficient clearance to wedge both end-effectors for a two-handed lateral pinch without colliding with box_2. Claw grasp is not used because the 30 cm box exceeds the claw size limit.\",\n    \"Postcondition\": \"Box_1 is securely held by both arms (two-handed pinch/support), lifted or ready to be lifted clear of the table—task objective (pick up the darker box) achieved.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup (5x5x8 cm) is within reach of the right arm and has accessible left/right sides, with enough clearance to close the claw without contacting box_2.",
+      "Postcondition": "The cup is securely grasped by the right end-effector and lifted clear of the tabletop, removing the obstruction in front of box_2."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table, right side of box_2",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding the cup and there is a clear, stable area on the table to the right of box_2 so the cup will not interfere with access to box_1.",
+      "Postcondition": "The cup is placed on the table to the right of box_2 and released; the region around the boxes is less cluttered."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "frontally",
+      "Precondition": "Box_1 front face is accessible and the left end-effector can apply gentle contact without slipping; stabilization is needed because box_1’s right side is blocked by box_2, limiting grasp approach options.",
+      "Postcondition": "Box_1 is constrained against unintended sliding/rotation while a grasp is established."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1’s left side is accessible; its right side is adjacent to box_2, but there is sufficient clearance to wedge both end-effectors for a two-handed lateral pinch without colliding with box_2. Claw grasp is not used because the 30 cm box exceeds the claw size limit.",
+      "Postcondition": "Box_1 is securely held by both arms (two-handed pinch/support), lifted or ready to be lifted clear of the table—task objective (pick up the darker box) achieved."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

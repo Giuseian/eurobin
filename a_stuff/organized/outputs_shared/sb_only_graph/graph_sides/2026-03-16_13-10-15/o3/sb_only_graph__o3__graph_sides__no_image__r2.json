@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:10:51.931412+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 15.362475271998846,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"Both lateral faces of box_2 are unobstructed, and there is sufficient clearance for the robot to align both arms on the left and right sides of the box without colliding with box_1 or the table edge.\",\n    \"Postcondition\": \"box_2 is securely held by the robot’s two arms, lifted slightly above box_1, and no longer resting on box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (right of the box stack)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Vertically\",\n    \"Precondition\": \"The robot is holding box_2 and the region on the tabletop to the right of box_1 is clear of obstacles and large enough to accommodate a 30 cm box.\",\n    \"Postcondition\": \"box_2 rests stably on the cleared area of the table to the right of box_1 and is released by the robot.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"box_1’s top is free (box_2 removed) and its left and right sides are fully accessible; the robot can position both arms around the box without interference from surrounding objects.\",\n    \"Postcondition\": \"The darker box (box_1) is firmly held by the robot’s two arms, lifted clear of the tabletop, ready for subsequent manipulation or transport as required.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "Both lateral faces of box_2 are unobstructed, and there is sufficient clearance for the robot to align both arms on the left and right sides of the box without colliding with box_1 or the table edge.",
+      "Postcondition": "box_2 is securely held by the robot’s two arms, lifted slightly above box_1, and no longer resting on box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (right of the box stack)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Vertically",
+      "Precondition": "The robot is holding box_2 and the region on the tabletop to the right of box_1 is clear of obstacles and large enough to accommodate a 30 cm box.",
+      "Postcondition": "box_2 rests stably on the cleared area of the table to the right of box_1 and is released by the robot."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "box_1’s top is free (box_2 removed) and its left and right sides are fully accessible; the robot can position both arms around the box without interference from surrounding objects.",
+      "Postcondition": "The darker box (box_1) is firmly held by the robot’s two arms, lifted clear of the tabletop, ready for subsequent manipulation or transport as required."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 2,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

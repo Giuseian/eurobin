@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T11:48:48.584031+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 4.795127821000278,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right arm can reach the right side of box_1 without colliding with the tabletop. Contacting box_1 on its right side is feasible despite box_2 being attached, and avoids the cup_1 region in front of box_2.\",\n    \"Postcondition\": \"box_1 is laterally constrained by the right end-effector, reducing the risk of the attached box_2 shifting during the subsequent lift.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both arms have sufficient clearance to contact the outer left and right faces of box_1; the cup_1 in front of box_2 is not in the sweep/lift path; box_2 being attached does not block access to box_1’s outer faces.\",\n    \"Postcondition\": \"box_1 is securely clamped between both end-effectors and lifted off the table (with box_2 potentially co-lifting due to attachment).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right arm can reach the right side of box_1 without colliding with the tabletop. Contacting box_1 on its right side is feasible despite box_2 being attached, and avoids the cup_1 region in front of box_2.",
+      "Postcondition": "box_1 is laterally constrained by the right end-effector, reducing the risk of the attached box_2 shifting during the subsequent lift."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both arms have sufficient clearance to contact the outer left and right faces of box_1; the cup_1 in front of box_2 is not in the sweep/lift path; box_2 being attached does not block access to box_1’s outer faces.",
+      "Postcondition": "box_1 is securely clamped between both end-effectors and lifted off the table (with box_2 potentially co-lifting due to attachment)."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 1,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

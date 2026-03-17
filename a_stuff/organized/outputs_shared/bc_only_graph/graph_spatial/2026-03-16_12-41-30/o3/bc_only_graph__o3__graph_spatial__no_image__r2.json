@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-03-16T11:42:14.729757+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 14.79154301699964,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left side of box_2 is reachable without colliding with the cup that is in front of it. Sufficient clearance exists on the left of the two boxes for the left arm to press gently against the side of box_2.\",\n    \"Postcondition\": \"box_2 is securely braced against the table by the left arm, preventing it from sliding when forces are applied to the adjacent box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"With box_2 stabilized, the right side of box_1 (opposite the stabilised contact) is free of obstacles, and there is room to slide the box slightly leftward and lift it. The cup is not in the intended motion path.\",\n    \"Postcondition\": \"box_1 is firmly held by the right arm, detached from box_2, and lifted a few centimetres above the tabletop—completing the 'pick-up' task.\"\n}",
+  "json_parse_ok": false,
+  "parsed_json": null,
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 2,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

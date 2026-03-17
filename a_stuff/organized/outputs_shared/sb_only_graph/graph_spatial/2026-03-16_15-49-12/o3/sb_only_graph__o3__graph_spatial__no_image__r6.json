@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T14:51:25.121907+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 21.207679965998977,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both the left and right sides of the stacked boxes are unobstructed and within arm reach. Adequate clearance exists so the robot can bring its palms in contact with the mid-height of the darker lower box without colliding with the tabletop or surrounding objects.\",\n    \"Postcondition\": \"The robot is gently compressing the sides of the darker box (and, by attachment, the lighter box on top). The stack is rigidly stabilized and will not slide or topple when lifted.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The stack is already stabilized by the robot’s arms and no objects are directly above or beside the boxes that could impede upward motion.\",\n    \"Postcondition\": \"The darker box (with the attached lighter box on top) is securely held between both arms and raised a few centimeters above the tabletop, accomplishing the task of picking up the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both the left and right sides of the stacked boxes are unobstructed and within arm reach. Adequate clearance exists so the robot can bring its palms in contact with the mid-height of the darker lower box without colliding with the tabletop or surrounding objects.",
+      "Postcondition": "The robot is gently compressing the sides of the darker box (and, by attachment, the lighter box on top). The stack is rigidly stabilized and will not slide or topple when lifted."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The stack is already stabilized by the robot’s arms and no objects are directly above or beside the boxes that could impede upward motion.",
+      "Postcondition": "The darker box (with the attached lighter box on top) is securely held between both arms and raised a few centimeters above the tabletop, accomplishing the task of picking up the darker box."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

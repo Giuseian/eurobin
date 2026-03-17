@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:12:54.919016+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 11.66688681999949,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 (light brown) is resting on top of box_1 and its left, right and front sides are clear of obstacles, allowing both end-effectors to approach from opposite lateral sides. Adequate clearance exists between box_2 and surrounding objects for the arms to close in without collision.\",\n    \"Postcondition\": \"Box_2 is firmly held between both end-effectors and lifted a few centimeters above box_1, freeing the top surface of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table area right of the stacked boxes\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"Robot is holding box_2 and the target region on the tabletop to the right of box_1 is clear and large enough (≥30×30 cm) to accommodate the box.\",\n    \"Postcondition\": \"Box_2 is placed flat on the designated clear area of the table, no longer obstructing box_1.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1’s top is now unobstructed after removal of box_2, and its lateral sides are accessible. There is enough clearance around box_1 for both arms to approach from the sides without colliding with box_2 or the table edge.\",\n    \"Postcondition\": \"Box_1 (dark brown) is securely grasped between the two end-effectors and lifted off the tabletop, completing the ‘pick up’ task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 (light brown) is resting on top of box_1 and its left, right and front sides are clear of obstacles, allowing both end-effectors to approach from opposite lateral sides. Adequate clearance exists between box_2 and surrounding objects for the arms to close in without collision.",
+      "Postcondition": "Box_2 is firmly held between both end-effectors and lifted a few centimeters above box_1, freeing the top surface of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table area right of the stacked boxes",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "Robot is holding box_2 and the target region on the tabletop to the right of box_1 is clear and large enough (≥30×30 cm) to accommodate the box.",
+      "Postcondition": "Box_2 is placed flat on the designated clear area of the table, no longer obstructing box_1."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1’s top is now unobstructed after removal of box_2, and its lateral sides are accessible. There is enough clearance around box_1 for both arms to approach from the sides without colliding with box_2 or the table edge.",
+      "Postcondition": "Box_1 (dark brown) is securely grasped between the two end-effectors and lifted off the tabletop, completing the ‘pick up’ task."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 9,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

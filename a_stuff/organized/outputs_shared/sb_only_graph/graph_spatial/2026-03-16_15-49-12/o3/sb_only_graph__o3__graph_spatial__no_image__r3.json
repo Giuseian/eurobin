@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:50:16.182197+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 13.314389030001621,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 is on top of and lightly attached to box_1; there is sufficient lateral clearance on both left and right sides of the stacked boxes for the robot’s arms to approach and make broad side contact. No other objects block side access.\",\n    \"Postcondition\": \"Box_2 is securely held by both end-effectors, allowing a gentle upward force to detach it from box_1 without disturbing box_1’s position.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"clear area on the right half of the table\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"Robot is holding box_2; the chosen region on the right side of the tabletop is free of obstacles and large enough to accommodate a 30 × 30 × 30 cm box.\",\n    \"Postcondition\": \"Box_2 is released and rests stably on the right side of the table, leaving box_1 fully exposed and unobstructed.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 is now unobstructed on all sides and reachable; there is adequate lateral clearance for both arms to establish broad side contact without colliding with surrounding objects.\",\n    \"Postcondition\": \"Box_1 (the darker box) is firmly held by both end-effectors and lifted slightly above the tabletop.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 is on top of and lightly attached to box_1; there is sufficient lateral clearance on both left and right sides of the stacked boxes for the robot’s arms to approach and make broad side contact. No other objects block side access.",
+      "Postcondition": "Box_2 is securely held by both end-effectors, allowing a gentle upward force to detach it from box_1 without disturbing box_1’s position."
+    },
+    {
+      "Step_id": 2,
+      "Target": "clear area on the right half of the table",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "Robot is holding box_2; the chosen region on the right side of the tabletop is free of obstacles and large enough to accommodate a 30 × 30 × 30 cm box.",
+      "Postcondition": "Box_2 is released and rests stably on the right side of the table, leaving box_1 fully exposed and unobstructed."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 is now unobstructed on all sides and reachable; there is adequate lateral clearance for both arms to establish broad side contact without colliding with surrounding objects.",
+      "Postcondition": "Box_1 (the darker box) is firmly held by both end-effectors and lifted slightly above the tabletop."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 3,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

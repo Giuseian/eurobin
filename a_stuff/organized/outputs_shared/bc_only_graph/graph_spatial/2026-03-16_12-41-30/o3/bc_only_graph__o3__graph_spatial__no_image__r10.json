@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-03-16T11:44:53.633500+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 16.100339384000108,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Cup_1 (5 cm diameter) is within the reach envelope of the right arm and no object blocks a lateral approach path; the claw aperture is suitable for the cup’s diameter.\",\n    \"Postcondition\": \"Cup_1 is securely held by the right end-effector and is free from the tabletop surface.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table_right_clear_area\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding Cup_1 and the rightmost region of the table is unoccupied and provides a stable flat surface for placement.\",\n    \"Postcondition\": \"Cup_1 is released onto the rightmost area of the table, clear of the manipulation zone around both boxes.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Cup_1 is out of the way; sufficient lateral clearance exists on the right side of box_2 and the left end-effector can reach the left face of box_2 without interference from box_1.\",\n    \"Postcondition\": \"Box_2 has been slid ~20 cm to the right, creating adequate space on both sides of box_1 for a dual-arm grasp. Box_2 remains upright and stable.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 is displaced, leaving at least 35 cm of free space around box_1; both arms can approach the opposite lateral faces of box_1 without obstruction.\",\n    \"Postcondition\": \"Box_1 (dark brown) is securely held between the two end-effectors, lifted slightly above the tabletop, and fully controlled by the robot—task accomplished.\"\n]",
+  "json_parse_ok": false,
+  "parsed_json": null,
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

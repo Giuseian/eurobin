@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:01:58.645419+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.644236154999817,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left side of box_1 is accessible and there is enough clearance for the left end-effector to apply gentle lateral support without contacting box_2.\",\n    \"Postcondition\": \"box_1 is laterally stabilized by the left end-effector, reducing the risk of shifting/collision with box_2 during the grasp.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 front side is accessible for approach; left arm is stabilizing box_1; the right end-effector can establish a firm side clamp/contact on box_1 without needing the claw (box size exceeds 10 cm claw limit).\",\n    \"Postcondition\": \"box_1 is securely held by the right end-effector (non-claw grasp), with stability maintained and no contact-induced displacement of box_2.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right end-effector has achieved a secure hold on box_1 and can maintain control during release of external support.\",\n    \"Postcondition\": \"Left-arm stabilization is removed while box_1 remains securely controlled by the right end-effector.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left side of box_1 is accessible and there is enough clearance for the left end-effector to apply gentle lateral support without contacting box_2.",
+      "Postcondition": "box_1 is laterally stabilized by the left end-effector, reducing the risk of shifting/collision with box_2 during the grasp."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 front side is accessible for approach; left arm is stabilizing box_1; the right end-effector can establish a firm side clamp/contact on box_1 without needing the claw (box size exceeds 10 cm claw limit).",
+      "Postcondition": "box_1 is securely held by the right end-effector (non-claw grasp), with stability maintained and no contact-induced displacement of box_2."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right end-effector has achieved a secure hold on box_1 and can maintain control during release of external support.",
+      "Postcondition": "Left-arm stabilization is removed while box_1 remains securely controlled by the right end-effector."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 1,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

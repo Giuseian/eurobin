@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T10:42:09.993091+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 30.116945510999358,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both lateral faces of the darker box (box_1) are unobstructed and reachable by the robot. The underlying lighter box (box_2) rests stably on the table, providing enough friction so it will not slide when the upper box is lifted. There is at least 5 cm of clearance above the darker box to allow a vertical lift once grasped.\",\n    \"Postcondition\": \"The robot’s two end-effectors are pressing laterally against opposite sides of box_1, allowing a firm, balanced grip. Box_1 is lifted a few centimetres above box_2 and is now held securely in mid-air by the robot.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both lateral faces of the darker box (box_1) are unobstructed and reachable by the robot. The underlying lighter box (box_2) rests stably on the table, providing enough friction so it will not slide when the upper box is lifted. There is at least 5 cm of clearance above the darker box to allow a vertical lift once grasped.",
+      "Postcondition": "The robot’s two end-effectors are pressing laterally against opposite sides of box_1, allowing a firm, balanced grip. Box_1 is lifted a few centimetres above box_2 and is now held securely in mid-air by the robot."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 8,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

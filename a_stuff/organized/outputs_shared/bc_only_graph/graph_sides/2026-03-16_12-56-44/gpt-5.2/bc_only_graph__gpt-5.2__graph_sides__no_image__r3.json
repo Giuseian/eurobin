@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:15.786500+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 8.301379828999416,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup (5x5x8 cm) is within reach of the right arm, and its left/right/front sides are accessible, allowing a safe lateral grasp without colliding with box_2 behind it.\",\n    \"Postcondition\": \"The cup is securely grasped by the right end-effector and lifted clear of the tabletop, removing the obstruction in front of box_2.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (front-right open area, away from box_1 and box_2)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding the cup and there is a clear, stable region on the tabletop to place it such that it will not interfere with manipulating box_1 or box_2.\",\n    \"Postcondition\": \"The cup is placed on the table in a clear front-right area and released; the space around the boxes is less cluttered.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right side of box_2 is accessible and there is sufficient free space to the right to slide box_2 away from box_1 without contacting the cup or table edges.\",\n    \"Postcondition\": \"Box_2 is shifted to the right, creating clearance so box_1's right side becomes accessible for a stable two-handed grasp.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 (30x30x30 cm) is reachable and has enough lateral clearance on both left and right sides (right side cleared by moving box_2) to allow two-arm side contact without collision.\",\n    \"Postcondition\": \"Box_1 is securely held and lifted off the tabletop under dual-arm control (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup (5x5x8 cm) is within reach of the right arm, and its left/right/front sides are accessible, allowing a safe lateral grasp without colliding with box_2 behind it.",
+      "Postcondition": "The cup is securely grasped by the right end-effector and lifted clear of the tabletop, removing the obstruction in front of box_2."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (front-right open area, away from box_1 and box_2)",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding the cup and there is a clear, stable region on the tabletop to place it such that it will not interfere with manipulating box_1 or box_2.",
+      "Postcondition": "The cup is placed on the table in a clear front-right area and released; the space around the boxes is less cluttered."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right side of box_2 is accessible and there is sufficient free space to the right to slide box_2 away from box_1 without contacting the cup or table edges.",
+      "Postcondition": "Box_2 is shifted to the right, creating clearance so box_1's right side becomes accessible for a stable two-handed grasp."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 (30x30x30 cm) is reachable and has enough lateral clearance on both left and right sides (right side cleared by moving box_2) to allow two-arm side contact without collision.",
+      "Postcondition": "Box_1 is securely held and lifted off the tabletop under dual-arm control (picked up)."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 3,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

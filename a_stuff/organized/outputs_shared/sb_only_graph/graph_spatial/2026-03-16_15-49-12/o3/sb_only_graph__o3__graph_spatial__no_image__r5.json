@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:51:03.905202+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 25.486547606000386,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"The left side of box_1 is reachable and unobstructed. Adequate workspace exists for the left arm to press gently against the side of box_1 without colliding with box_2 or other objects.\",\n    \"Postcondition\": \"box_1 is held firmly against the tabletop by the left arm, preventing it from sliding when the top box is pushed.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"The right side of box_2 is exposed and the area to the right-rear of the box is free of obstacles, allowing a sideways push that shears any light attachment tape.\",\n    \"Postcondition\": \"box_2 is slid laterally to the right and is no longer on top of or attached to box_1, leaving box_1 fully exposed.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"box_2 has been cleared from the top of box_1. Both arms have unobstructed access to the left and right sides of box_1, and there is sufficient vertical clearance to lift the box.\",\n    \"Postcondition\": \"The robot securely grasps box_1 with both arms, lifts it slightly off the tabletop, and is now holding the darker box as required.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "The left side of box_1 is reachable and unobstructed. Adequate workspace exists for the left arm to press gently against the side of box_1 without colliding with box_2 or other objects.",
+      "Postcondition": "box_1 is held firmly against the tabletop by the left arm, preventing it from sliding when the top box is pushed."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "The right side of box_2 is exposed and the area to the right-rear of the box is free of obstacles, allowing a sideways push that shears any light attachment tape.",
+      "Postcondition": "box_2 is slid laterally to the right and is no longer on top of or attached to box_1, leaving box_1 fully exposed."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "box_2 has been cleared from the top of box_1. Both arms have unobstructed access to the left and right sides of box_1, and there is sufficient vertical clearance to lift the box.",
+      "Postcondition": "The robot securely grasps box_1 with both arms, lifts it slightly off the tabletop, and is now holding the darker box as required."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 5,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

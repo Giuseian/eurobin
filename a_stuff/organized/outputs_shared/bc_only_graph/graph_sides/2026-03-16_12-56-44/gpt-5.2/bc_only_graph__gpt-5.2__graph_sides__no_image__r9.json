@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:47.421742+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 4.39370134300043,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left side of box_1 is accessible and there is enough clearance for the left end-effector to brace against box_1 without contacting box_2 or the cup.\",\n    \"Postcondition\": \"box_1 is laterally braced by the left end-effector, reducing the risk of box_1 shifting while the right arm establishes a secure grasp.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The front and left sides of box_1 are accessible; the right arm can approach the accessible front side of box_1 without colliding with the cup or box_2, and the left arm is stabilizing box_1 to prevent slip.\",\n    \"Postcondition\": \"box_1 is securely grasped by the right end-effector and lifted slightly clear of the table surface, while remaining clear of box_2.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left side of box_1 is accessible and there is enough clearance for the left end-effector to brace against box_1 without contacting box_2 or the cup.",
+      "Postcondition": "box_1 is laterally braced by the left end-effector, reducing the risk of box_1 shifting while the right arm establishes a secure grasp."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The front and left sides of box_1 are accessible; the right arm can approach the accessible front side of box_1 without colliding with the cup or box_2, and the left arm is stabilizing box_1 to prevent slip.",
+      "Postcondition": "box_1 is securely grasped by the right end-effector and lifted slightly clear of the table surface, while remaining clear of box_2."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 9,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

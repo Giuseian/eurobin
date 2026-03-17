@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:53:42.365940+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 7.80022275599913,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is on top of box_1 and attached to it; the left end-effector can reach the top surface of box_2 without colliding with the table edge or the right arm.\",\n    \"Postcondition\": \"box_2 is constrained against box_1 to prevent sudden separation or tipping during detachment and lifting of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"There is sufficient clearance on the left and right sides of box_1 for both end-effectors to establish lateral contact; box_2 remains stabilized so it cannot shift while force is applied to separate the attachment.\",\n    \"Postcondition\": \"box_1 is securely clamped by both end-effectors and controlled off the table surface.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_1 is held securely; a clear placement region exists on the table such that box_1 can be set down without contacting box_2 or the robot arms.\",\n    \"Postcondition\": \"box_1 (the darker box) is placed back on the table under full robot control, completing the pickup-and-set-down manipulation while maintaining stability of the attached assembly.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is on top of box_1 and attached to it; the left end-effector can reach the top surface of box_2 without colliding with the table edge or the right arm.",
+      "Postcondition": "box_2 is constrained against box_1 to prevent sudden separation or tipping during detachment and lifting of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "There is sufficient clearance on the left and right sides of box_1 for both end-effectors to establish lateral contact; box_2 remains stabilized so it cannot shift while force is applied to separate the attachment.",
+      "Postcondition": "box_1 is securely clamped by both end-effectors and controlled off the table surface."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_1 is held securely; a clear placement region exists on the table such that box_1 can be set down without contacting box_2 or the robot arms.",
+      "Postcondition": "box_1 (the darker box) is placed back on the table under full robot control, completing the pickup-and-set-down manipulation while maintaining stability of the attached assembly."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

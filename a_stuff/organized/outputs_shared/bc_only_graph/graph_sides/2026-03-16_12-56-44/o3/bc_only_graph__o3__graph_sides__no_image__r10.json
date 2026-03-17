@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T12:01:51.991643+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 35.44679009399988,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup is within the 10 cm claw limit, its left and right sides are accessible, and no object obstructs the right arm’s lateral approach.\",\n    \"Postcondition\": \"The cup is securely held in the robot’s right claw and cleared from its initial position in front of box_2.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (right of box_2)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding the cup and the region on the tabletop to the right of box_2 is free of obstacles.\",\n    \"Postcondition\": \"The cup is released onto the specified clear area of the table, freeing the front of box_2 for manipulation.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"Front face of box_2 is reachable after the cup has been relocated, and there is sufficient free space on the table to the right of box_2 to accommodate its sliding motion.\",\n    \"Postcondition\": \"Box_2 is translated rightwards, clearing the right side of box_1 and creating enough lateral space for a dual-arm grasp.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both the left and right sides of box_1 are now unobstructed; the robot’s arms have clearance to approach laterally and enclose the box without interference from neighbouring objects.\",\n    \"Postcondition\": \"Box_1 is firmly grasped on its left and right sides by the robot’s two arms and lifted slightly, completing the task of picking up the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup is within the 10 cm claw limit, its left and right sides are accessible, and no object obstructs the right arm’s lateral approach.",
+      "Postcondition": "The cup is securely held in the robot’s right claw and cleared from its initial position in front of box_2."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (right of box_2)",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding the cup and the region on the tabletop to the right of box_2 is free of obstacles.",
+      "Postcondition": "The cup is released onto the specified clear area of the table, freeing the front of box_2 for manipulation."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "frontally",
+      "Precondition": "Front face of box_2 is reachable after the cup has been relocated, and there is sufficient free space on the table to the right of box_2 to accommodate its sliding motion.",
+      "Postcondition": "Box_2 is translated rightwards, clearing the right side of box_1 and creating enough lateral space for a dual-arm grasp."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both the left and right sides of box_1 are now unobstructed; the robot’s arms have clearance to approach laterally and enclose the box without interference from neighbouring objects.",
+      "Postcondition": "Box_1 is firmly grasped on its left and right sides by the robot’s two arms and lifted slightly, completing the task of picking up the darker box."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

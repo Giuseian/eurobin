@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:43.021638+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.441519977999633,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 left side is accessible and there is sufficient clearance on its left edge to apply a steadying contact; box_2 remains adjacent on box_1 right but does not require separation for stabilization.\",\n    \"Postcondition\": \"box_1 is laterally constrained/steadied by the right end-effector, reducing risk of box_1 shifting into box_2 during the grasp attempt.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 front and left sides are accessible; the left arm can approach box_1 from the front-left without colliding with box_2; the cup is in front of box_2 and does not obstruct access to box_1 front-left region.\",\n    \"Postcondition\": \"box_1 is securely held by the left end-effector using a non-claw enclosure/friction grasp suitable for a 30 cm box.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left end-effector already supports box_1; the right end-effector is in contact and can transition from stabilizing to a bilateral hold without pinching against box_2 (ensure a small separation or sufficient edge access on box_1 left/front).\",\n    \"Postcondition\": \"box_1 is controlled with a two-arm hold, distributing load and preventing rotation while lifting away from the tabletop and away from box_2.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 left side is accessible and there is sufficient clearance on its left edge to apply a steadying contact; box_2 remains adjacent on box_1 right but does not require separation for stabilization.",
+      "Postcondition": "box_1 is laterally constrained/steadied by the right end-effector, reducing risk of box_1 shifting into box_2 during the grasp attempt."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 front and left sides are accessible; the left arm can approach box_1 from the front-left without colliding with box_2; the cup is in front of box_2 and does not obstruct access to box_1 front-left region.",
+      "Postcondition": "box_1 is securely held by the left end-effector using a non-claw enclosure/friction grasp suitable for a 30 cm box."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left end-effector already supports box_1; the right end-effector is in contact and can transition from stabilizing to a bilateral hold without pinching against box_2 (ensure a small separation or sufficient edge access on box_1 left/front).",
+      "Postcondition": "box_1 is controlled with a two-arm hold, distributing load and preventing rotation while lifting away from the tabletop and away from box_2."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 8,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

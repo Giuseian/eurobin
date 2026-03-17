@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T11:49:03.222623+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 5.143854122999983,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is reachable by the left arm from the tabletop edge. The left side of box_1 has enough clearance from the table boundary to allow gentle lateral bracing without colliding with the table surface or box_2 (which is attached on box_1's right side).\",\n    \"Postcondition\": \"box_1 is laterally braced by the left end-effector, reducing the risk of box_2 inducing slip/rotation during the main grasp.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is stabilized by the left arm. The right arm has unobstructed access to the outer (left) face region of box_1 or a pinchable edge that is not blocked by box_2 (attached on the right). The cup (in front of box_2) does not interfere with the right arm’s approach trajectory to box_1.\",\n    \"Postcondition\": \"box_1 is securely held under right-arm control and is no longer resting on the table (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is reachable by the left arm from the tabletop edge. The left side of box_1 has enough clearance from the table boundary to allow gentle lateral bracing without colliding with the table surface or box_2 (which is attached on box_1's right side).",
+      "Postcondition": "box_1 is laterally braced by the left end-effector, reducing the risk of box_2 inducing slip/rotation during the main grasp."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is stabilized by the left arm. The right arm has unobstructed access to the outer (left) face region of box_1 or a pinchable edge that is not blocked by box_2 (attached on the right). The cup (in front of box_2) does not interfere with the right arm’s approach trajectory to box_1.",
+      "Postcondition": "box_1 is securely held under right-arm control and is no longer resting on the table (picked up)."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 3,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

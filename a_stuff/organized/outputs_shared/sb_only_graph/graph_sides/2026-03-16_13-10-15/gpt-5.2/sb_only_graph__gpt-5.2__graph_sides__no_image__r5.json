@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:13:46.124711+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 5.5934316019993275,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is on top of box_1 and its left and right sides are accessible; there is enough lateral clearance on both sides to allow both end-effectors to establish a stable pinch/support grip without colliding with box_1 or the table.\",\n    \"Postcondition\": \"box_2 is securely held by both end-effectors and lifted slightly so it no longer blocks the top side of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (clear area to the right of box_1)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is held off of box_1 and a stable, obstacle-free placement region on the table to the right of box_1 is available.\",\n    \"Postcondition\": \"box_2 is placed on the table to the right of box_1 and released; box_1 top side becomes accessible.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 left and right sides are accessible, box_2 has been removed from its top, and there is sufficient lateral clearance for both end-effectors to contact box_1 without obstruction from other objects.\",\n    \"Postcondition\": \"The darker box (box_1) is securely held by both end-effectors and lifted clear of the table.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is on top of box_1 and its left and right sides are accessible; there is enough lateral clearance on both sides to allow both end-effectors to establish a stable pinch/support grip without colliding with box_1 or the table.",
+      "Postcondition": "box_2 is securely held by both end-effectors and lifted slightly so it no longer blocks the top side of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (clear area to the right of box_1)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is held off of box_1 and a stable, obstacle-free placement region on the table to the right of box_1 is available.",
+      "Postcondition": "box_2 is placed on the table to the right of box_1 and released; box_1 top side becomes accessible."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 left and right sides are accessible, box_2 has been removed from its top, and there is sufficient lateral clearance for both end-effectors to contact box_1 without obstruction from other objects.",
+      "Postcondition": "The darker box (box_1) is securely held by both end-effectors and lifted clear of the table."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 5,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

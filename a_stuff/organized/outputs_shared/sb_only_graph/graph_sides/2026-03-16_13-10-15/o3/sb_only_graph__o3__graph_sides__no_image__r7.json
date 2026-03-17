@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:12:27.703192+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 15.326386028000343,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 (light brown) is resting on top of box_1 with its left and right faces unobstructed. Sufficient lateral clearance (≈10 cm per side) exists for both arms to approach simultaneously without colliding with surrounding objects or the tabletop edge.\",\n    \"Postcondition\": \"Box_2 is securely supported between the two end-effectors and lifted slightly above box_1, freeing the top face of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"clear table area right of box_1\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding box_2 and a clear 35 cm × 35 cm region on the tabletop to the right of box_1 is free of obstacles, allowing a vertical descent without collision.\",\n    \"Postcondition\": \"Box_2 is placed flat on the cleared region of the table, no longer supported by the robot. The top of box_1 is now fully accessible.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1’s left and right faces remain clear after removal of box_2. Adequate space exists for both arms to approach laterally without interference from the table edge or nearby objects.\",\n    \"Postcondition\": \"Box_1 (dark brown) is firmly held between the two end-effectors and lifted off the tabletop, accomplishing the task of picking up the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 (light brown) is resting on top of box_1 with its left and right faces unobstructed. Sufficient lateral clearance (≈10 cm per side) exists for both arms to approach simultaneously without colliding with surrounding objects or the tabletop edge.",
+      "Postcondition": "Box_2 is securely supported between the two end-effectors and lifted slightly above box_1, freeing the top face of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "clear table area right of box_1",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding box_2 and a clear 35 cm × 35 cm region on the tabletop to the right of box_1 is free of obstacles, allowing a vertical descent without collision.",
+      "Postcondition": "Box_2 is placed flat on the cleared region of the table, no longer supported by the robot. The top of box_1 is now fully accessible."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1’s left and right faces remain clear after removal of box_2. Adequate space exists for both arms to approach laterally without interference from the table edge or nearby objects.",
+      "Postcondition": "Box_1 (dark brown) is firmly held between the two end-effectors and lifted off the tabletop, accomplishing the task of picking up the darker box."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 7,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

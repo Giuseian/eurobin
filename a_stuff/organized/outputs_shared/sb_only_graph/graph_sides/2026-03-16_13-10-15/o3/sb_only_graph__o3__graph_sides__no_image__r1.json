@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:10:36.563438+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 20.92467482400025,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 (light brown) is located on top of box_1 and is fully accessible from the front of the table. There is sufficient clearance above and on both lateral sides for the robot to approach with both arms without colliding with other objects or the tabletop edge.\",\n    \"Postcondition\": \"Box_2 is securely held between the two end-effectors, lifted a few centimeters above box_1 and clear of any contact with it.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"right clear area of the table\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding box_2. The chosen region on the right side of the tabletop is free of obstacles and large enough to accommodate a 30×30 cm box.\",\n    \"Postcondition\": \"Box_2 rests stably on the right side of the table, leaving box_1 fully exposed on its top side.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 (dark brown) is now unobstructed on all accessible sides. There is ample space for both arms to approach and secure the box without interference.\",\n    \"Postcondition\": \"Box_1 is firmly grasped and lifted off the tabletop. The robot is now holding the darker box, accomplishing the task of picking it up.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 (light brown) is located on top of box_1 and is fully accessible from the front of the table. There is sufficient clearance above and on both lateral sides for the robot to approach with both arms without colliding with other objects or the tabletop edge.",
+      "Postcondition": "Box_2 is securely held between the two end-effectors, lifted a few centimeters above box_1 and clear of any contact with it."
+    },
+    {
+      "Step_id": 2,
+      "Target": "right clear area of the table",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding box_2. The chosen region on the right side of the tabletop is free of obstacles and large enough to accommodate a 30×30 cm box.",
+      "Postcondition": "Box_2 rests stably on the right side of the table, leaving box_1 fully exposed on its top side."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 (dark brown) is now unobstructed on all accessible sides. There is ample space for both arms to approach and secure the box without interference.",
+      "Postcondition": "Box_1 is firmly grasped and lifted off the tabletop. The robot is now holding the darker box, accomplishing the task of picking it up."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 1,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

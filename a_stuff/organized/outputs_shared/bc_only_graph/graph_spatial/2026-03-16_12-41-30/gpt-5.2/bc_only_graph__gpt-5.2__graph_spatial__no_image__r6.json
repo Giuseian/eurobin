@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T11:49:29.146587+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 8.258925565998652,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Frontally\",\n    \"Precondition\": \"The cup is reachable by the right arm and there is clear free space on the tabletop to push it away from the two boxes without colliding into them; pushing is preferred over grasping to quickly clear the approach path to box_1.\",\n    \"Postcondition\": \"The cup is displaced forward (away from box_2/box_1), creating clearance in front of the attached boxes for a safe grasp on box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"The cup has been moved out of the way and the right arm can contact box_2 from the outer (right) side without pinching against box_1; stabilization is needed because box_2 is attached_to box_1 and may transmit forces during lifting.\",\n    \"Postcondition\": \"Box_2 is constrained against lateral motion, reducing torsion/drag on the attachment while box_1 is being grasped and lifted.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"There is sufficient clearance on the left/outside of box_1 for a palm-side grip; the left arm can form a secure non-claw grasp on a 30x30x30 cm box, and box_2 is currently stabilized to prevent the pair from shifting.\",\n    \"Postcondition\": \"Box_1 is securely held by the left end-effector and is no longer resting on the table (lift initiated), while box_2 remains stabilized.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"Box_1 is lifted/controlled by the left arm and box_2 remains attached; continued stabilization is required until box_1 is fully clear of the tabletop and nearby objects.\",\n    \"Postcondition\": \"Box_1 is fully picked up and controlled; box_2 has not shifted into the robot or other objects during the lift.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Frontally",
+      "Precondition": "The cup is reachable by the right arm and there is clear free space on the tabletop to push it away from the two boxes without colliding into them; pushing is preferred over grasping to quickly clear the approach path to box_1.",
+      "Postcondition": "The cup is displaced forward (away from box_2/box_1), creating clearance in front of the attached boxes for a safe grasp on box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "The cup has been moved out of the way and the right arm can contact box_2 from the outer (right) side without pinching against box_1; stabilization is needed because box_2 is attached_to box_1 and may transmit forces during lifting.",
+      "Postcondition": "Box_2 is constrained against lateral motion, reducing torsion/drag on the attachment while box_1 is being grasped and lifted."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "There is sufficient clearance on the left/outside of box_1 for a palm-side grip; the left arm can form a secure non-claw grasp on a 30x30x30 cm box, and box_2 is currently stabilized to prevent the pair from shifting.",
+      "Postcondition": "Box_1 is securely held by the left end-effector and is no longer resting on the table (lift initiated), while box_2 remains stabilized."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "Box_1 is lifted/controlled by the left arm and box_2 remains attached; continued stabilization is required until box_1 is fully clear of the tabletop and nearby objects.",
+      "Postcondition": "Box_1 is fully picked up and controlled; box_2 has not shifted into the robot or other objects during the lift."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

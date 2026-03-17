@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import base64
 import json
-import time 
+import time
 from datetime import datetime, timezone
 from mimetypes import guess_type
 from typing import Any
@@ -34,7 +34,7 @@ def run_single_experiment(
     settings: Settings,
     model_name: str,
     prompt_filename: str,
-    image_path: str,
+    image_path: str | None,
     task_text: str,
     temperature: float | None,
 ) -> dict[str, Any]:
@@ -43,7 +43,19 @@ def run_single_experiment(
 
     system_prompt = load_system_prompt(settings, prompt_filename)
     user_block = build_user_block(task_text)
-    data_url = local_image_to_data_url(image_path)
+
+    user_content: list[dict[str, Any]] = [
+        {"type": "text", "text": user_block}
+    ]
+
+    if image_path is not None:
+        data_url = local_image_to_data_url(image_path)
+        user_content.append(
+            {
+                "type": "image_url",
+                "image_url": {"url": data_url, "detail": "auto"},
+            }
+        )
 
     request_kwargs = {
         "model": deployment_name,
@@ -51,13 +63,7 @@ def run_single_experiment(
             {"role": "system", "content": system_prompt},
             {
                 "role": "user",
-                "content": [
-                    {"type": "text", "text": user_block},
-                    {
-                        "type": "image_url",
-                        "image_url": {"url": data_url, "detail": "auto"},
-                    },
-                ],
+                "content": user_content,
             },
         ],
     }
@@ -67,9 +73,7 @@ def run_single_experiment(
         request_kwargs["temperature"] = temperature
 
     start_time = time.perf_counter()
-
     response = client.chat.completions.create(**request_kwargs)
-
     end_time = time.perf_counter()
 
     inference_time_sec = end_time - start_time

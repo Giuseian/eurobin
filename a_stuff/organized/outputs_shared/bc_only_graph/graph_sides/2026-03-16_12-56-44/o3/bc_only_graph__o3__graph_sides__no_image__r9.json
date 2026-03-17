@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:01:16.534856+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 33.26033274499969,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup is fully reachable by the right arm; no objects obstruct the side approach and the cup’s 5 cm width is within claw limits.\",\n    \"Postcondition\": \"The cup is securely held by the right end-effector and lifted off the tabletop, freeing the area in front of box_2.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"On the table, front-right area (right of box_2)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding the cup; the front-right region of the tabletop is clear of obstacles and provides at least a 6 cm × 6 cm footprint.\",\n    \"Postcondition\": \"The cup rests on the specified table area, safely out of the robot’s manipulation corridor in front of the boxes, and is released by the right arm.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"The front face of box_1 is fully exposed; the cup has been relocated; there is at least 40 cm of unobstructed frontal space for both arms to advance and establish broad palm contact on the front–bottom edge of the box.\",\n    \"Postcondition\": \"Box_1 is firmly held by both manipulators, lifted several centimeters above the tabletop, completing the ‘pick-up’ task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup is fully reachable by the right arm; no objects obstruct the side approach and the cup’s 5 cm width is within claw limits.",
+      "Postcondition": "The cup is securely held by the right end-effector and lifted off the tabletop, freeing the area in front of box_2."
+    },
+    {
+      "Step_id": 2,
+      "Target": "On the table, front-right area (right of box_2)",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding the cup; the front-right region of the tabletop is clear of obstacles and provides at least a 6 cm × 6 cm footprint.",
+      "Postcondition": "The cup rests on the specified table area, safely out of the robot’s manipulation corridor in front of the boxes, and is released by the right arm."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "frontally",
+      "Precondition": "The front face of box_1 is fully exposed; the cup has been relocated; there is at least 40 cm of unobstructed frontal space for both arms to advance and establish broad palm contact on the front–bottom edge of the box.",
+      "Postcondition": "Box_1 is firmly held by both manipulators, lifted several centimeters above the tabletop, completing the ‘pick-up’ task."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 9,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

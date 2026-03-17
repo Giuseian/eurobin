@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T14:53:16.641573+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 8.895852991998254,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is on top of box_1 and is reachable from above by the left arm; there is enough clearance to press down on box_2 without slipping off the stack edge.\",\n    \"Postcondition\": \"box_2 is held down against box_1 to prevent the top box from lifting, shifting, or tipping while box_1 is being separated and lifted.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both arms can reach the left and right side faces of box_1; the claws can open wide enough to pinch the 30 cm box; box_2 is stabilized so the 'attached_to' interface does not cause the stack to move unpredictably during grasp establishment.\",\n    \"Postcondition\": \"box_1 is securely grasped from both sides by the two claws while box_2 remains stabilized on top.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is already grasped; box_2 remains stabilized; there is free space around the base of the stack so box_1 can be gently wiggled/slid to break the attachment without colliding with the table edges or causing box_2 to topple.\",\n    \"Postcondition\": \"The attachment between box_1 and box_2 is loosened/broken such that box_1 can be lifted independently without lifting box_2.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The attachment is loosened and box_1 is free to move; box_2 is still stabilized to avoid sticking and lifting with box_1.\",\n    \"Postcondition\": \"box_1 is fully under control of the robot with a stable dual-arm grasp and is ready to be lifted off the tabletop.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is on top of box_1 and is reachable from above by the left arm; there is enough clearance to press down on box_2 without slipping off the stack edge.",
+      "Postcondition": "box_2 is held down against box_1 to prevent the top box from lifting, shifting, or tipping while box_1 is being separated and lifted."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both arms can reach the left and right side faces of box_1; the claws can open wide enough to pinch the 30 cm box; box_2 is stabilized so the 'attached_to' interface does not cause the stack to move unpredictably during grasp establishment.",
+      "Postcondition": "box_1 is securely grasped from both sides by the two claws while box_2 remains stabilized on top."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is already grasped; box_2 remains stabilized; there is free space around the base of the stack so box_1 can be gently wiggled/slid to break the attachment without colliding with the table edges or causing box_2 to topple.",
+      "Postcondition": "The attachment between box_1 and box_2 is loosened/broken such that box_1 can be lifted independently without lifting box_2."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The attachment is loosened and box_1 is free to move; box_2 is still stabilized to avoid sticking and lifting with box_1.",
+      "Postcondition": "box_1 is fully under control of the robot with a stable dual-arm grasp and is ready to be lifted off the tabletop."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 3,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

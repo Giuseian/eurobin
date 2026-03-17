@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T11:28:48.071269+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/2boxesaside.png",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 14.585971837001125,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup is reachable by the right arm and there is free space to the right/front-right of the cup so it can be slid away without colliding with box_2 or falling off the table.\",\n    \"Postcondition\": \"The cup is moved to the right/front-right, creating a clear approach corridor to the front face of box_1 and reducing collision risk during the box pickup.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right side of box_2 is reachable and there is free table space to the right of box_2; box_2 can be slid without snagging despite being attached_to box_1 (expect some coupled motion).\",\n    \"Postcondition\": \"Box_2 is shifted slightly to the right, increasing lateral clearance around box_1 for a safer two-arm grasp.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both arms have unobstructed access to the left and right side faces of box_1 with sufficient clearance from box_2 after the push; the grasp is planned as a pinch/hold on the box sides suitable for an oversized object (30 cm).\",\n    \"Postcondition\": \"Box_1 (dark brown) is securely held by both end-effectors and lifted/controlled off the tabletop (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "cup",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup is reachable by the right arm and there is free space to the right/front-right of the cup so it can be slid away without colliding with box_2 or falling off the table.",
+      "Postcondition": "The cup is moved to the right/front-right, creating a clear approach corridor to the front face of box_1 and reducing collision risk during the box pickup."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right side of box_2 is reachable and there is free table space to the right of box_2; box_2 can be slid without snagging despite being attached_to box_1 (expect some coupled motion).",
+      "Postcondition": "Box_2 is shifted slightly to the right, increasing lateral clearance around box_1 for a safer two-arm grasp."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both arms have unobstructed access to the left and right side faces of box_1 with sufficient clearance from box_2 after the push; the grasp is planned as a pinch/hold on the box sides suitable for an oversized object (30 cm).",
+      "Postcondition": "Box_1 (dark brown) is securely held by both end-effectors and lifted/controlled off the tabletop (picked up)."
+    }
+  ],
+  "scenario_id": "bc_with_image",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_12-16-03",
+  "prompt_name": "image_graph"
+}

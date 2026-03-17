@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:14:04.505590+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.2537185109995335,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is reachable from the left/right sides (both accessible). Sufficient clearance exists on both lateral sides for two end-effectors to clamp the box without contacting box_1 or the table.\",\n    \"Postcondition\": \"box_2 is securely clamped by both end-effectors and lifted slightly, clearing the top of box_1 and unblocking box_1's top surface.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (clear area to the right of box_1)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is held securely. A clear placement region on the table to the right of box_1 is available and large enough (>=30x30 cm) to avoid re-stacking on box_1.\",\n    \"Postcondition\": \"box_2 rests on the table to the right of box_1 and is released, leaving box_1 unobstructed from above.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1's left/right/front sides are accessible and its top is no longer blocked by box_2. Sufficient lateral clearance exists for both end-effectors to clamp box_1 without contacting box_2 or the table.\",\n    \"Postcondition\": \"The darker box (box_1) is securely clamped and lifted off the table under dual-arm control.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is reachable from the left/right sides (both accessible). Sufficient clearance exists on both lateral sides for two end-effectors to clamp the box without contacting box_1 or the table.",
+      "Postcondition": "box_2 is securely clamped by both end-effectors and lifted slightly, clearing the top of box_1 and unblocking box_1's top surface."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (clear area to the right of box_1)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is held securely. A clear placement region on the table to the right of box_1 is available and large enough (>=30x30 cm) to avoid re-stacking on box_1.",
+      "Postcondition": "box_2 rests on the table to the right of box_1 and is released, leaving box_1 unobstructed from above."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1's left/right/front sides are accessible and its top is no longer blocked by box_2. Sufficient lateral clearance exists for both end-effectors to clamp box_1 without contacting box_2 or the table.",
+      "Postcondition": "The darker box (box_1) is securely clamped and lifted off the table under dual-arm control."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 8,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

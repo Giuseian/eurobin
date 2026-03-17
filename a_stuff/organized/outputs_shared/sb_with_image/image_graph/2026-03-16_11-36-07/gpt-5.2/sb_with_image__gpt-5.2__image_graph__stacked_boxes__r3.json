@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T10:45:21.685681+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 11.701907265000045,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left end-effector can reach the side of box_2 without colliding with box_1 or the table surface; there is enough lateral clearance to apply a steadying force without shifting the stack.\",\n    \"Postcondition\": \"box_2 is laterally constrained and stabilized against unintended motion while box_1 is manipulated.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is accessible from both left and right sides; the arms can approach symmetrically without contacting box_2; adequate friction/contact area exists to lift a 30x30x30 cm box without claw grasping.\",\n    \"Postcondition\": \"box_1 is securely held by both end-effectors and is no longer resting on box_2.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left end-effector can reach the side of box_2 without colliding with box_1 or the table surface; there is enough lateral clearance to apply a steadying force without shifting the stack.",
+      "Postcondition": "box_2 is laterally constrained and stabilized against unintended motion while box_1 is manipulated."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is accessible from both left and right sides; the arms can approach symmetrically without contacting box_2; adequate friction/contact area exists to lift a 30x30x30 cm box without claw grasping.",
+      "Postcondition": "box_1 is securely held by both end-effectors and is no longer resting on box_2."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 3,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

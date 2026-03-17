@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T10:39:52.711402+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 26.22009623899976,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 (dark brown) is the upper box in the stack and its left- and right-hand side faces are free. There is at least 10 cm of clearance on both sides for the end-effectors to approach laterally, and sufficient vertical space above the stack to lift the box once grasped. The table surface is stable and the robot’s base is positioned centrally in front of the stack.\",\n    \"Postcondition\": \"Both end-effectors firmly press against the lateral faces of box_1, allowing the robot to lift it a few centimetres above box_2. The darker box is now securely held by the robot and no longer supported by the lower box or the table.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 (dark brown) is the upper box in the stack and its left- and right-hand side faces are free. There is at least 10 cm of clearance on both sides for the end-effectors to approach laterally, and sufficient vertical space above the stack to lift the box once grasped. The table surface is stable and the robot’s base is positioned centrally in front of the stack.",
+      "Postcondition": "Both end-effectors firmly press against the lateral faces of box_1, allowing the robot to lift it a few centimetres above box_2. The darker box is now securely held by the robot and no longer supported by the lower box or the table."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 2,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

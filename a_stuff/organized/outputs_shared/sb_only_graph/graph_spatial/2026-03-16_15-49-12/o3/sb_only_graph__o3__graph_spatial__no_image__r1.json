@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:49:41.259264+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 28.463283469998714,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Frontally\",\n    \"Precondition\": \"The front face of box_1 is reachable by the left arm and there is sufficient clearance in front of the stack so the robot can press against box_1 without colliding with the tabletop or box_2.\",\n    \"Postcondition\": \"box_1 is firmly constrained against the table surface, preventing it from shifting while the upper box is manipulated.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"The right side of box_2 is unobstructed and there is at least 40 cm of free tabletop space to the right so that box_2 can slide off box_1 without hitting other objects. box_1 is currently stabilized by the left arm.\",\n    \"Postcondition\": \"box_2 is slid to the right and now rests directly on the tabletop, detached from and no longer overlapping box_1.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"box_2 is no longer on top of box_1, leaving all sides of box_1 accessible. Both arms are free and can approach the left and right faces of box_1 without obstruction.\",\n    \"Postcondition\": \"box_1 (the darker box) is securely held between the two arms and lifted clear of the tabletop, fulfilling the task of picking up the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Frontally",
+      "Precondition": "The front face of box_1 is reachable by the left arm and there is sufficient clearance in front of the stack so the robot can press against box_1 without colliding with the tabletop or box_2.",
+      "Postcondition": "box_1 is firmly constrained against the table surface, preventing it from shifting while the upper box is manipulated."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "The right side of box_2 is unobstructed and there is at least 40 cm of free tabletop space to the right so that box_2 can slide off box_1 without hitting other objects. box_1 is currently stabilized by the left arm.",
+      "Postcondition": "box_2 is slid to the right and now rests directly on the tabletop, detached from and no longer overlapping box_1."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "box_2 is no longer on top of box_1, leaving all sides of box_1 accessible. Both arms are free and can approach the left and right faces of box_1 without obstruction.",
+      "Postcondition": "box_1 (the darker box) is securely held between the two arms and lifted clear of the tabletop, fulfilling the task of picking up the darker box."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 1,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

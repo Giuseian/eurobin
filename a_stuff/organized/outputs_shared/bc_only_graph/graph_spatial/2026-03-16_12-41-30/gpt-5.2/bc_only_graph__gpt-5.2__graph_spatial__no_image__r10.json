@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T11:50:00.908892+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.791063546999794,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is reachable by the right arm and there is a clear lateral contact point on the outer (right) side of box_2; the cup is not in the direct contact path so it will not be bumped during stabilization.\",\n    \"Postcondition\": \"box_2 is braced in place so that forces applied to box_1 will not drag or rotate the attached box_2 during lifting preparation.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both arms can reach the left and right sides of box_1 with enough clearance; the cup (in front of box_2) does not obstruct the arms' approach corridor; box_2 is stabilized to manage the attachment between box_1 and box_2.\",\n    \"Postcondition\": \"box_1 is firmly held by both end-effectors with lateral support, ready to be lifted while minimizing torsion from the attached box_2.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_1 is already constrained laterally by both arms; there is sufficient vertical clearance above the boxes for a controlled lift; the robot can lift without colliding with the cup located in front of box_2.\",\n    \"Postcondition\": \"box_1 is picked up (no longer resting on the table) under dual-arm support, with the attached box_2 managed by the prior stabilization to prevent sudden swinging.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is reachable by the right arm and there is a clear lateral contact point on the outer (right) side of box_2; the cup is not in the direct contact path so it will not be bumped during stabilization.",
+      "Postcondition": "box_2 is braced in place so that forces applied to box_1 will not drag or rotate the attached box_2 during lifting preparation."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both arms can reach the left and right sides of box_1 with enough clearance; the cup (in front of box_2) does not obstruct the arms' approach corridor; box_2 is stabilized to manage the attachment between box_1 and box_2.",
+      "Postcondition": "box_1 is firmly held by both end-effectors with lateral support, ready to be lifted while minimizing torsion from the attached box_2."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_1 is already constrained laterally by both arms; there is sufficient vertical clearance above the boxes for a controlled lift; the robot can lift without colliding with the cup located in front of box_2.",
+      "Postcondition": "box_1 is picked up (no longer resting on the table) under dual-arm support, with the attached box_2 managed by the prior stabilization to prevent sudden swinging."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

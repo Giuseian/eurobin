@@ -1,0 +1,38 @@
+{
+  "timestamp_utc": "2026-03-16T12:00:06.219038+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 18.6991124340002,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"The front face of box_1 is fully accessible, with no obstacles (the cup is in front of box_2, not box_1). There is at least 40 cm of clearance in front of the box for the robot to position both end-effectors. The arms can reach the mid-height of the box and align symmetrically.\",\n    \"Postcondition\": \"Both end-effectors securely press against the front face of box_1, creating enough normal force to hold the 30 cm cardboard box. The robot has full control of box_1 and can begin lifting it.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"Box_1 is already grasped by both arms. The vertical space above the box is free of obstacles, allowing an upward motion of at least 15 cm.\",\n    \"Postcondition\": \"Box_1 is lifted several centimeters above the tabletop and held steadily between the two arms, completing the pick-up task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "frontally",
+      "Precondition": "The front face of box_1 is fully accessible, with no obstacles (the cup is in front of box_2, not box_1). There is at least 40 cm of clearance in front of the box for the robot to position both end-effectors. The arms can reach the mid-height of the box and align symmetrically.",
+      "Postcondition": "Both end-effectors securely press against the front face of box_1, creating enough normal force to hold the 30 cm cardboard box. The robot has full control of box_1 and can begin lifting it."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "Box_1 is already grasped by both arms. The vertical space above the box is free of obstacles, allowing an upward motion of at least 15 cm.",
+      "Postcondition": "Box_1 is lifted several centimeters above the tabletop and held steadily between the two arms, completing the pick-up task."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 7,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T14:53:25.489395+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 8.843091021000873,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is on top of and attached to box_1, so lifting box_1 directly would be obstructed; the left arm can reach the top surface of box_2 without colliding with the table or box edges.\",\n    \"Postcondition\": \"box_2 is constrained from above to prevent shifting while separating the attachment between the boxes.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is stabilized by the left arm; there is free lateral space on the tabletop around the boxes to allow a controlled shear force to break/release the attachment without tipping box_2 onto the table.\",\n    \"Postcondition\": \"The attachment between box_2 and box_1 is released (boxes are no longer attached), with box_2 remaining on top of or immediately adjacent to box_1 in a stable configuration.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The boxes are no longer attached; the left arm is still in contact and can guide box_2 to a stable resting spot on the tabletop without interfering with box_1.\",\n    \"Postcondition\": \"box_2 is set down on the table in a nearby clear area (e.g., to the right of box_1), leaving clearance to access box_1.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is unobstructed (box_2 is no longer on top/attached); there is sufficient space on both left and right sides of box_1 for both end-effectors to clamp/support the 30x30x30 cm box (too large for claw grasp).\",\n    \"Postcondition\": \"box_1 (the darker box) is securely held off the tabletop with bilateral support, ready to be carried or further positioned as needed.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is on top of and attached to box_1, so lifting box_1 directly would be obstructed; the left arm can reach the top surface of box_2 without colliding with the table or box edges.",
+      "Postcondition": "box_2 is constrained from above to prevent shifting while separating the attachment between the boxes."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is stabilized by the left arm; there is free lateral space on the tabletop around the boxes to allow a controlled shear force to break/release the attachment without tipping box_2 onto the table.",
+      "Postcondition": "The attachment between box_2 and box_1 is released (boxes are no longer attached), with box_2 remaining on top of or immediately adjacent to box_1 in a stable configuration."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The boxes are no longer attached; the left arm is still in contact and can guide box_2 to a stable resting spot on the tabletop without interfering with box_1.",
+      "Postcondition": "box_2 is set down on the table in a nearby clear area (e.g., to the right of box_1), leaving clearance to access box_1."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is unobstructed (box_2 is no longer on top/attached); there is sufficient space on both left and right sides of box_1 for both end-effectors to clamp/support the 30x30x30 cm box (too large for claw grasp).",
+      "Postcondition": "box_1 (the darker box) is securely held off the tabletop with bilateral support, ready to be carried or further positioned as needed."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 4,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

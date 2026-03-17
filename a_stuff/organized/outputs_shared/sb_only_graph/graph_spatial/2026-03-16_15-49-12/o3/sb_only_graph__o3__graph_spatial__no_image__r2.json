@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:50:02.862948+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 21.59736649399929,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"Both lateral faces of box_2 are unobstructed and there is at least 10 cm of clearance on each side so the robot can position its two palms against the box. The tabletop region is stable and box_1 is resting firmly on the table so that an upward force on box_2 will not topple box_1.\",\n    \"Postcondition\": \"box_2 is securely held by both end-effectors, detached from box_1, and lifted a few centimeters above box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"clear tabletop area left of box_1\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Vertically\",\n    \"Precondition\": \"The robot is holding box_2 and the designated area to the left of box_1 on the table is free of obstacles and large enough to accommodate a 30 cm box.\",\n    \"Postcondition\": \"box_2 is placed flat on the tabletop to the left of box_1 and is released by the robot; box_1 is now fully exposed and accessible from the front and sides.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"Box_1’s lateral faces are clear and reachable. The robot’s arms can be positioned on opposite sides of box_1 without collision with box_2 or other objects.\",\n    \"Postcondition\": \"Box_1 is firmly grasped by both arms, lifted off the table, and under the robot’s control.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "Both lateral faces of box_2 are unobstructed and there is at least 10 cm of clearance on each side so the robot can position its two palms against the box. The tabletop region is stable and box_1 is resting firmly on the table so that an upward force on box_2 will not topple box_1.",
+      "Postcondition": "box_2 is securely held by both end-effectors, detached from box_1, and lifted a few centimeters above box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "clear tabletop area left of box_1",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Vertically",
+      "Precondition": "The robot is holding box_2 and the designated area to the left of box_1 on the table is free of obstacles and large enough to accommodate a 30 cm box.",
+      "Postcondition": "box_2 is placed flat on the tabletop to the left of box_1 and is released by the robot; box_1 is now fully exposed and accessible from the front and sides."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "Box_1’s lateral faces are clear and reachable. The robot’s arms can be positioned on opposite sides of box_1 without collision with box_2 or other objects.",
+      "Postcondition": "Box_1 is firmly grasped by both arms, lifted off the table, and under the robot’s control."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 2,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

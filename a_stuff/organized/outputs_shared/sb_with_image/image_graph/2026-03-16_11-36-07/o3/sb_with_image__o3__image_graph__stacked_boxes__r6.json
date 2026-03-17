@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T10:41:17.918504+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 17.00268315699941,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The darker box (box_1) is resting on top of box_2 with its left and right faces fully exposed. There is at least 10 cm of free space on both lateral sides to accommodate the robot’s end-effectors and enough vertical clearance above the stack to lift the box without collision.\",\n    \"Postcondition\": \"box_1 is firmly held between the two end-effectors and has been lifted a few centimeters above box_2, leaving box_2 on the tabletop while the robot maintains control of box_1.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The darker box (box_1) is resting on top of box_2 with its left and right faces fully exposed. There is at least 10 cm of free space on both lateral sides to accommodate the robot’s end-effectors and enough vertical clearance above the stack to lift the box without collision.",
+      "Postcondition": "box_1 is firmly held between the two end-effectors and has been lifted a few centimeters above box_2, leaving box_2 on the tabletop while the robot maintains control of box_1."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

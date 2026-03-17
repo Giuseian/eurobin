@@ -1,0 +1,604 @@
+
+GENERAL RECAP:
+-> Per ogni step, avere un solo target e una sola azione (non gestire la simultaneità in modo asimmetrico)
+-> Tipo di input:
+	1. Immagine: va male 
+	2. Immagine + grafo: un po' meglio, ma l'immagine non serviva a nulla 
+	3. Solo grafo: 
+	   3.1 Grafo con relazioni spaziali (in_front_of, ecc): ancora sbaglia
+	   3.2 Grafo con sides accessibili specificati (box_2 sides:-left some spec): molto meglio 
+
+
+CURRENT PROBLEMS:
+-> Detection pose + dimensions 
+-> Analyze scenarios in which objects are graspable in different ways, like both with the single-arm and with both arms (look at notes -> sphere and box cases)
+-> How to create a good graph for occlusions 
+-> How to handle simultaneous actions -> the model has proven to be not able to handle multiple # from __future__ import annotations
+-> Place camera on the end-effector
+
+
+-> Decide how to handle different modules
+
+
+ARCHITECTURE UP TO NOW: 
+SAM (?) + SCENE PERCEPTION + PLANNING + SIMULATENOUS + DEPLOY + VALIDATOR 
+
+where:
+- SAM (?) detects and lables the objects present in the scene 
+- SCENE PERCEPTION handles: - detection of objects poses and dimensions; -creation of occlusion graph 
+- PLANNING outputs action primitives and action_features (please consider the possibility of having a separate module for the action_features)
+- SIMULATENOUS matches actions that can be executed in parallel 
+- DEPLOY 
+- VALIDATOR to check action success or failure 
+
+
+SCENARIOS:
+- stacked boxes 
+- 2sidesabox
+- grasp una palla + push della palla che entra a caso nella scena e va via 
+- scatola + due oggetti accanto alla scatola + due oggetti sopra -> spostare due oggetti accanto, prendere e spostare i due oggetti sopra, prendere la box 
+- pentola e coperchio (?)
+- handover (? - ma necessita della divisione della zona in tre parti)
+
+
+EVENTUAL FUTURE WORKS:
+- prediction of grasping points 
+
+
+
+
+
+PENSANDO A COME IL VLM PROVA A TROVARE UNA SOLUZIONE E A TRARCI IN INGANNO 
+
+-> In merito alle stacked_boxes
+	1. la box non la vede o comunque non si rende conto che la deve togliere;
+	2. ad esempio a volte dice push (questo può essere risolto spiegando le azioni o dando una sfumatura)
+
+
+
+-> In merito alle 2boxesaside
+	1. lui prova ad utilizzare l'area tra la cup e la box non rendendosi conto che non c'è abbastanza spazio e che pericoloso (push frontally light box)
+	2. non si rende conto dello spazio tra le due box (push laterale della scatola light)
+	3. provare a prendere box target da altri lati (tipo frontale, laterale)
+	4. push della box direttamente darker lateralmente e frontalmente 
+
+
+
+
+
+
+PER LE METRICHE: 
+-> QUATTRO PROMPT (UNO SOLO IMMAGINE, UNO IMMAGINE PIÙ GRAFO, UNO GRAFO 3.1, UNO GRAFO 3.2)
+-> 10 RUN PER CIASCUN PROMPT E PER I VARI MODELLI 
+-> ISTOGRAMMA CORRETTEZZA PIANO PER I VARI PROMPT SUI VARI MODELLI 
+
+
+
+-> eventualmente provare differenza tra quando mettiamo action_explanation e quando non la mettiamo; anche togliere una serie di constraint e vedere come il modello sbaglia 
+-> timing per ogni prompt 
+-> ad esempio si può mostrare quale è l'azione più selezionata o la combinazione di azioni più selezionate
+
+-> confronti tra i modelli 
+
+
+
+
+-> dare occhio a vari parametri 
+
+
+
+
+
+-> PROVARE A CAPIRE COME FARE CONFRONTO TRA PARTE DUAL E PARTE SINGLE
+
+-> EVENTUALMENTE FARE ALTRI GRAFICI E ARCHITETTURA SU DRAW.IO FATTA UN ATTIMO MEGLIO 
+
+
+
+STACKED BOXES
+CHECKED 
+graph_sides
+-> gpt-5.2
+image_graph_1: 1
+image_graph_2: 1
+image_graph_3: 1
+image_graph_4: 1
+image_graph_5: 1
+image_graph_6: 1
+image_graph_7: 1
+image_graph_8: 1
+image_graph_9: 1
+image_graph_10: 1
+
+-> o3
+image_graph_1: 1
+image_graph_2: 1
+image_graph_3: 1
+image_graph_4: 1
+image_graph_5: 1
+image_graph_6: 1
+image_graph_7: 1
+image_graph_8: 1
+image_graph_9: 1
+image_graph_10: 1
+
+
+
+
+CHECKED 
+sb_only_graph 
+graph_spatial 
+-> gpt-5.2
+image_graph_1: 0
+image_graph_2: 0
+image_graph_3: 0
+image_graph_4: 0
+image_graph_5: 0
+image_graph_6: 0 
+image_graph_7: 0
+image_graph_8: 0 
+image_graph_9: 1
+image_graph_10: 0
+
+-> o3
+image_graph_1: 0
+image_graph_2: 1
+image_graph_3: 1
+image_graph_4: 0
+image_graph_5: 0
+image_graph_6: 0
+image_graph_7: 1
+image_graph_8: 1
+image_graph_9: 0
+image_graph_10: 1
+
+
+
+
+
+
+
+-> DONE
+sb_with_image 
+image_graph 
+-> gpt-5.2
+image_graph_1:0 -> stabilize box2 e poi direttamente push -> sbagliati pre e post 
+image_graph_2:0 -> 
+image_graph_3:0
+image_graph_4:0
+image_graph_5:0
+image_graph_6: 0 
+image_graph_7: 0 
+image_graph_8: 0 
+image_graph_9: 0 
+image_graph_10: 0 
+
+-> o3
+image_graph_1: 0
+image_graph_2: 0 
+image_graph_3: 0 
+image_graph_4: 0 
+image_graph_5: 0 
+image_graph_6: 0 
+image_graph_7: 0 
+image_graph_8: 0 
+image_graph_9: 0 
+image_graph_10: 0 
+
+
+-> DONE
+only_image 
+-> gpt-5.2
+image_graph_1:0 
+image_graph_2:0  
+image_graph_3:0
+image_graph_4:0
+image_graph_5:0
+image_graph_6: 0 
+image_graph_7: 0 
+image_graph_8: 0 
+image_graph_9: 0 
+image_graph_10: 0 
+
+-> o3
+image_graph_1: 1
+image_graph_2: 1
+image_graph_3: 1 
+image_graph_4: 1
+image_graph_5: 1
+image_graph_6: 1
+image_graph_7: 1
+image_graph_8: 1
+image_graph_9: 1
+image_graph_10: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BC OK 
+
+CUP TO DO 
+bc_only_graph 
+graph_sides
+-> gpt-5.2
+image_graph_1:0
+image_graph_2:0 
+image_graph_3:1
+image_graph_4:0
+image_graph_5:0
+image_graph_6: 0 
+image_graph_7: 0 
+image_graph_8: 0 
+image_graph_9: 0 
+image_graph_10: 0 
+
+-> o3
+image_graph_1: 1
+image_graph_2: 1 
+image_graph_3: 1 
+image_graph_4: 1
+image_graph_5: 0 
+image_graph_6: 1
+image_graph_7: 0 
+image_graph_8: 1
+image_graph_9: 0 
+image_graph_10: 1
+
+
+
+graph_spatial 
+-> gpt-5.2
+graph_spatial_1:0
+graph_spatial_2:0 
+graph_spatial_3:0
+graph_spatial_4:0
+graph_spatial_5:0
+graph_spatial_6: 0 
+graph_spatial_7: 0 
+graph_spatial_8: 0 
+graph_spatial_9: 0 
+graph_spatial_10: 0 
+
+-> o3
+graph_spatial_1: 0
+graph_spatial_2: 0 
+graph_spatial_3: 0 
+graph_spatial_4: 1
+graph_spatial_5: 1 
+graph_spatial_6: 1
+graph_spatial_7: 1
+graph_spatial_8: 1
+graph_spatial_9: 0 
+graph_spatial_10: 0 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BC OK 
+
+-> 
+bc_with_image 
+image_graph 
+-> gpt-5.2
+image_graph_1:0.5 
+image_graph_2:0
+image_graph_3:0
+image_graph_4:0.5
+image_graph_5:0
+image_graph_6: 0.5 
+image_graph_7: 0
+image_graph_8: 0.5 
+image_graph_9: 0.5
+image_graph_10: 0
+
+-> o3
+image_graph_1: 0
+image_graph_2: 0 
+image_graph_3: 1 
+image_graph_4: 1 
+image_graph_5: 1
+image_graph_6: 1
+image_graph_7: 0.5
+image_graph_8: 0 
+image_graph_9: 0 
+image_graph_10: 1
+
+
+
+
+
+BC OK 
+-> DONE
+only_image 
+-> gpt-5.2
+only_image_1:0 
+only_image_2:0  
+only_image_3:0
+only_image_4:0
+only_image_5:0
+only_image_6: 0 
+only_image_7: 0 
+only_image_8: 0 
+only_image_9: 0 
+only_image_10: 0 
+
+-> o3
+only_image_1: 0
+only_image_2: 0
+only_image_3: 0
+only_image_4: 0
+only_image_5: 0
+only_image_6: 0
+only_image_7: 0
+only_image_8: 0
+only_image_9: 1
+only_image_10: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OBJECT LIST
+[
+  {
+    "name": "box_1",
+    "color": "dark brown",
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+   {
+    "name": "box_2",
+    "color": "light brown",
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+  {
+    "name": "table",
+    "color": "brown"
+  },
+  {
+    "name": "end-effector_left",
+    "type": "robot_end_effector"
+  },
+  {
+    "name": "end-effector_right",
+    "type": "robot_end_effector"
+  }
+]
+"spatial_relationships": [
+    {
+      "object_1": "box_1",
+      "relation": "under",
+      "object_2": "box_2"
+    },
+    {
+      "object_1": "box_2",
+      "relation": "on_top_of",
+      "object_2": "box_1"
+    },
+    {
+      "object_1": "box_2",
+      "relation": "attached_to",
+      "object_2": "box_1"
+    }
+  ]
+
+
+
+
+
+
+
+OBJECT LIST
+[
+  {
+    "name": "box_1",
+    "color": "dark brown",
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+   {
+    "name": "box_2",
+    "color": "light brown",
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+  {
+    "name": "cup",
+    "color": "black",
+    "properties": "cylindrical drinking cup, open top, empty appearance"
+  },
+  {
+    "name": "table",
+    "color": "brown"
+  },
+  {
+    "name": "end-effector_left",
+    "type": "robot_end_effector"
+  },
+  {
+    "name": "end-effector_right",
+    "type": "robot_end_effector"
+  }
+]
+"spatial_relationships": [
+    {
+      "object_1": "box_1",
+      "relation": "left_of",
+      "object_2": "box_2"
+    },
+    {
+      "object_1": "box_2",
+      "relation": "right_of",
+      "object_2": "box_1"
+    },
+    {
+      "object_1": "box_2",
+      "relation": "attached_to",
+      "object_2": "box_1"
+    },
+    {
+      "object_1": "cup_1",
+      "relation": "in_front_of",
+      "object_2": "box_2"
+    },
+    {
+      "object_1": "cup_1",
+      "relation": "next_to",
+      "object_2": "box_2"
+    }
+  ]
+  
+  
+  
+  
+  
+CUP 
+
+
+OBJECT LIST
+[
+  {
+    "name": "box_1",
+    "color": "dark brown",
+    "sides:
+    	-left: "accessible",
+    	-right: "blocked by box_2",
+    	-front: "accessible",
+    	-back: "not reachable",
+    "
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+   {
+    "name": "box_2",
+    "color": "light brown",
+    "sides:
+    	-left: "blocked by box_1",
+    	-right: "accessible",
+    	-front: "blocked by cup",
+    	-back: "not reachable",
+    "
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+  {
+    "name": "cup",
+    "color": "black",
+    "sides:
+    	-left: "accessible",
+    	-right: "accessible",
+    	-front: "accessible",
+    	-back: "blocked by box_2",
+    "
+    "properties": "cylindrical drinking cup, open top, empty appearance"
+  },
+  {
+    "name": "table",
+    "color": "brown",
+  },
+  {
+    "name": "end-effector_left",
+    "type": "robot_end_effector",
+  },
+  {
+    "name": "end-effector_right",
+    "type": "robot_end_effector",
+  }
+]
+}
+
+
+
+
+
+
+STACKED BOXES 
+OBJECT LIST
+[
+  {
+    "name": "box_1",
+    "color": "dark brown",
+    "sides:
+    	-left: "accessible",
+    	-right: "accessible",
+    	-front: "accessible",
+    	-back: "not reachable",
+    	-top: "blocked by box2",
+    	-bottom: "blocked by table"
+    "
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+   {
+    "name": "box_2",
+    "color": "light brown",
+    "sides:
+    	-left: "accessible",
+    	-right: "accessible",
+    	-front: "accessible",
+    	-back: "not reachable",
+    	-top: "accessible", 
+    	-bottom: "blocked by box1"
+    "
+    "properties": "rectangular cardboard-like box positioned on the left side of the tabletop"
+  },
+  {
+    "name": "table",
+    "color": "brown",
+  },
+  {
+    "name": "end-effector_left",
+    "type": "robot_end_effector",
+  },
+  {
+    "name": "end-effector_right",
+    "type": "robot_end_effector",
+  }
+]
+}

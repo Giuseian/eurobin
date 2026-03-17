@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-03-16T10:42:56.816075+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 24.071010849999766,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"The left arm can reach the lower light-brown box (box_2). There is free space at the front face of box_2, and no other objects obstruct the arm path.\",\n    \"Postcondition\": \"Box_2 is firmly held against the tabletop by the left arm, preventing it from sliding or tipping when forces are applied to the upper box.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 is stabilized by the left arm. The right arm has a clear lateral approach to the darker box (box_1), and there is at least 35 cm of vertical clearance above it for lifting.\",\n    \"Postcondition\": \"The darker box (box_1) is securely held by the right arm, detached from box_2, and lifted several centimeters above the tabletop, fulfilling the task requirement of picking it up.\"\n]",
+  "json_parse_ok": false,
+  "parsed_json": null,
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

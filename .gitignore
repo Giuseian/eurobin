@@ -12,9 +12,9 @@ conda-meta/
 # secrets
 .env
 
-#outputs
-outputs/outputs_giuse/*
-
+#general_material
+a_stuff/not_organized/old_outputs*
+a_stuff/not_organized/outputs*
 
 # OS
 .DS_Store

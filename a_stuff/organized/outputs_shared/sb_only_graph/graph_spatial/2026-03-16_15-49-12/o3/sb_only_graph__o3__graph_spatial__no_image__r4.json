@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:50:38.408917+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 22.21506647700153,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left side of box_1 is reachable and there is enough clearance for the left end-effector to press gently against the box without disturbing box_2 on top. No objects obstruct the left approach path.\",\n    \"Postcondition\": \"box_1 is held firmly from the left side, preventing it from sliding when forces are applied to box_2.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right side of box_2 is free of obstacles and there is enough tabletop space on the right for box_2 to slide. box_1 is being stabilized by the left arm.\",\n    \"Postcondition\": \"box_2 is detached from box_1 and slid to an open area on the tabletop to the right of box_1, leaving the top of box_1 fully exposed.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is no longer on top of box_1. Both arms have unobstructed lateral access to the sides of box_1, and sufficient vertical clearance exists to lift it.\",\n    \"Postcondition\": \"box_1 is securely held between the two arms and lifted clear of the tabletop, accomplishing the task of picking up the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left side of box_1 is reachable and there is enough clearance for the left end-effector to press gently against the box without disturbing box_2 on top. No objects obstruct the left approach path.",
+      "Postcondition": "box_1 is held firmly from the left side, preventing it from sliding when forces are applied to box_2."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right side of box_2 is free of obstacles and there is enough tabletop space on the right for box_2 to slide. box_1 is being stabilized by the left arm.",
+      "Postcondition": "box_2 is detached from box_1 and slid to an open area on the tabletop to the right of box_1, leaving the top of box_1 fully exposed."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is no longer on top of box_1. Both arms have unobstructed lateral access to the sides of box_1, and sufficient vertical clearance exists to lift it.",
+      "Postcondition": "box_1 is securely held between the two arms and lifted clear of the tabletop, accomplishing the task of picking up the darker box."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 4,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

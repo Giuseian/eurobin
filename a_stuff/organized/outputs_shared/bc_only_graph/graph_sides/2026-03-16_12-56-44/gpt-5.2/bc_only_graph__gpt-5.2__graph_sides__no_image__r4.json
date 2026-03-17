@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:20.844428+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 5.046332210000401,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 is the dark brown box. Its left side is accessible and its right side is blocked by box_2, so a lateral pinch grasp from both sides is not feasible. Use dual arms to establish a stable lift by pressing/supporting from the accessible left side and the accessible front side while ensuring the motion does not force box_1 into box_2. Verify there is enough clearance above box_1 for a lift and that the cup (in front of box_2, not box_1) will not be contacted during approach.\",\n    \"Postcondition\": \"Box_1 is securely controlled by both end-effectors via frictional/support contacts and is lifted off the table without shifting into box_2.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 is the dark brown box. Its left side is accessible and its right side is blocked by box_2, so a lateral pinch grasp from both sides is not feasible. Use dual arms to establish a stable lift by pressing/supporting from the accessible left side and the accessible front side while ensuring the motion does not force box_1 into box_2. Verify there is enough clearance above box_1 for a lift and that the cup (in front of box_2, not box_1) will not be contacted during approach.",
+      "Postcondition": "Box_1 is securely controlled by both end-effectors via frictional/support contacts and is lifted off the table without shifting into box_2."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 4,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

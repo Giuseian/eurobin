@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:54:07.114087+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.616436622996844,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 (light brown) is accessible on top of box_1 and there is enough lateral clearance on both sides for both end-effectors to establish a firm grasp; the attachment between box_2 and box_1 can be overcome without tearing the cardboard or destabilizing the stack.\",\n    \"Postcondition\": \"box_2 is securely grasped by both end-effectors and lifted clear of box_1, removing the direct obstruction over box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (right side, clear area)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is held securely; a clear placement region on the table to the right side is available so box_2 will not interfere with accessing box_1 afterward.\",\n    \"Postcondition\": \"box_2 is placed on the table to the right side and released, leaving box_1 fully exposed from above and laterally.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"With claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 (dark brown) is now unobstructed (box_2 removed) and there is sufficient clearance on both lateral faces of box_1 for the two end-effectors to form a stable clamp grasp; the tabletop surface provides stable support during grasp acquisition.\",\n    \"Postcondition\": \"box_1 is securely grasped by both end-effectors and lifted off the table (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 (light brown) is accessible on top of box_1 and there is enough lateral clearance on both sides for both end-effectors to establish a firm grasp; the attachment between box_2 and box_1 can be overcome without tearing the cardboard or destabilizing the stack.",
+      "Postcondition": "box_2 is securely grasped by both end-effectors and lifted clear of box_1, removing the direct obstruction over box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (right side, clear area)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is held securely; a clear placement region on the table to the right side is available so box_2 will not interfere with accessing box_1 afterward.",
+      "Postcondition": "box_2 is placed on the table to the right side and released, leaving box_1 fully exposed from above and laterally."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "With claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 (dark brown) is now unobstructed (box_2 removed) and there is sufficient clearance on both lateral faces of box_1 for the two end-effectors to form a stable clamp grasp; the tabletop surface provides stable support during grasp acquisition.",
+      "Postcondition": "box_1 is securely grasped by both end-effectors and lifted off the table (picked up)."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 9,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

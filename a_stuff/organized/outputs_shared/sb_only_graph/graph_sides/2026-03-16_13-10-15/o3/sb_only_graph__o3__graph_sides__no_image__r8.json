@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:12:43.246732+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 15.531848660000833,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 is positioned on top of box_1 with its left and right faces clear; no objects block the robot's arms from approaching the stack from the sides.\",\n    \"Postcondition\": \"Box_2 is securely held between both end-effectors and lifted slightly, removing the load from box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table area front-left of the original stack\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding box_2; the designated table area is free of obstacles and provides enough space for a 30 cm box.\",\n    \"Postcondition\": \"Box_2 is stably placed on the specified table area and released by the robot, leaving box_1 completely unobstructed.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 is now fully exposed on the tabletop; both lateral faces are reachable without interference from other objects.\",\n    \"Postcondition\": \"Box_1 (the darker box) is firmly grasped by the robot's two arms and lifted off the table, accomplishing the pick-up task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 is positioned on top of box_1 with its left and right faces clear; no objects block the robot's arms from approaching the stack from the sides.",
+      "Postcondition": "Box_2 is securely held between both end-effectors and lifted slightly, removing the load from box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table area front-left of the original stack",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding box_2; the designated table area is free of obstacles and provides enough space for a 30 cm box.",
+      "Postcondition": "Box_2 is stably placed on the specified table area and released by the robot, leaving box_1 completely unobstructed."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 is now fully exposed on the tabletop; both lateral faces are reachable without interference from other objects.",
+      "Postcondition": "Box_1 (the darker box) is firmly grasped by the robot's two arms and lifted off the table, accomplishing the pick-up task."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 8,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

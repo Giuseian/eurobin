@@ -1,0 +1,3 @@
+model_name,prompt_filename,input_mode,n_runs,json_valid_mean,schema_ok_mean,taxonomy_ok_mean,step_count_mean,step_count_std,manipulation_consistency_mean,manipulation_consistency_std,action_feasibility_mean,action_feasibility_std,inference_time_mean,inference_time_std
+gpt-5.2,new_file.txt,image,5,1.0,1.0,1.0,1.8,0.4472135954999579,1.0,0.0,1.0,0.0,15.260332630800258,3.247467899268061
+o3,new_file.txt,image,5,1.0,1.0,1.0,2.8,0.447213595499958,1.0,0.0,1.0,0.0,16.501465651400213,4.5173483183589545

@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T11:59:13.766740+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 15.979242994000742,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"frontally\",\n    \"Precondition\": \"Front side of box_1 is directly accessible; there is at least 35 cm of free frontal clearance on the tabletop so both end-effectors can approach simultaneously without colliding with the cup or box_2. The robot is positioned facing the table, and its arms are within reach of the front face of box_1.\",\n    \"Postcondition\": \"Both end-effectors firmly hold box_1 at its lower front corners, lifting it a few centimeters so the box is no longer resting on the tabletop. The darker box is now securely picked up by the robot.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "frontally",
+      "Precondition": "Front side of box_1 is directly accessible; there is at least 35 cm of free frontal clearance on the tabletop so both end-effectors can approach simultaneously without colliding with the cup or box_2. The robot is positioned facing the table, and its arms are within reach of the front face of box_1.",
+      "Postcondition": "Both end-effectors firmly hold box_1 at its lower front corners, lifting it a few centimeters so the box is no longer resting on the tabletop. The darker box is now securely picked up by the robot."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 5,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

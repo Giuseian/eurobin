@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T10:44:53.109585+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 16.265977733,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left end-effector can reach the left side of box_2 without colliding with box_1; a gentle lateral contact point on box_2 is available to prevent it from lifting or sliding while separating attached boxes.\",\n    \"Postcondition\": \"box_2 is laterally constrained by the left end-effector, reducing motion during the lift of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is accessible from both sides; enough clearance exists on the left and right sides for both end-effectors to establish opposing lateral contacts; box_2 is stabilized to counter adhesion/attachment forces between box_1 and box_2.\",\n    \"Postcondition\": \"box_1 is securely held by both end-effectors with a bilateral pinch grasp and is ready to be lifted free of box_2.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_1 is already held laterally; the upward lift path above box_1 is free of obstacles and provides sufficient clearance to separate box_1 from box_2 despite the 'attached_to' relationship.\",\n    \"Postcondition\": \"box_1 is lifted upward and separated from box_2, no longer on_top_of or attached_to box_2.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left end-effector can reach the left side of box_2 without colliding with box_1; a gentle lateral contact point on box_2 is available to prevent it from lifting or sliding while separating attached boxes.",
+      "Postcondition": "box_2 is laterally constrained by the left end-effector, reducing motion during the lift of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is accessible from both sides; enough clearance exists on the left and right sides for both end-effectors to establish opposing lateral contacts; box_2 is stabilized to counter adhesion/attachment forces between box_1 and box_2.",
+      "Postcondition": "box_1 is securely held by both end-effectors with a bilateral pinch grasp and is ready to be lifted free of box_2."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_1 is already held laterally; the upward lift path above box_1 is free of obstacles and provides sufficient clearance to separate box_1 from box_2 despite the 'attached_to' relationship.",
+      "Postcondition": "box_1 is lifted upward and separated from box_2, no longer on_top_of or attached_to box_2."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 1,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

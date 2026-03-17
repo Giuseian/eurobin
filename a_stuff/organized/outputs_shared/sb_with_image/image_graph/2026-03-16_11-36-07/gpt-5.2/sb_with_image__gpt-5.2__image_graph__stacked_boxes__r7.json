@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T10:46:24.499169+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 13.178349537000031,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left end-effector can reach the side of box_2 without colliding with box_1 or the table; a gentle lateral brace will not shift the stacked boxes.\",\n    \"Postcondition\": \"box_2 is laterally braced by the left end-effector to prevent movement while box_1 is being detached/lifted.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both end-effectors have clear access to opposite side faces of box_1; box_2 is stabilized; enough vertical clearance exists above box_1 to lift without contacting the table or box_2.\",\n    \"Postcondition\": \"box_1 is securely held by both end-effectors from the sides, with load shared; attachment/friction to box_2 is controlled.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_1 is already held; box_2 remains stabilized; there is unobstructed space above box_1 to lift straight up to break the attachment/contact without scraping.\",\n    \"Postcondition\": \"box_1 is separated from box_2 and lifted upward, no longer on_top_of/attached_to box_2, remaining securely supported in the robot's hands.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left end-effector can reach the side of box_2 without colliding with box_1 or the table; a gentle lateral brace will not shift the stacked boxes.",
+      "Postcondition": "box_2 is laterally braced by the left end-effector to prevent movement while box_1 is being detached/lifted."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both end-effectors have clear access to opposite side faces of box_1; box_2 is stabilized; enough vertical clearance exists above box_1 to lift without contacting the table or box_2.",
+      "Postcondition": "box_1 is securely held by both end-effectors from the sides, with load shared; attachment/friction to box_2 is controlled."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_1 is already held; box_2 remains stabilized; there is unobstructed space above box_1 to lift straight up to break the attachment/contact without scraping.",
+      "Postcondition": "box_1 is separated from box_2 and lifted upward, no longer on_top_of/attached_to box_2, remaining securely supported in the robot's hands."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 7,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

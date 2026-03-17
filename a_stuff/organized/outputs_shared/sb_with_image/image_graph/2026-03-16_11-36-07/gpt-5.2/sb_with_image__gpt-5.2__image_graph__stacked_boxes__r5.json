@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T10:45:54.803285+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 18.485682411000198,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left end-effector can reach the side of box_2 without colliding with box_1; a gentle side contact point is available to prevent box_2 from moving because box_2 is attached_to box_1 and may be lifted or dragged during the pick.\",\n    \"Postcondition\": \"box_2 is laterally constrained by the left end-effector, reducing relative motion between the stacked/attached boxes during the grasp of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both end-effectors have unobstructed access to the left and right sides of box_1; adequate clearance exists to apply opposing lateral forces. Claw grasp is not used because the box exceeds the 10 cm claw-size limit.\",\n    \"Postcondition\": \"box_1 is securely held by both end-effectors via opposing side contacts and is ready to be lifted from box_2.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is firmly supported by the right end-effector (and/or maintained by dual-arm contact) so the left end-effector can safely release box_2 without causing the stack to shift.\",\n    \"Postcondition\": \"The left end-effector is no longer constraining box_2, and box_1 remains controlled by the robot.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is free and not interfering; both end-effectors maintain stable opposing lateral contact on box_1 with enough friction/force to lift without slipping.\",\n    \"Postcondition\": \"box_1 is lifted and held securely off the tabletop/box_2 by the robot (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left end-effector can reach the side of box_2 without colliding with box_1; a gentle side contact point is available to prevent box_2 from moving because box_2 is attached_to box_1 and may be lifted or dragged during the pick.",
+      "Postcondition": "box_2 is laterally constrained by the left end-effector, reducing relative motion between the stacked/attached boxes during the grasp of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both end-effectors have unobstructed access to the left and right sides of box_1; adequate clearance exists to apply opposing lateral forces. Claw grasp is not used because the box exceeds the 10 cm claw-size limit.",
+      "Postcondition": "box_1 is securely held by both end-effectors via opposing side contacts and is ready to be lifted from box_2."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is firmly supported by the right end-effector (and/or maintained by dual-arm contact) so the left end-effector can safely release box_2 without causing the stack to shift.",
+      "Postcondition": "The left end-effector is no longer constraining box_2, and box_1 remains controlled by the robot."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is free and not interfering; both end-effectors maintain stable opposing lateral contact on box_1 with enough friction/force to lift without slipping.",
+      "Postcondition": "box_1 is lifted and held securely off the tabletop/box_2 by the robot (picked up)."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 5,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

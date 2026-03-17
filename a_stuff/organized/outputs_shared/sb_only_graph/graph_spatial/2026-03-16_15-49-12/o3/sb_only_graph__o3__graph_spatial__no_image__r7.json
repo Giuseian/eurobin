@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-03-16T14:51:47.190382+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 22.056841771998734,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Frontally\",\n    \"Precondition\": \"The left arm can reach the frontal face of box_1 without collision. Sufficient clearance exists in front of the box for the end-effector to press against it while box_2 remains on top.\",\n    \"Postcondition\": \"Box_1 is firmly held against the tabletop by the left arm, preventing accidental movement while box_2 is detached.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Frontally\",\n    \"Precondition\": \"Box_2’s frontal face is unobstructed. With box_1 stabilized, the right arm can approach frontally, apply a hugging grip around the box, and apply enough upward force to break the tape attachment.\",\n    \"Postcondition\": \"Box_2 is securely held by the right arm and detached from box_1.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"table region right of box_1\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Vertically\",\n    \"Precondition\": \"The area on the tabletop to the right of box_1 is clear and large enough (≥30 cm × 30 cm) to accommodate box_2.\",\n    \"Postcondition\": \"Box_2 is placed upright on the cleared region of the table, no longer in contact with box_1, and the right arm is free.\"\n  },\n  {\n    \"Step_id\": 4,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"Laterally\",\n    \"Precondition\": \"Box_2 has been removed. Both arms have unimpeded lateral access to the sides of box_1, and there is vertical clearance above the box for a lift.\",\n    \"Postcondition\": \"The robot is holding the darker box (box_1) securely with both arms, lifted slightly above the tabletop—successfully completing the ‘pick up the darker box’ task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Frontally",
+      "Precondition": "The left arm can reach the frontal face of box_1 without collision. Sufficient clearance exists in front of the box for the end-effector to press against it while box_2 remains on top.",
+      "Postcondition": "Box_1 is firmly held against the tabletop by the left arm, preventing accidental movement while box_2 is detached."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Frontally",
+      "Precondition": "Box_2’s frontal face is unobstructed. With box_1 stabilized, the right arm can approach frontally, apply a hugging grip around the box, and apply enough upward force to break the tape attachment.",
+      "Postcondition": "Box_2 is securely held by the right arm and detached from box_1."
+    },
+    {
+      "Step_id": 3,
+      "Target": "table region right of box_1",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Vertically",
+      "Precondition": "The area on the tabletop to the right of box_1 is clear and large enough (≥30 cm × 30 cm) to accommodate box_2.",
+      "Postcondition": "Box_2 is placed upright on the cleared region of the table, no longer in contact with box_1, and the right arm is free."
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Laterally",
+      "Precondition": "Box_2 has been removed. Both arms have unimpeded lateral access to the sides of box_1, and there is vertical clearance above the box for a lift.",
+      "Postcondition": "The robot is holding the darker box (box_1) securely with both arms, lifted slightly above the tabletop—successfully completing the ‘pick up the darker box’ task."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 7,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

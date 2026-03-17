@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:13:52.088732+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 5.958185424000476,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is stacked on top of box_1 and its left/right/front faces are accessible with sufficient clearance for both end-effectors to establish opposing side contacts; lifting box_2 vertically will not collide with the table or other objects.\",\n    \"Postcondition\": \"box_2 is securely held by both end-effectors and lifted clear of box_1, leaving the top of box_1 unblocked.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (on the tabletop, to the right of box_1)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is held securely; the placement region on the tabletop to the right of box_1 is free of obstacles and provides enough area for a 30x30 cm box footprint.\",\n    \"Postcondition\": \"box_2 is placed on the tabletop to the right of box_1 and released, creating full access to the top of box_1.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The top of box_1 is no longer blocked by box_2; box_1 left/right/front faces are accessible; there is sufficient lateral clearance for both end-effectors to clamp opposing sides without contacting the table surface.\",\n    \"Postcondition\": \"box_1 (the darker box) is securely held by both end-effectors and lifted clear of the table (picked up).\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is stacked on top of box_1 and its left/right/front faces are accessible with sufficient clearance for both end-effectors to establish opposing side contacts; lifting box_2 vertically will not collide with the table or other objects.",
+      "Postcondition": "box_2 is securely held by both end-effectors and lifted clear of box_1, leaving the top of box_1 unblocked."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (on the tabletop, to the right of box_1)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is held securely; the placement region on the tabletop to the right of box_1 is free of obstacles and provides enough area for a 30x30 cm box footprint.",
+      "Postcondition": "box_2 is placed on the tabletop to the right of box_1 and released, creating full access to the top of box_1."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The top of box_1 is no longer blocked by box_2; box_1 left/right/front faces are accessible; there is sufficient lateral clearance for both end-effectors to clamp opposing sides without contacting the table surface.",
+      "Postcondition": "box_1 (the darker box) is securely held by both end-effectors and lifted clear of the table (picked up)."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 6,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}

@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T11:28:33.472034+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/2boxesaside.png",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 14.530509939000694,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is reachable by the right arm and there is free space on the tabletop to the right of box_2 so it can be shifted without colliding with the cup or the table edge; box_2 remains supported on the table during the push.\",\n    \"Postcondition\": \"box_2 is shifted slightly to the right, creating a small lateral gap between box_1 and box_2 so box_1 has accessible side faces for a dual-arm grasp.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"cup\",\n    \"Action concept\": \"Push\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The cup is reachable by the right arm and there is free space in front of the boxes on the tabletop to move the cup away from the box_1 grasp/lift path without tipping it into other objects.\",\n    \"Postcondition\": \"The cup is moved forward (toward the robot/front edge of the workspace) and no longer interferes with approaching or lifting box_1.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is accessible from both left and right sides with sufficient clearance from box_2 and the cup; both end-effectors can align to opposing side faces at mid-height without contacting the tabletop.\",\n    \"Postcondition\": \"box_1 is securely held with two-arm opposing lateral contact and lifted under control (picked up), no longer resting on the table.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is reachable by the right arm and there is free space on the tabletop to the right of box_2 so it can be shifted without colliding with the cup or the table edge; box_2 remains supported on the table during the push.",
+      "Postcondition": "box_2 is shifted slightly to the right, creating a small lateral gap between box_1 and box_2 so box_1 has accessible side faces for a dual-arm grasp."
+    },
+    {
+      "Step_id": 2,
+      "Target": "cup",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The cup is reachable by the right arm and there is free space in front of the boxes on the tabletop to move the cup away from the box_1 grasp/lift path without tipping it into other objects.",
+      "Postcondition": "The cup is moved forward (toward the robot/front edge of the workspace) and no longer interferes with approaching or lifting box_1."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is accessible from both left and right sides with sufficient clearance from box_2 and the cup; both end-effectors can align to opposing side faces at mid-height without contacting the tabletop.",
+      "Postcondition": "box_1 is securely held with two-arm opposing lateral contact and lifted under control (picked up), no longer resting on the table."
+    }
+  ],
+  "scenario_id": "bc_with_image",
+  "repeat_idx": 5,
+  "run_id": "2026-03-16_12-16-03",
+  "prompt_name": "image_graph"
+}

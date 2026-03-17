@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-03-16T12:02:36.573131+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 4.667507824000495,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 is the darker box and is not claw-graspable due to its 30x30x30 cm size. Its left side is accessible and its right side is blocked by box_2, so a stable two-hand pinch/lift must be set up by approaching from the accessible left/front region while ensuring the end-effectors do not collide with box_2 and that there is enough clearance to slide both hands to opposing lateral faces of box_1.\",\n    \"Postcondition\": \"Box_1 is securely controlled by both end-effectors in a symmetric lateral grasp and is lifted off the tabletop (picked up) without disturbing box_2 or the cup.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 is the darker box and is not claw-graspable due to its 30x30x30 cm size. Its left side is accessible and its right side is blocked by box_2, so a stable two-hand pinch/lift must be set up by approaching from the accessible left/front region while ensuring the end-effectors do not collide with box_2 and that there is enough clearance to slide both hands to opposing lateral faces of box_1.",
+      "Postcondition": "Box_1 is securely controlled by both end-effectors in a symmetric lateral grasp and is lifted off the tabletop (picked up) without disturbing box_2 or the cup."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 7,
+  "run_id": "2026-03-16_12-56-44",
+  "prompt_name": "graph_sides"
+}

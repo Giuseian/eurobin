@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T14:52:51.268185+00:00",
+  "model_name": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 21.148631321997527,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_2 is resting on top of box_1 with its left and right faces unobstructed. There is at least 15 cm of free lateral space on both sides for the end-effectors to slide in, and the vertical space above the stack is clear so the box can be lifted. The attachment between the two boxes is non-rigid and can be overcome by a gentle upward pull.\",\n    \"Postcondition\": \"Box_2 is detached from box_1 and securely held between the two end-effectors.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"clear tabletop area 30 cm front-left of box_1\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"The robot is holding box_2 and the designated placement region on the tabletop is free of objects and provides a stable support surface.\",\n    \"Postcondition\": \"Box_2 is placed flat on the specified tabletop area and released, leaving the space above and around box_1 unobstructed.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Box_1 is now fully exposed with no objects on top. Both lateral faces are accessible and there is clearance above for lifting. Both end-effectors are free to engage the box.\",\n    \"Postcondition\": \"Box_1 (the darker box) is firmly held between the two arms and lifted off the tabletop, completing the pick-up task.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_2 is resting on top of box_1 with its left and right faces unobstructed. There is at least 15 cm of free lateral space on both sides for the end-effectors to slide in, and the vertical space above the stack is clear so the box can be lifted. The attachment between the two boxes is non-rigid and can be overcome by a gentle upward pull.",
+      "Postcondition": "Box_2 is detached from box_1 and securely held between the two end-effectors."
+    },
+    {
+      "Step_id": 2,
+      "Target": "clear tabletop area 30 cm front-left of box_1",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "The robot is holding box_2 and the designated placement region on the tabletop is free of objects and provides a stable support surface.",
+      "Postcondition": "Box_2 is placed flat on the specified tabletop area and released, leaving the space above and around box_1 unobstructed."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Box_1 is now fully exposed with no objects on top. Both lateral faces are accessible and there is clearance above for lifting. Both end-effectors are free to engage the box.",
+      "Postcondition": "Box_1 (the darker box) is firmly held between the two arms and lifted off the tabletop, completing the pick-up task."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_15-49-12",
+  "prompt_name": "graph_spatial"
+}

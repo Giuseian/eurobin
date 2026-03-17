@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T10:45:36.306971+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "image_graph.txt",
+  "image_path": "images/stacked_boxes.jpeg",
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 14.610423879000336,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The right arm can reach the right side of box_2 without colliding with box_1 or the table edge; there is enough lateral clearance to apply gentle inward pressure without shifting the stacked boxes.\",\n    \"Postcondition\": \"box_2 is laterally constrained and stabilized on the tabletop, reducing the risk of slipping while box_1 is being separated and lifted.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"Both arms have unobstructed access to the left and right side faces of box_1; the right arm continues stabilizing box_2; sufficient vertical clearance exists above box_1 to lift without contacting the table or box_2.\",\n    \"Postcondition\": \"box_1 is securely held by both end-effectors from the sides while box_2 remains stabilized on the table.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_1 is already firmly secured laterally by both arms; the attachment/friction interface between box_1 and box_2 can be overcome by a controlled upward pull; box_2 remains stabilized to prevent it from lifting with box_1.\",\n    \"Postcondition\": \"box_1 is lifted free from box_2 (detached/separated) and is held above the tabletop under full control of both arms.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The right arm can reach the right side of box_2 without colliding with box_1 or the table edge; there is enough lateral clearance to apply gentle inward pressure without shifting the stacked boxes.",
+      "Postcondition": "box_2 is laterally constrained and stabilized on the tabletop, reducing the risk of slipping while box_1 is being separated and lifted."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "Both arms have unobstructed access to the left and right side faces of box_1; the right arm continues stabilizing box_2; sufficient vertical clearance exists above box_1 to lift without contacting the table or box_2.",
+      "Postcondition": "box_1 is securely held by both end-effectors from the sides while box_2 remains stabilized on the table."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_1 is already firmly secured laterally by both arms; the attachment/friction interface between box_1 and box_2 can be overcome by a controlled upward pull; box_2 remains stabilized to prevent it from lifting with box_1.",
+      "Postcondition": "box_1 is lifted free from box_2 (detached/separated) and is held above the tabletop under full control of both arms."
+    }
+  ],
+  "scenario_id": "sb_with_image",
+  "repeat_idx": 4,
+  "run_id": "2026-03-16_11-36-07",
+  "prompt_name": "image_graph"
+}

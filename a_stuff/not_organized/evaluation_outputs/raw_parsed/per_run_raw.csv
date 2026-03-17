@@ -1,0 +1,530 @@
+source_file,scenario_id,task_text,model_name,prompt_filename,repeat_idx,image_path,input_mode,json_parse_ok,raw_response,parsed_json,timestamp_utc,inference_time_sec,is_error_file,file_read_error
+outputs/outputs_official/stacked_boxes/gpt-5.2/stacked_boxes__gpt-5.2__new_file__stacked_boxes__r1.json,stacked_boxes,Pick up the dark box.,gpt-5.2,new_file.txt,1,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark-colored box from the tabletop using the robot's arms."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table""],
+    ""blocking_objects"": [],
+    ""relevant_relations"": [""dark box is on top of the table"", ""dark box is between the robot's left and right arms""],
+    ""requires_clearing"": false
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Secure the dark box with a stable two-arm grasp on its sides."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is accessible on the tabletop"", ""no objects obstruct the sides of the dark box""],
+        ""postconditions"": [""dark box is firmly grasped on both sides by the two arms""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Lift the dark box off the tabletop to complete the pickup."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is firmly grasped on both sides by the two arms""],
+        ""postconditions"": [""dark box is lifted and held above the tabletop""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark-colored box from the tabletop using the robot's arms."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table""], ""blocking_objects"": [], ""relevant_relations"": [""dark box is on top of the table"", ""dark box is between the robot's left and right arms""], ""requires_clearing"": false}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Secure the dark box with a stable two-arm grasp on its sides."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is accessible on the tabletop"", ""no objects obstruct the sides of the dark box""], ""postconditions"": [""dark box is firmly grasped on both sides by the two arms""]}, {""step_id"": 2, ""subgoal"": ""Lift the dark box off the tabletop to complete the pickup."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is firmly grasped on both sides by the two arms""], ""postconditions"": [""dark box is lifted and held above the tabletop""]}]}}",2026-03-15T13:09:07.940739+00:00,17.201219085000048,False,
+outputs/outputs_official/stacked_boxes/gpt-5.2/stacked_boxes__gpt-5.2__new_file__stacked_boxes__r2.json,stacked_boxes,Pick up the dark box.,gpt-5.2,new_file.txt,2,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table""],
+    ""blocking_objects"": [],
+    ""relevant_relations"": [""dark box is on the table between the two arms""],
+    ""requires_clearing"": false
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Secure the dark box with a stable two-arm hold suitable for lifting."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is resting on the table"", ""both arms have unobstructed access to the sides of the dark box""],
+        ""postconditions"": [""dark box is firmly held by both arms""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Lift the dark box off the table to complete the pickup."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is firmly held by both arms""],
+        ""postconditions"": [""dark box is lifted and no longer contacting the table""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table""], ""blocking_objects"": [], ""relevant_relations"": [""dark box is on the table between the two arms""], ""requires_clearing"": false}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Secure the dark box with a stable two-arm hold suitable for lifting."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is resting on the table"", ""both arms have unobstructed access to the sides of the dark box""], ""postconditions"": [""dark box is firmly held by both arms""]}, {""step_id"": 2, ""subgoal"": ""Lift the dark box off the table to complete the pickup."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is firmly held by both arms""], ""postconditions"": [""dark box is lifted and no longer contacting the table""]}]}}",2026-03-15T13:09:23.763105+00:00,15.817734729000222,False,
+outputs/outputs_official/stacked_boxes/gpt-5.2/stacked_boxes__gpt-5.2__new_file__stacked_boxes__r3.json,stacked_boxes,Pick up the dark box.,gpt-5.2,new_file.txt,3,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""centered between the two arms""],
+    ""blocking_objects"": [],
+    ""relevant_relations"": [""dark box is on the table"", ""dark box is between left arm and right arm""],
+    ""requires_clearing"": false
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Secure the dark box with two-handed grasp for lifting."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is accessible on the tabletop"", ""no objects obstruct access to the sides of the dark box""],
+        ""postconditions"": [""dark box is grasped securely by both arms""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Lift the dark box off the table surface (pick up)."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is grasped securely by both arms""],
+        ""postconditions"": [""dark box is lifted and no longer in contact with the tabletop""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""centered between the two arms""], ""blocking_objects"": [], ""relevant_relations"": [""dark box is on the table"", ""dark box is between left arm and right arm""], ""requires_clearing"": false}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Secure the dark box with two-handed grasp for lifting."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is accessible on the tabletop"", ""no objects obstruct access to the sides of the dark box""], ""postconditions"": [""dark box is grasped securely by both arms""]}, {""step_id"": 2, ""subgoal"": ""Lift the dark box off the table surface (pick up)."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is grasped securely by both arms""], ""postconditions"": [""dark box is lifted and no longer in contact with the tabletop""]}]}}",2026-03-15T13:09:42.868582+00:00,19.10073384000134,False,
+outputs/outputs_official/stacked_boxes/gpt-5.2/stacked_boxes__gpt-5.2__new_file__stacked_boxes__r4.json,stacked_boxes,Pick up the dark box.,gpt-5.2,new_file.txt,4,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark-colored box from the tabletop using the robot's arms."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table between arms""],
+    ""blocking_objects"": [],
+    ""relevant_relations"": [""dark box is on the table"", ""dark box is centered between left arm and right arm""],
+    ""requires_clearing"": false
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Securely grasp the dark box for lifting."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is stationary on the table"", ""both arms have clear access to the box sides""],
+        ""postconditions"": [""dark box is grasped securely by both arms""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark-colored box from the tabletop using the robot's arms."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark brown"", ""rectangular"", ""on table"", ""center of table between arms""], ""blocking_objects"": [], ""relevant_relations"": [""dark box is on the table"", ""dark box is centered between left arm and right arm""], ""requires_clearing"": false}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Securely grasp the dark box for lifting."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is stationary on the table"", ""both arms have clear access to the box sides""], ""postconditions"": [""dark box is grasped securely by both arms""]}]}}",2026-03-15T13:09:53.689634+00:00,10.812653226999828,False,
+outputs/outputs_official/stacked_boxes/gpt-5.2/stacked_boxes__gpt-5.2__new_file__stacked_boxes__r5.json,stacked_boxes,Pick up the dark box.,gpt-5.2,new_file.txt,5,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""cardboard-like"", ""rectangular"", ""on table"", ""centered between arms""],
+    ""blocking_objects"": [],
+    ""relevant_relations"": [""dark box is on top of the table"", ""dark box is between left arm and right arm end-effectors""],
+    ""requires_clearing"": false
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Secure the dark box for lifting with a stable two-sided hold."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is resting on the table"", ""both arms have unobstructed access to opposite sides of the dark box""],
+        ""postconditions"": [""dark box is firmly held by both arms""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Lift the dark box off the tabletop to complete pickup."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box is firmly held by both arms""],
+        ""postconditions"": [""dark box is lifted off the table and supported by the robot""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark box from the tabletop using the robot's arms."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""cardboard-like"", ""rectangular"", ""on table"", ""centered between arms""], ""blocking_objects"": [], ""relevant_relations"": [""dark box is on top of the table"", ""dark box is between left arm and right arm end-effectors""], ""requires_clearing"": false}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Secure the dark box for lifting with a stable two-sided hold."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is resting on the table"", ""both arms have unobstructed access to opposite sides of the dark box""], ""postconditions"": [""dark box is firmly held by both arms""]}, {""step_id"": 2, ""subgoal"": ""Lift the dark box off the tabletop to complete pickup."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box is firmly held by both arms""], ""postconditions"": [""dark box is lifted off the table and supported by the robot""]}]}}",2026-03-15T13:10:07.064151+00:00,13.369322272999852,False,
+outputs/outputs_official/stacked_boxes/o3/stacked_boxes__o3__new_file__stacked_boxes__r1.json,stacked_boxes,Pick up the dark box.,o3,new_file.txt,1,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""The robot must pick up the dark-colored box that is currently located beneath a lighter box on the table."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark""],
+    ""blocking_objects"": [""light box""],
+    ""relevant_relations"": [""light box on dark box"", ""dark box on table""],
+    ""requires_clearing"": true
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Remove the light box from atop the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light box"",
+            ""action_primitive"": ""push"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""light box on dark box""],
+        ""postconditions"": [""light box on table"", ""dark box exposed""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Grasp and lift the dark box"",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box exposed"", ""dark box on table""],
+        ""postconditions"": [""dark box securely held by both arms""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""The robot must pick up the dark-colored box that is currently located beneath a lighter box on the table."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark""], ""blocking_objects"": [""light box""], ""relevant_relations"": [""light box on dark box"", ""dark box on table""], ""requires_clearing"": true}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Remove the light box from atop the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light box"", ""action_primitive"": ""push"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""light box on dark box""], ""postconditions"": [""light box on table"", ""dark box exposed""]}, {""step_id"": 2, ""subgoal"": ""Grasp and lift the dark box"", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box exposed"", ""dark box on table""], ""postconditions"": [""dark box securely held by both arms""]}]}}",2026-03-15T13:07:43.008664+00:00,14.807097629000054,False,
+outputs/outputs_official/stacked_boxes/o3/stacked_boxes__o3__new_file__stacked_boxes__r2.json,stacked_boxes,Pick up the dark box.,o3,new_file.txt,2,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""The robot must pick up the dark (bottom) box that is currently under a lighter box; first remove the light box, then grasp the dark box."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark"", ""bottom""],
+    ""blocking_objects"": [""light box""],
+    ""relevant_relations"": [""light box on dark box""],
+    ""requires_clearing"": true
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Grasp the light box to clear access to the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""light box on dark box"", ""right arm free""],
+        ""postconditions"": [""right arm holding light box"", ""dark box uncovered""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Place the light box on the table away from the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""right arm holding light box"", ""clear space on table""],
+        ""postconditions"": [""light box on table"", ""right arm free""]
+      },
+      {
+        ""step_id"": 3,
+        ""subgoal"": ""Grasp the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box uncovered"", ""right arm free""],
+        ""postconditions"": [""right arm holding dark box""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""The robot must pick up the dark (bottom) box that is currently under a lighter box; first remove the light box, then grasp the dark box."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark"", ""bottom""], ""blocking_objects"": [""light box""], ""relevant_relations"": [""light box on dark box""], ""requires_clearing"": true}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Grasp the light box to clear access to the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""light box on dark box"", ""right arm free""], ""postconditions"": [""right arm holding light box"", ""dark box uncovered""]}, {""step_id"": 2, ""subgoal"": ""Place the light box on the table away from the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""right arm holding light box"", ""clear space on table""], ""postconditions"": [""light box on table"", ""right arm free""]}, {""step_id"": 3, ""subgoal"": ""Grasp the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box uncovered"", ""right arm free""], ""postconditions"": [""right arm holding dark box""]}]}}",2026-03-15T13:08:00.004511+00:00,16.987914498000464,False,
+outputs/outputs_official/stacked_boxes/o3/stacked_boxes__o3__new_file__stacked_boxes__r3.json,stacked_boxes,Pick up the dark box.,o3,new_file.txt,3,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark box that is underneath a light box on the table; move the light box first to access the dark one."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark_box"",
+    ""target_attributes"": [""dark color"", ""box""],
+    ""blocking_objects"": [""light_box""],
+    ""relevant_relations"": [""light_box on dark_box"", ""dark_box on table""],
+    ""requires_clearing"": true
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Grasp the light box on top to clear access to the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light_box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""with_claw""
+          }
+        },
+        ""preconditions"": [""light_box on dark_box"", ""light_box unobstructed""],
+        ""postconditions"": [""right_arm holding light_box""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Place the light box on the table away from the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light_box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""with_claw""
+          }
+        },
+        ""preconditions"": [""right_arm holding light_box""],
+        ""postconditions"": [""light_box on table"", ""right_arm free""]
+      },
+      {
+        ""step_id"": 3,
+        ""subgoal"": ""Grasp the dark box"",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""dark_box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""with_claw""
+          }
+        },
+        ""preconditions"": [""dark_box clear"", ""right_arm free""],
+        ""postconditions"": [""right_arm holding dark_box""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark box that is underneath a light box on the table; move the light box first to access the dark one."", ""scene_analysis"": {""target_object"": ""dark_box"", ""target_attributes"": [""dark color"", ""box""], ""blocking_objects"": [""light_box""], ""relevant_relations"": [""light_box on dark_box"", ""dark_box on table""], ""requires_clearing"": true}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Grasp the light box on top to clear access to the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light_box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""with_claw""}}, ""preconditions"": [""light_box on dark_box"", ""light_box unobstructed""], ""postconditions"": [""right_arm holding light_box""]}, {""step_id"": 2, ""subgoal"": ""Place the light box on the table away from the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light_box"", ""action_primitive"": ""place"", ""contact_mode"": ""with_claw""}}, ""preconditions"": [""right_arm holding light_box""], ""postconditions"": [""light_box on table"", ""right_arm free""]}, {""step_id"": 3, ""subgoal"": ""Grasp the dark box"", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""dark_box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""with_claw""}}, ""preconditions"": [""dark_box clear"", ""right_arm free""], ""postconditions"": [""right_arm holding dark_box""]}]}}",2026-03-15T13:08:12.111742+00:00,12.101334155000586,False,
+outputs/outputs_official/stacked_boxes/o3/stacked_boxes__o3__new_file__stacked_boxes__r4.json,stacked_boxes,Pick up the dark box.,o3,new_file.txt,4,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark (bottom) box that is currently under a lighter box on the table."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark box"",
+    ""target_attributes"": [""dark"", ""bottom""],
+    ""blocking_objects"": [""light box""],
+    ""relevant_relations"": [""light box on top of dark box"", ""dark box on table""],
+    ""requires_clearing"": true
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Remove the light box that is blocking the dark box."",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""light box on top of dark box"", ""right arm free""],
+        ""postconditions"": [""right arm holding light box""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Place the light box aside on the table to clear access to the dark box."",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""light box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""right arm holding light box"", ""clear space on table""],
+        ""postconditions"": [""light box on table (not blocking dark box)"", ""right arm free""]
+      },
+      {
+        ""step_id"": 3,
+        ""subgoal"": ""Grasp the dark box."",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": null,
+          ""right_arm"": {
+            ""target_object"": ""dark box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark box unobstructed on table"", ""right arm free""],
+        ""postconditions"": [""right arm holding dark box""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark (bottom) box that is currently under a lighter box on the table."", ""scene_analysis"": {""target_object"": ""dark box"", ""target_attributes"": [""dark"", ""bottom""], ""blocking_objects"": [""light box""], ""relevant_relations"": [""light box on top of dark box"", ""dark box on table""], ""requires_clearing"": true}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Remove the light box that is blocking the dark box."", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""light box on top of dark box"", ""right arm free""], ""postconditions"": [""right arm holding light box""]}, {""step_id"": 2, ""subgoal"": ""Place the light box aside on the table to clear access to the dark box."", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""light box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""right arm holding light box"", ""clear space on table""], ""postconditions"": [""light box on table (not blocking dark box)"", ""right arm free""]}, {""step_id"": 3, ""subgoal"": ""Grasp the dark box."", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": null, ""right_arm"": {""target_object"": ""dark box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark box unobstructed on table"", ""right arm free""], ""postconditions"": [""right arm holding dark box""]}]}}",2026-03-15T13:08:26.762835+00:00,14.64545051099958,False,
+outputs/outputs_official/stacked_boxes/o3/stacked_boxes__o3__new_file__stacked_boxes__r5.json,stacked_boxes,Pick up the dark box.,o3,new_file.txt,5,images/stacked_boxes.jpeg,image,True,"{
+  ""task_interpretation"": ""Pick up the dark box."",
+  ""scene_analysis"": {
+    ""target_object"": ""dark_box"",
+    ""target_attributes"": [""bottom"", ""darker color""],
+    ""blocking_objects"": [""light_box""],
+    ""relevant_relations"": [""light_box on dark_box"", ""dark_box on table""],
+    ""requires_clearing"": true
+  },
+  ""plan"": {
+    ""steps"": [
+      {
+        ""step_id"": 1,
+        ""subgoal"": ""Remove the light box sitting on the dark box."",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""light_box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": null
+        },
+        ""preconditions"": [""light_box on dark_box"", ""left_arm free""],
+        ""postconditions"": [""left_arm holds light_box""]
+      },
+      {
+        ""step_id"": 2,
+        ""subgoal"": ""Place the light box on the table away from the dark box."",
+        ""manipulation_mode"": ""single_arm"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""light_box"",
+            ""action_primitive"": ""place"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": null
+        },
+        ""preconditions"": [""left_arm holds light_box""],
+        ""postconditions"": [""light_box on table"", ""light_box not on dark_box"", ""left_arm free""]
+      },
+      {
+        ""step_id"": 3,
+        ""subgoal"": ""Grasp and lift the dark box."",
+        ""manipulation_mode"": ""dual_arm_symmetric"",
+        ""arm_actions"": {
+          ""left_arm"": {
+            ""target_object"": ""dark_box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          },
+          ""right_arm"": {
+            ""target_object"": ""dark_box"",
+            ""action_primitive"": ""grasp"",
+            ""contact_mode"": ""without_claw""
+          }
+        },
+        ""preconditions"": [""dark_box clear"", ""left_arm free"", ""right_arm free""],
+        ""postconditions"": [""both arms hold dark_box"", ""dark_box lifted from table""]
+      }
+    ]
+  }
+}","{""task_interpretation"": ""Pick up the dark box."", ""scene_analysis"": {""target_object"": ""dark_box"", ""target_attributes"": [""bottom"", ""darker color""], ""blocking_objects"": [""light_box""], ""relevant_relations"": [""light_box on dark_box"", ""dark_box on table""], ""requires_clearing"": true}, ""plan"": {""steps"": [{""step_id"": 1, ""subgoal"": ""Remove the light box sitting on the dark box."", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": {""target_object"": ""light_box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": null}, ""preconditions"": [""light_box on dark_box"", ""left_arm free""], ""postconditions"": [""left_arm holds light_box""]}, {""step_id"": 2, ""subgoal"": ""Place the light box on the table away from the dark box."", ""manipulation_mode"": ""single_arm"", ""arm_actions"": {""left_arm"": {""target_object"": ""light_box"", ""action_primitive"": ""place"", ""contact_mode"": ""without_claw""}, ""right_arm"": null}, ""preconditions"": [""left_arm holds light_box""], ""postconditions"": [""light_box on table"", ""light_box not on dark_box"", ""left_arm free""]}, {""step_id"": 3, ""subgoal"": ""Grasp and lift the dark box."", ""manipulation_mode"": ""dual_arm_symmetric"", ""arm_actions"": {""left_arm"": {""target_object"": ""dark_box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}, ""right_arm"": {""target_object"": ""dark_box"", ""action_primitive"": ""grasp"", ""contact_mode"": ""without_claw""}}, ""preconditions"": [""dark_box clear"", ""left_arm free"", ""right_arm free""], ""postconditions"": [""both arms hold dark_box"", ""dark_box lifted from table""]}]}}",2026-03-15T13:08:50.733887+00:00,23.965531464000378,False,

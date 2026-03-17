@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T11:49:41.904434+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_spatial.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 6.386466510999526,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is reachable by the right arm and there is unobstructed side access to apply a steadying contact without colliding with cup_1; the tabletop area around the box pair is stable enough to resist sliding.\",\n    \"Postcondition\": \"box_2 is laterally constrained by the right end-effector, reducing motion of the attached box pair during the upcoming grasp of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Single-arm (left)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The left arm can access the left and right faces of box_1 without interference; box_2 remains stabilized to counteract forces due to the attachment between box_1 and box_2; cup_1 is not in the left arm sweep path.\",\n    \"Postcondition\": \"box_1 is securely held by the left end-effector and lifted/controlled off the table, with box_2 prevented from shifting abruptly despite the attachment.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Stabilize\",\n    \"Manipulation mode\": \"Single-arm (right)\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_1 is already controlled by the left end-effector and there is no risk of box_2 tipping or dragging cup_1 during release of the stabilizing contact.\",\n    \"Postcondition\": \"The right end-effector disengages; box_1 remains picked up and controlled by the left arm, completing the pick-up of the darker box.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is reachable by the right arm and there is unobstructed side access to apply a steadying contact without colliding with cup_1; the tabletop area around the box pair is stable enough to resist sliding.",
+      "Postcondition": "box_2 is laterally constrained by the right end-effector, reducing motion of the attached box pair during the upcoming grasp of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (left)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The left arm can access the left and right faces of box_1 without interference; box_2 remains stabilized to counteract forces due to the attachment between box_1 and box_2; cup_1 is not in the left arm sweep path.",
+      "Postcondition": "box_1 is securely held by the left end-effector and lifted/controlled off the table, with box_2 prevented from shifting abruptly despite the attachment."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Stabilize",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_1 is already controlled by the left end-effector and there is no risk of box_2 tipping or dragging cup_1 during release of the stabilizing contact.",
+      "Postcondition": "The right end-effector disengages; box_1 remains picked up and controlled by the left arm, completing the pick-up of the darker box."
+    }
+  ],
+  "scenario_id": "bc_only_graph",
+  "repeat_idx": 8,
+  "run_id": "2026-03-16_12-41-30",
+  "prompt_name": "graph_spatial"
+}

@@ -1,0 +1,48 @@
+{
+  "timestamp_utc": "2026-03-16T12:14:16.613902+00:00",
+  "model_name": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "prompt_filename": "graph_sides.txt",
+  "image_path": null,
+  "task_text": "Pick up the darker box.",
+  "temperature": 0.0,
+  "inference_time_sec": 5.765152968000621,
+  "raw_response": "[\n  {\n    \"Step_id\": 1,\n    \"Target\": \"box_2\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"box_2 is stacked on top of box_1 and its left/right/front sides are accessible; sufficient clearance exists to insert both end-effectors to the left and right sides of box_2 without contacting the table or box_1.\",\n    \"Postcondition\": \"box_2 is securely lifted and supported by both arms and is no longer resting on box_1, clearing the top of box_1.\"\n  },\n  {\n    \"Step_id\": 2,\n    \"Target\": \"table (clear area to the right of box_1)\",\n    \"Action concept\": \"Place\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"vertically\",\n    \"Precondition\": \"box_2 is held securely by both arms; the placement region on the table to the right of box_1 is reachable and free of obstacles.\",\n    \"Postcondition\": \"box_2 is placed on the table to the right of box_1 and released, leaving box_1 unobstructed from above.\"\n  },\n  {\n    \"Step_id\": 3,\n    \"Target\": \"box_1\",\n    \"Action concept\": \"Grasp\",\n    \"Manipulation mode\": \"Dual-arm symmetric\",\n    \"Contact mode\": \"Without claw\",\n    \"End-effector contact side\": \"laterally\",\n    \"Precondition\": \"The top of box_1 is no longer blocked by box_2; the left and right sides of box_1 are accessible and there is enough lateral clearance for both end-effectors to contact and clamp the box without collision.\",\n    \"Postcondition\": \"box_1 (the darker box) is securely lifted and supported by both arms and is no longer resting on the table.\"\n  }\n]",
+  "json_parse_ok": true,
+  "parsed_json": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "box_2 is stacked on top of box_1 and its left/right/front sides are accessible; sufficient clearance exists to insert both end-effectors to the left and right sides of box_2 without contacting the table or box_1.",
+      "Postcondition": "box_2 is securely lifted and supported by both arms and is no longer resting on box_1, clearing the top of box_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "table (clear area to the right of box_1)",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "vertically",
+      "Precondition": "box_2 is held securely by both arms; the placement region on the table to the right of box_1 is reachable and free of obstacles.",
+      "Postcondition": "box_2 is placed on the table to the right of box_1 and released, leaving box_1 unobstructed from above."
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "laterally",
+      "Precondition": "The top of box_1 is no longer blocked by box_2; the left and right sides of box_1 are accessible and there is enough lateral clearance for both end-effectors to contact and clamp the box without collision.",
+      "Postcondition": "box_1 (the darker box) is securely lifted and supported by both arms and is no longer resting on the table."
+    }
+  ],
+  "scenario_id": "sb_only_graph",
+  "repeat_idx": 10,
+  "run_id": "2026-03-16_13-10-15",
+  "prompt_name": "graph_sides"
+}
