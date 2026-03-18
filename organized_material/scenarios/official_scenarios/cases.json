@@ -1,0 +1,24 @@
+{
+  "scenario_id": "stacked_boxes",
+  "image": "image.png",
+  "cases": [
+    {
+      "case_id": "pre_grasp_box_2",
+      "condition_to_check": "Both lateral sides of box_2 are accessible, and the robot can align both end-effectors to contact the box symmetrically from the left and right.",
+      "action_context": {
+        "target": "box_2",
+        "action_concept": "Grasp",
+        "manipulation_mode": "Dual-arm symmetric"
+      }
+    },
+    {
+      "case_id": "post_place_box_2",
+      "condition_to_check": "box_2 is placed upright on a free area of the table, separated from box_1, and released by the robot.",
+      "action_context": {
+        "target": "table",
+        "action_concept": "Place",
+        "manipulation_mode": "Dual-arm symmetric"
+      }
+    }
+  ]
+}

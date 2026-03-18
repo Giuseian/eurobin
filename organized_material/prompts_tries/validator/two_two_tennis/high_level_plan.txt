@@ -1,0 +1,22 @@
+[
+    {
+        "Step_id": 1,
+        "Target": "tennis ball_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "End-effector contact side": "Left & Right",
+        "Precondition": "tennis ball_1 is reachable and isolated enough for a side grasp; the approach path of the right arm from the front-right side is free of obstacles; box_1 and box_2 remain undisturbed so that the top of box_1 stays free.",
+        "Postcondition": "tennis ball_1 is securely grasped by the right end-effector and lifted off the table."
+    },
+    {
+        "Step_id": 2,
+        "Target": "On top of box_2",
+        "Action concept": "Place",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "End-effector contact side": "Top",
+        "Precondition": "The robot is holding tennis ball_1; the top surface of box_2 is accessible and free; the placement can be executed from above without contacting box_1, whose right side is close to box_2.",
+        "Postcondition": "tennis ball_1 is placed and released on top of box_2 in a stable position; box_1 is unchanged and its top remains free of any object."
+    }
+]

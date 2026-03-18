@@ -1,0 +1,24 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "properties": "cardboard-like rectangular box"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "light gray",
+        "properties": "rectangular box"
+      },
+      {
+        "name": "tennis ball_1",
+        "category": "ball",
+        "color": "yellow-green",
+        "properties": "small spherical tennis ball"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "cup_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "cup_1 is reachable from the front/side by the left arm, its left and right sides are accessible for a stable claw grasp, and lifting it upward will not collide with cup_2 or the robot. Removing it is necessary because it is a fragile object resting on box_1 and would interfere with any attempt to manipulate the box.",
+    "Postcondition": "cup_1 is securely grasped by the left end-effector and is no longer in contact with box_1."
+  },
+  {
+    "Step_id": 2,
+    "Target": "table",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Top",
+    "Precondition": "The robot is holding cup_1, and a free region on the table away from box_1 and cup_2 is available so the cup can be placed without creating new obstruction around the box.",
+    "Postcondition": "cup_1 is placed on a free area on the table and released, leaving more clearance above box_1."
+  },
+  {
+    "Step_id": 3,
+    "Target": "cup_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "cup_2 is reachable from the front/side by the right arm, its left and right sides are accessible for a stable claw grasp, and lifting it upward is collision-free. It must be removed because it is also resting on box_1 and would interfere with manipulation of the box.",
+    "Postcondition": "cup_2 is securely grasped by the right end-effector and is no longer in contact with box_1."
+  },
+  {
+    "Step_id": 4,
+    "Target": "table",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Top",
+    "Precondition": "The robot is holding cup_2, and a free region on the table away from box_1 and the relocated cup_1 is available for safe placement.",
+    "Postcondition": "cup_2 is placed on a free area on the table and released, so the top and side approach space around box_1 is cleared of fragile obstacles."
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "Both cups have been removed from the top of box_1, the left and right sides of box_1 remain accessible, and there is enough lateral clearance for both end-effectors to make symmetric side contact. Because the box is too large to be grasped with a claw, the robot must use coordinated dual-arm contact from the sides.",
+    "Postcondition": "box_1 is securely grasped and stabilized between both end-effectors, and the robot has control of the target box."
+  }
+]

@@ -1,0 +1,42 @@
+[
+{
+"Step_id": 1,
+"Target": "cup",
+"Action concept": "Grasp",
+"Manipulation mode": "Single-arm (right)",
+"Contact mode": "With claw",
+"End-effector contact side": "Left & Right",
+"Precondition": "The cup is reachable by the right arm, its side surfaces are free for claw closure, and there is a collision-free path to lift it away from the front of box_2. Removing it first is safer because the cup is fragile and currently interferes with any frontal manipulation of box_2.",
+"Postcondition": "The cup is securely grasped by the right end-effector and no longer blocks the front side of box_2."
+},
+{
+"Step_id": 2,
+"Target": "table, right of box_2",
+"Action concept": "Place",
+"Manipulation mode": "Single-arm (right)",
+"Contact mode": "With claw",
+"End-effector contact side": "Top",
+"Precondition": "The robot is holding the cup, and a free region on the table to the right of box_2 is available so the cup can be set down without interfering with the boxes.",
+"Postcondition": "The cup is placed on the table to the right of box_2 and released, leaving the frontal workspace around box_2 clear."
+},
+{
+"Step_id": 3,
+"Target": "box_2",
+"Action concept": "Push",
+"Manipulation mode": "Single-arm (left)",
+"Contact mode": "Without claw",
+"End-effector contact side": "Front",
+"Precondition": "After the cup has been removed, the front face of box_2 is reachable and there is sufficient free space behind box_2 for it to slide backward without colliding with other objects.",
+"Postcondition": "box_2 is displaced backward, creating free space on the right side of box_1 for a bilateral grasp."
+},
+{
+"Step_id": 4,
+"Target": "box_1",
+"Action concept": "Grasp",
+"Manipulation mode": "Dual-arm symmetric",
+"Contact mode": "Without claw",
+"End-effector contact side": "Left & Right",
+"Precondition": "The left and right sides of box_1 are both accessible after box_2 has been pushed away, and there is enough lateral clearance for both end-effectors to make stable opposing contact. A dual-arm grasp without claws is required because the box is too large for claw grasping.",
+"Postcondition": "box_1 is securely grasped by both end-effectors and is under stable robot control."
+}
+]

@@ -1,0 +1,38 @@
+Verify whether the condition is satisfied in the current scene.
+
+Condition to verify:
+"Both lateral sides of box_2 are accessible, and the robot can align both end-effectors to contact the box symmetrically from the left and right. There must be enough clearance around box_2 to lift it without scraping box_1."
+
+Scene object list:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup_1",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "cylindrical open-top cup"
+      },
+      {
+        "name": "cup_2",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "cylindrical open-top cup"
+      },
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "properties": "cardboard-like rectangular box"
+      }
+    ]
+  }
+}
+
+
+Instructions:
+- Check whether the condition is satisfied in the current scene.
+- Base your answer on both the object list and the image.
+- If the condition is satisfied, return "matching".
+- Otherwise return "non_matching".
+- Return only valid JSON.

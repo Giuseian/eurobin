@@ -1,6 +1,7 @@
 # from __future__ import annotations
 
 # import argparse
+# from datetime import datetime
 # from pathlib import Path
 
 # from .config import load_settings
@@ -10,7 +11,7 @@
 
 # def build_parser() -> argparse.ArgumentParser:
 #     parser = argparse.ArgumentParser(description="Run a single Azure OpenAI VLM experiment.")
-#     parser.add_argument("--model", type=str, default=None, help="Logical model name: o3 or gpt-5.1")
+#     parser.add_argument("--model", type=str, default=None, help="Logical model name: o3 or gpt-5.2")
 #     parser.add_argument("--prompt-file", type=str, required=True, help="Prompt filename, e.g. prompt1_1.txt")
 #     parser.add_argument("--image", type=str, required=True, help="Path to image file")
 #     parser.add_argument("--task", type=str, required=True, help="Task text")
@@ -28,6 +29,9 @@
 #     model_name = args.model or settings.default_model
 #     temperature = settings.default_temperature if args.temperature is None else args.temperature
 
+#     run_id = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+#     prompt_stem = Path(args.prompt_file).stem
+
 #     result = run_single_experiment(
 #         settings=settings,
 #         model_name=model_name,
@@ -37,15 +41,25 @@
 #         temperature=temperature,
 #     )
 
+#     result["run_id"] = run_id
+#     result["prompt_name"] = prompt_stem
+
 #     output_name = args.output_name
 #     if output_name is None:
 #         image_stem = Path(args.image).stem
-#         prompt_stem = Path(args.prompt_file).stem
 #         output_name = f"{model_name}_{prompt_stem}_{image_stem}.json"
 
-#     out_path = save_result(settings, output_name, result, model_name=model_name)
+#     out_path = save_result(
+#         settings=settings,
+#         filename=output_name,
+#         payload=result,
+#         prompt_name=prompt_stem,
+#         run_id=run_id,
+#         model_name=model_name,
+#     )
 
 #     print(f"Saved result to: {out_path}")
+#     print(f"Run ID: {run_id}")
 #     print("JSON parse ok:", result["json_parse_ok"])
 #     print("Raw response:")
 #     print(result["raw_response"])
@@ -55,6 +69,8 @@
 #     main()
 
 
+
+
 from __future__ import annotations
 
 import argparse
@@ -62,14 +78,16 @@ from datetime import datetime
 from pathlib import Path
 
 from .config import load_settings
+from .planner_builders import build_planner_user_block
+from .prompts import load_system_prompt
 from .runner import run_single_experiment
 from .save_results import save_result
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run a single Azure OpenAI VLM experiment.")
+    parser = argparse.ArgumentParser(description="Run a single Azure OpenAI planner experiment.")
     parser.add_argument("--model", type=str, default=None, help="Logical model name: o3 or gpt-5.2")
-    parser.add_argument("--prompt-file", type=str, required=True, help="Prompt filename, e.g. prompt1_1.txt")
+    parser.add_argument("--prompt-file", type=str, required=True, help="Prompt filename inside prompts/planner/")
     parser.add_argument("--image", type=str, required=True, help="Path to image file")
     parser.add_argument("--task", type=str, required=True, help="Task text")
     parser.add_argument("--temperature", type=float, default=None, help="Sampling temperature")
@@ -82,24 +100,28 @@ def main() -> None:
     args = parser.parse_args()
 
     settings = load_settings()
-
     model_name = args.model or settings.default_model
     temperature = settings.default_temperature if args.temperature is None else args.temperature
 
     run_id = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     prompt_stem = Path(args.prompt_file).stem
 
+    system_prompt = load_system_prompt(settings, prompt_group="planner", prompt_filename=args.prompt_file)
+    user_text = build_planner_user_block(args.task)
+
     result = run_single_experiment(
         settings=settings,
         model_name=model_name,
-        prompt_filename=args.prompt_file,
+        system_prompt=system_prompt,
+        user_text=user_text,
         image_path=args.image,
-        task_text=args.task,
         temperature=temperature,
     )
 
     result["run_id"] = run_id
     result["prompt_name"] = prompt_stem
+    result["task_text"] = args.task
+    result["prompt_filename"] = args.prompt_file
 
     output_name = args.output_name
     if output_name is None:
@@ -108,6 +130,7 @@ def main() -> None:
 
     out_path = save_result(
         settings=settings,
+        task_type="planner",
         filename=output_name,
         payload=result,
         prompt_name=prompt_stem,

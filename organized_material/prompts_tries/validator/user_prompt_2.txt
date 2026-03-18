@@ -1,0 +1,30 @@
+Verify whether the following condition is explicitly supported by the current scene.
+
+Condition to verify:
+"box_1 is reachable from its left and right sides by both arms, and there is enough lateral clearance for a coordinated dual-arm enclosure. Because box_1 contains a fragile item, it must not be pushed or tilted significantly; the robot should apply a stable bilateral grasp and lift vertically without contacting box_2 except through normal support release."
+
+Scene object list:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "red",
+        "properties": "box-shaped rectangular container or box"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "green",
+        "properties": "box-shaped rectangular container or box supporting another box"
+      }
+    ]
+  }
+}
+
+Instructions:
+- Validate only what is explicitly supported by the image and object list.
+- Do not assume reachability, clearance, stability, or safe execution unless directly supported.
+- If any part of the condition lacks sufficient evidence, return "non_matching".
+- Return only valid JSON.

@@ -1,0 +1,24 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "properties": "rectangular cardboard-like box"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "light brown",
+        "properties": "rectangular cardboard-like box"
+      },
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "small cylindrical open-top cup"
+      }
+    ]
+  }
+}

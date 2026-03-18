@@ -1,0 +1,71 @@
+Verify whether the condition is satisfied in the current scene.
+
+Condition to verify:
+"Both lateral sides of box_2 are accessible, and the robot can align both end-effectors to contact the box symmetrically from the left and right. There must be enough clearance around box_2 to lift it without scraping box_1."
+
+Scene object list:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "properties": "rectangular cardboard-like box",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_2",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "light brown",
+        "properties": "rectangular cardboard-like box",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "blocked by cup",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "small cylindrical open-top cup",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "blocked by box_2",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "robot end-effector_1",
+        "grasping": "nothing"
+      },
+      {
+        "name": "robot end-effector_2",
+        "grasping": "nothing"
+      }
+    ]
+  }
+}
+
+Instructions:
+- Check whether the condition is satisfied in the current scene.
+- Base your answer on both the object list and the image.
+- If the condition is satisfied, return "matching".
+- Otherwise return "non_matching".
+- Return only valid JSON.

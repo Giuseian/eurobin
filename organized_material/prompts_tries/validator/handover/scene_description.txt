@@ -1,0 +1,12 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "cylindrical open-top cup"
+      }
+    ]
+  }
+}
