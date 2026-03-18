@@ -17,9 +17,11 @@ python dagana.py set 0 1.5
 
 python grasp_cup.py
 
+python dagana.py set 0 0
+
 python place_cup.py
 
-python dagana.py set 0 0
+python dagana.py set 0 1.5
 
 python place_cup2.py
 
