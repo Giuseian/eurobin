@@ -1,0 +1,35 @@
+{
+"scene_description": {
+"objects": [
+{
+"name": "red_box",
+"category": "box",
+"color": "red",
+"properties": "upright, closed"
+},
+{
+"name": "green_box",
+"category": "box",
+"color": "green",
+"properties": "upright, closed"
+}
+],
+"end_effectors": [
+{
+"name": "end_effector_left",
+"grasping": "nothing"
+},
+{
+"name": "end_effectector_right",
+"grasping": "nothing"
+}
+],
+"spatial_relationships": [
+{
+"subject": "red_box",
+"relation": "on top of",
+"object": "green_box"
+}
+]
+}
+}

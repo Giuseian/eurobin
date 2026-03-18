@@ -1,0 +1,23 @@
+{
+"scene_description": {
+"objects": [
+{
+"name": "cup_1",
+"category": "cup",
+"color": "black",
+"properties": "upright, open, cylindrical"
+}
+],
+"end_effectors": [
+{
+"name": "end_effector_left",
+"grasping": "nothing"
+},
+{
+"name": "end_effector_right",
+"grasping": "nothing"
+}
+],
+"spatial_relationships": []
+}
+}

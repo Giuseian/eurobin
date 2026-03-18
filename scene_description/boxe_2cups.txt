@@ -1,0 +1,51 @@
+{
+"scene_description": {
+"objects": [
+{
+"name": "box",
+"category": "container",
+"color": "green",
+"properties": "rectangular, closed, upright"
+},
+{
+"name": "cup_1",
+"category": "cup",
+"color": "black",
+"properties": "cylindrical, open, upright"
+},
+{
+"name": "cup_2",
+"category": "cup",
+"color": "black",
+"properties": "cylindrical, open, upright"
+}
+],
+"end_effectors": [
+{
+"name": "end_effector_left",
+"grasping": "nothing"
+},
+{
+"name": "end_effector_right",
+"grasping": "nothing"
+}
+],
+"spatial_relationships": [
+{
+"subject": "cup_1",
+"relation": "on top of",
+"object": "box"
+},
+{
+"subject": "cup_2",
+"relation": "on top of",
+"object": "box"
+},
+{
+"subject": "cup_2",
+"relation": "right of",
+"object": "cup_1"
+}
+]
+}
+}
