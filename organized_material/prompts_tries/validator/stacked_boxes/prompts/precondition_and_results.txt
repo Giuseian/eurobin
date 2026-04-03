@@ -1,0 +1,259 @@
+### STACKED_BOXES 
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result: 
+
+1. 1 and pre_1 
+
+- Precondition: "Both left and right sides of the red box are accessible, and there is enough clearance for both end-effectors to establish a symmetric side contact. Because the red box contains a fragile item, the box must be kept level and moved without sudden impacts. A free region on the table next to the stacked boxes must be available for a later placement."
+- Result: {
+"result": "non_matching",
+"reason": "While the red box sides are partially visible, the proximity of the robot arms limits clear symmetric side access, and the condition about safe handling and future placement cannot be verified from the scene."
+}
+
+
+
+- Precondition: "The red box is stacked on top of the green box, and its left and right sides are visible and not fully occluded by surrounding objects."
+- Result: {
+"result": "matching",
+"reason": "The red box is clearly stacked on the green box, and both its left and right sides are at least partially visible and not fully occluded by other objects."
+}
+
+
+
+- Precondition: "The red box is positioned on top of the green box, and its lateral sides are visible and not tightly blocked by nearby objects."
+- Result: {
+"result": "matching",
+"reason": "The red box is clearly placed on top of the green box, and its side faces are visible without being obstructed by nearby objects."
+}
+
+
+
+- Precondition: "The red box is on top of the green box, and its left and right sides appear visible and accessible without being fully blocked."
+- Result: {
+"result": "matching",
+"reason": "The red box is clearly placed on top of the green box, and both its left and right sides are visible and not fully obstructed by other objects."
+}
+
+
+
+2. 2 and post_1
+
+- Postcondition: "The red box is securely supported by both end-effectors from its left and right sides, lifted off the green box while remaining approximately level, and the fragile item inside is kept stable."
+- Result: {
+"result": "non_matching",
+"reason": "The red box is still resting on the green box and not clearly lifted off; additionally, stability of a fragile item inside cannot be verified."
+}
+
+- Postcondition: "The red box is securely supported by both end-effectors from its left and right sides"
+- Result: {
+"result": "non_matching",
+"reason": "The red box is resting on the green box for support, while the end-effectors only touch its sides and do not appear to be securely supporting it from both sides."
+}
+
+
+- Postcondition: "The red box is supported by both end-effectors from its left and right sides"
+- Result: {
+"result": "matching",
+"reason": "Both end-effectors are positioned on the left and right sides of the red box, appearing to support or grasp it from both sides."
+}
+
+
+
+
+3. 2 and pre_2 
+
+- Precondition: "The red box is already supported by both arms, and a nearby free area on the table is available where the box can be set down without contacting the green box or table-edge obstacles. The placement path must avoid collisions and keep the red box level to protect the fragile item inside."
+- Result: {
+"result": "non_matching",
+"reason": "While the red box appears supported by both arms, the condition includes requirements about a collision-free placement path, keeping the box level, and availability of a free area, which cannot be fully verified from the image."
+}
+
+
+- Precondition: "The red box is already supported by both arms, and a nearby free area on the table is available where the box can be set down without contacting the green box or table-edge obstacles."
+- Result: {
+"result": "non_matching",
+"reason": "While the red box is supported by both arms, it is still positioned directly above the green box, and there is no clear evidence of a nearby free area where it can be placed without contacting the green box or table edges."
+}
+
+
+- Precondition: "The red box is already supported by both arms."
+- Result: {
+"result": "matching",
+"reason": "Both robot arms are in contact with and appear to support the red box from its sides."
+}
+
+
+
+- Precondition: "The red box is currently held above the green box, and there is a visible free region on the table surface next to the stacked boxes that is not occupied by other objects."
+- Result: {
+"result": "matching",
+"reason": "The red box appears slightly elevated above the green box while being held by the end-effectors, and there is clearly visible empty table space around the boxes that is not occupied."
+}
+
+
+
+- Precondition: "The red box is supported by both arms above the green box, and there is an empty region on the table next to the boxes that is not occupied."
+- Result: {
+"result": "matching",
+"reason": "The red box is held by both robot arms above the green box, and there is a clearly visible empty area on the table beside the boxes that is not occupied."
+}
+
+
+
+- Precondition: "The red box is held above the green box, and there is free space on the table next to the boxes."
+- Result: {
+"result": "non_matching",
+"reason": "The red box is still resting on the green box with no visible gap, so it is not held above it, even though there is free space on the table."
+}
+
+
+
+
+4. 3 and post_2
+- Postcondition: "The red box is placed on a free region of the table adjacent to the original stack, fully supported by the table, released by the robot, and no longer blocks the top of the green box."
+- Result: {
+"result": "non_matching",
+"reason": "The red box is on the table next to the green box, but it is still being held or contacted by the robot end-effectors and not clearly released."
+}
+
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer on top of it, and the top surface of the green box is unobstructed."
+- Result: {
+"result": "matching",
+"reason": "The red box is placed on the table beside the green box, not on top of it, and the green box’s top surface is fully visible and unobstructed."
+}
+
+
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer stacked on top of it, is supported by the table surface, and the top of the green box is unobstructed."
+- Result: {
+"result": "matching",
+"reason": "The red box is placed directly on the table beside the green box, not stacked on it, and the green box’s top surface is clearly unobstructed."
+}
+
+
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer stacked on top of it, the top of the green box is unobstructed, and no clear direct contact between the robot end-effectors and the red box is visible."
+- Result: {
+"result": "non_matching",
+"reason": "Although the red box is on the table next to the green box and the green box top is unobstructed, the robot end-effectors are still in direct contact with the red box."
+}
+
+
+
+
+TRY 
+4-1. 4_ and post_2
+- Postcondition: "The red box is placed on a free region of the table adjacent to the original stack, fully supported by the table, released by the robot, and no longer blocks the top of the green box."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table next to the green box, not stacked, fully supported by the table, and the robot end-effectors are no longer in contact; the top of the green box is unobstructed."
+}
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer on top of it, and the top surface of the green box is unobstructed."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table beside the green box, not stacked on it, and the top surface of the green box is clearly unobstructed."
+}
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer stacked on top of it, is supported by the table surface, and the top of the green box is unobstructed."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table beside the green box, not stacked on it, the green box’s top is clear, and the red box is supported by the table surface."
+}
+
+
+
+
+- Postcondition: "The red box is resting on the table next to the green box, is no longer stacked on top of it, the top of the green box is unobstructed, and no clear direct contact between the robot end-effectors and the red box is visible."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table beside the green box, not stacked, the green box’s top is clear, and the end-effectors are above without visible contact with the red box."
+}
+
+
+
+
+
+5. 3 and pre_3
+- Precondition: "The red box has been removed, so the green box is no longer vertically constrained from above. Its left and right sides remain accessible, and there is enough free space for both arms to make symmetric side contact without colliding with the relocated red box."
+- Result: {
+"result": "non_matching",
+"reason": "The red box has not been removed; it is still present on the table near the green box, so the condition is not satisfied."
+}
+
+
+- Precondition: "The red box is not on top of the green box, and the top surface of the green box is unobstructed. The red box is positioned next to the green box on the table."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table beside the green box, not stacked on it, and the top of the green box is clearly unobstructed."
+}
+
+
+
+- Precondition: "The red box is on the table next to the green box and is no longer on top of it. The top surface of the green box is unobstructed, and its sides are visible."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table beside the green box and not stacked on it; the green box’s top is unobstructed and its sides are visible."
+}
+
+
+
+
+5-1. 4_ and pre_3
+- Precondition: "The red box has been removed, so the green box is no longer vertically constrained from above. Its left and right sides remain accessible, and there is enough free space for both arms to make symmetric side contact without colliding with the relocated red box."
+- Result: {
+"result": "non_matching",
+"reason": "The red box is still present on the table next to the green box, so it has not been removed and the condition is not satisfied."
+}
+
+
+- Precondition: "The red box is not on top of the green box, and the top surface of the green box is unobstructed. The red box is positioned next to the green box on the table."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table next to the green box, not stacked on it, and the top surface of the green box is clearly unobstructed."
+}
+
+
+- Precondition: "The red box is on the table next to the green box and is no longer on top of it. The top surface of the green box is unobstructed, and its sides are visible."
+- Result: {
+"result": "matching",
+"reason": "The red box is placed on the table beside the green box and not stacked; the green box’s top is unobstructed and its sides are visible."
+}
+
+
+
+6. 6 and post_3
+- Postcondition:  "The green box is securely grasped and controlled by both end-effectors from the left and right sides, and it is no longer resting on the table."
+- Result: {
+"result": "non_matching",
+"reason": "Although both end-effectors are grasping the green box from the sides, the green box still appears to be resting on the table."
+}
+
+
+- Postcondition:  "The green box is held between the two end-effectors from its left and right sides and appears elevated above the table surface."
+- Result: {
+"result": "non_matching",
+"reason": "Although the green box is grasped from its left and right sides by the end-effectors, it does not appear elevated and is still resting on the table surface."
+}
+
+
+- Postcondition:  "The green box is in contact with both end-effectors on its left and right sides and appears lifted above the table."
+- Result: {
+"result": "matching",
+"reason": "The green box is held by both end-effectors on its left and right sides and appears elevated above the table surface."
+}
+
+
+- Postcondition:  "The green box is between the two end-effectors and appears raised above the table surface."
+- Result: {
+"result": "matching",
+"reason": "The green box is positioned between the two end-effectors, and it appears to be lifted slightly above the table surface rather than resting on it."
+}
+
+
+

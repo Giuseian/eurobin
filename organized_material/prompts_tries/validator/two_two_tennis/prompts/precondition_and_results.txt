@@ -1,0 +1,26 @@
+### TWO_TWO_TENNIS
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result:
+
+
+1. 1 and pre_1 
+
+- Precondition: "The tennis ball is reachable from the right side and there is enough free space around it for the right claw to close securely without contacting box_2. The ball is small enough to be grasped with one claw, and both box tops are currently unobstructed."
+- Result: {
+"result": "matching",
+"reason": "The tennis ball is positioned to the right with clear space around it, not touching box_2, making it reachable and graspable by the right claw. The ball is small enough for one claw, and both box tops are unobstructed."
+}
+
+
+
+2. 2 and post_1
+
+- Postcondition: "The tennis ball is securely grasped by the right end-effector and lifted off the table. The top of the green box remains free of objects."
+- Result: {
+"result": "non_matching",
+"reason": "Although the right end-effector is grasping and lifting a tennis ball, another tennis ball is present on top of the green box, so its top is not free of objects."
+}

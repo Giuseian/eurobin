@@ -1,0 +1,22 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "tennis_ball_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "The tennis ball is reachable from the right side and there is enough free space around it for the right claw to close securely without contacting box_2. The ball is small enough to be grasped with one claw, and both box tops are currently unobstructed.",
+    "Postcondition": "The tennis ball is securely grasped by the right end-effector and lifted off the table. The top of the green box remains free of objects."
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_2",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Top",
+    "Precondition": "The robot is holding the tennis ball, and the top surface of the red box is accessible and clear. The motion path to above box_2 must avoid sweeping over or contacting the green box so that the green box top remains free.",
+    "Postcondition": "The tennis ball is placed on top of the red box and released by the right end-effector. The top of the green box remains free of objects."
+  }
+]

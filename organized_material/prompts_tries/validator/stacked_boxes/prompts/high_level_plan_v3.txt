@@ -1,0 +1,32 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "End-effector contact side": "right & left",
+    "Precondition": "box_1 is on top of box_2, its left and right sides are accessible, and both end-effectors are grasping nothing.",
+    "Postcondition": "box_1 is between the end-effectors and is in contact with both end-effectors."
+  },
+  {
+    "Step_id": 2,
+    "Target": "table",
+    "Action concept": "Place right of box_2",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "End-effector contact side": "top",
+    "Precondition": "box_1 is held between the end-effectors and a free region on the table is visible right of box_2.",
+    "Postcondition": "box_1 is on the table right of box_2."
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "End-effector contact side": "right & left",
+    "Precondition": "box_2 is on the table, its left and right sides are accessible, its top is accessible, and both end-effectors are grasping nothing.",
+    "Postcondition": "box_2 is between the end-effectors and is in contact with both end-effectors."
+  }
+]

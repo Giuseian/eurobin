@@ -1,0 +1,58 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green",
+        "properties": "rectangular cardboard-like box",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_2",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red",
+        "properties": "rectangular cardboard-like box",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "blocked by cup",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "small cylindrical open-top cup",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "blocked by box_2",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "robot_end_effector_1",
+        "grasping": "nothing"
+      },
+      {
+        "name": "robot_end_effector_2",
+        "grasping": "nothing"
+      }
+    ]
+  }
+}

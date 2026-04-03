@@ -1,0 +1,141 @@
+### 2 BOXESASIDE
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result:
+
+
+1. 1 and pre_1 
+
+- Precondition: "The cup is small enough to be securely grasped by one claw, its left and right sides are accessible, and there is enough free space above it to lift it without contacting box_2."
+- Result: {
+"result": "matching",
+"reason": "The cup is small and unobstructed, with its left and right sides accessible and no objects above it, allowing it to be grasped and lifted without contacting box_2."
+}
+
+
+
+2. 3 and post_1 
+
+- Postcondition: "The cup is securely grasped by the right end-effector and is no longer resting on the table."
+- Result: {
+"result": "matching",
+"reason": "The right end-effector is holding the cup above the table surface, indicating it is securely grasped and no longer resting on the table."
+}
+
+
+
+3. 3 and pre_2 
+
+- Precondition: "The robot is holding the cup and the chosen front-right region of the table is free of obstacles and far enough from both boxes to avoid interference during later box manipulation."
+- Result: {
+"result": "matching",
+"reason": "The robot is holding the cup with the right end-effector, and the front-right area of the table is clear of objects and sufficiently distant from both boxes."
+}
+
+
+
+4. 5 and post_2 
+
+- Postcondition: "The cup is placed on a clear front-right area of the table, no longer blocks the front of box_2, and remains safely away from the box manipulation path."
+- Result: {
+"result": "matching",
+"reason": "The cup is placed on the front-right area of the table, away from both boxes, no longer obstructing the front of box_2 and leaving a clear manipulation path."
+}
+
+
+
+5. 5 and pre_3 
+
+- Precondition: "The cup has been removed, the front face of box_2 is now accessible, and there is enough free space on the right side of box_2 for it to slide rightward without colliding with other objects."
+- Result: {
+"result": "non_matching",
+"reason": "The cup is still present on the table, so it has not been removed, even though space near box_2 appears clear."
+}
+
+- Precondition: "The cup is not in front of box_2, the front face of box_2 is visible, and there are no objects on the right side of box_2."
+- Result: {
+"result": "matching",
+"reason": "The cup is placed to the front-right area and not in front of box_2, the front face of box_2 is clearly visible, and there are no objects on the right side of box_2."
+}
+
+
+
+- Precondition: "The cup is not in front of box_2, and the right side of box_2 is free of objects."
+- Result: {
+"result": "matching",
+"reason": "The cup is positioned in the front-right area away from box_2, not in front of it, and the right side of box_2 is clear of any objects."
+}
+
+
+
+- Precondition: "No object is in front of box_2, and no object is on the right side of box_2."
+- Result: {
+"result": "non_matching",
+"reason": "The cup is positioned in front-right of box_2, meaning there is an object in front of and to the right side of box_2."
+}
+
+
+
+
+6. 8 and post_3 
+
+- Postcondition: "box_2 is displaced to the right, creating lateral clearance between box_1 and box_2 so that both left and right sides of box_1 become accessible."
+- Result: {
+"result": "non_matching",
+"reason": "Box_2 is still positioned very close to box_1 with minimal gap, so there is no clear lateral clearance making both sides of box_1 accessible."
+}
+
+- Postcondition: "box_2 is displaced frontally, creating lateral clearance between box_1 and box_2 so that both left and right sides of box_1 become accessible."
+- Result: {
+"result": "matching",
+"reason": "box_2 has been moved forward relative to box_1, creating visible lateral space between them, which makes both left and right sides of box_1 accessible."
+}
+
+
+
+6-1. 9_ and post_3 
+
+- Postcondition: "box_2 is displaced to the right, creating lateral clearance between box_1 and box_2 so that both left and right sides of box_1 become accessible."
+- Result: {
+"result": "non_matching",
+"reason": "box_2 is positioned behind box_1 rather than displaced to the right, so there is no lateral rightward separation creating side clearance."
+}
+
+- Postcondition: "box_2 is displaced frontally, creating lateral clearance between box_1 and box_2 so that both left and right sides of box_1 become accessible."
+- Result: {
+"result": "matching",
+"reason": "box_2 is positioned forward relative to box_1, leaving a clear lateral gap between them, making both sides of box_1 accessible."
+}
+
+
+
+7. 8 and pre_4 
+
+- Precondition: "box_1 is reachable by both arms, sufficient clearance exists on its left and right sides after moving box_2, and the robot can apply a stable bilateral squeeze/lift on the large box without using the claws."
+- Result: {
+"result": "matching",
+"reason": "box_2 has been moved forward, leaving clear space on both sides of box_1, and both robot arms are positioned to reach its left and right sides, enabling a stable bilateral grasp."
+}
+
+
+
+7-1. 9_ and pre_4 
+
+- Precondition: "box_1 is reachable by both arms, sufficient clearance exists on its left and right sides after moving box_2, and the robot can apply a stable bilateral squeeze/lift on the large box without using the claws."
+- Result: {
+"result": "matching",
+"reason": "box_2 has been moved forward creating clear space on both sides of box_1, and both robot arms are positioned symmetrically to reach and squeeze box_1 from left and right."
+}
+
+
+
+8. 10 and post_4
+
+- Postcondition: "box_1 is securely grasped and controlled by both end-effectors and is no longer resting freely on the table."
+- Result: {
+"result": "matching",
+"reason": "Both end-effectors are gripping box_1 from opposite sides, and the box appears lifted above the table surface, indicating it is no longer resting freely."
+}

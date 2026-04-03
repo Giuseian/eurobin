@@ -1,0 +1,32 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "box_1 is on top of box_2, the left and right sides of box_1 are accessible, and both robot end-effectors are grasping nothing.",
+    "Postcondition": "box_1 is held by both end-effectors and is no longer resting on box_2."
+  },
+  {
+    "Step_id": 2,
+    "Target": "table",
+    "Action concept": "Place",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Top",
+    "Precondition": "box_1 is held by both end-effectors, and a free region on the table to the right of box_2 is visible.",
+    "Postcondition": "box_1 is on the table to the right of box_2 and is no longer held by the robot."
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "box_2 is on the table, no object is on top of box_2, its left and right sides are accessible, and both robot end-effectors are grasping nothing.",
+    "Postcondition": "box_2 is held by both end-effectors and is no longer resting on the table."
+  }
+]

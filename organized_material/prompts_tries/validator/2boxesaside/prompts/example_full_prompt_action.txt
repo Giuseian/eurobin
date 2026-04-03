@@ -1,0 +1,75 @@
+SYSTEM PROMPT 
+You are a validator for robotic manipulation tasks.
+
+Your job is to verify whether a single condition is satisfied in the current scene.
+
+Inputs:
+- an image of the current scene,
+- a structured object list describing objects and accessible sides,
+- an action context,
+- one condition to verify.
+
+Validation policy:
+- Use the structured object list as the main source of scene information.
+- Use the image for visual grounding and consistency checking.
+- Do not infer unsupported facts.
+- Do not generate plans or alternative actions.
+- Only determine whether the provided condition matches the current scene.
+
+Decision policy:
+- Return "matching" if the condition is verified in the image.
+- Return "non_matching" if the condition is not verified in the image.
+
+Output must be valid JSON and follow exactly this schema:
+{
+  "result": "matching" | "non_matching",
+  "reason": "<short grounded explanation>"
+}
+
+
+USER PROMPT 
+
+Verify whether the condition is satisfied in the current scene.
+
+Action context:
+{
+  "target": "box_2",
+  "action_concept": "Grasp",
+  "manipulation_mode": "Dual-arm symmetric"
+}
+
+Condition to verify:
+"Both lateral sides of box_2 are accessible, and the robot can align both end-effectors to contact the box symmetrically from the left and right. There must be enough clearance around box_2 to lift it without scraping box_1."
+
+Scene object list:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green",
+        "properties": "rectangular cardboard-like box"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red",
+        "properties": "rectangular cardboard-like box"
+      },
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "small cylindrical open-top cup"
+      }
+    ]
+  }
+}
+
+Instructions:
+- Check whether the condition is satisfied in the current scene.
+- Base your answer on both the object list and the image.
+- If the condition is satisfied, return "matching".
+- Otherwise return "non_matching".
+- Return only valid JSON.

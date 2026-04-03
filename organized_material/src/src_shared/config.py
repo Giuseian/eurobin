@@ -84,6 +84,13 @@
 #     return deployment
 
 
+
+
+# Running instructions
+# python -m src.src_shared.batch_runner --models o3,gpt-5.2 --prompt-files new_file.txt --repeats 5 --scenario-ids 2boxesaside_try
+
+
+
 from __future__ import annotations
 
 import os

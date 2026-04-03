@@ -1,0 +1,32 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_1",
+    "Action_concept": "Grasp",
+    "Manipulation_mode": "Dual-arm symmetric",
+    "Contact_mode": "Without claw",
+    "End_effector_contact_side": "Left & Right",
+    "Precondition": "Both left and right sides of the red box are accessible, and there is enough clearance for both end-effectors to establish a symmetric side contact. Because the red box contains a fragile item, the box must be kept level and moved without sudden impacts. A free region on the table next to the stacked boxes must be available for a later placement.",
+    "Postcondition": "The red box is securely supported by both end-effectors from its left and right sides, lifted off the green box while remaining approximately level, and the fragile item inside is kept stable."
+  },
+  {
+    "Step_id": 2,
+    "Target": "table",
+    "Action_concept": "Place",
+    "Manipulation_mode": "Dual-arm symmetric",
+    "Contact_mode": "Without claw",
+    "End_effector_contact_side": "Bottom",
+    "Precondition": "The red box is already supported by both arms, and a nearby free area on the table is available where the box can be set down without contacting the green box or table-edge obstacles. The placement path must avoid collisions and keep the red box level to protect the fragile item inside.",
+    "Postcondition": "The red box is placed on a free region of the table adjacent to the original stack, fully supported by the table, released by the robot, and no longer blocks the top of the green box."
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_2",
+    "Action_concept": "Grasp",
+    "Manipulation_mode": "Dual-arm symmetric",
+    "Contact_mode": "Without claw",
+    "End_effector_contact_side": "Left & Right",
+    "Precondition": "The red box has been removed, so the green box is no longer vertically constrained from above. Its left and right sides remain accessible, and there is enough free space for both arms to make symmetric side contact without colliding with the relocated red box.",
+    "Postcondition": "The green box is securely grasped and controlled by both end-effectors from the left and right sides, and it is no longer resting on the table."
+  }
+]

@@ -4,13 +4,13 @@
       {
         "name": "box_1",
         "category": "box",
-        "color": "brown",
+        "color": "green",
         "properties": "rectangular cardboard-like box"
       },
       {
         "name": "box_2",
         "category": "box",
-        "color": "light brown",
+        "color": "red",
         "properties": "rectangular cardboard-like box"
       },
       {

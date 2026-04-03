@@ -1,0 +1,30 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "dark gray",
+        "properties": "cylindrical open-top cup",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "accessible",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "robot_end_effector_2",
+        "grasping": "nothing"
+      },
+      {
+        "name": "robot_end_effector_1",
+        "grasping": "nothing"
+      }
+    ]
+  }
+}

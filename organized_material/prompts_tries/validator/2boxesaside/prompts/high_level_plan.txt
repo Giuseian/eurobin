@@ -1,0 +1,42 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "cup",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "The cup is small enough to be securely grasped by one claw, its left and right sides are accessible, and there is enough free space above it to lift it without contacting box_2.",
+    "Postcondition": "The cup is securely grasped by the right end-effector and is no longer resting on the table."
+  },
+  {
+    "Step_id": 2,
+    "Target": "table (front-right free region, right of box_2)",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Top",
+    "Precondition": "The robot is holding the cup and the chosen front-right region of the table is free of obstacles and far enough from both boxes to avoid interference during later box manipulation.",
+    "Postcondition": "The cup is placed on a clear front-right area of the table, no longer blocks the front of box_2, and remains safely away from the box manipulation path."
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_2",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Front",
+    "Precondition": "The cup has been removed, the front face of box_2 is now accessible, and there is enough free space on the right side of box_2 for it to slide rightward without colliding with other objects.",
+    "Postcondition": "box_2 is displaced to the right, creating lateral clearance between box_1 and box_2 so that both left and right sides of box_1 become accessible."
+  },
+  {
+    "Step_id": 4,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "box_1 is reachable by both arms, sufficient clearance exists on its left and right sides after moving box_2, and the robot can apply a stable bilateral squeeze/lift on the large box without using the claws.",
+    "Postcondition": "box_1 is securely grasped and controlled by both end-effectors and is no longer resting freely on the table."
+  }
+]

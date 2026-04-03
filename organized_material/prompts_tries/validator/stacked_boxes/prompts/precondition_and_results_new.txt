@@ -1,0 +1,264 @@
+### STACKED_BOXES - PRECONDITIONS IN HIGH-LEVEL VLM 
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result: 
+
+1. 1 and pre_1 
+
+- Precondition: "box_1 is on top of box_2, the left and right sides of box_1 are accessible, and both robot end-effectors are grasping nothing."
+- Result: {
+"result": "matching",
+"reason": "The red box is on top of the green box, its left and right sides are unobstructed, and both robot end-effectors are not holding any object."
+}
+
+
+
+2. 2 and post_1
+
+- Postcondition: "box_1 is held by both end-effectors and is no longer resting on box_2."
+- Result: {
+"result": "matching",
+"reason": "Both end-effectors are grasping the red box, and it is lifted above the green box without contact."
+}
+
+- Postcondition: "box_1 is held by both end-effectors and is no longer resting on box_2."
+- Result: {
+"result": "non_matching",
+"reason": "Although both end-effectors are holding the red box, it still appears to be in contact with the green box and not fully lifted off."
+}
+
+
+
+3. 2 and pre_2 
+
+- Precondition: "box_1 is held by both end-effectors, and a free region on the table to the right of box_2 is visible."
+- Result: {
+"result": "matching",
+"reason": "Both end-effectors are grasping the red box, and there is a visible free area on the table to the right of the green box."
+}
+
+
+
+4. 3 and post_2
+- Postcondition: "box_1 is on the table to the right of box_2 and is no longer held by the robot."
+- Result: {
+"result": "matching",
+"reason": "The red box is placed on the table to the right of the green box, and both end-effectors are not grasping it."
+}
+
+
+TRY 
+4-1. 4_ and post_2
+- Postcondition: "box_1 is on the table to the right of box_2 and is no longer held by the robot."
+- Result: {
+"result": "matching",
+"reason": "The red box is on the table to the right of the green box, and neither end-effector is grasping it."
+}
+
+
+
+5. 3 and pre_3
+- Precondition: "box_2 is on the table, no object is on top of box_2, its left and right sides are accessible, and both robot end-effectors are grasping nothing."
+- Result: {
+"result": "matching",
+"reason": "The green box is on the table with no object on top, both sides are unobstructed, and the robot end-effectors are not holding anything."
+}
+
+
+
+5-1. 4_ and pre_3
+- Precondition: "box_2 is on the table, no object is on top of box_2, its left and right sides are accessible, and both robot end-effectors are grasping nothing."
+- Result: {
+"result": "matching",
+"reason": "The green box is on the table with no object on top, both its sides are accessible, and neither end-effector is grasping anything."
+}
+
+
+
+
+
+6. 6 and post_3
+- Postcondition:  "box_2 is held by both end-effectors and is no longer resting on the table."
+- Result: {
+"result": "matching",
+"reason": "Both end-effectors are grasping the green box, and it is lifted off the table, no longer resting on it."
+}
+
+
+
+
+
+
+### STACKED_BOXES NEW NEW - PRECONDITIONS IN HIGH-LEVEL VLM 
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result: 
+
+1. 1 and pre_1 
+
+- Precondition: "box_1 is on top of box_2, both end-effectors are grasping nothing, and the left and right sides of box_1 are visible."
+- Result: {
+"result": "non_matching",
+"reason": "While box_1 is on box_2 and both end-effectors grasp nothing, both left and right sides of box_1 are not visible."
+}
+
+
+
+
+2. 2 and post_1
+
+- Postcondition: "box_1 is in contact with both end-effectors."
+- Result: {
+"result": "matching",
+"reason": "The red box is in contact with both the left and right end-effectors as they are positioned on either side touching it."
+}
+
+
+
+3. 2 and pre_2 
+
+- Precondition: "box_1 is in contact with both end-effectors and a free region of the table is visible right of box_2."
+- Result: 
+
+
+
+4. 3 and post_2
+- Postcondition: "box_1 is on the table right of box_2."
+- Result: 
+
+
+
+TRY 
+4-1. 4_ and post_2
+- Postcondition: "box_1 is on the table right of box_2."
+- Result: 
+
+
+
+5. 3 and pre_3
+- Precondition: "box_2 is visible, box_1 is on the table right of box_2, both left and right sides of box_2 are visible, and both end-effectors are not in contact with another object."
+- Result: {
+"result": "non_matching",
+"reason": "The end-effectors are in contact with the red box, violating the condition that they are not in contact with another object."
+}
+
+
+
+
+5-1. 4_ and pre_3
+- Precondition: "box_2 is visible, box_1 is on the table right of box_2, both left and right sides of box_2 are visible, and both end-effectors are not in contact with another object."
+- Result: 
+
+
+
+
+
+6. 6 and post_3
+- Postcondition:  "box_2 is in contact with both end-effectors."
+- Result: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+### STACKED_BOXES NEW NEW NEW - MAYBE FINAL WORKING - PRECONDITIONS IN HIGH-LEVEL VLM 
+
+- Precondition: 
+- Result: 
+
+- Postcondition: 
+- Result: 
+
+1. 1 and pre_1 
+
+- Precondition: "box_1 is on top of box_2, its left and right sides are accessible, and both end-effectors are grasping nothing."
+- Result: {
+"result": "matching",
+"reason": "The red box is on top of the green box, its sides appear unobstructed, and both end-effectors are not grasping anything."
+}
+
+
+
+
+2. 2 and post_1
+
+- Postcondition: "box_1 is between the end-effectors and is in contact with both end-effectors."
+- Result: {
+"result": "matching",
+"reason": "The red box is positioned between the two end-effectors and both appear to be in contact with it."
+}
+
+
+
+
+3. 2 and pre_2 
+
+- Precondition: "box_1 is held between the end-effectors and a free region on the table is visible right of box_2."
+- Result: {
+"result": "matching",
+"reason": "The red box is between and in contact with both end-effectors, and there is a clear free area on the table to the right of the green box."
+}
+
+
+
+
+4. 3 and post_2
+- Postcondition: "box_1 is on the table right of box_2."
+- Result: {
+"result": "matching",
+"reason": "The red box is placed on the table to the right side of the green box."
+}
+
+
+
+
+TRY 
+4-1. 4_ and post_2
+- Postcondition: "box_1 is on the table right of box_2."
+- Result: 
+
+
+
+5. 3 and pre_3
+- Precondition: "box_2 is visible, box_1 is on the table right of box_2, both left and right sides of box_2 are visible, and both end-effectors are not in contact with another object."
+- Result: {
+"result": "matching",
+"reason": "The green box is on the table with no obstruction on its top or sides, and both end-effectors are not grasping anything."
+}
+
+
+
+
+5-1. 4_ and pre_3
+- Precondition: "box_2 is visible, box_1 is on the table right of box_2, both left and right sides of box_2 are visible, and both end-effectors are not in contact with another object."
+- Result: 
+
+
+
+
+
+6. 6 and post_3
+- Postcondition:  "box_2 is in contact with both end-effectors."
+- Result: 
+
+
+
+
+
+
+
+
