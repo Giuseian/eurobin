@@ -1,0 +1,17 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_red_001",
+    "Action concept": "Grasp"
+  },
+  {
+    "Step_id": 2,
+    "Target": "Table",
+    "Action concept": "Place right of box_green_001"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_green_001",
+    "Action concept": "Grasp"
+  }
+]

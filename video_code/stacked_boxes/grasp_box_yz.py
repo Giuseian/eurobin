@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
 
-# Code for placing a box with both hands.
-# Phases:
-# - PHASE 1: move the box center on x,y in WORLD
-# - PHASE 2: move the box center on z in WORLD
-# - PHASE 3: move the two end effectors away from the box
+# Code for grasping a box with both hands without the claw and laterally.
+# Parameters:
+# - grasp
+# - dual-arm symmetric
+# - without claw
+# - laterally
+#
+# Modified behavior:
+# - PHASE 1A: approach on y and z
+# - PHASE 1B: approach on x
+# - PHASE 2: close on y until box contact
+# - PHASE 3: extra squeeze on y + lift on z
 
 import re
 import subprocess
@@ -17,10 +24,10 @@ from cartesian_interface_ros.action import ReachPose
 from geometry_msgs.msg import Pose
 
 
-class DualDaganaPlace(Node):
+class DualDaganaReach(Node):
 
     def __init__(self):
-        super().__init__('dual_dagana_place')
+        super().__init__('dual_dagana_reach')
 
         self.client_1 = ActionClient(self, ReachPose, '/dagana_1_base/reach')
         self.client_2 = ActionClient(self, ReachPose, '/dagana_2_base/reach')
@@ -28,28 +35,42 @@ class DualDaganaPlace(Node):
         # Topic Gazebo
         self.gz_pose_topic = '/world/default/dynamic_pose/info'
 
-        # Entities
-        self.box_name = 'box3_001'
+        # Entità da leggere
+        self.box_name = 'box_red_001'
         self.robot_name = 'kyon'
         self.dagana_1_name = 'dagana_1_claw'
         self.dagana_2_name = 'dagana_2_claw'
 
-        # Target finale della box nel world
-        self.target_box_world = (3.72, -0.38, 0.67)
+        # Geometria / tuning presa
+        self.box_width = 0.38
+        self.phase1_clearance = 0.05
+        self.phase3_extra_squeeze = 0.05
+        self.lift_z_phase3 = 0.2
 
-        # Apertura finale dopo il place
-        self.release_distance = 0.08
+        # Durate fasi
+        self.time_init_rot = 3.0
+        self.time_phase1_yz = 15.0
+        self.time_phase1_x = 15.0
+        self.time_phase2 = 15.0
+        self.time_phase3 = 15.0
 
-        # Saved positions
-        self.box_position = None          # WORLD
-        self.robot_position = None        # WORLD
-        self.dagana_1_position = None     # BODY
-        self.dagana_2_position = None     # BODY
+        # Posizioni salvate
+        self.box_position = None
+        self.robot_position = None
+        self.dagana_1_position = None
+        self.dagana_2_position = None
 
     # =========================================================
-    # READ POSITIONS FROM GAZEBO
+    # LETTURA POSIZIONI DA GAZEBO
     # =========================================================
     def get_entity_position_from_gz(self, entity_name: str, timeout_sec: float = 3.0):
+        """
+        Legge un messaggio da:
+            gz topic -e -n 1 -t /world/default/dynamic_pose/info
+        e cerca il blocco relativo a entity_name.
+
+        Restituisce una tupla (x, y, z) oppure None.
+        """
         cmd = [
             'gz', 'topic',
             '-e',
@@ -114,6 +135,9 @@ class DualDaganaPlace(Node):
             return None
 
     def read_all_positions(self):
+        """
+        Legge e salva tutte le posizioni che ci interessano.
+        """
         self.box_position = self.get_entity_position_from_gz(self.box_name)
         self.robot_position = self.get_entity_position_from_gz(self.robot_name)
         self.dagana_1_position = self.get_entity_position_from_gz(self.dagana_1_name)
@@ -133,9 +157,18 @@ class DualDaganaPlace(Node):
         self.get_logger().info(f'{name}: x={x:.6f}, y={y:.6f}, z={z:.6f}')
 
     # =========================================================
-    # WORLD -> ROBOT/BODY
+    # TRASFORMAZIONE WORLD -> ROBOT
     # =========================================================
     def box_position_in_robot_frame(self):
+        """
+        Ipotesi:
+        - box_position è nel frame WORLD
+        - robot_position è nel frame WORLD
+        - orientamento robot = 0
+
+        Allora:
+            p_box_robot = p_box_world - p_robot_world
+        """
         if self.box_position is None:
             self.get_logger().error('box_position è None')
             return None
@@ -157,41 +190,19 @@ class DualDaganaPlace(Node):
 
         return (box_x_robot, box_y_robot, box_z_robot)
 
-    def target_box_in_robot_frame(self):
-        if self.robot_position is None:
-            self.get_logger().error('robot_position è None')
-            return None
-
-        tx_w, ty_w, tz_w = self.target_box_world
-        rx_w, ry_w, rz_w = self.robot_position
-
-        tx_r = tx_w - rx_w
-        ty_r = ty_w - ry_w
-        tz_r = tz_w - rz_w
-
-        self.get_logger().info(
-            f'Target box nel frame robot: x={tx_r:.6f}, y={ty_r:.6f}, z={tz_r:.6f}'
-        )
-
-        return (tx_r, ty_r, tz_r)
-
     # =========================================================
-    # PLACE
+    # CALCOLO OFFSETS AUTOMATICI DELLE FASI
     # =========================================================
-    def compute_place_phase_offsets(self):
+    def compute_all_phase_offsets(self):
         """
-        Calcola due fasi di place:
-        - phase_xy: spostamento solo lungo x e y
-        - phase_z:  spostamento solo lungo z
+        Calcola:
+        - PHASE 1A: approccio su y e z, x fermo
+        - PHASE 1B: approccio su x, y e z fermi
+        - PHASE 2: chiusura su y fino ai lati della scatola
+        - PHASE 3: ulteriore chiusura su y + lift su z
+
+        Restituisce un dict con tutti gli offset incrementali.
         """
-        if self.box_position is None:
-            self.get_logger().error('box_position è None')
-            return None
-
-        if self.robot_position is None:
-            self.get_logger().error('robot_position è None')
-            return None
-
         if self.dagana_1_position is None:
             self.get_logger().error('dagana_1_position è None')
             return None
@@ -200,80 +211,129 @@ class DualDaganaPlace(Node):
             self.get_logger().error('dagana_2_position è None')
             return None
 
-        current_box_robot = self.box_position_in_robot_frame()
-        target_box_robot = self.target_box_in_robot_frame()
-
-        if current_box_robot is None or target_box_robot is None:
+        box_robot = self.box_position_in_robot_frame()
+        if box_robot is None:
             return None
 
-        current_bx, current_by, current_bz = current_box_robot
-        target_bx, target_by, target_bz = target_box_robot
+        box_x_robot, box_y_robot, box_z_robot = box_robot
+        dag1_x, dag1_y, dag1_z = self.dagana_1_position
+        dag2_x, dag2_y, dag2_z = self.dagana_2_position
 
-        delta_x = target_bx - current_bx
-        delta_y = target_by - current_by
-        delta_z = target_bz - current_bz
+        half_box = self.box_width / 2.0
 
-        phase_xy = (
-            delta_x, delta_y-0.03, 0.0,
-            delta_x, delta_y+0.03, 0.0
-        )
+        # -----------------------------------------------------
+        # Target finale dell'approccio (vecchia PHASE 1)
+        # -----------------------------------------------------
+        target1_x_p1 = box_x_robot
+        target2_x_p1 = box_x_robot
 
-        phase_z = (
-            0.0, 0.0, delta_z,
-            0.0, 0.0, delta_z
-        )
+        target1_z_p1 = box_z_robot
+        target2_z_p1 = box_z_robot
 
-        self.get_logger().info('=== OFFSETS PLACE CALCOLATI ===')
+        target1_y_p1 = box_y_robot + half_box + self.phase1_clearance
+        target2_y_p1 = box_y_robot - half_box - self.phase1_clearance
+
+        # -----------------------------------------------------
+        # PHASE 1A: prima muovo solo su Y e Z
+        # X resta fermo
+        # -----------------------------------------------------
+        phase1a_dx1 = (target1_x_p1 - dag1_x)/2
+        phase1a_dy1 = target1_y_p1 - dag1_y + 0.05
+        phase1a_dz1 = target1_z_p1 - dag1_z
+
+        phase1a_dx2 = (target2_x_p1 - dag2_x)/2
+        phase1a_dy2 = target2_y_p1 - dag2_y + 0.05
+        phase1a_dz2 = target2_z_p1 - dag2_z
+
+        # -----------------------------------------------------
+        # PHASE 1B: poi muovo solo su X
+        # Y e Z restano fermi
+        # -----------------------------------------------------
+        phase1b_dx1 = (target1_x_p1 - dag1_x)/2
+        phase1b_dy1 = 0.0
+        phase1b_dz1 = 0.0
+
+        phase1b_dx2 = (target2_x_p1 - dag2_x)/2
+        phase1b_dy2 = 0.0
+        phase1b_dz2 = 0.0
+
+        # -----------------------------------------------------
+        # Target PHASE 2
+        # Andiamo a contatto con la scatola solo lungo y
+        # -----------------------------------------------------
+        target1_y_p2 = box_y_robot + half_box
+        target2_y_p2 = box_y_robot - half_box
+
+        phase2_dx1 = 0.0
+        phase2_dy1 = target1_y_p2 - target1_y_p1
+        phase2_dz1 = 0.0
+
+        phase2_dx2 = 0.0
+        phase2_dy2 = target2_y_p2 - target2_y_p1
+        phase2_dz2 = 0.0
+
+        # -----------------------------------------------------
+        # Target PHASE 3
+        # Stringiamo ancora un po' e alziamo di 0.2 in z
+        # -----------------------------------------------------
+        target1_y_p3 = box_y_robot + half_box - self.phase3_extra_squeeze
+        target2_y_p3 = box_y_robot - half_box + self.phase3_extra_squeeze
+
+        phase3_dx1 = 0.0
+        phase3_dy1 = target1_y_p3 - target1_y_p2
+        phase3_dz1 = self.lift_z_phase3
+
+        phase3_dx2 = 0.0
+        phase3_dy2 = target2_y_p3 - target2_y_p2
+        phase3_dz2 = self.lift_z_phase3
+
+        self.get_logger().info('=== OFFSETS CALCOLATI AUTOMATICAMENTE ===')
         self.get_logger().info(
-            f'PHASE_XY dagana_1: dx={phase_xy[0]:.6f}, dy={phase_xy[1]:.6f}, dz={phase_xy[2]:.6f}'
+            f'PHASE 1A dag1: dx={phase1a_dx1:.6f}, dy={phase1a_dy1:.6f}, dz={phase1a_dz1:.6f}'
         )
         self.get_logger().info(
-            f'PHASE_XY dagana_2: dx={phase_xy[3]:.6f}, dy={phase_xy[4]:.6f}, dz={phase_xy[5]:.6f}'
+            f'PHASE 1A dag2: dx={phase1a_dx2:.6f}, dy={phase1a_dy2:.6f}, dz={phase1a_dz2:.6f}'
         )
         self.get_logger().info(
-            f'PHASE_Z dagana_1: dx={phase_z[0]:.6f}, dy={phase_z[1]:.6f}, dz={phase_z[2]:.6f}'
+            f'PHASE 1B dag1: dx={phase1b_dx1:.6f}, dy={phase1b_dy1:.6f}, dz={phase1b_dz1:.6f}'
         )
         self.get_logger().info(
-            f'PHASE_Z dagana_2: dx={phase_z[3]:.6f}, dy={phase_z[4]:.6f}, dz={phase_z[5]:.6f}'
+            f'PHASE 1B dag2: dx={phase1b_dx2:.6f}, dy={phase1b_dy2:.6f}, dz={phase1b_dz2:.6f}'
+        )
+        self.get_logger().info(
+            f'PHASE 2 dag1: dx={phase2_dx1:.6f}, dy={phase2_dy1:.6f}, dz={phase2_dz1:.6f}'
+        )
+        self.get_logger().info(
+            f'PHASE 2 dag2: dx={phase2_dx2:.6f}, dy={phase2_dy2:.6f}, dz={phase2_dz2:.6f}'
+        )
+        self.get_logger().info(
+            f'PHASE 3 dag1: dx={phase3_dx1:.6f}, dy={phase3_dy1:.6f}, dz={phase3_dz1:.6f}'
+        )
+        self.get_logger().info(
+            f'PHASE 3 dag2: dx={phase3_dx2:.6f}, dy={phase3_dy2:.6f}, dz={phase3_dz2:.6f}'
         )
 
         return {
-            'phase_xy': phase_xy,
-            'phase_z': phase_z
+            'phase1a_yz': (
+                phase1a_dx1, phase1a_dy1, phase1a_dz1,
+                phase1a_dx2, phase1a_dy2, phase1a_dz2
+            ),
+            'phase1b_x': (
+                phase1b_dx1, phase1b_dy1, phase1b_dz1,
+                phase1b_dx2, phase1b_dy2, phase1b_dz2
+            ),
+            'phase2': (
+                phase2_dx1, phase2_dy1, phase2_dz1,
+                phase2_dx2, phase2_dy2, phase2_dz2
+            ),
+            'phase3': (
+                phase3_dx1, phase3_dy1, phase3_dz1,
+                phase3_dx2, phase3_dy2, phase3_dz2
+            )
         }
 
-    def compute_release_offsets(self):
-        if self.dagana_1_position is None:
-            self.get_logger().error('dagana_1_position è None')
-            return None
-
-        if self.dagana_2_position is None:
-            self.get_logger().error('dagana_2_position è None')
-            return None
-
-        release_dx1 = 0.0
-        release_dy1 = +self.release_distance
-        release_dz1 = 0.0
-
-        release_dx2 = 0.0
-        release_dy2 = -self.release_distance
-        release_dz2 = 0.0
-
-        self.get_logger().info('=== OFFSETS RELEASE CALCOLATI ===')
-        self.get_logger().info(
-            f'dagana_1: dx={release_dx1:.6f}, dy={release_dy1:.6f}, dz={release_dz1:.6f}'
-        )
-        self.get_logger().info(
-            f'dagana_2: dx={release_dx2:.6f}, dy={release_dy2:.6f}, dz={release_dz2:.6f}'
-        )
-
-        return (
-            release_dx1, release_dy1, release_dz1,
-            release_dx2, release_dy2, release_dz2
-        )
-
     # =========================================================
-    # MANIPULATION
+    # MANIPOLAZIONE
     # =========================================================
     def _make_goal(self, dx, dy, dz,
                    qx=0.0, qy=0.0, qz=0.0, qw=1.0,
@@ -336,23 +396,62 @@ class DualDaganaPlace(Node):
         self._send_two_goals_and_wait(phase_name, goal1, goal2)
 
     def execute(self):
+        # =====================================================
+        # LETTURA INIZIALE
+        # =====================================================
         self.get_logger().info('Lettura iniziale posizioni da Gazebo...')
         self.read_all_positions()
 
-        place_phases = self.compute_place_phase_offsets()
-        if place_phases is None:
-            raise RuntimeError('Impossibile calcolare gli offset di place.')
+        # =====================================================
+        # INIT ROT
+        # =====================================================
+        init_goal_1 = self._make_goal(
+            0.0, 0.0, 0.0,
+            qx=0.0, qy=0.0, qz=0.173, qw=0.984,
+            time_s=self.time_init_rot,
+            incremental=True
+        )
+        init_goal_2 = self._make_goal(
+            0.0, 0.0, 0.0,
+            qx=0.0, qy=0.0, qz=-0.173, qw=0.984,
+            time_s=self.time_init_rot,
+            incremental=True
+        )
+        self._send_two_goals_and_wait("INIT_ROT", init_goal_1, init_goal_2)
 
-        self.run_phase("PLACE_MOVE_XY", *place_phases['phase_xy'], time_s=15.0)
-        self.run_phase("PLACE_MOVE_Z", *place_phases['phase_z'], time_s=15.0)
+        # =====================================================
+        # DOPO INIT_ROT
+        # =====================================================
+        self.get_logger().info(
+            'Rilettura posizioni dopo INIT_ROT per calcolare le fasi...'
+        )
+        self.read_all_positions()
 
-        release_offsets = self.compute_release_offsets()
-        if release_offsets is None:
-            raise RuntimeError('Impossibile calcolare gli offset di release.')
+        phases = self.compute_all_phase_offsets()
+        if phases is None:
+            raise RuntimeError('Impossibile calcolare gli offset automatici delle fasi.')
 
-        self.run_phase("PLACE_RELEASE", *release_offsets, time_s=15.0)
+        # =====================================================
+        # PHASE 1A: prima Y e Z
+        # =====================================================
+        self.run_phase("PHASE 1A - YZ", *phases['phase1a_yz'], time_s=self.time_phase1_yz)
 
-        self.get_logger().info("Place completed.")
+        # =====================================================
+        # PHASE 1B: poi X
+        # =====================================================
+        self.run_phase("PHASE 1B - X", *phases['phase1b_x'], time_s=self.time_phase1_x)
+
+        # =====================================================
+        # PHASE 2
+        # =====================================================
+        self.run_phase("PHASE 2", *phases['phase2'], time_s=self.time_phase2)
+
+        # =====================================================
+        # PHASE 3
+        # =====================================================
+        self.run_phase("PHASE 3", *phases['phase3'], time_s=self.time_phase3)
+
+        self.get_logger().info("All phases completed.")
 
     def print_saved_positions(self):
         self._print_one('box_position', self.box_position)
@@ -371,7 +470,7 @@ class DualDaganaPlace(Node):
 
 def main():
     rclpy.init()
-    node = DualDaganaPlace()
+    node = DualDaganaReach()
     try:
         node.execute()
         node.print_saved_positions()

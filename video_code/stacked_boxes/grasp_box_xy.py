@@ -8,8 +8,8 @@
 # - laterally
 #
 # Modified behavior:
-# - PHASE 1A: approach on y and z
-# - PHASE 1B: approach on x
+# - PHASE 1A: approach on x and y
+# - PHASE 1B: approach on z
 # - PHASE 2: close on y until box contact
 # - PHASE 3: extra squeeze on y + lift on z
 
@@ -36,7 +36,7 @@ class DualDaganaReach(Node):
         self.gz_pose_topic = '/world/default/dynamic_pose/info'
 
         # Entità da leggere
-        self.box_name = 'box2_001'
+        self.box_name = 'box_green_001'
         self.robot_name = 'kyon'
         self.dagana_1_name = 'dagana_1_claw'
         self.dagana_2_name = 'dagana_2_claw'
@@ -47,10 +47,10 @@ class DualDaganaReach(Node):
         self.phase3_extra_squeeze = 0.05
         self.lift_z_phase3 = 0.2
 
-        # Durate fasi
+        # Durate
         self.time_init_rot = 3.0
-        self.time_phase1_yz = 15.0
-        self.time_phase1_x = 15.0
+        self.time_phase1_xy = 15.0
+        self.time_phase1_z = 15.0
         self.time_phase2 = 15.0
         self.time_phase3 = 15.0
 
@@ -196,8 +196,8 @@ class DualDaganaReach(Node):
     def compute_all_phase_offsets(self):
         """
         Calcola:
-        - PHASE 1A: approccio su y e z, x fermo
-        - PHASE 1B: approccio su x, y e z fermi
+        - PHASE 1A: approccio su x e y, z fermo
+        - PHASE 1B: approccio su z, x e y fermi
         - PHASE 2: chiusura su y fino ai lati della scatola
         - PHASE 3: ulteriore chiusura su y + lift su z
 
@@ -234,28 +234,28 @@ class DualDaganaReach(Node):
         target2_y_p1 = box_y_robot - half_box - self.phase1_clearance
 
         # -----------------------------------------------------
-        # PHASE 1A: prima muovo solo su Y e Z
-        # X resta fermo
+        # PHASE 1A: prima muovo solo su X e Y
+        # Z resta fermo
         # -----------------------------------------------------
-        phase1a_dx1 = (target1_x_p1 - dag1_x)/2
+        phase1a_dx1 = target1_x_p1 - dag1_x
         phase1a_dy1 = target1_y_p1 - dag1_y + 0.05
-        phase1a_dz1 = target1_z_p1 - dag1_z
+        phase1a_dz1 = 0.0
 
-        phase1a_dx2 = (target2_x_p1 - dag2_x)/2
+        phase1a_dx2 = target2_x_p1 - dag2_x
         phase1a_dy2 = target2_y_p1 - dag2_y + 0.05
-        phase1a_dz2 = target2_z_p1 - dag2_z
+        phase1a_dz2 = 0.0
 
         # -----------------------------------------------------
-        # PHASE 1B: poi muovo solo su X
-        # Y e Z restano fermi
+        # PHASE 1B: poi muovo solo su Z
+        # X e Y restano fermi
         # -----------------------------------------------------
-        phase1b_dx1 = (target1_x_p1 - dag1_x)/2
+        phase1b_dx1 = 0.0
         phase1b_dy1 = 0.0
-        phase1b_dz1 = 0.0
+        phase1b_dz1 = target1_z_p1 - dag1_z
 
-        phase1b_dx2 = (target2_x_p1 - dag2_x)/2
+        phase1b_dx2 = 0.0
         phase1b_dy2 = 0.0
-        phase1b_dz2 = 0.0
+        phase1b_dz2 = target2_z_p1 - dag2_z
 
         # -----------------------------------------------------
         # Target PHASE 2
@@ -314,11 +314,11 @@ class DualDaganaReach(Node):
         )
 
         return {
-            'phase1a_yz': (
+            'phase1a_xy': (
                 phase1a_dx1, phase1a_dy1, phase1a_dz1,
                 phase1a_dx2, phase1a_dy2, phase1a_dz2
             ),
-            'phase1b_x': (
+            'phase1b_z': (
                 phase1b_dx1, phase1b_dy1, phase1b_dz1,
                 phase1b_dx2, phase1b_dy2, phase1b_dz2
             ),
@@ -432,14 +432,14 @@ class DualDaganaReach(Node):
             raise RuntimeError('Impossibile calcolare gli offset automatici delle fasi.')
 
         # =====================================================
-        # PHASE 1A: prima Y e Z
+        # PHASE 1A: prima X e Y
         # =====================================================
-        self.run_phase("PHASE 1A - YZ", *phases['phase1a_yz'], time_s=self.time_phase1_yz)
+        self.run_phase("PHASE 1A - XY", *phases['phase1a_xy'], time_s=self.time_phase1_xy)
 
         # =====================================================
-        # PHASE 1B: poi X
+        # PHASE 1B: poi Z
         # =====================================================
-        self.run_phase("PHASE 1B - X", *phases['phase1b_x'], time_s=self.time_phase1_x)
+        self.run_phase("PHASE 1B - Z", *phases['phase1b_z'], time_s=self.time_phase1_z)
 
         # =====================================================
         # PHASE 2
