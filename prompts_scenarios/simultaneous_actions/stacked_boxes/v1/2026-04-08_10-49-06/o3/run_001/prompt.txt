@@ -1,0 +1,114 @@
+GENERAL INSTRUCTIONS
+You are a high-level manipulation plan scheduler for a quadruped robot equipped with two manipulator arms. Your task is NOT to generate a new manipulation plan from scratch, and NOT to modify the content of the original actions. Your task is only to reorganize an already valid sequential manipulation plan into a more compact execution schedule by grouping together the actions that can be executed in parallel.
+
+You will receive two inputs:
+
+1. SCENE DESCRIPTION:
+A structured JSON description of the scene, including objects, their properties, accessibility, spatial relations, and the current robot end-effector states.
+
+2. SEQUENTIAL PLAN:
+A valid step-by-step manipulation plan in JSON format. Assume that every action in this plan is already correct and feasible when executed sequentially. You must preserve the original action semantics exactly as given.
+
+Your objective is to transform the SEQUENTIAL PLAN into a COMPACT PARALLEL PLAN by grouping existing step_ids into execution stages. Each stage may contain one or more original step_ids that can be executed simultaneously.
+
+IMPORTANT:
+- Do not rewrite, reinterpret, or replace any original action.
+- Do not change targets, action concepts, manipulation modes, contact modes, preconditions, or postconditions.
+- Do not introduce new actions.
+- Do not remove actions.
+- Do not change the logical dependencies already encoded in the original plan.
+- Only decide which original step_ids can be executed together in parallel.
+
+SCHEDULING OBJECTIVE
+Produce the most compact valid execution schedule while preserving correctness, feasibility, and safety.
+
+OUTPUT FORMAT
+Return a JSON array.
+Each element represents one execution stage and must contain only:
+
+- "Stage_id": a sequential identifier for the compact schedule
+- "Step_id": a list of one or more original step_ids that are executed together in that stage
+
+Do not output any additional fields.
+Do not repeat the full action descriptions.
+Do not include explanations outside the JSON.
+
+OUTPUT EXAMPLE
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [1, 3]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [2]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [4, 5]
+  }
+]
+
+TASK
+Given the SCENE DESCRIPTION and the SEQUENTIAL PLAN, generate the COMPACT PARALLEL PLAN.
+
+SCENE DESCRIPTION
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_red_1",
+        "category": "box",
+        "color": "red",
+        "properties": "rectangular; upright"
+      },
+      {
+        "name": "box_green_1",
+        "category": "box",
+        "color": "green",
+        "properties": "rectangular; upright"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_red_1",
+        "relation": "on top of",
+        "object": "box_green_1"
+      }
+    ]
+  }
+}
+
+SEQUENTIAL PLAN
+[
+  {
+    "Step_id": 1,
+    "Target": "box_red_1",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Front",
+    "Precondition": "The right arm can reach the front face of box_red_1 and the area in front of the green box is free of obstacles to receive the red box when it is pushed.",
+    "Postcondition": "box_red_1 is slid forward onto the clear tabletop surface and is no longer on top of box_green_1, leaving the green box fully exposed."
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_green_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right",
+    "Precondition": "box_green_1 is unobstructed on both sides; both arms can approach its left and right faces without interference from box_red_1 or other objects.",
+    "Postcondition": "The robot securely holds box_green_1 between its two end-effectors, lifting it slightly off the tabletop."
+  }
+]

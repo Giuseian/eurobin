@@ -1,0 +1,47 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "single_module",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v1",
+  "experiment_timestamp": "2026-04-08_10-24-34",
+  "run_name": "run_002",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 5.854883660999803,
+  "timestamp": "2026-04-08T10:28:48.221226",
+  "scenario": {
+    "task": "Grasp the green box",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left",
+      "Precondition": "box_2 is accessible from its left side and there is sufficient free space on the top surface of box_1 to slide box_2 laterally without it falling off the stack.",
+      "Postcondition": "box_2 is displaced sideways on the top of box_1, creating an exposed side area of box_1 for arm contact."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Right & left",
+      "Precondition": "Both left and right side faces of box_1 are accessible, and box_2 is no longer centered above box_1 such that bilateral side contact on box_1 is possible without contacting box_2.",
+      "Postcondition": "box_1 is stabilized and controlled via symmetric bilateral side contact, functionally achieving a grasp-like hold without using the claw."
+    }
+  ],
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-24-34",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    }
+  }
+}

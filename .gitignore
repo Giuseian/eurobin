@@ -11,6 +11,7 @@ conda-meta/
 
 # secrets
 .env
+a_stuff/organized_material/.env
 
 #general_material
 a_stuff/not_organized/old_outputs*

@@ -1,0 +1,67 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "whole_pipeline",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v1",
+  "experiment_timestamp": "2026-04-08_10-49-06",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 10.517930645999513,
+  "timestamp": "2026-04-08T10:49:30.506751",
+  "scenario": {
+    "task": "Grasp the green box",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_red_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Front",
+      "Precondition": "The right arm can reach the front face of box_red_1 and the area in front of the green box is free of obstacles to receive the red box when it is pushed.",
+      "Postcondition": "box_red_1 is slid forward onto the clear tabletop surface and is no longer on top of box_green_1, leaving the green box fully exposed."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_green_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right",
+      "Precondition": "box_green_1 is unobstructed on both sides; both arms can approach its left and right faces without interference from box_red_1 or other objects.",
+      "Postcondition": "The robot securely holds box_green_1 between its two end-effectors, lifting it slightly off the tabletop."
+    }
+  ],
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-49-06",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-49-06",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "vlm_planning": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-49-06",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-49-06",
+      "model": "o3",
+      "run_name": "run_001"
+    }
+  }
+}

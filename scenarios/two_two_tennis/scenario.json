@@ -1,0 +1,5 @@
+{
+  "scenario_id": "two_two_tennis",
+  "task": "Place the ball on the red box. Additionally, make sure that the top of the green box is free of objects.",
+  "image": "1.png"
+}
