@@ -1,0 +1,20 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ]
+  }
+]

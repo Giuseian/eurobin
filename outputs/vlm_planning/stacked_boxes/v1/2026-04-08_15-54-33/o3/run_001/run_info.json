@@ -1,0 +1,47 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "single_module",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v1",
+  "experiment_timestamp": "2026-04-08_15-54-33",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 14.621086324998032,
+  "timestamp": "2026-04-08T16:05:49.278177",
+  "scenario": {
+    "task": "Grasp the green box",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_red_1",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left",
+      "Precondition": "The right arm can reach the left side of box_red_1 and the tabletop area to the right of the stack is free, allowing the red box to slide safely without colliding with other objects.",
+      "Postcondition": "box_red_1 is no longer on top of box_green_1 and rests on the tabletop to the right of box_green_1."
+    },
+    {
+      "Step_id": 2,
+      "Target": "box_green_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right",
+      "Precondition": "box_green_1 is fully exposed with no objects on top or immediately to its sides, and both arms have sufficient clearance to approach from left and right.",
+      "Postcondition": "box_green_1 is firmly secured between the two arms and lifted slightly off the tabletop, under the robot’s control."
+    }
+  ],
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_15-54-33",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  }
+}

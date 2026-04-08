@@ -1,0 +1,22 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_red_1",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left",
+    "Precondition": "The right arm can reach the left side face of box_red_1 and there is clear free table space to the left of the stacked boxes so box_red_1 can be displaced without toppling the stack onto box_green_1.",
+    "Postcondition": "box_red_1 is displaced off the top of box_green_1 onto the table to the left, leaving the top of box_green_1 unobstructed."
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_green_1",
+    "Action concept": "Push",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Right & left",
+    "Precondition": "Both arms can reach the left and right side faces of box_green_1 and the tabletop area behind box_green_1 is free so it can be slid toward the table edge without colliding with box_red_1.",
+    "Postcondition": "box_green_1 is slid to a more accessible position (toward the robot/table edge) while remaining upright on the table."
+  }
+]

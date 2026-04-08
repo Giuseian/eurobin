@@ -1,0 +1,48 @@
+{
+  "module": "validator",
+  "execution_mode": "single_module",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "experiment_timestamp": "2026-04-08_10-24-34",
+  "run_name": "run_001",
+  "condition_name": "pre_1",
+  "condition_text": "box_1 is accessible for a lateral push and there is free space on the table to the right of box_2 to allow box_1 to slide off without colliding or toppling onto another object.",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 7.89662339500137,
+  "timestamp": "2026-04-08T17:23:02.919680",
+  "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+  "scene_object_list_source": {
+    "type": "scene_description_output",
+    "scenario_name": "stacked_boxes",
+    "prompt_version": "v1",
+    "experiment_timestamp": "2026-04-08_10-24-34",
+    "model": "gpt-5.2",
+    "run_name": "run_001",
+    "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v1/2026-04-08_10-24-34/gpt-5.2/run_001/scene_object_list.json"
+  },
+  "dependencies": {
+    "vlm_planning": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-24-34",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-24-34",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "scene_description": {
+      "prompt_version": "v1",
+      "experiment_timestamp": "2026-04-08_10-24-34",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  },
+  "response_parsed": {
+    "result": "non_matching",
+    "reason": "box_1 (red) is stacked directly on top of box_2 (green), so it is not accessible for a lateral push, and there is no clear tabletop space to the right of box_2 for box_1 to slide off without contacting box_2."
+  }
+}
