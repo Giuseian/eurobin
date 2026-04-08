@@ -1,0 +1,138 @@
+
+
+python src/run_modules.py \
+  --module scene_description \
+  --scenario stacked_boxes \
+  --version v1 \
+  --models gpt-5.2 \
+  --repeats 2
+  
+  
+  
+
+python src/run_modules.py \
+  --module vlm_planning \
+  --scenario stacked_boxes \
+  --version v1 \
+  --models gpt-5.2 \
+  --scene-version v1 \
+  --scene-timestamp 2026-04-08_10-24-34 \
+  --scene-model gpt-5.2 \
+  --scene-run run_003
+  
+
+  
+python src/run_modules.py \
+  --module simultaneous_actions \
+  --scenario stacked_boxes \
+  --version v1 \
+  --models gpt-5.2 \
+  --scene-version v1 \
+  --scene-timestamp 2026-04-08_10-24-34 \
+  --scene-model gpt-5.2 \
+  --scene-run run_003 \
+  --plan-version v1 \
+  --plan-timestamp 2026-04-08_10-24-34 \
+  --plan-model gpt-5.2 \
+  --plan-run run_003
+  
+  
+  
+  
+  python src/run_pipeline.py \
+  --scenario <scenario_name> \
+  --scene-v <scene_prompt_version> \
+  --plan-v <planner_prompt_version> \
+  --sim-v <sim_prompt_version> \
+  --scene-model <scene_model> \
+  --plan-model <planner_model> \
+  --sim-model <sim_model> \
+  --repeats <N>
+  
+  
+  python src/run_pipeline.py \
+  --scenario stacked_boxes \
+  --scene-v v1 \
+  --plan-v v1 \
+  --sim-v v1 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model o3 \
+  --repeats 1
+  
+  
+
+  
+  python src/run_validator.py \
+  --scenario stacked_boxes \
+  --version v2 \
+  --models gpt-5.2 \
+  --upstream-timestamp 2026-04-08_10-24-34 \
+  --run-name run_001 \
+  --condition-name pre_1 \
+  --condition "box_1 is accessible for a lateral push and there is free space on the table to the right of box_2 to allow box_1 to slide off without colliding or toppling onto another object." \
+  --image-path scenarios/stacked_boxes/1.png \
+  --scene-version v1 \
+  --scene-model gpt-5.2 \
+  --plan-version v1 \
+  --plan-model gpt-5.2 \
+  --sim-version v1 \
+  --sim-model gpt-5.2
+  
+  
+  
+  python src/run_validator.py \
+  --scenario stacked_boxes \
+  --version v2 \
+  --models gpt-5.2 \
+  --upstream-timestamp 2026-04-08_14-30-10 \
+  --run-name run_001 \
+  --condition-name pre_1 \
+  --condition "box_1 is accessible for a lateral push and there is free space on the table to the right of box_2 to allow box_1 to slide off without colliding or toppling onto another object." \
+  --image-path scenarios/stacked_boxes/1.png \
+  --scene-object-list-path scenarios/stacked_boxes/scene_object_list.json \
+  --scene-version v1 \
+  --scene-model gpt-5.2 \
+  --plan-version v1 \
+  --plan-model gpt-5.2 \
+  --sim-version v1 \
+  --sim-model gpt-5.2
+  
+  
+  
+  python src/run_validation_loop.py \
+  --scenario stacked_boxes \
+  --frames-dir scenarios/stacked_boxes/frames \
+  --scene-v v1 \
+  --plan-v v1 \
+  --sim-v v1 \
+  --validator-v v1 \
+  --scene-model gpt-5.2 \
+  --plan-model gpt-5.2 \
+  --sim-model gpt-5.2 \
+  --validator-model gpt-5.2 \
+  --max-replans 5
+  
+  
+  Forzando una immagine iniziale specifica 
+  python src/run_validation_loop.py \
+  --scenario stacked_boxes \
+  --frames-dir scenarios/stacked_boxes/frames \
+  --scene-v v1 \
+  --plan-v v1 \
+  --sim-v v1 \
+  --validator-v v1 \
+  --scene-model gpt-5.2 \
+  --plan-model gpt-5.2 \
+  --sim-model gpt-5.2 \
+  --validator-model gpt-5.2 \
+  --max-replans 5
+  
+  
+  
+  
+  
+  
+  
+  
+  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v2/2026-04-08_10-24-34/gpt-5.2/run_001/pre_1/prompt.txt
