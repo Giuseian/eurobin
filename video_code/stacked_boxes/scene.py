@@ -26,10 +26,15 @@ GZ_POSE_TOPIC = "/world/default/dynamic_pose/info"
 DIMENSIONS_BY_NAME = {
     "box_red_001": [0.28, 0.28, 0.28],
     "box_green_001": [0.28, 0.28, 0.28],
+    "glass_001": [0.08, 0.08, 0.08],
+    "glass_002": [0.08, 0.08, 0.08],
+    "ball_001": [0.07, 0.07, 0.07],
 }
 
 DEFAULT_DIMENSIONS_BY_CATEGORY = {
     "box": [0.28, 0.28, 0.28],
+    "glass": [0.08, 0.08, 0.08],
+    "ball": [0.07, 0.07, 0.07],
 }
 
 
