@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors are free and box_1 is accessible on top of box_2.",
+    "Postcondition": "The robot is holding box_1 with both end effectors."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Box_1 is held by the robot and the table area right of box_2 is clear.",
+    "Postcondition": "Box_1 is placed on the table to the right of box_2; both end effectors are free."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "Both end effectors are free and box_2 is accessible on the table.",
+    "Postcondition": "The robot is holding box_2 with both end effectors."
+  }
+]

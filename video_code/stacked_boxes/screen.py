@@ -23,8 +23,8 @@ def take_screenshot(filepath=""):
 
 
 if __name__ == "__main__":
-    # 1️⃣ nome automatico
+    # nome automatico
     take_screenshot()
 
-    # 2️⃣ oppure file custom
+    # oppure file custom
     # take_screenshot("/home/user/.gz/gui/pictures/test.png")
