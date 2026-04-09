@@ -72,7 +72,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--screens-subdir",
         type=str,
         default="screens",
-        help="Subdirectory name used inside the run output folder for screenshots.",
+        help="Subdirectory name used inside the real_deploy scenario folder for screenshots.",
     )
 
     parser.add_argument(
@@ -202,13 +202,51 @@ def run_python_script(script_path: Path, label: str) -> None:
 # SCREENSHOT HELPERS
 # ============================================================
 
-def take_screenshot(filepath: str) -> str:
+def get_screens_root(
+    settings,
+    scenario_name: str,
+    loop_timestamp: str,
+    screens_subdir: str,
+) -> Path:
+    return (
+        settings.project_root
+        / "scenarios"
+        / "real_deploy"
+        / scenario_name
+        / loop_timestamp
+        / screens_subdir
+    )
+
+
+def get_next_sequential_image_path(screens_dir: Path) -> Path:
+    existing = sorted(
+        p for p in screens_dir.glob("*.png")
+        if p.stem.isdigit()
+    )
+
+    if not existing:
+        next_index = 1
+    else:
+        next_index = max(int(p.stem) for p in existing) + 1
+
+    return screens_dir / f"{next_index:03d}.png"
+
+
+def take_screenshot(
+    screens_dir: Path,
+    wait_timeout: float = 5.0,
+    poll_interval: float = 0.2,
+) -> str:
     """
-    Integrated version of screen.py.
-    Saves a screenshot to the explicit filepath and returns the absolute path.
+    Ask Gazebo to save a screenshot into screens_dir.
+    Gazebo generates a timestamped PNG; we detect the new file and rename it
+    sequentially as 001.png, 002.png, ...
+
+    Returns the absolute path of the renamed screenshot.
     """
-    output_path = str(Path(filepath).resolve())
-    ensure_dir(Path(output_path).parent)
+    screens_dir = ensure_dir(screens_dir.resolve())
+
+    before = {p.resolve() for p in screens_dir.glob("*.png")}
 
     cmd = [
         "gz", "service",
@@ -216,10 +254,10 @@ def take_screenshot(filepath: str) -> str:
         "--reqtype", "gz.msgs.StringMsg",
         "--reptype", "gz.msgs.Boolean",
         "--timeout", "3000",
-        "--req", f'data: "{output_path}"'
+        "--req", f'data: "{str(screens_dir)}"'
     ]
 
-    print(f"\n[SCREEN] Taking screenshot: {output_path}")
+    print(f"\n[SCREEN] Taking screenshot into directory: {screens_dir}")
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     if result.stdout:
@@ -230,10 +268,31 @@ def take_screenshot(filepath: str) -> str:
     if result.returncode != 0:
         raise RuntimeError("Screenshot failed.")
 
-    if not Path(output_path).exists():
-        raise RuntimeError(f"Screenshot command returned success but file not found: {output_path}")
+    deadline = time.time() + wait_timeout
+    new_file: Path | None = None
 
-    return output_path
+    while time.time() < deadline:
+        current = {p.resolve() for p in screens_dir.glob("*.png")}
+        created = current - before
+        if created:
+            new_file = max(created, key=lambda p: p.stat().st_mtime)
+            break
+        time.sleep(poll_interval)
+
+    if new_file is None or not new_file.exists():
+        raise RuntimeError(
+            f"Screenshot command returned success but no new PNG appeared in: {screens_dir}"
+        )
+
+    final_path = get_next_sequential_image_path(screens_dir)
+
+    if final_path.exists():
+        raise RuntimeError(f"Sequential screenshot path already exists: {final_path}")
+
+    new_file.rename(final_path)
+
+    print(f"[SCREEN] Screenshot saved as: {final_path}")
+    return str(final_path.resolve())
 
 
 # ============================================================
@@ -820,7 +879,7 @@ def deploy_stage_1(
     stage_id: int,
 ) -> str:
     run_python_script(manip_dir / "grasp_box_yz.py", label="stage_1/grasp_box_yz.py")
-    next_image = take_screenshot(str(screens_dir / f"stage_{stage_id}_post.png"))
+    next_image = take_screenshot(screens_dir)
     return next_image
 
 
@@ -842,8 +901,7 @@ def deploy_stage_2(
     run_python_script(manip_dir / "homing.py", label="stage_2/homing.py")
     time.sleep(post_homing_wait)
 
-    # Come da tua sequenza: screen dopo homing, poi restart Cartesio
-    next_image = take_screenshot(str(screens_dir / f"stage_{stage_id}_post.png"))
+    next_image = take_screenshot(screens_dir)
 
     start_cartesio(startup_wait_seconds=cartesio_startup_wait)
     return next_image
@@ -855,7 +913,7 @@ def deploy_stage_3(
     stage_id: int,
 ) -> str:
     run_python_script(manip_dir / "grasp_box_xy.py", label="stage_3/grasp_box_xy.py")
-    next_image = take_screenshot(str(screens_dir / f"stage_{stage_id}_post.png"))
+    next_image = take_screenshot(screens_dir)
     return next_image
 
 
@@ -945,8 +1003,18 @@ def main() -> None:
     run_name = "run_001"
 
     manip_dir = Path(args.manip_dir).resolve()
+
+    # pipeline artifacts remain where they already are
     run_root = get_run_root(settings, args.scenario, loop_timestamp)
-    screens_dir = ensure_dir(run_root / args.screens_subdir)
+
+    # screenshots go to scenarios/real_deploy/<scenario>/<timestamp>/screens
+    screens_dir = get_screens_root(
+        settings=settings,
+        scenario_name=args.scenario,
+        loop_timestamp=loop_timestamp,
+        screens_subdir=args.screens_subdir,
+    )
+    ensure_dir(screens_dir)
 
     summary: dict[str, Any] = {
         "module": "real_deploy_pipeline",
@@ -955,6 +1023,7 @@ def main() -> None:
         "timestamp": datetime.now().isoformat(),
         "manip_dir": str(manip_dir),
         "run_root": str(run_root),
+        "screens_dir": str(screens_dir),
         "config": {
             "scene_description": {
                 "prompt_version": args.scene_v,
@@ -985,13 +1054,14 @@ def main() -> None:
     print(f"Scenario:        {args.scenario}")
     print(f"Pipeline ts:     {pipeline_timestamp}")
     print(f"Run root:        {run_root}")
+    print(f"Screens dir:     {screens_dir}")
     print("======================================================")
 
     try:
         # --------------------------------------------------
         # INITIAL SCREENSHOT
         # --------------------------------------------------
-        initial_image = take_screenshot(str(screens_dir / "initial_scene.png"))
+        initial_image = take_screenshot(screens_dir)
         summary["initial_image_path"] = str(Path(initial_image).resolve())
 
         scenario_context = make_scenario_context(
@@ -1172,7 +1242,6 @@ def main() -> None:
             stage_record["post_image_path"] = str(Path(next_image).resolve())
             summary["stages"].append(stage_record)
 
-            # Lo screen post_i diventa automaticamente lo screen pre_(i+1)
             current_image = next_image
 
         summary["task_completed"] = True
