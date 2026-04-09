@@ -1,0 +1,69 @@
+{
+  "module": "simultaneous_actions",
+  "execution_mode": "whole_pipeline",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "experiment_timestamp": "2026-04-09_06-34-26",
+  "run_name": "run_002",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 3.463733367000259,
+  "timestamp": "2026-04-09T06:35:03.370897",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Stage_id": 1,
+      "Step_id": [
+        1
+      ],
+      "Precondition": "box_1 is on top of box_2 and end_effector_left is grasping nothing.",
+      "Postcondition": "The left end-effector has pushed box_1."
+    },
+    {
+      "Stage_id": 2,
+      "Step_id": [
+        2
+      ],
+      "Precondition": "end_effector_right is grasping nothing and box_2 is accessible.",
+      "Postcondition": "box_2 is grasped by end_effector_right."
+    }
+  ],
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v3",
+      "experiment_timestamp": "2026-04-09_06-34-26",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-34-26",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v3",
+      "experiment_timestamp": "2026-04-09_06-34-26",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-34-26",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-34-26",
+      "model": "gpt-5.2",
+      "run_name": "run_002"
+    }
+  }
+}

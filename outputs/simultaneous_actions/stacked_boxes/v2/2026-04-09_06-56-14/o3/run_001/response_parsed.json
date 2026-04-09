@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_1 is on top of box_2 and both end-effectors are free.",
+    "Postcondition": "box_1 is grasped by both the left and right end-effectors."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 is held by both end-effectors and the area behind box_2 is reachable.",
+    "Postcondition": "box_1 is placed behind box_2 and both end-effectors are free."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_2 is accessible and both end-effectors are free.",
+    "Postcondition": "box_2 is grasped by both the left and right end-effectors."
+  }
+]

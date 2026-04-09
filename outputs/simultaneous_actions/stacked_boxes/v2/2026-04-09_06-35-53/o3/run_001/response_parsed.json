@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "red_block is on top of green_block and both end effectors are free.",
+    "Postcondition": "Right end effector is grasping red_block."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Right end effector holds red_block and the table area to the right of green_block is clear.",
+    "Postcondition": "red_block is placed on the table to the right of green_block and right end effector is free."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "green_block is fully exposed on the table and left end effector is free.",
+    "Postcondition": "Left end effector is grasping green_block."
+  }
+]

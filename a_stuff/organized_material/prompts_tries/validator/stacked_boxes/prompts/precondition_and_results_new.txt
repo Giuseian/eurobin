@@ -16,6 +16,9 @@
 
 
 
+
+
+
 2. 2 and post_1
 
 - Postcondition: "box_1 is held by both end-effectors and is no longer resting on box_2."

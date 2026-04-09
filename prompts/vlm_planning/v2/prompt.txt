@@ -75,6 +75,3 @@ CONSTRAINTS
 -All boxes cannot be grasped with the claw, they are too large.
 -Fragile objects must be removed or relocated if there is a risk that they may collide with the robot or with other objects during the manipulation.
 -The table is divided into three zones: zone A is reachable only by the left arm, zone B by both arms, and zone C only by the right arm.
-
-TASK
-Human instruction.

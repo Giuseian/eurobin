@@ -1,0 +1,77 @@
+{
+  "module": "simultaneous_actions",
+  "execution_mode": "whole_pipeline",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "experiment_timestamp": "2026-04-09_06-37-16",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 9.810299860000214,
+  "timestamp": "2026-04-09T06:37:47.619068",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Stage_id": 1,
+      "Step_id": [
+        1
+      ],
+      "Precondition": "Box_1 is on top of box_2 and both end effectors are free.",
+      "Postcondition": "Box_1 is grasped with the left and right end effectors."
+    },
+    {
+      "Stage_id": 2,
+      "Step_id": [
+        2
+      ],
+      "Precondition": "The robot is holding box_1 with both end effectors and the area to the right of box_2 on the table is clear.",
+      "Postcondition": "Box_1 is placed on the table to the right of box_2 and both end effectors are released."
+    },
+    {
+      "Stage_id": 3,
+      "Step_id": [
+        3
+      ],
+      "Precondition": "Box_1 is positioned right of box_2 on the table and both end effectors are free.",
+      "Postcondition": "Box_2 is grasped with the left and right end effectors."
+    }
+  ],
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v3",
+      "experiment_timestamp": "2026-04-09_06-37-16",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-37-16",
+      "model": "o3",
+      "run_name": "run_001"
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v3",
+      "experiment_timestamp": "2026-04-09_06-37-16",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-37-16",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_06-37-16",
+      "model": "o3",
+      "run_name": "run_001"
+    }
+  }
+}

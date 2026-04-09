@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_1 is on top of box_2, and end_effector_left is not grasping anything.",
+    "Postcondition": "box_1 has been pushed by end_effector_left."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "end_effector_left and end_effector_right are not grasping anything, and box_2 is accessible for a dual-arm symmetric grasp.",
+    "Postcondition": "box_2 is grasped by end_effector_left and end_effector_right."
+  }
+]

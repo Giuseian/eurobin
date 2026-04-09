@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "Only the left end-effector is in contact with the red box (box_1); the right end-effector is not grasping it."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green box (box_2) is held between both the left and right end effectors, which are in contact with opposite sides of the box."
+}
