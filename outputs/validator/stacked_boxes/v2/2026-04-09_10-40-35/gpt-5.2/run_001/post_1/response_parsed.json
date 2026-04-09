@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box is between the robot arms, but there is no visible grasp by both the left and right end-effectors on box_red_1."
+}

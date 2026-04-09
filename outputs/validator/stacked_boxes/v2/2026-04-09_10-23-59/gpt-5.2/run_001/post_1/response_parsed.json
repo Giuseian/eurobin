@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box_1 is only contacted on one side by an end-effector; the other end-effector is not in symmetric dual-arm grasp contact with it."
+}

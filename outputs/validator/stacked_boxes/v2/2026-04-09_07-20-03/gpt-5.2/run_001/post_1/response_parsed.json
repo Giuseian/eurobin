@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box_1 is only contacted by the right arm; the left arm is near the space between the boxes and not holding box_1."
+}

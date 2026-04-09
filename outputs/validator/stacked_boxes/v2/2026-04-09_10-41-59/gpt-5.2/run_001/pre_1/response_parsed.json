@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box (box_1) is on top of the green box (box_2), but both robot end effectors are in contact with/grasping the red box rather than grasping nothing."
+}

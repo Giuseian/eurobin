@@ -1,0 +1,43 @@
+Giulia Vezzani's Talk
+
+Solve any possible tasks; interact with them safely; drop-in 
+
+Robotics Aim: Solve AGI in the physical world
+
+
+Building AI for general purpose robots: 
+-> LLMs for robotics: PaLM SayCan, PALM-E
+-> Robotics Transformers 
+-> Robot Dexterity: ALOHA Unleashed, DemoStart
+
+
+Gemini Robotics: 
+-> MARCH 2025: Bringing AI into physical world 
+-> JUNE 2025
+-> SEPT 2025 
+
+
+
+AGI: A Gemini agent that interacts, reasons, and safely takes action in the physical world
+-> GENERAL: Can do anything it is being asked 
+-> DEXTEROUS: Can solve long-horizon manipulation tasks 
+-> INTERACTIVE AGENT
+-> TEACHABLE: It can be teached with new tasks intuitively and efficiently 
+
+
+Gemini 2.0 -> Gemini Robotics -ER (Embodied Reasoning Data: based on VLM) -> Gemini Robotics (Robot Action Data: VLA)
+
+
+Gemini Robotics Architecture: 
+-> Multimodal prompt: all camera views + proprioception + task 
+-> Cloud backbone 
+-> Local Action Decoder 
+
+Generality: It can solve a lot of task out of the box 
+
+Gemini Robotics 1.5
+
+In general, thinks helps acting. So ìt is better to enable the reasoning/thinking mode. 
+-> THINKING allows INTERPRETABILITY, IMPLICIT SUCCESS DETECTION, ERROR RECOVERY VIA REPLANNING
+
+GR 1.5 is a physical agent

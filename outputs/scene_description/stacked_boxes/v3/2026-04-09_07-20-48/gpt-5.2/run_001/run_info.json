@@ -1,0 +1,70 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v3",
+  "experiment_timestamp": "2026-04-09_07-20-48",
+  "run_name": "run_001",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 9.811068848000104,
+  "timestamp": "2026-04-09T07:20:58.337194",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "3.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "green"
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "red"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box_1",
+          "relation": "right of",
+          "object": "box_2"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v3",
+      "experiment_timestamp": "2026-04-09_07-20-48",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_07-20-48",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-09_07-20-48",
+      "model": "o3",
+      "run_name": "run_001"
+    }
+  }
+}
