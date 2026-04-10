@@ -49,10 +49,10 @@ class DualDaganaReach(Node):
 
         # Durate
         self.time_init_rot = 3.0
-        self.time_phase1_xy = 15.0
-        self.time_phase1_z = 15.0
-        self.time_phase2 = 15.0
-        self.time_phase3 = 15.0
+        self.time_phase1_xy = 10.0
+        self.time_phase1_z = 10.0
+        self.time_phase2 = 10.0
+        self.time_phase3 = 10.0
 
         # Posizioni salvate
         self.box_position = None
