@@ -1,3 +1,6 @@
+""" This script allows running a single module in the robotic VLM pipeline with flexible configuration. 
+It supports running the scene description, VLM planning, or simultaneous actions modules independently. """
+
 from __future__ import annotations
 
 import argparse
