@@ -40,20 +40,14 @@ python3 place_box.py
 # Lift the hands (to avoid collision with the following homing)
 python3 place_box_2.py
 
-# Kill cartesio (otherwise the homing cannot start)
-kill_cartesio
-
 # Run the homing
 python homing.py
-
-# Restart cartesio
-start_cartesio
 
 # Grasp the green box (first align the x and y, then the z)
 python3 grasp_box_xy.py
 ```
 
-It also calls the `screen.py` file between each action to obtain the screenshots.
+It also calls the `screen.py` at the right moments.
 
 ## Scene Perception
 
