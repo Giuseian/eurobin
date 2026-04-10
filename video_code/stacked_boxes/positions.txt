@@ -1,3 +1,5 @@
+positions.txt
+
 Immagine 1 (robot ancora non ha fatto niente)
 box_red_001 = [3.72, 0.20, 0.94]
 box_green_001 = [3.72, 0.20, 0.67]
