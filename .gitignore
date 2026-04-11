@@ -26,14 +26,14 @@ Thumbs.db
 .idea/
 
 
-#outputs 
+## outputs 
 outputs/scene_description/stacked_boxes/*
 outputs/vlm_planning/stacked_boxes/*
 outputs/simultaneous_actions/stacked_boxes/*
 outputs/validator/stacked_boxes/*
 
 
-#prompts_scenarios
+## prompts_scenarios
 prompts_scenarios/scene_description/stacked_boxes/*
 prompts_scenarios/vlm_planning/stacked_boxes/*
 prompts_scenarios/simultaneous_actions/stacked_boxes/*

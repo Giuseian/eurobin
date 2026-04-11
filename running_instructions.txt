@@ -46,6 +46,21 @@ python src/run_pipeline.py \
 
 
 
+python src/run_validation_loop.py \
+  --scenario stacked_boxes \
+  --frames-dir scenarios/stacked_boxes \
+  --scene-v v4 \
+  --plan-v v2 \
+  --sim-v v2 \
+  --validator-v v2 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model gpt-5.2 \
+  --validator-model gpt-5.2
+  --max-replans 10
+
+
+
 
 
 
