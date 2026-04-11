@@ -1,6 +1,6 @@
 EXAMPLES OF RUNNING INSTRUCTIONS 
 
-python run_modules.py \
+python src/run_modules.py \
   --module scene_description \
   --scenario stacked_boxes \
   --version v4 \
@@ -8,7 +8,8 @@ python run_modules.py \
   --repeats 1
 
 
-python run_modules.py \
+
+python src/run_modules.py \
   --module vlm_planning \
   --scenario stacked_boxes \
   --version v2 \
@@ -19,7 +20,7 @@ python run_modules.py \
   --scene-run run_001
 
 
-python run_modules.py \
+python src/run_modules.py \
   --module simultaneous_actions \
   --scenario stacked_boxes \
   --version v2 \
@@ -59,6 +60,19 @@ python src/run_validation_loop.py \
   --validator-model gpt-5.2
   --max-replans 10
 
+
+
+python3 src_code/run_real_deploy_pipeline.py \
+  --scenario stacked_boxes \
+  --scene-v v4 \
+  --plan-v v2 \
+  --sim-v v2 \
+  --validator-v v2 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model o3 \
+  --manip-dir video_code/stacked_boxes \
+  --post-homing-wait 60 
 
 
 
@@ -202,6 +216,19 @@ python src/run_modules.py \
   --validator-model gpt-5.2 \
   --max-replans 5
   
+
+
+ python3 src_code/run_real_deploy_pipeline.py \
+  --scenario stacked_boxes \
+  --scene-v v4 \
+  --plan-v v2 \
+  --sim-v v2 \
+  --validator-v v2 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model o3 \
+  --manip-dir video_code/stacked_boxes \
+  --post-homing-wait 60 
   
   
   
