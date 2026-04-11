@@ -1,18 +1,40 @@
+EXAMPLES OF RUNNING INSTRUCTIONS 
 
-### SOME MODIFICATIONS 
+python run_modules.py \
+  --module scene_description \
+  --scenario stacked_boxes \
+  --version v4 \
+  --models gpt-5.2 \
+  --repeats 1
 
-python run_pipeline.py \
-  --scenario <nome_scenario> \
-  --scene-v <version> \
-  --plan-v <version> \
-  --sim-v <version>1 \
-  --scene-model <model> \
-  --plan-model <model> \
-  --sim-model <model> \
-  --repeats n 
 
-Example: 
-python run_pipeline.py \
+python run_modules.py \
+  --module vlm_planning \
+  --scenario stacked_boxes \
+  --version v2 \
+  --models o3 \
+  --scene-version v4 \
+  --scene-timestamp <timestamp> \
+  --scene-model gpt-5.2 \
+  --scene-run run_001
+
+
+python run_modules.py \
+  --module simultaneous_actions \
+  --scenario stacked_boxes \
+  --version v2 \
+  --models gpt-5.2 \
+  --scene-version v4 \
+  --scene-timestamp <timestamp> \
+  --scene-model gpt-5.2 \
+  --scene-run run_001 \
+  --plan-version v2 \
+  --plan-timestamp <timestamp> \
+  --plan-model o3 \
+  --plan-run run_001
+
+
+python src/run_pipeline.py \
   --scenario stacked_boxes \
   --scene-v v4 \
   --plan-v v2 \
@@ -20,7 +42,15 @@ python run_pipeline.py \
   --scene-model gpt-5.2 \
   --plan-model o3 \
   --sim-model gpt-5.2 \
-  --repeats 2
+  --repeats 2 
+
+
+
+
+
+
+
+
 
 
 

@@ -1,24 +1,30 @@
-""" This script allows running a single module in the robotic VLM pipeline with flexible configuration. 
-It supports running the scene description + scene_object_list, VLM planning, or simultaneous actions modules independently. """
+""" This script allows running a single module in the robotic VLM pipeline with flexible configuration.
+It supports running the scene description + scene enrichment + scene_object_list,
+VLM planning, or simultaneous actions modules independently. """
 
 from __future__ import annotations
 
 import argparse
 import json
+import time
+from pathlib import Path
 from typing import Any
 
 from settings import load_settings
 from scenario_loader import load_scenario
 from azure_openai_client import call_azure_chat_completion
 from build_scene_object_list import build_scene_object_list_from_run
+from scene_enrichment import enrich_scene
 from utils import (
     load_base_prompt,
     load_previous_module_output,
+    load_scene_description_full_artifact,
     make_experiment_timestamp,
     make_run_name,
     render_prompt,
     save_module_outputs,
     save_rendered_prompt,
+    save_scene_description_full_artifact,
     try_parse_json,
     validate_module_name,
 )
@@ -66,6 +72,18 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--plan-timestamp", type=str, default=None)
     parser.add_argument("--plan-model", type=str, default=None, choices=SUPPORTED_MODELS)
     parser.add_argument("--plan-run", type=str, default="run_001")
+
+    parser.add_argument(
+        "--grounding-safety-threshold",
+        type=float,
+        default=0.21,
+        help="Safety threshold used by scene enrichment to compute accessibility.",
+    )
+    parser.add_argument(
+        "--grounding-debug-mapping",
+        action="store_true",
+        help="Store the internal VLM-to-Gazebo mapping inside scene_description_full.json under _debug.",
+    )
 
     return parser
 
@@ -135,13 +153,13 @@ def run_scene_description(
 def run_vlm_planning(
     scenario_data: dict[str, Any],
     base_prompt: str,
-    scene_description: Any,
+    scene_description_full: Any,
 ) -> tuple[str, str | None, str]:
     system_prompt = render_prompt(
         module_name="vlm_planning",
         base_prompt=base_prompt,
         scenario_data=scenario_data,
-        scene_description=scene_description,
+        scene_description=scene_description_full,
     )
     user_text = "Generate the manipulation plan in valid JSON only."
     return system_prompt, None, user_text
@@ -150,18 +168,25 @@ def run_vlm_planning(
 def run_simultaneous_actions(
     scenario_data: dict[str, Any],
     base_prompt: str,
-    scene_description: Any,
+    scene_description_full: Any,
     sequential_plan: Any,
 ) -> tuple[str, str | None, str]:
     system_prompt = render_prompt(
         module_name="simultaneous_actions",
         base_prompt=base_prompt,
         scenario_data=scenario_data,
-        scene_description=scene_description,
+        scene_description=scene_description_full,
         sequential_plan=sequential_plan,
     )
     user_text = "Generate the compact parallel plan in valid JSON only."
     return system_prompt, None, user_text
+
+
+def get_static_pose_file(settings, scenario_name: str) -> Path:
+    pose_file = settings.project_root / "scenarios" / scenario_name / "poses.json"
+    if not pose_file.exists():
+        raise FileNotFoundError(f"Static pose file not found: {pose_file}")
+    return pose_file
 
 
 def main() -> None:
@@ -231,16 +256,15 @@ def main() -> None:
                         raise ValueError("--scene-model is required for vlm_planning")
 
                     print(
-                        "[INPUT] scene_description -> "
+                        "[INPUT] scene_description_full -> "
                         f"version={args.scene_version}, "
                         f"timestamp={args.scene_timestamp}, "
                         f"model={args.scene_model}, "
                         f"run={args.scene_run}"
                     )
 
-                    scene_description = load_previous_module_output(
+                    scene_description_full = load_scene_description_full_artifact(
                         settings=settings,
-                        module_name="scene_description",
                         scenario_name=args.scenario,
                         version=args.scene_version,
                         experiment_timestamp=args.scene_timestamp,
@@ -249,7 +273,9 @@ def main() -> None:
                     )
 
                     dependencies = {
-                        "scene_description": {
+                        "scene_description_full": {
+                            "stored_under_module": "scene_description",
+                            "artifact_filename": "scene_description_full.json",
                             "prompt_version": args.scene_version,
                             "experiment_timestamp": args.scene_timestamp,
                             "model": args.scene_model,
@@ -260,7 +286,7 @@ def main() -> None:
                     system_prompt, image_path, user_text = run_vlm_planning(
                         scenario_data=scenario_data,
                         base_prompt=base_prompt,
-                        scene_description=scene_description,
+                        scene_description_full=scene_description_full,
                     )
 
                 elif args.module == "simultaneous_actions":
@@ -278,7 +304,7 @@ def main() -> None:
                         raise ValueError("--plan-model is required for simultaneous_actions")
 
                     print(
-                        "[INPUT] scene_description -> "
+                        "[INPUT] scene_description_full -> "
                         f"version={args.scene_version}, "
                         f"timestamp={args.scene_timestamp}, "
                         f"model={args.scene_model}, "
@@ -292,9 +318,8 @@ def main() -> None:
                         f"run={args.plan_run}"
                     )
 
-                    scene_description = load_previous_module_output(
+                    scene_description_full = load_scene_description_full_artifact(
                         settings=settings,
-                        module_name="scene_description",
                         scenario_name=args.scenario,
                         version=args.scene_version,
                         experiment_timestamp=args.scene_timestamp,
@@ -313,7 +338,9 @@ def main() -> None:
                     )
 
                     dependencies = {
-                        "scene_description": {
+                        "scene_description_full": {
+                            "stored_under_module": "scene_description",
+                            "artifact_filename": "scene_description_full.json",
                             "prompt_version": args.scene_version,
                             "experiment_timestamp": args.scene_timestamp,
                             "model": args.scene_model,
@@ -330,7 +357,7 @@ def main() -> None:
                     system_prompt, image_path, user_text = run_simultaneous_actions(
                         scenario_data=scenario_data,
                         base_prompt=base_prompt,
-                        scene_description=scene_description,
+                        scene_description_full=scene_description_full,
                         sequential_plan=sequential_plan,
                     )
 
@@ -390,6 +417,53 @@ def main() -> None:
                         run_name=run_name,
                     )
                     print(f"[OK] Scene object list saved to: {scene_object_list_path}")
+
+                    pose_file = get_static_pose_file(settings, args.scenario)
+
+                    enrich_start = time.perf_counter()
+                    scene_description_full = enrich_scene(
+                        input_data=parsed_response,
+                        safety_threshold=args.grounding_safety_threshold,
+                        pose_source="static",
+                        pose_file=str(pose_file.resolve()),
+                        include_debug_mapping=args.grounding_debug_mapping,
+                    )
+                    enrich_time = time.perf_counter() - enrich_start
+
+                    side_dependencies = {
+                        "scene_description": {
+                            "prompt_version": args.version,
+                            "experiment_timestamp": experiment_timestamp,
+                            "model": result["model_name"],
+                            "run_name": run_name,
+                        }
+                    }
+
+                    scene_description_full_path, scene_description_full_run_info_path = (
+                        save_scene_description_full_artifact(
+                            settings=settings,
+                            scenario_name=args.scenario,
+                            version=args.version,
+                            experiment_timestamp=experiment_timestamp,
+                            model_name=result["model_name"],
+                            run_name=run_name,
+                            parsed_response=scene_description_full,
+                            scenario_data=scenario_data,
+                            execution_time_seconds=enrich_time,
+                            dependencies=side_dependencies,
+                            pipeline_config=None,
+                            pose_file=str(pose_file.resolve()),
+                            safety_threshold=args.grounding_safety_threshold,
+                            include_debug_mapping=args.grounding_debug_mapping,
+                            execution_mode="single_module_side_artifact",
+                        )
+                    )
+
+                    print(f"[OK] Scene description full saved to: {scene_description_full_path}")
+                    print(f"[OK] Scene description full run info saved to: {scene_description_full_run_info_path}")
+                    print(f"[OK] Scene enrichment execution time: {enrich_time:.3f}s")
+                    print("\n[scene_description_full] Parsed JSON:")
+                    print(json.dumps(scene_description_full, indent=2, ensure_ascii=False))
 
                 successful_runs += 1
 
