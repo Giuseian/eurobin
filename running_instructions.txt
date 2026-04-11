@@ -71,8 +71,7 @@ python3 src_code/run_real_deploy_pipeline.py \
   --scene-model gpt-5.2 \
   --plan-model o3 \
   --sim-model o3 \
-  --manip-dir video_code/stacked_boxes \
-  --post-homing-wait 60 
+  --manip-dir video_code/stacked_boxes 
 
 
 
