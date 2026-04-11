@@ -14,7 +14,7 @@ from settings import load_settings
 from scenario_loader import load_scenario
 from azure_openai_client import call_azure_chat_completion
 from build_scene_object_list import build_scene_object_list_from_run
-from scene_grounding import enrich_scene
+from scene_enrichment import enrich_scene
 from utils import (
     load_base_prompt,
     make_experiment_timestamp,
@@ -687,7 +687,7 @@ def save_scene_description_full_outputs(
         "experiment_timestamp": experiment_timestamp,
         "run_name": run_name,
         "model": model_name,
-        "deployment_name": "deterministic_scene_grounding",
+        "deployment_name": "deterministic_scene_enrichment",
         "execution_time_seconds": execution_time_seconds,
         "timestamp": datetime.now().isoformat(),
         "scenario_data": scenario_data,
@@ -1438,8 +1438,6 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
 
 
 

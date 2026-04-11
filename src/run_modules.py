@@ -1,5 +1,5 @@
 """ This script allows running a single module in the robotic VLM pipeline with flexible configuration. 
-It supports running the scene description, VLM planning, or simultaneous actions modules independently. """
+It supports running the scene description + scene_object_list, VLM planning, or simultaneous actions modules independently. """
 
 from __future__ import annotations
 

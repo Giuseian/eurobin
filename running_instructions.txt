@@ -1,4 +1,33 @@
 
+### SOME MODIFICATIONS 
+
+python run_pipeline.py \
+  --scenario <nome_scenario> \
+  --scene-v <version> \
+  --plan-v <version> \
+  --sim-v <version>1 \
+  --scene-model <model> \
+  --plan-model <model> \
+  --sim-model <model> \
+  --repeats n 
+
+Example: 
+python run_pipeline.py \
+  --scenario stacked_boxes \
+  --scene-v v4 \
+  --plan-v v2 \
+  --sim-v v2 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model gpt-5.2 \
+  --repeats 2
+
+
+
+
+
+
+#### ORIGINAL RUNNING INSTRUCTIONS 
 
 python src/run_modules.py \
   --module scene_description \
