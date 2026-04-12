@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 from __future__ import annotations
@@ -1166,7 +1167,21 @@ if __name__ == "__main__":
 
 
 
-# #!/usr/bin/env python3
+
+
+
+
+
+
+
+
+
+
+
+
+#### ORIGINAL 
+
+#!/usr/bin/env python3
 
 # from __future__ import annotations
 
@@ -1219,6 +1234,10 @@ if __name__ == "__main__":
 #     "blocks": "box",
 #     "cube": "box",
 #     "cubes": "box",
+#     "container": "box",
+#     "containers": "box",
+#     "pot": "box",
+#     "pots": "box",
 #     "glass": "glass",
 #     "glasses": "glass",
 #     "cup": "glass",
@@ -1250,6 +1269,18 @@ if __name__ == "__main__":
 #     "transparent",
 # }
 
+# # Colors that should not be used as hard discriminative evidence.
+# NON_DISCRIMINATIVE_COLORS = {
+#     "multicolor",
+#     "multi_color",
+#     "mixed",
+#     "various",
+#     "varied",
+#     "unknown",
+#     "unspecified",
+#     "any",
+# }
+
 # RELATION_ON_TOP_OF = "on top of"
 # RELATION_RIGHT_OF = "right of"
 # RELATION_IN_FRONT_OF = "in front of"
@@ -1267,6 +1298,17 @@ if __name__ == "__main__":
 #     return [token for token in normalize_text(value).split("_") if token]
 
 
+# def canonicalize_token(token: str) -> str:
+#     token = normalize_text(token)
+#     token = CATEGORY_ALIASES.get(token, token)
+#     token = COLOR_ALIASES.get(token, token)
+#     return token
+
+
+# def split_canonical_tokens(value: str) -> List[str]:
+#     return [canonicalize_token(token) for token in split_tokens(value)]
+
+
 # def canonicalize_category(category: Optional[str]) -> Optional[str]:
 #     if category is None:
 #         return None
@@ -1275,10 +1317,25 @@ if __name__ == "__main__":
 
 
 # def canonicalize_color(color: Optional[str]) -> Optional[str]:
+#     """
+#     Return a canonical discriminative color or None if the input color is:
+#     - missing
+#     - generic / weakly informative
+#     - unknown to the system
+#     """
 #     if color is None:
 #         return None
+
 #     normalized = normalize_text(color)
-#     return COLOR_ALIASES.get(normalized, normalized)
+#     normalized = COLOR_ALIASES.get(normalized, normalized)
+
+#     if normalized in NON_DISCRIMINATIVE_COLORS:
+#         return None
+
+#     if normalized not in KNOWN_COLORS:
+#         return None
+
+#     return normalized
 
 
 # def normalize_numeric_suffix(value: str) -> str:
@@ -1311,20 +1368,18 @@ if __name__ == "__main__":
 
 
 # def infer_category_from_name(name: str) -> Optional[str]:
-#     tokens = set(split_tokens(name))
+#     tokens = set(split_canonical_tokens(name))
 #     for token in tokens:
-#         canonical = CATEGORY_ALIASES.get(token, token)
-#         if canonical in KNOWN_CATEGORIES:
-#             return canonical
+#         if token in KNOWN_CATEGORIES:
+#             return token
 #     return None
 
 
 # def infer_color_from_name(name: str) -> Optional[str]:
-#     tokens = set(split_tokens(name))
+#     tokens = set(split_canonical_tokens(name))
 #     for token in tokens:
-#         canonical = COLOR_ALIASES.get(token, token)
-#         if canonical in KNOWN_COLORS:
-#             return canonical
+#         if token in KNOWN_COLORS:
+#             return token
 #     return None
 
 
@@ -1335,7 +1390,7 @@ if __name__ == "__main__":
 #     - box_red_001 -> box_red
 #     - glass_2     -> glass
 #     """
-#     tokens = split_tokens(name)
+#     tokens = split_canonical_tokens(name)
 #     if tokens and tokens[-1].isdigit():
 #         tokens = tokens[:-1]
 #     return "_".join(tokens)
@@ -1347,6 +1402,14 @@ if __name__ == "__main__":
 
 # def clamp_lower(value: float, threshold: float) -> bool:
 #     return value <= threshold
+
+
+# def original_color_is_non_discriminative(color: Optional[str]) -> bool:
+#     if color is None:
+#         return False
+#     normalized = normalize_text(color)
+#     normalized = COLOR_ALIASES.get(normalized, normalized)
+#     return normalized in NON_DISCRIMINATIVE_COLORS
 
 
 # # =========================================================
@@ -1638,8 +1701,8 @@ if __name__ == "__main__":
 #             return 95
 #         return 80
 
-#     vlm_tokens = set(split_tokens(vlm_name))
-#     gz_tokens = set(split_tokens(gazebo_name))
+#     vlm_tokens = set(split_canonical_tokens(vlm_name))
+#     gz_tokens = set(split_canonical_tokens(gazebo_name))
 #     common = vlm_tokens & gz_tokens
 
 #     if len(common) >= 2:
@@ -1651,16 +1714,15 @@ if __name__ == "__main__":
 
 
 # def is_semantically_compatible(vlm_obj: Dict[str, Any], gz_obj: Dict[str, Any]) -> bool:
+#     """
+#     Hard semantic filter:
+#     - category mismatch is incompatible
+#     - color is intentionally NOT a hard constraint, because VLM color can be noisy
+#     """
 #     vlm_category = canonicalize_category(vlm_obj.get("category"))
 #     gz_category = canonicalize_category(gz_obj.get("category"))
 
 #     if vlm_category and gz_category and vlm_category != gz_category:
-#         return False
-
-#     vlm_color = canonicalize_color(vlm_obj.get("color"))
-#     gz_color = canonicalize_color(gz_obj.get("color"))
-
-#     if vlm_color and gz_color and vlm_color != gz_color:
 #         return False
 
 #     return True
@@ -1751,6 +1813,25 @@ if __name__ == "__main__":
 #     return None
 
 
+# def color_score(vlm_obj: Dict[str, Any], gz_obj: Dict[str, Any]) -> int:
+#     """
+#     Soft color evidence:
+#     - if VLM color is missing / generic / unknown -> neutral
+#     - if both are present and equal -> reward
+#     - if both are present and different -> mild penalty
+#     """
+#     vlm_color = canonicalize_color(vlm_obj.get("color"))
+#     gz_color = canonicalize_color(gz_obj.get("color"))
+
+#     if vlm_color is None or gz_color is None:
+#         return 0
+
+#     if vlm_color == gz_color:
+#         return 12
+
+#     return -4
+
+
 # def score_assignment(
 #     assignment: Dict[str, Dict[str, Any]],
 #     scene_objects_by_name: Dict[str, Dict[str, Any]],
@@ -1764,13 +1845,11 @@ if __name__ == "__main__":
 #         vlm_obj = scene_objects_by_name[vlm_name]
 #         vlm_category = canonicalize_category(vlm_obj.get("category"))
 #         gz_category = canonicalize_category(gz_obj.get("category"))
-#         vlm_color = canonicalize_color(vlm_obj.get("color"))
-#         gz_color = canonicalize_color(gz_obj.get("color"))
 
 #         if vlm_category and gz_category and vlm_category == gz_category:
 #             score += 10
-#         if vlm_color and gz_color and vlm_color == gz_color:
-#             score += 12
+
+#         score += color_score(vlm_obj, gz_obj)
 
 #     for rel in spatial_relationships:
 #         subj = rel.get("subject")
@@ -1797,26 +1876,68 @@ if __name__ == "__main__":
 #     return score
 
 
+# def build_matching_warnings(
+#     scene_objects: List[Dict[str, Any]],
+#     gazebo_catalog: List[Dict[str, Any]],
+#     vlm_to_gazebo: Dict[str, str],
+# ) -> List[str]:
+#     warnings: List[str] = []
+#     gazebo_by_name = {obj["gazebo_name"]: obj for obj in gazebo_catalog}
+
+#     for vlm_obj in scene_objects:
+#         vlm_name = vlm_obj["name"]
+#         gazebo_name = vlm_to_gazebo[vlm_name]
+#         gz_obj = gazebo_by_name[gazebo_name]
+
+#         raw_vlm_color = vlm_obj.get("color")
+#         raw_gz_color = gz_obj.get("color")
+
+#         vlm_color = canonicalize_color(raw_vlm_color)
+#         gz_color = canonicalize_color(raw_gz_color)
+
+#         if original_color_is_non_discriminative(raw_vlm_color):
+#             warnings.append(
+#                 f"VLM object '{vlm_name}' has weak/non-discriminative color '{raw_vlm_color}', "
+#                 f"so color was ignored as a hard constraint."
+#             )
+
+#         if raw_vlm_color is not None and vlm_color is None and not original_color_is_non_discriminative(raw_vlm_color):
+#             warnings.append(
+#                 f"VLM object '{vlm_name}' has unsupported or unknown color '{raw_vlm_color}', "
+#                 f"so color was ignored in semantic filtering."
+#             )
+
+#         if vlm_color is not None and gz_color is not None and vlm_color != gz_color:
+#             warnings.append(
+#                 f"Color mismatch for '{vlm_name}': VLM color='{vlm_color}', "
+#                 f"matched Gazebo entity '{gazebo_name}' with color='{gz_color}'. "
+#                 "Assignment kept because color is treated as soft evidence."
+#             )
+
+#     return warnings
+
+
 # def resolve_vlm_to_gazebo_mapping(
 #     scene_objects: List[Dict[str, Any]],
 #     spatial_relationships: List[Dict[str, str]],
 #     gazebo_catalog: List[Dict[str, Any]],
-# ) -> Dict[str, str]:
+# ) -> Tuple[Dict[str, str], List[str]]:
 #     """
 #     Resolve a one-to-one mapping:
 #         VLM object name -> Gazebo entity name
 
 #     Strategy:
-#     1) semantic candidate filtering using canonicalized category/color
+#     1) semantic candidate filtering using hard constraints only (mainly category)
 #     2) global one-to-one search across remaining candidates
 #     3) score assignments using:
 #        - strong name compatibility
-#        - semantic compatibility
+#        - category agreement
+#        - color as soft evidence
 #        - relation consistency
 #     4) fail explicitly if best assignment is still ambiguous
 #     """
 #     if not scene_objects:
-#         return {}
+#         return {}, []
 
 #     scene_objects_by_name = {obj["name"]: obj for obj in scene_objects}
 #     candidates_by_vlm_name = build_candidate_lists(scene_objects, gazebo_catalog)
@@ -1895,7 +2016,9 @@ if __name__ == "__main__":
 #         )
 
 #     best_assignment = best_assignments[0]
-#     return {vlm_name: gz_obj["gazebo_name"] for vlm_name, gz_obj in best_assignment.items()}
+#     vlm_to_gazebo = {vlm_name: gz_obj["gazebo_name"] for vlm_name, gz_obj in best_assignment.items()}
+#     warnings = build_matching_warnings(scene_objects, gazebo_catalog, vlm_to_gazebo)
+#     return vlm_to_gazebo, warnings
 
 
 # # =========================================================
@@ -2009,7 +2132,7 @@ if __name__ == "__main__":
 #     pose_file: Optional[str] = None,
 #     topic: str = GZ_POSE_TOPIC,
 #     timeout_sec: float = 3.0,
-# ) -> Tuple[List[Dict[str, Any]], Dict[str, str]]:
+# ) -> Tuple[List[Dict[str, Any]], Dict[str, str], List[str]]:
 #     """
 #     Build objects with:
 #     - VLM name (kept unchanged)
@@ -2040,7 +2163,7 @@ if __name__ == "__main__":
 #             "Check the pose file/topic output and the configured metadata/categories."
 #         )
 
-#     vlm_to_gazebo = resolve_vlm_to_gazebo_mapping(
+#     vlm_to_gazebo, matching_warnings = resolve_vlm_to_gazebo_mapping(
 #         scene_objects=scene_objects,
 #         spatial_relationships=spatial_relationships,
 #         gazebo_catalog=gazebo_catalog,
@@ -2069,7 +2192,7 @@ if __name__ == "__main__":
 #             }
 #         )
 
-#     return objects_with_geometry, vlm_to_gazebo
+#     return objects_with_geometry, vlm_to_gazebo, matching_warnings
 
 
 # def enrich_scene(
@@ -2088,7 +2211,7 @@ if __name__ == "__main__":
 #     scene_objects = scene_description.get("objects", [])
 #     spatial_relationships = scene_description.get("spatial_relationships", [])
 
-#     objects_with_geometry, vlm_to_gazebo = build_objects_with_geometry(
+#     objects_with_geometry, vlm_to_gazebo, matching_warnings = build_objects_with_geometry(
 #         scene_objects=scene_objects,
 #         spatial_relationships=spatial_relationships,
 #         pose_source=pose_source,
@@ -2125,6 +2248,7 @@ if __name__ == "__main__":
 #             "pose_source": pose_source,
 #             "pose_file": pose_file,
 #             "vlm_to_gazebo_mapping": vlm_to_gazebo,
+#             "matching_warnings": matching_warnings,
 #         }
 
 #     return output
