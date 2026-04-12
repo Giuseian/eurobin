@@ -1349,6 +1349,9 @@ def main() -> None:
     )
     ensure_dir(screens_dir)
 
+    run_python_script(manip_dir / "homing.py", label="initial_homing/homing.py")
+
+
     initial_image_path = take_screenshot(screens_dir)
     current_image = initial_image_path
     task_completed = False

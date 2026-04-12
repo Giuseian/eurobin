@@ -1065,6 +1065,9 @@ def main() -> None:
     print("======================================================")
 
     try:
+
+        run_python_script(manip_dir / "homing.py", label="initial_homing/homing.py")
+        
         initial_image = take_screenshot(screens_dir)
         summary["initial_image_path"] = str(Path(initial_image).resolve())
 
@@ -1295,6 +1298,11 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
 
 
 # from __future__ import annotations

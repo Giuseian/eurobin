@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e  # stop se qualcosa fallisce
+set -e  # stop if something fails
 
 echo "Running homing.py..."
 python3 homing.py
@@ -32,4 +32,4 @@ python3 grasp_box_xy.py
 echo "Running screen.py"
 python3 screen.py
 
-echo "Pipeline completata!"
+echo "Pipeline completed!"
