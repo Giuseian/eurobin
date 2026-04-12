@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "red_box is accessible from the left and right sides, and both end_effector_left and end_effector_right are grasping nothing.",
+    "Postcondition": "red_box is grasped with dual-arm symmetric contact using the left and right end-effectors."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "red_box is grasped by the robot and the table area right of green_box is available for placement.",
+    "Postcondition": "red_box is placed on the table right of green_box with top contact."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "green_box is accessible from the left and right sides, and both end_effector_left and end_effector_right are grasping nothing.",
+    "Postcondition": "green_box is grasped with dual-arm symmetric contact using the left and right end-effectors."
+  }
+]

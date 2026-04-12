@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Green box has visible free faces and grippers are only near boxes without evident grasp."
+}

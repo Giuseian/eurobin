@@ -1,0 +1,26 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "red_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Top"
+  },
+  {
+    "Step_id": 2,
+    "Target": "green_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right"
+  },
+  {
+    "Step_id": 3,
+    "Target": "red_box",
+    "Action concept": "Release",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Top"
+  }
+]

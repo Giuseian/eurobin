@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The red_box is held between both robot arms, with the left and right end-effectors contacting opposite sides in a symmetric dual-arm grasp."
+}

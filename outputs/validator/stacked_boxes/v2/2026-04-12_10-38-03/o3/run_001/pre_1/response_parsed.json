@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red_box is positioned directly adjacent to the green_box on its right side, obstructing a clear symmetric grasp approach from that side."
+}

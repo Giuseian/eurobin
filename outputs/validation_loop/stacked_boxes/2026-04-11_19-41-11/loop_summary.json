@@ -1,0 +1,164 @@
+{
+  "module": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-04-11_19-41-11",
+  "timestamp": "2026-04-11T19:41:11.370031",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+  "frames_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/poses_by_image.json",
+  "config": {
+    "scene_description": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v5",
+      "model": "o3",
+      "mode": "deterministic_scene_enrichment_per_image"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v2",
+      "model": "o3"
+    },
+    "max_replans": 10,
+    "grounding_safety_threshold": 0.21,
+    "grounding_debug_mapping": false
+  },
+  "replans_done": 4,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_idx": 1,
+      "pipeline_timestamp": "2026-04-11_19-41-11",
+      "run_name": "run_001",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "stages": [
+        {
+          "stage_id": 1,
+          "precondition": "The red_box top side is accessible, the green_box left and right sides are accessible, and end_effector_left and end_effector_right are grasping nothing.",
+          "postcondition": "end_effector_left is grasping red_box and end_effector_right is grasping green_box.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Red box top is unobstructed, green box’s left and right faces are not blocked by other objects, and both end effectors are open and not holding anything."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "Both end effectors are in contact with the red box, while the green box is not being grasped."
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/2.png",
+          "next_image_name": "2.png"
+        }
+      ],
+      "outcome": "replan_on_post_stage_1"
+    },
+    {
+      "cycle_idx": 2,
+      "pipeline_timestamp": "2026-04-11_19-41-49",
+      "run_name": "run_001",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/2.png",
+      "start_image_name": "2.png",
+      "stages": [
+        {
+          "stage_id": 1,
+          "precondition": "end_effector_left and end_effector_right are grasping red_box.",
+          "postcondition": "red_box is released by end_effector_left and end_effector_right.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both visible robot end-effectors are in contact with the red box, indicating they are grasping it."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "A robot gripper is still in contact with the red box, so it is not released by both end effectors."
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3.png",
+          "next_image_name": "3.png"
+        }
+      ],
+      "outcome": "replan_on_post_stage_1"
+    },
+    {
+      "cycle_idx": 3,
+      "pipeline_timestamp": "2026-04-11_19-42-19",
+      "run_name": "run_001",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3.png",
+      "start_image_name": "3.png",
+      "stages": [
+        {
+          "stage_id": 1,
+          "precondition": "The table surface to the left of the green_box is available for placement.",
+          "postcondition": "The placement position on the table is set to the left of the green_box.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png",
+          "post_image_name": "6.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No objects are present on the table surface to the left of the green_box; that area is clear."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "Only the green and red boxes are visible; no placement position object is identifiable to the left of the green_box."
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png",
+          "next_image_name": "6.png"
+        }
+      ],
+      "outcome": "replan_on_post_stage_1"
+    },
+    {
+      "cycle_idx": 4,
+      "pipeline_timestamp": "2026-04-11_19-43-01",
+      "run_name": "run_001",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png",
+      "start_image_name": "6.png",
+      "stages": [
+        {
+          "stage_id": 1,
+          "precondition": "The green_box is accessible for a dual-arm symmetric grasp from the left and right sides.",
+          "postcondition": "The green_box is grasped by end_effector_left and end_effector_right.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png",
+          "pre_image_name": "6.png",
+          "post_image_path": null,
+          "post_image_name": null,
+          "pre_validation": {
+            "result": "non_matching",
+            "reason": "The red_box is positioned immediately next to the green_box on its right side, blocking clearance for the robot’s right arm, so the green_box is not accessible from both sides."
+          },
+          "post_validation": null,
+          "next_image_path": null,
+          "next_image_name": null
+        }
+      ],
+      "outcome": "replan_on_pre_stage_1"
+    },
+    {
+      "cycle_idx": 5,
+      "pipeline_timestamp": "2026-04-11_19-43-29",
+      "run_name": "run_001",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png",
+      "start_image_name": "6.png",
+      "stages": [],
+      "outcome": "cycle_error: No more images available in frames-dir for simulated deploy progression."
+    }
+  ],
+  "error": "No more images available in frames-dir for simulated deploy progression."
+}

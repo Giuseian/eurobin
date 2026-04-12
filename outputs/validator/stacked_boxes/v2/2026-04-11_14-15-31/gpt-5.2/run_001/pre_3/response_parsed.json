@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green_box is unobstructed and within reach of both visible end effectors, and neither end effector is holding any object."
+}

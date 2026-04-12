@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The robot’s grippers are holding the red_box, and the tabletop area to the right of the green_box appears clear for placement."
+}

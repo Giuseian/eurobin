@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box (box_1) is between the arms, but there is no clear two-handed grasp: the left end-effector is not visibly holding box_1 and the right end-effector appears behind it without a visible grasp."
+}

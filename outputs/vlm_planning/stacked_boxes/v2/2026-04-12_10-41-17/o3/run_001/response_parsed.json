@@ -1,0 +1,18 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "green_box",
+    "Action concept": "Release",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "With claw",
+    "End-effector contact side": "Left & Right"
+  },
+  {
+    "Step_id": 2,
+    "Target": "green_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "End-effector contact side": "Left & Right"
+  }
+]

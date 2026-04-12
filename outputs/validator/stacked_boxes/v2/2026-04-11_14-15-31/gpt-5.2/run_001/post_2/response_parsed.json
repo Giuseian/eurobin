@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both boxes are on the table, and the red_box is positioned to the right of the green_box."
+}

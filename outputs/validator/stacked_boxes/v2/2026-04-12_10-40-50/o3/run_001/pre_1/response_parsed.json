@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box is positioned directly against the right side of the green box, blocking access for the right end-effector, so the green box cannot be grasped symmetrically by both arms."
+}

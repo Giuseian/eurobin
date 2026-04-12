@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_red is directly adjacent to box_green on its right side, so its right side is not accessible; the end effectors appear empty but the accessibility condition fails."
+}

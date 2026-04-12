@@ -1,0 +1,82 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "experiment_timestamp": "2026-04-11_14-59-01",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 13.196884544999193,
+  "timestamp": "2026-04-11T14:59:24.720767",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right"
+    },
+    {
+      "Step_id": 2,
+      "Target": "Table",
+      "Action concept": "Place right of box_2",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Top"
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right"
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v4",
+      "experiment_timestamp": "2026-04-11_14-59-01",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v4",
+      "experiment_timestamp": "2026-04-11_14-59-01",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v4",
+      "experiment_timestamp": "2026-04-11_14-59-01",
+      "model": "gpt-5.2",
+      "run_name": "run_001",
+      "mode": "deterministic_scene_enrichment_per_image"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-11_14-59-01",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-11_14-59-01",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  }
+}

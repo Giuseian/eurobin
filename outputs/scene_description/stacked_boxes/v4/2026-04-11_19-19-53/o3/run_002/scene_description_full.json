@@ -1,0 +1,42 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by green_box"
+        }
+      },
+      {
+        "name": "green_box",
+        "category": "box",
+        "color": "green",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "on top of",
+        "object": "green_box"
+      }
+    ]
+  }
+}

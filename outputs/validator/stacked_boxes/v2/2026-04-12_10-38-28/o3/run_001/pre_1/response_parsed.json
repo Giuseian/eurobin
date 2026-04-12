@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box is positioned close to the right side of the green box, blocking a clear symmetric approach from both left and right sides."
+}

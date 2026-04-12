@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_red is accessible on its left and right sides, and both end_effector_left and end_effector_right are grasping nothing.",
+    "Postcondition": "box_red is grasped with end_effector_left and end_effector_right."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_red is grasped with both end effectors, and the table area to the right of box_green is available for placement.",
+    "Postcondition": "box_red is placed on the table to the right of box_green."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_green is accessible on its left and right sides, and both end_effector_left and end_effector_right are grasping nothing.",
+    "Postcondition": "box_green is grasped with end_effector_left and end_effector_right."
+  }
+]

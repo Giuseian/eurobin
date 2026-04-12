@@ -1,0 +1,33 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "red_container",
+        "category": "container",
+        "color": "red"
+      },
+      {
+        "name": "green_container",
+        "category": "container",
+        "color": "green"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_container",
+        "relation": "on top of",
+        "object": "green_container"
+      }
+    ]
+  }
+}

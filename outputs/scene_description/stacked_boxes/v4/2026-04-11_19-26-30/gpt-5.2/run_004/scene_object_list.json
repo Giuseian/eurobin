@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "name": "plant_pot_1",
+      "category": "plant pot",
+      "color": "brown"
+    },
+    {
+      "name": "box_1",
+      "category": "box",
+      "color": "green"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "End-effectors are empty and not holding any object; red_box has no objects adjacent on its left or right faces, so those sides are accessible."
+}

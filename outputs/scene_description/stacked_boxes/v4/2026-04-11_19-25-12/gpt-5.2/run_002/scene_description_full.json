@@ -1,0 +1,51 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "red_container",
+        "category": "container",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by green_container"
+        }
+      },
+      {
+        "name": "green_container",
+        "category": "container",
+        "color": "green",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_container",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_container",
+        "relation": "on top of",
+        "object": "green_container"
+      }
+    ]
+  }
+}

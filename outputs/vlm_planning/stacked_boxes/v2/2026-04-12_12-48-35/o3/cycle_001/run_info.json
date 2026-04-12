@@ -1,0 +1,89 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "loop_timestamp": "2026-04-12_12-48-35",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-12_12-48-35",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 21.984021610005584,
+  "timestamp": "2026-04-12T12:49:04.923063",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "red_box",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right"
+    },
+    {
+      "Step_id": 2,
+      "Target": "Table",
+      "Action concept": "Place right of green_box",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Top"
+    },
+    {
+      "Step_id": 3,
+      "Target": "green_box",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "End-effector contact side": "Left & Right"
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-12_12-48-35",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-04-12_12-48-35",
+    "scene_description": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-12_12-48-35",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-12_12-48-35",
+      "cycle_name": "cycle_001",
+      "model": "o3",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "loop_timestamp": "2026-04-12_12-48-35",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v3",
+      "loop_timestamp": "2026-04-12_12-48-35",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_1 (red) is currently held between the left and right end-effectors, so the end-effectors are not grasping nothing."
+}

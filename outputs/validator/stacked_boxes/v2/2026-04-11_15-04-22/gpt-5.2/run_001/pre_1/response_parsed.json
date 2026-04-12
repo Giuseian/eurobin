@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_1 (red) is flanked closely by the robot arms on both sides, so it is not accessible from the left and right; the end-effectors also appear empty."
+}

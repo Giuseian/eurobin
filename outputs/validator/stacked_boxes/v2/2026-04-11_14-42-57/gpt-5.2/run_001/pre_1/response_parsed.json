@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_1 (red) has its right side blocked by box_2 (green), so it is not accessible from both left and right sides; both end-effectors appear empty."
+}

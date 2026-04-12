@@ -1,0 +1,41 @@
+{
+  "module": "validator",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v2",
+  "experiment_timestamp": "2026-04-11_16-20-33",
+  "run_name": "run_001",
+  "condition_name": "pre_1",
+  "condition_text": "box_red is accessible for a dual-arm grasp, and end_effector_left and end_effector_right are grasping nothing.",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 5.720471331998851,
+  "timestamp": "2026-04-11T16:21:04.382414",
+  "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v4",
+      "experiment_timestamp": "2026-04-11_16-20-33",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-11_16-20-33",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-11_16-20-33",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  },
+  "response_parsed": {
+    "result": "non_matching",
+    "reason": "The left end-effector is in contact with the red box while the right end-effector is not grasping it, so box_red is not accessible for a dual-arm grasp and both end-effectors are not clearly grasping nothing."
+  }
+}

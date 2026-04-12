@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The green_box’s right side is obstructed by the adjacent red_box, so both end effectors cannot access it symmetrically from left and right."
+}

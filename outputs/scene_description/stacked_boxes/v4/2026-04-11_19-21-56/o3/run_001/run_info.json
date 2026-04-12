@@ -1,0 +1,50 @@
+{
+  "module": "scene_description",
+  "execution_mode": "single_module",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v4",
+  "experiment_timestamp": "2026-04-11_19-21-56",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 18.169750456996553,
+  "timestamp": "2026-04-11T19:22:14.364381",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "2_.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/2_.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "red_box",
+          "category": "box",
+          "color": "red"
+        },
+        {
+          "name": "green_box",
+          "category": "box",
+          "color": "green"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "red_box",
+          "relation": "on top of",
+          "object": "green_box"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "name": "red_block",
+      "category": "block",
+      "color": "red"
+    },
+    {
+      "name": "green_block",
+      "category": "block",
+      "color": "green"
+    }
+  ]
+}

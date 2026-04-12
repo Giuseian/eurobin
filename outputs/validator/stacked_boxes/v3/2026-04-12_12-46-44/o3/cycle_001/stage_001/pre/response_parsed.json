@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "End-effectors are visible and not holding any object; red_box’s left and right faces have no other object blocking them."
+}

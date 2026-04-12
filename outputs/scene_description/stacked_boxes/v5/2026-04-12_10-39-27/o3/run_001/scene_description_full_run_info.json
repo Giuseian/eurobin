@@ -1,0 +1,107 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v5",
+  "experiment_timestamp": "2026-04-12_10-39-27",
+  "run_name": "run_001",
+  "model": "o3",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.003078064000874292,
+  "timestamp": "2026-04-12T10:39:35.579431",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "6.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/6.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpfw26bjix.json",
+    "safety_threshold": 0.21,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "green_box",
+          "category": "box",
+          "color": "green",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "red_box",
+          "category": "box",
+          "color": "red",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "green_box"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "green_box"
+        }
+      ],
+      "spatial_relationships": []
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v5",
+      "experiment_timestamp": "2026-04-12_10-39-27",
+      "model": "o3",
+      "run_name": "run_001"
+    }
+  },
+  "pipeline_config": {
+    "scene_description": {
+      "prompt_version": "v5",
+      "experiment_timestamp": "2026-04-12_10-39-27",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v5",
+      "experiment_timestamp": "2026-04-12_10-39-27",
+      "model": "o3",
+      "run_name": "run_001",
+      "mode": "deterministic_scene_enrichment_per_image"
+    },
+    "vlm_planning": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-12_10-39-27",
+      "model": "o3",
+      "run_name": "run_001"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v2",
+      "experiment_timestamp": "2026-04-12_10-39-27",
+      "model": "gpt-5.2",
+      "run_name": "run_001"
+    }
+  }
+}

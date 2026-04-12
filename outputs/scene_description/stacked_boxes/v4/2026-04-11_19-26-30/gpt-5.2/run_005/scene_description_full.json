@@ -1,0 +1,51 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "flower_pot",
+        "category": "pot",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "blocked by box",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box",
+        "category": "box",
+        "color": "green",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "flower_pot"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "flower_pot"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box",
+        "relation": "in front of",
+        "object": "flower_pot"
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "single_module_side_artifact",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v4",
+  "experiment_timestamp": "2026-04-11_19-23-47",
+  "run_name": "run_003",
+  "model": "o3",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.0004264899980626069,
+  "timestamp": "2026-04-11T19:24:16.994752",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. Do not push the red box.",
+    "image": "3_.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/3_.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/poses.json",
+    "safety_threshold": 0.21,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "green_box",
+          "category": "box",
+          "color": "green",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "blocked by red_box",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "red_box",
+          "category": "box",
+          "color": "red",
+          "location": "zone B",
+          "sides": {
+            "left": "blocked by green_box",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "red_box",
+          "relation": "right of",
+          "object": "green_box"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v4",
+      "experiment_timestamp": "2026-04-11_19-23-47",
+      "model": "o3",
+      "run_name": "run_003"
+    }
+  }
+}

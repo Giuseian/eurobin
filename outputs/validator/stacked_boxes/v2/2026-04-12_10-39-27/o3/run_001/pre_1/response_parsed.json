@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red_box is positioned immediately to the right of the green_box, blocking access for the robot’s right arm, so the green_box is not free for a symmetric left-and-right grasp."
+}

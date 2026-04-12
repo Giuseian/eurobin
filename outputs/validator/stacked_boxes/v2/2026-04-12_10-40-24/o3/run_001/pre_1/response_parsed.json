@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red_box is positioned immediately to the right of the green_box, blocking clear access on that side, so the green_box is not freely accessible for dual-arm symmetric grasping."
+}

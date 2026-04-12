@@ -50,15 +50,15 @@ python src/run_pipeline.py \
 python src/run_validation_loop.py \
   --scenario stacked_boxes \
   --frames-dir scenarios/stacked_boxes \
-  --scene-v v4 \
+  --scene-v v5 \
   --plan-v v2 \
-  --sim-v v2 \
-  --validator-v v2 \
-  --scene-model gpt-5.2 \
+  --sim-v v3 \
+  --validator-v v3 \
+  --scene-model o3 \
   --plan-model o3 \
   --sim-model gpt-5.2 \
-  --validator-model gpt-5.2
-  --max-replans 10
+  --validator-model o3
+  --max-replans 2
 
 
 

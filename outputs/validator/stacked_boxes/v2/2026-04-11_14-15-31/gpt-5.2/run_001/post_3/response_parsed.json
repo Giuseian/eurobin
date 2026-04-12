@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both left and right end-effectors are in contact with opposite sides of the green_box in a symmetric dual-arm grasp."
+}

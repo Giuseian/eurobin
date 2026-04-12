@@ -1,0 +1,56 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "plant_pot",
+        "category": "pot",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "blocked by box",
+          "right": "accessible",
+          "front": "blocked by box",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box",
+        "category": "box",
+        "color": "green",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by plant_pot",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box",
+        "relation": "in front of",
+        "object": "plant_pot"
+      },
+      {
+        "subject": "plant_pot",
+        "relation": "right of",
+        "object": "box"
+      }
+    ]
+  }
+}

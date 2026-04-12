@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "A robot gripper is still in contact with the red box, so it is not released by both end effectors."
+}
