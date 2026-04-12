@@ -31,6 +31,7 @@ OBJECT FACE AVAILABILITY RULE
 - If a face is not visible and no blocking object is visible, treat it as free.
 - Lack of visibility must not be interpreted as blockage.
 - Do not use blockage of one face to infer blockage of another face.
+- Do not introduce reasoning about bottom, top, front, or back unless those faces are explicitly part of the condition
 
 GRASP SEMANTICS RULE
 - An object can be considered grasped either:

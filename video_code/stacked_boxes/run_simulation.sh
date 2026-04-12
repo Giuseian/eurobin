@@ -2,6 +2,9 @@
 
 set -e  # stop se qualcosa fallisce
 
+echo "Running homing.py..."
+python3 homing.py
+
 echo "Running screen.py"
 python3 screen.py
 

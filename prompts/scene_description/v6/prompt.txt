@@ -32,6 +32,9 @@ For each end-effector, extract:
   - "<object_name>" if the end-effector is grasping, holding, or making stable contact with that object
 
 Rules:
+- An object can be considered grasped either:
+  - by dual-arm symmetric contact on its left and right sides, or
+  - by a single end-effector, especially for small objects, through claw grasp, pinch grasp, or other stable contact.
 - A box cannot be grasped by a single end-effector, but it must be grasped by both end-effectors with a bimanual lateral grasp
 - A cup can be grasped by a single end-effector
 - BOTH end-effectors are allowed to grasp the SAME object simultaneously. In this case, the same object name must appear in both end-effectors' "grasping" field.

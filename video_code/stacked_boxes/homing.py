@@ -18,14 +18,14 @@ class DualDaganaLift(Node):
 
         # ===== POSIZIONI ASSOLUTE =====
         # Dagana 1
-        self.declare_parameter('d1_x', 0.35936)
+        self.declare_parameter('d1_x', 0.06)
         self.declare_parameter('d1_y', 0.23365)
-        self.declare_parameter('d1_z', 1.1709)
+        self.declare_parameter('d1_z', 1.0)
 
         # Dagana 2
-        self.declare_parameter('d2_x', 0.35936)
+        self.declare_parameter('d2_x', 0.06)
         self.declare_parameter('d2_y', -0.23365)
-        self.declare_parameter('d2_z', 1.1709)
+        self.declare_parameter('d2_z', 1.0)
 
         # ===== ORIENTAZIONE DAGANA 1 =====
         self.declare_parameter('d1_qx', 0.38483)
@@ -39,7 +39,7 @@ class DualDaganaLift(Node):
         self.declare_parameter('d2_qz', 0.59322)
         self.declare_parameter('d2_qw', 0.42583)
 
-        self.declare_parameter('motion_time', 10.0)
+        self.declare_parameter('motion_time', 15.0)
 
         # ===== LETTURA PARAMETRI POSIZIONE =====
         self.d1_x = self.get_parameter('d1_x').value
