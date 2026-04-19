@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "box_2 (green) is held between the robot's two end-effectors with left/right symmetric contact, and box_1 (red) appears intact."
-}

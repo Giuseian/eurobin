@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The red box (box_1) is resting on top of the green box (box_2), so box_2's top face is blocked, and the robot end effectors appear to be in contact with/grasping the red box rather than grasping nothing."
-}

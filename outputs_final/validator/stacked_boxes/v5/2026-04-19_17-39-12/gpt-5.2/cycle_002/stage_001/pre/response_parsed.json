@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The image shows both end effectors grasping the red box (box_1), but there is no information in the scene object list or image indicating that box_1 is fragile."
-}

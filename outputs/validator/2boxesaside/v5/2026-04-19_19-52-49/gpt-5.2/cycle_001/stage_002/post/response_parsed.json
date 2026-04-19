@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "cup_1 (black cup) is visible resting on the table surface, and no right end-effector is visible so it is assumed to be grasping nothing."
-}

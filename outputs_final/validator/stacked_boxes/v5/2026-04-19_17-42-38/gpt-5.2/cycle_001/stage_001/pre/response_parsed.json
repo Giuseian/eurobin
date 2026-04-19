@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box_1 is stacked on top of the green box_2, and no robot end-effectors are visible so they are assumed to be grasping nothing."
-}

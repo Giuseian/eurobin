@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The red box_1 is not shown being grasped with dual-arm symmetric contact; it appears resting on the green box_2, and the end-effectors are not visibly holding it."
-}

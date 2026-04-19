@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both end-effectors are visible and each is holding a black cylinder (left holds cylinder_1, right holds cylinder_2). The table surface has free space around the green box, and no glasses are visible to be disturbed."
-}

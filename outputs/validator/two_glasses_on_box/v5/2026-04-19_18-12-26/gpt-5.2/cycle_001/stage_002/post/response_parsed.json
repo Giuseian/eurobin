@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both black cylinders are on the table, the robot end-effectors are not grasping anything, the green box top has nothing on it, and no glasses are visible to be disturbed."
-}

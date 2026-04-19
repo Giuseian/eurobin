@@ -4,7 +4,7 @@ CSVS EXPORT
 
 # CUSTOM FILE 
 python src/run_validation_image.py \
---scenario 2boxesaside \
+--scenario stacked_boxes \
 --scene-v v6 \
 --plan-v v5 \
 --sim-v v5 \

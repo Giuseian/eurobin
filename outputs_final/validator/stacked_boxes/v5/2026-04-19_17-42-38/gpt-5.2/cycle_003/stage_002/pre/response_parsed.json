@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both boxes (green box_2 and red box_1) are on the table with no robot end-effectors visible (assumed free); box_2 is not blocked by any object, and the red box appears intact and not being manipulated."
-}

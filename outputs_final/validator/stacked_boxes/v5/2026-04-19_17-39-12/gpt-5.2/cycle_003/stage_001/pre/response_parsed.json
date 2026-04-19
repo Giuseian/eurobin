@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both visible end effectors are in contact on opposite sides of the red box (box_1), consistent with a two-handed grasp; nothing in the scene contradicts delicate handling."
-}

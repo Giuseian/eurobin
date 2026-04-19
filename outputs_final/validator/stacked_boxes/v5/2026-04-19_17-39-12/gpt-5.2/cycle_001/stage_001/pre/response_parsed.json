@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The image shows the red box (box_1) stacked on top of the green box (box_2). No robot end-effectors are visible, so they are assumed to be grasping nothing, and there is no visible contact with the red box."
-}

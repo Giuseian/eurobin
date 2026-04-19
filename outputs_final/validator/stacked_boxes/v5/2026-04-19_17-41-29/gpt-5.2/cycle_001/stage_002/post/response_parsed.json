@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The image shows the red box (box_1) resting on the table, both robot end-effectors are not visible (assumed grasping nothing), the green box (box_2) has nothing on its top surface (top accessible), and the red box appears intact."
-}

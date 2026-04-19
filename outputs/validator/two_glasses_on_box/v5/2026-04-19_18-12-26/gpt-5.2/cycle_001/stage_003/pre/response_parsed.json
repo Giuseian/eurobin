@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both end effectors appear empty; the green box has no objects on top and no visible side contacts; no glasses are present in the scene object list or visible in the image."
-}

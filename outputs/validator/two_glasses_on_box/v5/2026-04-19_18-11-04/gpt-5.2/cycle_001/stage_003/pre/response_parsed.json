@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both end effectors appear empty; nothing is on top of the green_box so its top is unblocked; no glasses are present in the scene to be disturbed."
-}

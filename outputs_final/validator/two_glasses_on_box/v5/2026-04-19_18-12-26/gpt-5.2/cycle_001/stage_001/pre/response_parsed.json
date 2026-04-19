@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both end effectors appear empty; cylinder_1 and cylinder_2 are on top of the green box with no objects blocking access; no glasses are visible or listed, so there is no evidence they were disturbed."
-}
