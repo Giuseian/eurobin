@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green box (box_2) is held from opposite sides by both robot end-effectors, consistent with a dual-arm symmetric grasp; the red box (box_1) remains untouched on the table."
+}

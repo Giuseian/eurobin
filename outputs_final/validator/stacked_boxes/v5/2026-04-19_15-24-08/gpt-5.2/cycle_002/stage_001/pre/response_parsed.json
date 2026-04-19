@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows the red box (box_1) stacked on top of the green box (box_2). No end effectors are visible, so they are assumed free; there is no clear evidence contradicting delicate handling of the red box."
+}

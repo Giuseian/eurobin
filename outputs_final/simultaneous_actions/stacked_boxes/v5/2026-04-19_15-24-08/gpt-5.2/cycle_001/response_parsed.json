@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors free; box_1 accessible on sides; red box handled delicately.",
+    "Postcondition": "box_1 grasped with dual-arm symmetric grasp; red box still intact."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 grasped; placement surface (table top) available; red box handled delicately.",
+    "Postcondition": "box_1 placed on table; box_2 top accessible; red box still intact."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "Both end effectors free; box_2 accessible on sides; box_2 no longer blocked by box_1; red box still intact.",
+    "Postcondition": "box_2 grasped with dual-arm symmetric grasp; red box still intact."
+  }
+]

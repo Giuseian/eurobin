@@ -1,0 +1,106 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-04-19_15-24-08",
+  "timestamp": "2026-04-19T15:26:19.638428",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_15-24-08",
+      "input_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-04-19_15-24-08/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-04-19_15-24-08/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Both end effectors free; box_1 accessible on sides; red box handled delicately.",
+          "Postcondition": "box_1 grasped with dual-arm symmetric grasp; red box still intact."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "box_1 grasped; placement surface (table top) available; red box handled delicately.",
+          "Postcondition": "box_1 placed on table; box_2 top accessible; red box still intact."
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "Both end effectors free; box_2 accessible on sides; box_2 no longer blocked by box_1; red box still intact.",
+          "Postcondition": "box_2 grasped with dual-arm symmetric grasp; red box still intact."
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-19_15-24-40",
+      "input_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_002",
+        "scene_description_full_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-04-19_15-24-08/gpt-5.2/cycle_002/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_002",
+        "vlm_planning_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-04-19_15-24-08/o3/cycle_002/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_002/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_002/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_15-24-08/gpt-5.2/cycle_002/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Both end effectors free; box_1 on top of box_2; red box handled delicately.",
+          "Postcondition": "box_1 grasped with dual-arm symmetric grasp; red box still handled delicately."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "box_1 grasped; red box handled delicately.",
+          "Postcondition": "box_1 placed on table; both end effectors free; red box still handled delicately."
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "box_1 no longer on top of box_2; both end effectors free; red box handled delicately.",
+          "Postcondition": "box_2 grasped with dual-arm symmetric grasp; red box still handled delicately."
+        }
+      ]
+    }
+  ]
+}
