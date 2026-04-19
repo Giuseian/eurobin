@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_1 (red) is stacked directly on top of box_2 (green), so its bottom face is obstructed and it is not clearly accessible for a dual-arm grasp; both end-effectors appear open and not grasping anything."
-}

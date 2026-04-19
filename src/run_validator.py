@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+
 from settings import load_settings
 from azure_openai_client import call_azure_chat_completion
 from utils import (
@@ -227,6 +228,7 @@ def render_validator_prompt(
     return prompt.strip()
 
 
+
 def validate_validator_response(parsed_response: Any) -> None:
     if not isinstance(parsed_response, dict):
         raise ValueError("Validator output must be a JSON object.")
@@ -444,6 +446,7 @@ def main() -> None:
                 condition=args.condition,
                 scene_object_list=scene_object_list,
             )
+
 
             prompt_path = save_validator_prompt(
                 settings=settings,

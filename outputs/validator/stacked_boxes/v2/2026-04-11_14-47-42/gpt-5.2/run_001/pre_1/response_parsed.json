@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_2 (green) is blocked by box_1 (red) sitting on top of it, so it is not accessible; the end-effectors appear not to be grasping anything."
-}

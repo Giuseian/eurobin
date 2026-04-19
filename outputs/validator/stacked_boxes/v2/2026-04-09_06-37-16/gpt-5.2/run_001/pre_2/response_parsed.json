@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The image shows the robot gripping the red box (box_1) from both sides with both end effectors, and the tabletop area to the right of the green box (box_2) is empty."
-}

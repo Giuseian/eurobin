@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box (box_1) is on the table within reach of both the left and right end-effectors, and neither end-effector is shown holding any object."
-}

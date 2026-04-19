@@ -27,7 +27,12 @@ END-EFFECTOR VISIBILITY RULE
 - Non-visible end-effectors must not be considered as grasping any object.
 
 OBJECT FACE AVAILABILITY RULE
-- A face is blocked only if another object is clearly visible next to it.
+- A face is considered blocked ONLY if another object is physically occupying or directly touching that specific face.
+- For the top face:
+  - It is blocked ONLY if another object is resting on that top surface.
+  - An object merely passing above it, being held above it, touching it from the side, or appearing close in the image does NOT block the top face.
+- For side faces (left, right, front, back):
+  - A face is blocked ONLY if another object is directly adjacent on that side and physically occupying that access direction.
 - If a face is not visible and no blocking object is visible, treat it as free.
 - Lack of visibility must not be interpreted as blockage.
 - Do not use blockage of one face to infer blockage of another face.
@@ -41,11 +46,24 @@ GRASP SEMANTICS RULE
 - If any valid grasp subtype is visible, the generic condition "<object> is grasped by the robot" must be considered matching.
 
 DECISION POLICY
-- Return "matching" if the condition is verified in the image.
-- Return "non_matching" if the condition is not verified in the image.
+- Return "matching" if the condition is verified OR if there is any uncertainty.
+- Return "non_matching" ONLY if there is clear, explicit, and unambiguous evidence that the condition is violated.
+
+STRICT NON-MATCHING CRITERIA
+- "non_matching" must be returned only when:
+  - The required object is clearly absent from the scene, OR
+  - The condition explicitly requires a relation/state that is visibly contradicted in the image or object list, OR
+  - There is direct visual evidence that the opposite of the condition is true.
+
+- Do NOT return "non_matching" if:
+  - The object is partially visible
+  - The relevant part of the scene is occluded or unclear
+  - The object list is incomplete or ambiguous
+  - Multiple interpretations are possible
 
 TIE-BREAK RULE
-- If uncertain, return "matching" unless there is clear visual evidence that the condition is violated.
+- If there is ANY doubt, ambiguity, occlusion, or incomplete information, prefer return "matching".
+- Default to "matching" unless the violation is obvious and undeniable.
 
 OUTPUT FORMAT
 Output must be valid JSON and follow exactly this schema:

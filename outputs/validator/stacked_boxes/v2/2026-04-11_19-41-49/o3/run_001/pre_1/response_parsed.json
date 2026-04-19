@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both visible robot end-effectors are in contact with the red box, indicating they are grasping it."
-}

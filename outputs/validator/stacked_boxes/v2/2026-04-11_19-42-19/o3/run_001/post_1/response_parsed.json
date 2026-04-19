@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "Only the green and red boxes are visible; no placement position object is identifiable to the left of the green_box."
-}

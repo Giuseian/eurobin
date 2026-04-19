@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The left end effector is in contact with the red box (appears to be grasping/holding it), so both end effectors are not grasping nothing; the red box is also partially obstructed by the green box beneath it."
-}

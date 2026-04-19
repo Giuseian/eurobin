@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "Right end_effector is blocked from the green_box by the red_box, so green_box is not accessible to both end_effectors."
-}

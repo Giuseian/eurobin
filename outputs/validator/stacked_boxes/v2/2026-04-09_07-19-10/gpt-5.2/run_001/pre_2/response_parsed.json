@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_1 (red) appears supported on top of box_2 (green) rather than held in the robot grippers, and the table area left of box_2 is not free because the robot arm occupies that space."
-}

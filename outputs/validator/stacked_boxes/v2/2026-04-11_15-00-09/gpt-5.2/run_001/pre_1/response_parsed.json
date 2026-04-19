@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The red_box is tightly adjacent to the green_box on its right side, so it is not accessible from both left and right; both end effectors appear to be grasping nothing."
-}

@@ -1,3 +1,94 @@
+CSVS EXPORT 
+
+python export_real_deploy_csvs.py \
+  --full-summary /path/to/outputs/real_deploy_validation_loop/<scenario>/<loop_timestamp>/full_pipeline_summary.json
+
+o specificando la cartella di output
+
+python export_real_deploy_csvs.py \
+  --full-summary /path/to/full_pipeline_summary.json \
+  --output-dir /path/to/csv_exports
+
+
+python plot_real_deploy_times.py \
+  --csv-dir /path/to/csv_exports
+
+
+python plot_real_deploy_times.py \
+  --csv-dir /path/to/csv_exports \
+  --output-dir /path/to/plots
+
+
+
+
+
+NEW RUNNING INSTRUCTIONS BASED ON TEMPERATURE 
+
+source /opt/ros/jazzy/setup.bash
+conda activate vlm_planner
+
+python src_code/run_real_deploy_validation_loop.py \
+  --scenario stacked_boxes \
+  --scene-v v6 \
+  --plan-v v4 \
+  --sim-v v3 \
+  --validator-v v4 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model gpt-5.2 \
+  --validator-model gpt-5.2 \
+  --manip-dir video_code/stacked_boxes \
+  --temperature 0.0 \
+  --top-p 1.0
+
+
+source /opt/ros/jazzy/setup.bash
+conda activate vlm_planner
+
+python src_code/run_real_deploy_bypassed_validator.py \
+  --scenario stacked_boxes \
+  --scene-v v6 \
+  --plan-v v4 \
+  --sim-v v3 \
+  --validator-v v4 \
+  --scene-model gpt-5.2 \
+  --plan-model o3 \
+  --sim-model gpt-5.2 \
+  --validator-model gpt-5.2 \
+  --manip-dir video_code/stacked_boxes \
+  --temperature 0.0 \
+  --top-p 1.0
+
+
+
+source /opt/ros/jazzy/setup.bash
+conda activate vlm_planner
+
+python src_code/run_real_deploy_replay.py \
+  --scenario stacked_boxes \
+  --run-dir /home/user/outputs/real_deploy_pipeline_bypassed_validator/stacked_boxes/2026-04-12_22-56-34 \
+  --manip-dir /home/user/video_code/stacked_boxes \
+  --max-sleep 3.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 EXAMPLES OF RUNNING INSTRUCTIONS 
 
 python src/run_modules.py \
@@ -9,13 +100,15 @@ python src/run_modules.py \
 
 
 
+2026-04-16_18-14-02
+
 python src/run_modules.py \
   --module vlm_planning \
   --scenario stacked_boxes \
-  --version v2 \
+  --version v4 \
   --models o3 \
-  --scene-version v4 \
-  --scene-timestamp <timestamp> \
+  --scene-version v6 \
+  --scene-timestamp 2026-04-16_18-15-20 \
   --scene-model gpt-5.2 \
   --scene-run run_001
 
@@ -23,14 +116,14 @@ python src/run_modules.py \
 python src/run_modules.py \
   --module simultaneous_actions \
   --scenario stacked_boxes \
-  --version v2 \
+  --version v_try \
   --models gpt-5.2 \
-  --scene-version v4 \
-  --scene-timestamp <timestamp> \
+  --scene-version v6 \
+  --scene-timestamp 2026-04-16_18-15-20 \
   --scene-model gpt-5.2 \
   --scene-run run_001 \
-  --plan-version v2 \
-  --plan-timestamp <timestamp> \
+  --plan-version v4 \
+  --plan-timestamp 2026-04-16_18-15-20 \
   --plan-model o3 \
   --plan-run run_001
 
@@ -50,15 +143,15 @@ python src/run_pipeline.py \
 python src/run_validation_loop.py \
   --scenario stacked_boxes \
   --frames-dir scenarios/stacked_boxes \
-  --scene-v v5 \
-  --plan-v v2 \
-  --sim-v v3 \
-  --validator-v v3 \
+  --scene-v v6 \
+  --plan-v v4 \
+  --sim-v v_try \
+  --validator-v v_try \
   --scene-model o3 \
   --plan-model o3 \
   --sim-model gpt-5.2 \
-  --validator-model o3
-  --max-replans 2
+  --validator-model gpt-5.2
+  --max-replans 1
 
 
 
@@ -152,18 +245,18 @@ python src/run_modules.py \
   
   python src/run_validator.py \
   --scenario stacked_boxes \
-  --version v2 \
+  --version v_try \
   --models gpt-5.2 \
-  --upstream-timestamp 2026-04-08_10-24-34 \
+  --upstream-timestamp 2026-04-16_18-15-20 \
   --run-name run_001 \
   --condition-name pre_1 \
   --condition "box_1 is accessible for a lateral push and there is free space on the table to the right of box_2 to allow box_1 to slide off without colliding or toppling onto another object." \
   --image-path scenarios/stacked_boxes/1.png \
-  --scene-version v1 \
+  --scene-version v6 \
   --scene-model gpt-5.2 \
-  --plan-version v1 \
-  --plan-model gpt-5.2 \
-  --sim-version v1 \
+  --plan-version v4 \
+  --plan-model o3 \
+  --sim-version v_try \
   --sim-model gpt-5.2
   
   
@@ -189,16 +282,16 @@ python src/run_modules.py \
   
   python src/run_validation_loop.py \
   --scenario stacked_boxes \
-  --frames-dir scenarios/stacked_boxes/frames \
-  --scene-v v1 \
-  --plan-v v1 \
-  --sim-v v1 \
-  --validator-v v1 \
+  --frames-dir scenarios/stacked_boxes \
+  --scene-v v6 \
+  --plan-v v4 \
+  --sim-v v_try \
+  --validator-v v_try \
   --scene-model gpt-5.2 \
-  --plan-model gpt-5.2 \
+  --plan-model o3 \
   --sim-model gpt-5.2 \
   --validator-model gpt-5.2 \
-  --max-replans 5
+  --max-replans 1
   
   
   Forzando una immagine iniziale specifica 

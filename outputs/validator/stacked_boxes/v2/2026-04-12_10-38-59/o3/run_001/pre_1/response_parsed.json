@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "Right side of green_box is blocked by red_box, so both end effectors cannot access it symmetrically."
-}

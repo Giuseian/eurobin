@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The robot’s end-effectors are in contact with the red_box (not free), and the green_box’s right side is blocked by the adjacent red_box, so both parts of the condition are violated."
-}

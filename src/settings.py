@@ -18,8 +18,8 @@ MODEL_CAPABILITIES: dict[str, dict[str, bool]] = {
         "supports_top_p": False,
     },
     "gpt-5.2": {
-        "supports_temperature": False,
-        "supports_top_p": False,
+        "supports_temperature": True,
+        "supports_top_p": True,
     },
 }
 

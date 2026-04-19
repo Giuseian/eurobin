@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box (box_1) is stacked on top of the green box (box_2), and both robot arms appear not to be holding either box."
-}

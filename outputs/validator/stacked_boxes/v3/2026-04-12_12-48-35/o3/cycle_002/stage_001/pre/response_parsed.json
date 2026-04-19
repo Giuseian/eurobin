@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "Both end-effectors are visibly touching the red box, indicating a grasp, so they are not grasping nothing."
-}

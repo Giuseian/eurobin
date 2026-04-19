@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "Both end effectors are not grasping anything, but the red_box is directly blocked by the green_box underneath it, so it is not accessible for dual-arm grasping."
-}

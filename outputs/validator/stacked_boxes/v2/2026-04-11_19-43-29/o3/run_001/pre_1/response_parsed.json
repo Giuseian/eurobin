@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Both robot end effectors are positioned on opposite sides of the green box with clear access; no objects block contact."
-}

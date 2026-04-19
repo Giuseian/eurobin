@@ -1,7 +1,10 @@
+### TO BE MODIFIED WITH NEW ADJUSTMENTS TO RUN_REAL_DEPLOY_BYPASSED_VALIDATOR.PY 
+
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -207,11 +210,20 @@ def extract_stages(compact_parallel_plan: Any) -> list[dict[str, Any]]:
     return stages
 
 
-def run_command(cmd: list[str], label: str) -> None:
+def run_command(
+    cmd: list[str],
+    label: str,
+    env: dict[str, str] | None = None,
+) -> None:
     print(f"\n[CMD] {label}")
     print("[CMD] " + " ".join(cmd))
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(
+        cmd,
+        capture_output=True,
+        text=True,
+        env=env,
+    )
 
     if result.stdout:
         print(f"[STDOUT][{label}]\n{result.stdout}")
@@ -224,8 +236,43 @@ def run_command(cmd: list[str], label: str) -> None:
         )
 
 
+def is_ros_script(script_path: Path) -> bool:
+    ros_script_names = {
+        "homing.py",
+        "grasp_box_yz.py",
+        "place_box.py",
+        "place_box_2.py",
+        "grasp_box_xy.py",
+    }
+    return script_path.name in ros_script_names
+
+
+def build_ros_env() -> dict[str, str]:
+    env = os.environ.copy()
+
+    ros_pythonpath = "/opt/ros/jazzy/lib/python3.12/site-packages"
+    existing_pythonpath = env.get("PYTHONPATH", "")
+
+    paths = [p for p in existing_pythonpath.split(":") if p] if existing_pythonpath else []
+    if ros_pythonpath not in paths:
+        paths.insert(0, ros_pythonpath)
+
+    env["PYTHONPATH"] = ":".join(paths)
+
+    return env
+
+
 def run_python_script(script_path: Path, label: str) -> None:
-    run_command([sys.executable, str(script_path)], label=label)
+    script_path = script_path.resolve()
+
+    if is_ros_script(script_path):
+        python_exec = "/usr/bin/python3"
+        env = build_ros_env()
+    else:
+        python_exec = sys.executable
+        env = None
+
+    run_command([python_exec, str(script_path)], label=label, env=env)
 
 
 # ============================================================

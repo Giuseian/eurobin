@@ -334,17 +334,42 @@ def render_prompt(
             + task
         )
 
+    # if module_name == "simultaneous_actions":
+    #     if scene_description is None:
+    #         raise ValueError("scene_description is required for simultaneous_actions")
+    #     if sequential_plan is None:
+    #         raise ValueError("sequential_plan is required for simultaneous_actions")
+
+    #     scene_description_str = json.dumps(scene_description, indent=2, ensure_ascii=False)
+    #     sequential_plan_str = json.dumps(sequential_plan, indent=2, ensure_ascii=False)
+
+    #     return (
+    #         base_prompt.strip()
+    #         + "\n\nSCENE DESCRIPTION\n"
+    #         + scene_description_str
+    #         + "\n\nSEQUENTIAL PLAN\n"
+    #         + sequential_plan_str
+    #     )
+
+
+
     if module_name == "simultaneous_actions":
         if scene_description is None:
             raise ValueError("scene_description is required for simultaneous_actions")
         if sequential_plan is None:
             raise ValueError("sequential_plan is required for simultaneous_actions")
 
+        task = scenario_data.get("task")
+        if not task:
+            raise ValueError("Scenario is missing 'task' for simultaneous_actions")
+
         scene_description_str = json.dumps(scene_description, indent=2, ensure_ascii=False)
         sequential_plan_str = json.dumps(sequential_plan, indent=2, ensure_ascii=False)
 
         return (
             base_prompt.strip()
+            + "\n\nTASK\n"
+            + task
             + "\n\nSCENE DESCRIPTION\n"
             + scene_description_str
             + "\n\nSEQUENTIAL PLAN\n"

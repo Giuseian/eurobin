@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red_box is on the table between the two end effectors and appears reachable from both sides, and both grippers are open and not holding any object."
-}

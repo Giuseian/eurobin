@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box (box_1) is on the table with no visible obstructions, and both left and right end-effectors appear open and not holding any object."
-}

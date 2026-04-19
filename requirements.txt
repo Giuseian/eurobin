@@ -18,7 +18,7 @@ mkl_random @ file:///home/task_176159293348456/conda-bld/mkl_random_176159294733
 numpy @ file:///home/task_177073254252933/croot/numpy_and_numpy_base_1770732580517/work/dist/numpy-2.4.2-cp311-cp311-linux_x86_64.whl#sha256=2460a2a262049a6019d3f868575a0d2004f6816af5312d3729692beac48061c3
 openai==2.26.0
 packaging @ file:///home/task_176104885106445/conda-bld/packaging_1761049078006/work
-pandas @ file:///home/task_177324542228569/croot/pandas_1773246061267/work
+pandas @ file:///home/task_177547978492956/croot/pandas_1775480127414/work
 pillow @ file:///home/task_177247536631345/croot/pillow_1772475405729/work
 pydantic==2.12.5
 pydantic_core==2.41.5

@@ -902,15 +902,19 @@ def compute_accessibility(
         if subj not in object_map or obj not in object_map:
             continue
 
-        if relation == RELATION_RIGHT_OF:
+        if relation == RELATION_RIGHT_OF:                                         
             gap_y = gap_between_intervals(aabbs[subj]["y"], aabbs[obj]["y"])
-            if clamp_lower(gap_y, safety_threshold):
+            aligned_on_x = intervals_overlap(aabbs[subj]["x"], aabbs[obj]["x"])
+
+            if clamp_lower(gap_y, safety_threshold) and aligned_on_x:
                 add_blocker(blockers, subj, "left", obj)
                 add_blocker(blockers, obj, "right", subj)
 
         elif relation == RELATION_IN_FRONT_OF:
             gap_x = gap_between_intervals(aabbs[subj]["x"], aabbs[obj]["x"])
-            if clamp_lower(gap_x, safety_threshold):
+            aligned_on_y = intervals_overlap(aabbs[subj]["y"], aabbs[obj]["y"])
+
+            if clamp_lower(gap_x, safety_threshold) and aligned_on_y:
                 add_blocker(blockers, subj, "back", obj)
                 add_blocker(blockers, obj, "front", subj)
 
@@ -929,8 +933,8 @@ def compute_accessibility(
             for side in SIDES
         }
 
-        if is_back_not_reachable(aabb):
-            sides["back"] = "not reachable"
+        if is_back_not_reachable(aabb) and not blockers[name]["back"]: 
+                sides["back"] = "not reachable"
 
         result[name] = {
             "location": get_location(aabb),

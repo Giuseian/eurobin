@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "Red box top is unobstructed, green box’s left and right faces are not blocked by other objects, and both end effectors are open and not holding anything."
-}

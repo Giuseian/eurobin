@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The left end effector is in contact with the red box, so it is not clearly grasping nothing, and the red box is not accessible from both left and right sides due to the left end effector blocking the left side."
-}

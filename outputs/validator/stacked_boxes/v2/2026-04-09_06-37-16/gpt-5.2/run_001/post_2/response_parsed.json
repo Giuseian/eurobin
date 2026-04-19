@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box (box_1) is on the table to the right of the green box (box_2), and both end effectors are not grasping either box."
-}

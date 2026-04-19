@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_1 (red) is already in contact with both end effectors (appears being held), so the end_effectector_left and end_effector_right are not grasping nothing."
-}

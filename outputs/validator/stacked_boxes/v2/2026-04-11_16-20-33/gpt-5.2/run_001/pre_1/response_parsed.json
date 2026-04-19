@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The left end-effector is in contact with the red box while the right end-effector is not grasping it, so box_red is not accessible for a dual-arm grasp and both end-effectors are not clearly grasping nothing."
-}

@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "The red box is on top of the green box, but the left end effector is in contact with the red box so both end effectors are not free."
-}

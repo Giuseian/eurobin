@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_1 (red) is in between the robot arms and appears blocked by the end effectors, and the end effectors are positioned in contact with the box rather than clearly grasping nothing."
-}

@@ -1,4 +1,0 @@
-{
-  "result": "matching",
-  "reason": "The red box (box_1) is to the right of the green box (box_2) on the table, and both robot end effectors appear not to be holding any object."
-}

@@ -376,6 +376,7 @@ def render_validator_prompt(
     return prompt.strip()
 
 
+
 def validate_validator_response(parsed_response: Any) -> None:
     if not isinstance(parsed_response, dict):
         raise ValueError("Validator output must be a JSON object.")
@@ -902,6 +903,8 @@ def execute_validator_step(
     temperature: float,
     top_p: float,
 ) -> dict[str, Any]:
+
+
     stage_name = make_stage_name(stage_id)
 
     scene_object_list = load_scene_object_list_from_cycle(
@@ -914,6 +917,8 @@ def execute_validator_step(
     )
 
     base_prompt = load_base_prompt(settings, "validator", validator_version)
+
+
     system_prompt = render_validator_prompt(
         base_prompt=base_prompt,
         condition=condition_text,
@@ -1547,6 +1552,7 @@ def main() -> None:
                     temperature=args.temperature,
                     top_p=args.top_p,
                 )
+
                 pre_response = pre_artifact["output"]
 
                 print(f"\n[PRE validator:pre_{stage_id}] Parsed JSON:")
@@ -1627,6 +1633,7 @@ def main() -> None:
                     temperature=args.temperature,
                     top_p=args.top_p,
                 )
+
                 post_response = post_artifact["output"]
 
                 print(f"\n[POST validator:post_{stage_id}] Parsed JSON:")

@@ -1,4 +1,0 @@
-{
-  "result": "non_matching",
-  "reason": "box_1 (red) is in contact with the left end effector (not both arms free), so both end_effector_left and end_effector_right are not grasping nothing."
-}
