@@ -1,22 +1,25 @@
 CSVS EXPORT 
 
-python export_real_deploy_csvs.py \
-  --full-summary /path/to/outputs/real_deploy_validation_loop/<scenario>/<loop_timestamp>/full_pipeline_summary.json
-
-o specificando la cartella di output
-
-python export_real_deploy_csvs.py \
-  --full-summary /path/to/full_pipeline_summary.json \
-  --output-dir /path/to/csv_exports
 
 
-python plot_real_deploy_times.py \
-  --csv-dir /path/to/csv_exports
+# CUSTOM FILE 
+python src/run_validation_image.py \
+--scenario 2boxesaside \
+--scene-v v6 \
+--plan-v v5 \
+--sim-v v5 \
+--validator-v v5 \
+--scene-model gpt-5.2 \
+--plan-model o3 \
+--sim-model gpt-5.2 \
+--validator-model gpt-5.2
 
 
-python plot_real_deploy_times.py \
-  --csv-dir /path/to/csv_exports \
-  --output-dir /path/to/plots
+# BUILDING THE .CSV 
+python src/build_metrics_master_csv.py
+
+# PLOT 
+python src/plot_metrics_from_csv.py --csv-path outputs_final/metrics/metrics_master.csv
 
 
 

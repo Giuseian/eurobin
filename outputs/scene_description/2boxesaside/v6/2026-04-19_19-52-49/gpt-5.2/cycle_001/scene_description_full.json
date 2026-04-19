@@ -1,0 +1,70 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_2",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "blocked by cup_1",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "cup_1",
+        "category": "cup",
+        "color": "black",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "blocked by box_2",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "right of",
+        "object": "box_1"
+      },
+      {
+        "subject": "cup_1",
+        "relation": "in front of",
+        "object": "box_2"
+      }
+    ]
+  }
+}

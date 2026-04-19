@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The scene shows box_2 (red box) on the table with no visible robot end-effectors or interaction; since it is unclear whether it was pushed from the front, the condition cannot be unambiguously contradicted."
+}

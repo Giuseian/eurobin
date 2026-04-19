@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No right end-effector is visible, so it is assumed to be grasping nothing; cup_1 is present on the table with no object resting on it or blocking access."
+}

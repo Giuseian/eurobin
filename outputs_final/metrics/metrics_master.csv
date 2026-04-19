@@ -1,4 +1,5 @@
 scenario,loop_timestamp,task_completed,replans_done,n_cycles,scene_model,plan_model,sim_model,validator_model,scene_time_mean,plan_time_mean,sim_time_mean,validator_time_mean,n_total_stages,n_pre_matching,n_pre_non_matching,n_post_matching,n_post_non_matching,executed_actions_count,success_rate_general,success_rate_scene,success_rate_plan,success_rate_sim,success_rate_validator
+2boxesaside,2026-04-19_19-52-49,True,0,1,gpt-5.2,o3,gpt-5.2,gpt-5.2,9.352030594003736,12.287650739999663,3.094744396999886,4.993502133623224,4,4,0,4,0,4,,,,,
 stacked_boxes,2026-04-19_17-39-12,True,2,3,gpt-5.2,o3,gpt-5.2,gpt-5.2,7.204474797999865,11.783985993667253,2.694251950667725,5.572669521143065,4,3,1,2,1,3,,,,,
 stacked_boxes,2026-04-19_17-41-29,True,0,1,gpt-5.2,o3,gpt-5.2,gpt-5.2,6.633898837000743,11.07013807200201,3.300841219999711,5.329681805167638,3,3,0,3,0,3,,,,,
 stacked_boxes,2026-04-19_17-42-38,True,2,3,gpt-5.2,o3,gpt-5.2,gpt-5.2,7.51744083633336,16.592151258000133,2.769978451999729,5.212941074714763,4,3,1,2,1,3,,,,,
