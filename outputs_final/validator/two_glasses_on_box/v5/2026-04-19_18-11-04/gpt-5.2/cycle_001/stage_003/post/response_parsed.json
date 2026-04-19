@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green_box is held from both left and right sides by the robot’s two arms in a symmetric grasp, and no glasses are visible in the scene to indicate any disturbance."
+}

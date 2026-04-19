@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The green box is held between both arms in a symmetric grasp, but no glasses are present in the scene (only two black cylinders), so the 'glasses undisturbed' requirement cannot be satisfied."
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_1 on top of box_2; both end effectors grasp nothing; red box handled delicately",
+    "Postcondition": "box_1 displaced so box_2 top is unblocked; both end effectors grasp nothing; red box intact"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_2 top unblocked; both end effectors grasp nothing; red box intact",
+    "Postcondition": "box_2 grasped with both end effectors; red box intact"
+  }
+]

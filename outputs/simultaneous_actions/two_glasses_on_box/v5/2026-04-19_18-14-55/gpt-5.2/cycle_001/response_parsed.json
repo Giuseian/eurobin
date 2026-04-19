@@ -1,0 +1,28 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Precondition": "Both end effectors free; cylinder_1 and cylinder_2 accessible on box; glasses undisturbed.",
+    "Postcondition": "Left grasps cylinder_1 and right grasps cylinder_2; glasses undisturbed."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Precondition": "Left grasps cylinder_1 and right grasps cylinder_2; table placement area available; glasses undisturbed.",
+    "Postcondition": "cylinder_1 and cylinder_2 placed on table; both end effectors free; box top unblocked; glasses undisturbed."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Precondition": "Both end effectors free; box left and right sides accessible; box top unblocked; glasses undisturbed.",
+    "Postcondition": "Box grasped with dual-arm symmetric grasp; glasses undisturbed."
+  }
+]

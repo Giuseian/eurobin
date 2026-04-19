@@ -1,0 +1,283 @@
+{
+  "module": "scene_description_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-19_18-12-26",
+  "timestamp": "2026-04-19T18:14:00.996843",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_18-12-26",
+      "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/1.png",
+      "image_name": "1.png",
+      "scene_description_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/run_info.json",
+        "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/scene_object_list.json",
+        "scene_description_full": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/scene_description_full.json",
+        "scene_description_full_run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+      },
+      "scene_description_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box",
+              "category": "box",
+              "color": "green"
+            },
+            {
+              "name": "cylinder_1",
+              "category": "cylinder",
+              "color": "black"
+            },
+            {
+              "name": "cylinder_2",
+              "category": "cylinder",
+              "color": "black"
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "nothing"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "cylinder_1",
+              "relation": "on top of",
+              "object": "box"
+            },
+            {
+              "subject": "cylinder_2",
+              "relation": "on top of",
+              "object": "box"
+            },
+            {
+              "subject": "cylinder_2",
+              "relation": "right of",
+              "object": "cylinder_1"
+            }
+          ]
+        }
+      },
+      "scene_description_full_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box",
+              "category": "box",
+              "color": "green",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "blocked by cylinder_1, cylinder_2",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "cylinder_1",
+              "category": "cylinder",
+              "color": "black",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by box"
+              }
+            },
+            {
+              "name": "cylinder_2",
+              "category": "cylinder",
+              "color": "black",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by box"
+              }
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "nothing"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "cylinder_1",
+              "relation": "on top of",
+              "object": "box"
+            },
+            {
+              "subject": "cylinder_2",
+              "relation": "on top of",
+              "object": "box"
+            },
+            {
+              "subject": "cylinder_2",
+              "relation": "right of",
+              "object": "cylinder_1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-19_18-13-37",
+      "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+      "image_name": "4.png",
+      "scene_description_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/run_info.json",
+        "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/scene_object_list.json",
+        "scene_description_full": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/scene_description_full.json",
+        "scene_description_full_run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-12-26/gpt-5.2/cycle_002/scene_description_full_run_info.json"
+      },
+      "scene_description_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green"
+            },
+            {
+              "name": "cup_1",
+              "category": "cup",
+              "color": "black"
+            },
+            {
+              "name": "cup_2",
+              "category": "cup",
+              "color": "black"
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "box_1"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "box_1"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "cup_2",
+              "relation": "right of",
+              "object": "cup_1"
+            }
+          ]
+        }
+      },
+      "scene_description_full_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "cup_1",
+              "category": "cup",
+              "color": "black",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "cup_2",
+              "category": "cup",
+              "color": "black",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "box_1"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "box_1"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "cup_2",
+              "relation": "right of",
+              "object": "cup_1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

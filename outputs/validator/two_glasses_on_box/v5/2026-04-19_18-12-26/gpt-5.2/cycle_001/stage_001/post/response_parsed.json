@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both end effectors are visibly holding a black cylinder each (left holding one cylinder and right holding the other); no glasses are visible in the scene to assess disturbance, so the condition cannot be contradicted."
+}

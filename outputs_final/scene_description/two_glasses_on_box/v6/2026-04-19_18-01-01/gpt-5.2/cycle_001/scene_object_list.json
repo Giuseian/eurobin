@@ -1,0 +1,19 @@
+{
+  "objects": [
+    {
+      "name": "green_box",
+      "category": "box",
+      "color": "green"
+    },
+    {
+      "name": "cylinder_1",
+      "category": "cylinder",
+      "color": "black"
+    },
+    {
+      "name": "cylinder_2",
+      "category": "cylinder",
+      "color": "black"
+    }
+  ]
+}

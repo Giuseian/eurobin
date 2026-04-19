@@ -1,0 +1,155 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-19_18-14-55",
+  "cycle_name": "cycle_002",
+  "cycle_index": 2,
+  "cycle_timestamp": "2026-04-19_18-16-04",
+  "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+  "start_image_name": "4.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green"
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black"
+          },
+          {
+            "name": "cup_2",
+            "category": "cup",
+            "color": "black"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "box_1"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "box_1"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cup_2",
+            "relation": "right of",
+            "object": "cup_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/run_info.json",
+      "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 8.446528499000124
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "cup_2",
+            "category": "cup",
+            "color": "black",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "box_1"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "box_1"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cup_2",
+            "relation": "right of",
+            "object": "cup_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/scene_description_full.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-19_18-14-55/gpt-5.2/cycle_002/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.001306105998082785
+  },
+  "vlm_planning": {
+    "output": [],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_glasses_on_box/v5/2026-04-19_18-14-55/o3/cycle_002/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v5/2026-04-19_18-14-55/o3/cycle_002/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v5/2026-04-19_18-14-55/o3/cycle_002/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 3.9631017799983965
+  },
+  "simultaneous_actions": {
+    "output": [],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_002/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_002/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_002/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 1.2874252649999107
+  },
+  "stages": [],
+  "outcome": "task_completed",
+  "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+  "end_image_name": "4.png"
+}

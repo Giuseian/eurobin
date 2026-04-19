@@ -104,7 +104,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--grounding-safety-threshold",
         type=float,
-        default=0.21,
+        default=0.11,
         help="Safety threshold used by scene enrichment to compute accessibility.",
     )
     parser.add_argument(

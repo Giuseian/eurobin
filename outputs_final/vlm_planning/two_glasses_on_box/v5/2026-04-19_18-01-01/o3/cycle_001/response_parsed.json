@@ -1,0 +1,26 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "cylinder_1",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 2,
+    "Target": "cylinder_2",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 3,
+    "Target": "green_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  }
+]

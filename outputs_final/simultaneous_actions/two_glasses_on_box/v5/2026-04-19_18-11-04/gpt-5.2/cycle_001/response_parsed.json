@@ -1,0 +1,28 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Precondition": "Both end effectors empty; black_cup_1 and black_cup_2 on top of green_box; glasses undisturbed.",
+    "Postcondition": "Left end effector grasping black_cup_1; right end effector grasping black_cup_2; glasses undisturbed."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Precondition": "Left end effector grasping black_cup_1; right end effector grasping black_cup_2; glasses undisturbed.",
+    "Postcondition": "black_cup_1 and black_cup_2 placed on table; both end effectors empty; green_box top unblocked; glasses undisturbed."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Precondition": "Both end effectors empty; green_box top unblocked; glasses undisturbed.",
+    "Postcondition": "green_box grasped with dual-arm symmetric grasp; glasses undisturbed."
+  }
+]

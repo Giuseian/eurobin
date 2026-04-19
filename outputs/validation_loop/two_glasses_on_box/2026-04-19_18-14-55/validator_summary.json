@@ -1,0 +1,142 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-19_18-14-55",
+  "timestamp": "2026-04-19T18:16:17.896828",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 1,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_18-14-55",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/1.png",
+      "start_image_name": "1.png",
+      "outcome": "replan_on_post_stage_3",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors free; cylinder_1 and cylinder_2 accessible on box; glasses undisturbed.",
+          "postcondition": "Left grasps cylinder_1 and right grasps cylinder_2; glasses undisturbed.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both end effectors appear empty and not contacting any object; cylinder_1 and cylinder_2 are on top of the green box with no visible obstructions; no glasses are visible to assess disturbance."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "Both robot end-effectors are visible and each is holding a black cylinder (left holds cylinder_1, right holds cylinder_2); no glasses are present in the scene to show disturbance."
+          },
+          "pre_validation_time_seconds": 5.854323631996522,
+          "post_validation_time_seconds": 4.682278076001239,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "Left grasps cylinder_1 and right grasps cylinder_2; table placement area available; glasses undisturbed.",
+          "postcondition": "cylinder_1 and cylinder_2 placed on table; both end effectors free; box top unblocked; glasses undisturbed.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both end-effectors are visible and each is holding a black cylinder (left holds cylinder_1, right holds cylinder_2). The table surface has free space around the green box, and no glasses are visible to be disturbed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "Both black cylinders are on the table, the robot end-effectors are not grasping anything, the green box has nothing on its top surface, and no glasses are visible/being interacted with."
+          },
+          "pre_validation_time_seconds": 5.223207822000404,
+          "post_validation_time_seconds": 5.338237545001903,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "Both end effectors free; box left and right sides accessible; box top unblocked; glasses undisturbed.",
+          "postcondition": "Box grasped with dual-arm symmetric grasp; glasses undisturbed.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both end effectors appear not to be grasping anything; the green box has clear left/right sides and nothing on its top; the two black cylinders are on the table and not being interacted with, and no glasses are present in the scene list or visible."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "The green box is held between both arms in a symmetric grasp, but no glasses are present in the scene (only two black cylinders), so the 'glasses undisturbed' requirement cannot be satisfied."
+          },
+          "pre_validation_time_seconds": 5.174332129001414,
+          "post_validation_time_seconds": 5.381135464998806,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-19_18-14-55/gpt-5.2/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+          "next_image_name": "4.png"
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-19_18-16-04",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+      "start_image_name": "4.png",
+      "outcome": "task_completed",
+      "stages": []
+    }
+  ]
+}

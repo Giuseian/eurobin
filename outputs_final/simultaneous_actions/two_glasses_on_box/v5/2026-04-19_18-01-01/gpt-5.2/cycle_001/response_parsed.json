@@ -1,0 +1,19 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      2
+    ],
+    "Precondition": "cylinder_1 and cylinder_2 are on top of green_box; both end effectors are free; glasses remain undisturbed",
+    "Postcondition": "cylinder_1 and cylinder_2 have been pushed from the front; both end effectors are free; glasses remain undisturbed"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "green_box left and right sides are accessible; both end effectors are free; glasses remain undisturbed",
+    "Postcondition": "green_box is grasped with both arms; glasses remain undisturbed"
+  }
+]

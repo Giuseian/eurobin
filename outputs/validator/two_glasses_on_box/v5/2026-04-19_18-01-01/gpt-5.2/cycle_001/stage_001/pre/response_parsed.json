@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both black cylinders are on top of the green box, and both robot end effectors appear empty; no glasses are visible to indicate disturbance."
+}
