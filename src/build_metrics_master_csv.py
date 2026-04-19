@@ -81,7 +81,6 @@ def extract_run_row(summary: dict[str, Any]) -> dict[str, Any]:
         simultaneous_actions = cycle.get("simultaneous_actions")
         stages = cycle.get("stages", [])
 
-        # scene = scene_description + scene_enrichment(scene_description_full)
         scene_time = 0.0
         has_scene_time = False
 
@@ -168,14 +167,46 @@ def extract_run_row(summary: dict[str, Any]) -> dict[str, Any]:
     return row
 
 
-def write_csv(rows: list[dict[str, Any]], output_csv: Path) -> None:
+def make_row_key(row: dict[str, Any]) -> tuple[str, str]:
+    return (str(row["scenario"]), str(row["loop_timestamp"]))
+
+
+def read_existing_csv(output_csv: Path) -> list[dict[str, Any]]:
+    if not output_csv.exists():
+        return []
+
+    with output_csv.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        return list(reader)
+
+
+def write_csv_append_only(rows: list[dict[str, Any]], output_csv: Path) -> tuple[int, int]:
     output_csv.parent.mkdir(parents=True, exist_ok=True)
+
+    existing_rows = read_existing_csv(output_csv)
+    existing_keys = {make_row_key(row) for row in existing_rows}
+
+    rows_to_add: list[dict[str, Any]] = []
+    skipped_count = 0
+
+    for row in rows:
+        key = make_row_key(row)
+        if key in existing_keys:
+            skipped_count += 1
+            continue
+
+        normalized_row = {col: row.get(col, "") for col in CSV_COLUMNS}
+        rows_to_add.append(normalized_row)
+
+    all_rows = existing_rows + rows_to_add
 
     with output_csv.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=CSV_COLUMNS)
         writer.writeheader()
-        for row in rows:
+        for row in all_rows:
             writer.writerow(row)
+
+    return len(rows_to_add), skipped_count
 
 
 def main() -> None:
@@ -206,16 +237,18 @@ def main() -> None:
         except Exception as exc:
             print(f"[ERROR] Failed to process {summary_path}: {exc}")
 
-    write_csv(rows, output_csv)
+    added_count, skipped_count = write_csv_append_only(rows, output_csv)
 
     print("\n======================================================")
-    print("METRICS CSV CREATED")
-    print(f"Input root:   {validation_loop_root}")
-    print(f"Runs found:   {len(summary_files)}")
-    print(f"Rows written: {len(rows)}")
-    print(f"Output CSV:   {output_csv}")
+    print("METRICS CSV UPDATED")
+    print(f"Input root:        {validation_loop_root}")
+    print(f"Runs found:        {len(summary_files)}")
+    print(f"New rows added:    {added_count}")
+    print(f"Existing rows kept:{skipped_count}")
+    print(f"Output CSV:        {output_csv}")
     print("======================================================")
 
 
 if __name__ == "__main__":
     main()
+
