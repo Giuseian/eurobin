@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed to grasp nothing. The green box (box_2) is present on the table with nothing on top of it, and there is no visible contact indicating the red box (box_1) is being pushed."
+}

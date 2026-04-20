@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green box (box_2) is unobstructed on the table, no robot end-effectors are visible (assumed free), and the red box appears stationary with no evidence of being pushed."
+}

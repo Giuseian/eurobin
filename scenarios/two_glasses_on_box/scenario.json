@@ -1,5 +1,5 @@
 {
   "scenario_id": "two_glasses_on_box",
-  "task": "Grasp the green box. Be careful with the glasses.",
+  "task": "Grasp the green box.",
   "image": "1.png"
 }

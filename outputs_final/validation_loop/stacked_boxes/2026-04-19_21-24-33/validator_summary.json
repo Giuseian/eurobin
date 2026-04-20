@@ -1,0 +1,133 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-04-19_21-24-33",
+  "timestamp": "2026-04-19T21:26:15.094358",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_21-24-33",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "box_1 accessible; end_effectors free; red box not pushed",
+          "postcondition": "box_1 grasped; red box not pushed",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is present and not being grasped; no end-effectors are visible so they are assumed free, and there is no clear evidence the red box has been pushed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is held between the robot’s two end-effectors, indicating a grasp, and there is no clear evidence in the image that the red box has been pushed."
+          },
+          "pre_validation_time_seconds": 5.931797543002176,
+          "post_validation_time_seconds": 6.05086475200369,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "box_1 grasped; red box not pushed",
+          "postcondition": "box_1 placed on table; red box not pushed",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is visibly held between the robot's two end-effectors, indicating it is grasped, and there is no clear evidence in the image that the red box has been pushed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is visible resting on the tabletop, and there is no clear evidence in the image that it has been pushed."
+          },
+          "pre_validation_time_seconds": 5.927642525006377,
+          "post_validation_time_seconds": 5.579004428000189,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "box_2 accessible; end_effectors free; red box not pushed",
+          "postcondition": "box_2 grasped; red box not pushed",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The green box (box_2) is unobstructed on the table, no robot end-effectors are visible (assumed free), and the red box appears stationary with no evidence of being pushed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The green box (box_2) is held between the robot's two end-effectors, and the red box is not in contact with the robot (no visible pushing)."
+          },
+          "pre_validation_time_seconds": 5.92587388100219,
+          "post_validation_time_seconds": 5.547563917003572,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-24-33/gpt-5.2/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/4.png",
+          "next_image_name": "4.png"
+        }
+      ]
+    }
+  ]
+}

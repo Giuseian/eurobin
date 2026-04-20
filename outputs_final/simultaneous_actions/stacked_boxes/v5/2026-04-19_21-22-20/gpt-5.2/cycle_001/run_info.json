@@ -1,0 +1,109 @@
+{
+  "module": "simultaneous_actions",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-04-19_21-22-20",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-19_21-22-20",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 3.4164058540045517,
+  "timestamp": "2026-04-19T21:22:44.975199",
+  "scenario": {
+    "task": "Grasp the green box. Do not push the red box.",
+    "image": "1.png",
+    "image_path_abs": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png"
+  },
+  "response_parsed": [
+    {
+      "Stage_id": 1,
+      "Step_id": [
+        1
+      ],
+      "Precondition": "Both end effectors grasp nothing; box_1 accessible; box_1 on top of box_2; red box must not be pushed.",
+      "Postcondition": "box_1 is grasped; red box has not been pushed."
+    },
+    {
+      "Stage_id": 2,
+      "Step_id": [
+        2
+      ],
+      "Precondition": "box_1 is grasped; red box must not be pushed.",
+      "Postcondition": "box_1 placed on table; box_2 top is unblocked; red box has not been pushed."
+    },
+    {
+      "Stage_id": 3,
+      "Step_id": [
+        3
+      ],
+      "Precondition": "Both end effectors grasp nothing; box_2 accessible; box_2 top unblocked; red box must not be pushed.",
+      "Postcondition": "box_2 is grasped; red box has not been pushed."
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-04-19_21-22-20",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-19_21-22-20",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  }
+}

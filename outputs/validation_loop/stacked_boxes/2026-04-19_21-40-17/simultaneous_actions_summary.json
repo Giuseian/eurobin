@@ -1,0 +1,62 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-04-19_21-40-17",
+  "timestamp": "2026-04-19T21:41:29.753407",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_21-40-17",
+      "input_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/stacked_boxes/v6/2026-04-19_21-40-17/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-04-19_21-40-17/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v5/2026-04-19_21-40-17/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_21-40-17/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/stacked_boxes/v5/2026-04-19_21-40-17/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Red box (box_1) accessible; both end effectors grasping nothing; do not push red box.",
+          "Postcondition": "Red box (box_1) grasped; do not push red box."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "Red box (box_1) grasped; table top available; do not push red box.",
+          "Postcondition": "Red box (box_1) placed on table; do not push red box."
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "Green box (box_2) accessible; both end effectors available; do not push red box.",
+          "Postcondition": "Green box (box_2) grasped; do not push red box."
+        }
+      ]
+    }
+  ]
+}

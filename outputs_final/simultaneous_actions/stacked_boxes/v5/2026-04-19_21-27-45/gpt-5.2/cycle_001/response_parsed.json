@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Red box (box_1) accessible; both end effectors grasp nothing; red box not pushed.",
+    "Postcondition": "Box_1 grasped with dual arms; red box not pushed."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Box_1 grasped; placement area on table available; red box not pushed.",
+    "Postcondition": "Box_1 placed on table; both end effectors grasp nothing; red box not pushed."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "Green box (box_2) accessible; both end effectors grasp nothing; red box not pushed.",
+    "Postcondition": "Box_2 grasped with dual arms; red box not pushed."
+  }
+]

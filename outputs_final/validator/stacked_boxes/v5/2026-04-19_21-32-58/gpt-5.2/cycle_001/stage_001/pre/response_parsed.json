@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The red box (box_1) is not accessible because it is stacked on top of the green box (box_2), blocking its bottom face; no end effectors are visible so they are assumed to be grasping nothing."
+}

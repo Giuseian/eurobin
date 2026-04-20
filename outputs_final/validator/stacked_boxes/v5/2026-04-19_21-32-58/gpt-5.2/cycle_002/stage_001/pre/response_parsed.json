@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed to grasp nothing. The red box (box_1) is present and not being pushed, and no object blocks access to it beyond being stacked on the green box."
+}

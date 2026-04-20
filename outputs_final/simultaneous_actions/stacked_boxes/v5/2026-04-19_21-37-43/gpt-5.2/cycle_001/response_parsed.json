@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_1 on top of box_2; both end effectors grasp nothing; red box must not be pushed",
+    "Postcondition": "box_1 grasped; red box not pushed"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 grasped; red box must not be pushed",
+    "Postcondition": "box_1 placed on table; red box not pushed"
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_1 placed on table; box_2 top unblocked; both end effectors grasp nothing; red box must not be pushed",
+    "Postcondition": "box_2 grasped; red box not pushed"
+  }
+]

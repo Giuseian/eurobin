@@ -1,5 +1,5 @@
 {
   "scenario_id": "stacked_boxes",
-  "task": "Grasp the green box. Be delicate. The red box is very fragile.",
+  "task": "Grasp the green box. Do not push the red box.",
   "image": "1.png"
 }

@@ -1,0 +1,133 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-04-19_21-26-26",
+  "timestamp": "2026-04-19T21:27:37.742836",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-19_21-26-26",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors grasp nothing; box_1 is on top of box_2; red box must not be pushed.",
+          "postcondition": "box_1 is grasped with dual-arm symmetric grasp; red box not pushed.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The image shows the red box (box_1) stacked on top of the green box (box_2), and no robot end-effectors are visible so they are assumed to be grasping nothing; there is no clear evidence the red box is being pushed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is held between the robot's two end-effectors on opposite sides, consistent with a dual-arm symmetric grasp, and there is no clear evidence of it being pushed."
+          },
+          "pre_validation_time_seconds": 5.827359245995467,
+          "post_validation_time_seconds": 4.971642890996009,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "box_1 is grasped; red box must not be pushed.",
+          "postcondition": "box_1 is placed on the table; red box not pushed.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is held between the robot's two end-effectors, indicating a grasp; there is no clear evidence in the image that it is being pushed instead of grasped."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is visibly resting on the tabletop, and there is no clear evidence in the scene that it has been pushed."
+          },
+          "pre_validation_time_seconds": 6.185007075997419,
+          "post_validation_time_seconds": 5.255486523004947,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "box_1 is on the table; both end effectors grasp nothing; box_2 top is unblocked; red box not pushed.",
+          "postcondition": "box_2 is grasped with dual-arm symmetric grasp; red box not pushed.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_1) is on the table; no robot end-effectors are visible so they are assumed to grasp nothing; the green box (box_2) has nothing resting on its top; there is no clear evidence the red box has been pushed."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The green box (box_2) is held from opposite sides by both robot end-effectors in a symmetric dual-arm grasp, and the red box (box_1) appears stationary on the table with no sign of being pushed."
+          },
+          "pre_validation_time_seconds": 6.226222372999473,
+          "post_validation_time_seconds": 6.771416989999125,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/stacked_boxes/v5/2026-04-19_21-26-26/gpt-5.2/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/stacked_boxes/4.png",
+          "next_image_name": "4.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The red box (box_1) is on the table; no robot end-effectors are visible so they are assumed to grasp nothing; the green box (box_2) has nothing resting on its top; there is no clear evidence the red box has been pushed."
+}
