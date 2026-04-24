@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows one yellow tennis ball on top of the green box (box_1) and the other yellow tennis ball on top of the red box (box_2); no robot end-effectors are visible, so the left end-effector is assumed free."
+}

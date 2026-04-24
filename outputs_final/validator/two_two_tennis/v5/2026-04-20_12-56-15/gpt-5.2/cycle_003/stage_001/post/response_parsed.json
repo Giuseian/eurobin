@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both robot end effectors are visibly grasping a yellow tennis ball each; the scene provides no clear way to distinguish tennis_ball_1 vs tennis_ball_2, so the specified assignment cannot be contradicted."
+}

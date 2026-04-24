@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "Both end effectors are grasping black cups, but the image does not provide unambiguous evidence which cup is cup_1 vs cup_2, so the specific left=cup_1 and right=cup_2 assignment is not verified."
+}

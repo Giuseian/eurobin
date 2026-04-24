@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so the right end-effector is assumed empty; cup_1 is present on the table with no object resting on it or blocking access."
+}

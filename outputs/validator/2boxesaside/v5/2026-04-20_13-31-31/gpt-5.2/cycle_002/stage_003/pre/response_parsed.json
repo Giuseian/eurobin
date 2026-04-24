@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The right end-effector is not visible, so it is assumed to be grasping nothing; no object is touching the front face of box_2 (red), so its front is accessible."
+}

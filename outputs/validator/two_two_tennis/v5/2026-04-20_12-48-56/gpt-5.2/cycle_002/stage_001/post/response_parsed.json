@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The left end-effector is visibly holding a yellow tennis ball, consistent with tennis_ball_1 being grasped."
+}

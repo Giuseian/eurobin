@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed empty; both cup_1 and cup_2 are on top of box_1 with no objects blocking access."
+}

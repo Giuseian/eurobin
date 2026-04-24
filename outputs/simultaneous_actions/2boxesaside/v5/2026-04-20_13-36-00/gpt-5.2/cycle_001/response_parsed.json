@@ -1,0 +1,34 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Right end-effector empty; cup_1 accessible.",
+    "Postcondition": "cup_1 grasped by right end-effector."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "cup_1 grasped by right end-effector; table top available for placement.",
+    "Postcondition": "cup_1 placed on table; right end-effector empty."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "Right end-effector free; box_2 front accessible (not blocked by cup_1).",
+    "Postcondition": "box_2 pushed from the front."
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      4
+    ],
+    "Precondition": "Both end-effectors empty; box_1 left and right sides accessible.",
+    "Postcondition": "box_1 grasped with dual-arm symmetric grasp."
+  }
+]

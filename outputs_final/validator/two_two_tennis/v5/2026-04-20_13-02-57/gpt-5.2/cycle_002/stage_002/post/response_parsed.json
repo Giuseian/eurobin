@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "A tennis ball is on the table, but box_1 (green) has a clear top while the other tennis ball is resting on top of box_2 (red), so the specified box top is not free of objects as required."
+}

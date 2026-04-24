@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so the right end-effector is assumed free; cup_1 is to the right of box_2 and not directly in front of it, so box_2's front face appears accessible."
+}

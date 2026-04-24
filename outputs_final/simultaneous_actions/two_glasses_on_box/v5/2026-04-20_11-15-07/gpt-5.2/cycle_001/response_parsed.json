@@ -1,0 +1,28 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Precondition": "cup_1 and cup_2 accessible; both end effectors grasp nothing.",
+    "Postcondition": "Left end effector grasps cup_1; right end effector grasps cup_2."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Precondition": "Left end effector grasps cup_1; right end effector grasps cup_2; table top available for placement.",
+    "Postcondition": "cup_1 and cup_2 placed on table; both end effectors grasp nothing; box top unblocked."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Precondition": "cup_1 and cup_2 not on box; both end effectors grasp nothing; box left and right sides accessible.",
+    "Postcondition": "Box grasped with dual-arm symmetric grasp."
+  }
+]

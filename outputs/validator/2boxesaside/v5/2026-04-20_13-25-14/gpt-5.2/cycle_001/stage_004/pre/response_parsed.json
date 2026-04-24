@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "box_1 (green) is unobstructed with free side access for a dual-arm grasp, and no robot end-effectors are visible so they are assumed to be grasping nothing."
+}

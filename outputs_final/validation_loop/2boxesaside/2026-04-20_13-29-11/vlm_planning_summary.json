@@ -1,0 +1,94 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-04-20_13-29-11",
+  "timestamp": "2026-04-20T13:31:25.184131",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_13-29-11",
+      "input_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-29-11/gpt-5.2/cycle_001/scene_description_full.json"
+      },
+      "vlm_planning_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_001/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_001/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_001/run_info.json"
+      },
+      "vlm_planning_output": [
+        {
+          "Step_id": 1,
+          "Target": "cup_1",
+          "Action concept": "Grasp",
+          "Manipulation mode": "Single-arm (right)",
+          "Contact mode": "With claw",
+          "Object contact side": "left & right"
+        },
+        {
+          "Step_id": 2,
+          "Target": "Table",
+          "Action concept": "Place",
+          "Manipulation mode": "Single-arm (right)",
+          "Contact mode": "With claw",
+          "Object contact side": "Top"
+        },
+        {
+          "Step_id": 3,
+          "Target": "box_2",
+          "Action concept": "Push",
+          "Manipulation mode": "Single-arm (right)",
+          "Contact mode": "Without claw",
+          "Object contact side": "front"
+        },
+        {
+          "Step_id": 4,
+          "Target": "box_1",
+          "Action concept": "Grasp",
+          "Manipulation mode": "Dual-arm symmetric",
+          "Contact mode": "Without claw",
+          "Object contact side": "right & left"
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-20_13-30-49",
+      "input_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/4.png",
+      "input_image_name": "4.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_002",
+        "scene_description_full_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-29-11/gpt-5.2/cycle_002/scene_description_full.json"
+      },
+      "vlm_planning_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_002/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_002/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-29-11/o3/cycle_002/run_info.json"
+      },
+      "vlm_planning_output": [
+        {
+          "Step_id": 1,
+          "Target": "box_1",
+          "Action concept": "Grasp",
+          "Manipulation mode": "dual-arm symmetric",
+          "Contact mode": "without claw",
+          "Object contact side": "right & left"
+        }
+      ]
+    }
+  ]
+}

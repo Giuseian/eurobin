@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The green box (box_1) top is not cleared because a tennis ball is resting on it, so tennis_ball_1 cannot be accessible on box_1 top while also having the green box top cleared; left end-effector is not visible and thus assumed free."
+}

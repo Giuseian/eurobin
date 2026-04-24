@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both black cups (cup_1 and cup_2) are resting on the top surface of the green box (box_1), and no robot end-effectors are visible so they are assumed empty; the cups’ top faces appear unobstructed and accessible."
+}

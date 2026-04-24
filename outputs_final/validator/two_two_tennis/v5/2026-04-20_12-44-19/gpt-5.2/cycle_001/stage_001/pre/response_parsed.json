@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible (so assumed empty), and the green box has nothing resting on its top surface."
+}

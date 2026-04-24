@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "Both cups (cup_1 and cup_2) appear placed on the table near the end effectors rather than being grasped, and the table top is not available for placement because the green box occupies the central area."
+}

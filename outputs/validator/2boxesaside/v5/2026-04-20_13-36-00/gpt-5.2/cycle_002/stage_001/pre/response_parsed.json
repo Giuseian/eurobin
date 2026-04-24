@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed to be grasping nothing; box_1 (green) has no objects directly adjacent/touching its left or right faces, so both sides are accessible."
+}

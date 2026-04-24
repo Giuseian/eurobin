@@ -1,0 +1,224 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-04-20_13-31-31",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-20_13-31-31",
+  "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+  "start_image_name": "1.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red"
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_2",
+            "relation": "right of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 8.635716631000832
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "blocked by box_2",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red",
+            "location": "zone B",
+            "sides": {
+              "left": "blocked by box_1",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_2",
+            "relation": "right of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/scene_description_full.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/2boxesaside/v6/2026-04-20_13-31-31/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.0007869460005167639
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "box_2",
+        "Action concept": "Push",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "Without claw",
+        "Object contact side": "right"
+      },
+      {
+        "Step_id": 2,
+        "Target": "box_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/vlm_planning/2boxesaside/v5/2026-04-20_13-31-31/o3/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-31-31/o3/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-04-20_13-31-31/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 16.528767342999345
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Precondition": "box_2 is right of box_1; right end-effector is free",
+        "Postcondition": "box_2 has been pushed from its right side, clearing access for grasping box_1"
+      },
+      {
+        "Stage_id": 2,
+        "Step_id": [
+          2
+        ],
+        "Precondition": "box_1 left and right sides are accessible; both end-effectors are free",
+        "Postcondition": "box_1 is grasped with dual-arm symmetric contact on its left and right sides"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 2.559608178999042
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "box_2 is right of box_1; right end-effector is free",
+      "postcondition": "box_2 has been pushed from its right side, clearing access for grasping box_1",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+      "pre_image_name": "1.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+      "post_image_name": "1.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "In the image, the red box (box_2) is positioned to the right of the green box (box_1), and no right end-effector is visible, so it is assumed free."
+      },
+      "post_validation": {
+        "result": "non_matching",
+        "reason": "box_2 (red) is still directly adjacent to box_1 (green) on box_1's right side, so access for grasping box_1 has not been cleared."
+      },
+      "pre_validation_time_seconds": 7.6024930120001954,
+      "post_validation_time_seconds": 6.062959536000562,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-31-31/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+      "next_image_name": "1.png"
+    }
+  ],
+  "outcome": "replan_on_post_stage_1",
+  "end_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+  "end_image_name": "1.png"
+}

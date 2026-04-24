@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "Both cups are held by the robot, but the left end effector is grasping the right-side cup and the right end effector is grasping the left-side cup, opposite of the required assignment."
+}

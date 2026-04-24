@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so the right end-effector is assumed to be grasping nothing; cup_1 is present on the table and not blocked by any object."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The left end-effector is grasping a yellow tennis ball, but box_1 (green) has no object on top while a tennis ball is on top of box_2 (red), so box_1 top is free but the grasped ball is not clearly tennis_ball_1."
+}

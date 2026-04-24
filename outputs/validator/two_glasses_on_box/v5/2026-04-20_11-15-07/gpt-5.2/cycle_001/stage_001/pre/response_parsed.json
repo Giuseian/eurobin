@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both cup_1 and cup_2 are present and unobstructed on top of the green box, and no robot end-effectors are visible so they are assumed to be grasping nothing."
+}

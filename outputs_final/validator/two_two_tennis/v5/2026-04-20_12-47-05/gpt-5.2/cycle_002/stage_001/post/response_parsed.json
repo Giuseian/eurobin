@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows tennis_ball_2 resting on top of the red box (box_2), the left end-effector is grasping tennis_ball_1, and the green box (box_1) has no object on its top surface."
+}

@@ -1,0 +1,49 @@
+{
+  "module": "validator",
+  "execution_mode": "validation_loop",
+  "scenario_name": "two_two_tennis",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-04-20_12-44-19",
+  "cycle_name": "cycle_002",
+  "cycle_index": 2,
+  "cycle_timestamp": "2026-04-20_12-45-01",
+  "stage_id": 2,
+  "stage_name": "stage_002",
+  "condition_kind": "post",
+  "condition_text": "tennis_ball_1 placed on table; tennis_ball_2 placed on box_2 top; box_1 top free of objects",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 5.388820273999954,
+  "timestamp": "2026-04-20T12:46:52.444579",
+  "image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/4.png",
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2"
+    }
+  },
+  "sampling_config": {
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "response_parsed": {
+    "result": "matching",
+    "reason": "One yellow tennis ball is on the table surface, the other tennis ball is on top of the red box (box_2), and the green box (box_1) top has no objects on it."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-20_11-00-20",
+  "timestamp": "2026-04-20T11:05:56.518248",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 1,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_11-00-20",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+      "start_image_name": "1.png",
+      "outcome": "replan_on_post_stage_1",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors empty; cup_1 and cup_2 accessible on top of box.",
+          "postcondition": "Right end effector grasping cup_2; left end effector grasping cup_1.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible (assumed empty), and both cup_1 and cup_2 are resting on the top surface of the green box with no objects on top of them, so they are accessible from above."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "Both end effectors are grasping black cups, but the image does not provide unambiguous evidence which cup is cup_1 vs cup_2, so the specific left=cup_1 and right=cup_2 assignment is not verified."
+          },
+          "pre_validation_time_seconds": 4.998788961000173,
+          "post_validation_time_seconds": 6.432308696999826,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "next_image_name": "2.png"
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-20_11-01-10",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+      "start_image_name": "2.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Box accessible from left and right; both end effectors available for dual-arm grasp.",
+          "postcondition": "Box grasped by both end effectors.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The green box is unobstructed on its left and right sides, and both robot end-effectors are visible and not grasping anything, so they are available for a dual-arm grasp."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "Both visible end effectors are positioned on opposite sides of the green box in a grasping configuration, indicating a two-handed grasp."
+          },
+          "pre_validation_time_seconds": 5.624005286000283,
+          "post_validation_time_seconds": 4.940772842000115,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_11-00-20/gpt-5.2/cycle_002/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "next_image_name": "2.png"
+        }
+      ]
+    }
+  ]
+}

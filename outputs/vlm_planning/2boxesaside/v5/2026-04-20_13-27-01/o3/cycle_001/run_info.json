@@ -1,0 +1,111 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "validation_loop",
+  "scenario_name": "2boxesaside",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-04-20_13-27-01",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-20_13-27-01",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 27.92813960499916,
+  "timestamp": "2026-04-20T13:27:39.514470",
+  "scenario": {
+    "task": "Grasp the green box",
+    "image": "1.png",
+    "image_path_abs": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "cup_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "Object contact side": "right & left"
+    },
+    {
+      "Step_id": 2,
+      "Target": "Table",
+      "Action concept": "Place",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "With claw",
+      "Object contact side": "Top"
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "Object contact side": "Front"
+    },
+    {
+      "Step_id": 4,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "Object contact side": "right & left"
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-04-20_13-27-01",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-27-01",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  }
+}

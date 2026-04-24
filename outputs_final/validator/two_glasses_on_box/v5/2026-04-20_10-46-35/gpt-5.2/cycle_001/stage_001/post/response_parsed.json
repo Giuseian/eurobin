@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both end effectors are visibly holding a black cup each; the left end effector grasps the left cup (cup_1) and the right end effector grasps the right cup (cup_2)."
+}

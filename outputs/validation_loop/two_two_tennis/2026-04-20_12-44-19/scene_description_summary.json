@@ -1,0 +1,302 @@
+{
+  "module": "scene_description_summary",
+  "scenario_name": "two_two_tennis",
+  "loop_timestamp": "2026-04-20_12-44-19",
+  "timestamp": "2026-04-20T12:46:52.445534",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_12-44-19",
+      "image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/1.png",
+      "image_name": "1.png",
+      "scene_description_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/run_info.json",
+        "scene_object_list": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/scene_object_list.json",
+        "scene_description_full": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/scene_description_full.json",
+        "scene_description_full_run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+      },
+      "scene_description_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green"
+            },
+            {
+              "name": "box_2",
+              "category": "box",
+              "color": "red"
+            },
+            {
+              "name": "ball_1",
+              "category": "ball",
+              "color": "yellow"
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "nothing"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "box_2",
+              "relation": "right of",
+              "object": "box_1"
+            },
+            {
+              "subject": "ball_1",
+              "relation": "right of",
+              "object": "box_2"
+            }
+          ]
+        }
+      },
+      "scene_description_full_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "blocked by box_2",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "box_2",
+              "category": "box",
+              "color": "red",
+              "location": "zone B",
+              "sides": {
+                "left": "blocked by box_1",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "ball_1",
+              "category": "ball",
+              "color": "yellow",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "nothing"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "box_2",
+              "relation": "right of",
+              "object": "box_1"
+            },
+            {
+              "subject": "ball_1",
+              "relation": "right of",
+              "object": "box_2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-20_12-45-01",
+      "image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/2.png",
+      "image_name": "2.png",
+      "scene_description_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/run_info.json",
+        "scene_object_list": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/scene_object_list.json",
+        "scene_description_full": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/scene_description_full.json",
+        "scene_description_full_run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-44-19/gpt-5.2/cycle_002/scene_description_full_run_info.json"
+      },
+      "scene_description_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green"
+            },
+            {
+              "name": "box_2",
+              "category": "box",
+              "color": "red"
+            },
+            {
+              "name": "tennis_ball_1",
+              "category": "ball",
+              "color": "yellow"
+            },
+            {
+              "name": "tennis_ball_2",
+              "category": "ball",
+              "color": "yellow"
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "tennis_ball_2"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "tennis_ball_1",
+              "relation": "on top of",
+              "object": "box_1"
+            },
+            {
+              "subject": "box_2",
+              "relation": "right of",
+              "object": "box_1"
+            }
+          ]
+        }
+      },
+      "scene_description_full_output": {
+        "scene_description": {
+          "objects": [
+            {
+              "name": "box_1",
+              "category": "box",
+              "color": "green",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "blocked by box_2",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "blocked by tennis_ball_1",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "box_2",
+              "category": "box",
+              "color": "red",
+              "location": "zone B",
+              "sides": {
+                "left": "blocked by box_1",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            },
+            {
+              "name": "tennis_ball_1",
+              "category": "ball",
+              "color": "yellow",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by box_1"
+              }
+            },
+            {
+              "name": "tennis_ball_2",
+              "category": "ball",
+              "color": "yellow",
+              "location": "zone B",
+              "sides": {
+                "left": "accessible",
+                "right": "accessible",
+                "front": "accessible",
+                "back": "not reachable",
+                "top": "accessible",
+                "bottom": "blocked by the table"
+              }
+            }
+          ],
+          "end_effectors": [
+            {
+              "name": "end_effector_left",
+              "grasping": "nothing"
+            },
+            {
+              "name": "end_effector_right",
+              "grasping": "tennis_ball_2"
+            }
+          ],
+          "spatial_relationships": [
+            {
+              "subject": "tennis_ball_1",
+              "relation": "on top of",
+              "object": "box_1"
+            },
+            {
+              "subject": "box_2",
+              "relation": "right of",
+              "object": "box_1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

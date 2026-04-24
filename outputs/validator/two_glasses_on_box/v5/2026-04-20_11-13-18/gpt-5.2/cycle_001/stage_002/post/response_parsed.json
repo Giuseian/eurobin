@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both cup_1 and cup_2 are visible resting on the table, the robot end-effectors are not visible (assumed free), and nothing is on top of the green box so its top face is unblocked."
+}

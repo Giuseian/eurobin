@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows the left end-effector grasping one yellow tennis ball and the right end-effector grasping the other; the red box (box_2) has no object resting on its top, so its top face is accessible."
+}

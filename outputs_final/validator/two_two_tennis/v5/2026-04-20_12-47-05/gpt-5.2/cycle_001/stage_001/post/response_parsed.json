@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The right end-effector is grasping a yellow ball, but the green box top is not clear because another yellow ball is resting on it."
+}

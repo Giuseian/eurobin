@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both end-effectors are visibly grasping a tennis ball (left holds tennis_ball_1, right holds tennis_ball_2), and the top of the green box is clear with nothing resting on it."
+}

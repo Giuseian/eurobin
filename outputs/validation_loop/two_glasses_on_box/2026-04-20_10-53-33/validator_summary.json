@@ -1,0 +1,74 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-20_10-53-33",
+  "timestamp": "2026-04-20T10:54:23.884651",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 1,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_10-53-33",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+      "start_image_name": "1.png",
+      "outcome": "replan_on_post_stage_1",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "cup_1 and cup_2 are accessible; both end effectors are free.",
+          "postcondition": "Right end effector grasps cup_2 and left end effector grasps cup_1.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both cup_1 and cup_2 are visible on top of the green box with no objects blocking access, and no robot end-effectors are visible so they are assumed free."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "Both cups are held by the robot, but the left end effector is grasping the right-side cup and the right end effector is grasping the left-side cup, opposite of the required assignment."
+          },
+          "pre_validation_time_seconds": 6.104506104000393,
+          "post_validation_time_seconds": 5.338952447000338,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-53-33/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+          "next_image_name": "2.png"
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-20_10-54-12",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+      "start_image_name": "2.png",
+      "outcome": "task_completed",
+      "stages": []
+    }
+  ]
+}

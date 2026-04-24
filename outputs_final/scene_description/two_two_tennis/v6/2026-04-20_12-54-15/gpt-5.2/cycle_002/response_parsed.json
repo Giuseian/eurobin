@@ -1,0 +1,48 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "tennis_ball_1",
+        "category": "ball",
+        "color": "yellow"
+      },
+      {
+        "name": "tennis_ball_2",
+        "category": "ball",
+        "color": "yellow"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "tennis_ball_2"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "tennis_ball_1",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_2",
+        "relation": "right of",
+        "object": "box_1"
+      }
+    ]
+  }
+}

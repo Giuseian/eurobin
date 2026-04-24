@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The right end-effector is visibly holding a yellow tennis ball (tennis_ball_2); the other yellow tennis ball (tennis_ball_1) is on top of the green box (box_1); the red box (box_2) has nothing on its top surface, so its top is accessible."
+}

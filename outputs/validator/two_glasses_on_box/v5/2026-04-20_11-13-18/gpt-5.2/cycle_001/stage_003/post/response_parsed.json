@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The green box is held between the robot's two end-effectors, with each arm contacting opposite (left and right) sides in a symmetric grasp."
+}

@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "A yellow tennis ball is on top of the red box (box_2); the left end-effector is visibly holding the other tennis ball (tennis_ball_1); the green box (box_1) has no object on its top surface."
+}

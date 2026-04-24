@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both robot end effectors are visible and each is grasping a black cup (cup_1 in the left gripper, cup_2 in the right gripper). The tabletop has clear free space for placement around the green box."
+}

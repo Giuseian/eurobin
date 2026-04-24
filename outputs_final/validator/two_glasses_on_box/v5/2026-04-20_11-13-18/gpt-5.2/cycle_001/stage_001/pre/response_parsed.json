@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end effectors are visible, so they are assumed free; both cup_1 and cup_2 are on the top surface of the green box with no objects blocking access from above."
+}

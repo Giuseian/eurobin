@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible (assumed empty); ball_1 is unobstructed on the table; the top of the green box (box_1) has nothing resting on it."
+}

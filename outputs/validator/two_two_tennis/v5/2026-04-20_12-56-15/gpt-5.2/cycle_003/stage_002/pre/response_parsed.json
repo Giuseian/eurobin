@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both end effectors are visibly grasping a yellow tennis ball; the left gripper holds tennis_ball_1 and the right gripper holds tennis_ball_2."
+}

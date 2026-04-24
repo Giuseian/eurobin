@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "Both end effectors are visibly holding a black cup (cup_1 in left, cup_2 in right), and there is clear free tabletop area around the green box for placement."
+}

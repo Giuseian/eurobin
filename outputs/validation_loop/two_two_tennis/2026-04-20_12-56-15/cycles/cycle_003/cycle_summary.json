@@ -1,0 +1,315 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "two_two_tennis",
+  "loop_timestamp": "2026-04-20_12-56-15",
+  "cycle_name": "cycle_003",
+  "cycle_index": 3,
+  "cycle_timestamp": "2026-04-20_12-58-12",
+  "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/balls.png",
+  "start_image_name": "balls.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red"
+          },
+          {
+            "name": "tennis_ball_1",
+            "category": "ball",
+            "color": "yellow"
+          },
+          {
+            "name": "tennis_ball_2",
+            "category": "ball",
+            "color": "yellow"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "tennis_ball_1",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "tennis_ball_2",
+            "relation": "on top of",
+            "object": "box_2"
+          },
+          {
+            "subject": "box_2",
+            "relation": "right of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/run_info.json",
+      "scene_object_list": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 12.148130857998694
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "blocked by box_2",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by tennis_ball_1",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red",
+            "location": "zone B",
+            "sides": {
+              "left": "blocked by box_1",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by tennis_ball_2",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "tennis_ball_1",
+            "category": "ball",
+            "color": "yellow",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_1"
+            }
+          },
+          {
+            "name": "tennis_ball_2",
+            "category": "ball",
+            "color": "yellow",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_2"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "tennis_ball_1",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "tennis_ball_2",
+            "relation": "on top of",
+            "object": "box_2"
+          },
+          {
+            "subject": "box_2",
+            "relation": "right of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/scene_description_full.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_12-56-15/gpt-5.2/cycle_003/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.001587495000421768
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "tennis_ball_2",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "Object contact side": "left & right"
+      },
+      {
+        "Step_id": 2,
+        "Target": "Table",
+        "Action concept": "Place",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "Object contact side": "Top"
+      },
+      {
+        "Step_id": 3,
+        "Target": "tennis_ball_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Single-arm (left)",
+        "Contact mode": "With claw",
+        "Object contact side": "left & right"
+      },
+      {
+        "Step_id": 4,
+        "Target": "box_2",
+        "Action concept": "Place",
+        "Manipulation mode": "Single-arm (left)",
+        "Contact mode": "With claw",
+        "Object contact side": "Top"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/vlm_planning/two_two_tennis/v5/2026-04-20_12-56-15/o3/cycle_003/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-04-20_12-56-15/o3/cycle_003/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-04-20_12-56-15/o3/cycle_003/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 16.793605672999547
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1,
+          3
+        ],
+        "Precondition": "Both end effectors empty; tennis_ball_1 on box_1; tennis_ball_2 on box_2.",
+        "Postcondition": "Right end effector grasping tennis_ball_2; left end effector grasping tennis_ball_1."
+      },
+      {
+        "Stage_id": 2,
+        "Step_id": [
+          2,
+          4
+        ],
+        "Precondition": "Right end effector grasping tennis_ball_2; left end effector grasping tennis_ball_1.",
+        "Postcondition": "tennis_ball_2 on table; tennis_ball_1 on top of box_2; both end effectors empty; top of box_1 free of objects."
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 2.9696301000003587
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "Both end effectors empty; tennis_ball_1 on box_1; tennis_ball_2 on box_2.",
+      "postcondition": "Right end effector grasping tennis_ball_2; left end effector grasping tennis_ball_1.",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/balls.png",
+      "pre_image_name": "balls.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/both.png",
+      "post_image_name": "both.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "The image shows two tennis balls resting on top of the green box (box_1) and the red box (box_2), and no robot end-effectors are visible so they are assumed empty."
+      },
+      "post_validation": {
+        "result": "matching",
+        "reason": "Both robot end effectors are visibly grasping a yellow tennis ball each; the scene provides no clear way to distinguish tennis_ball_1 vs tennis_ball_2, so the specified assignment cannot be contradicted."
+      },
+      "pre_validation_time_seconds": 4.643431299999065,
+      "post_validation_time_seconds": 6.931945843998619,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/both.png",
+      "next_image_name": "both.png"
+    },
+    {
+      "stage_id": 2,
+      "stage_name": "stage_002",
+      "precondition": "Right end effector grasping tennis_ball_2; left end effector grasping tennis_ball_1.",
+      "postcondition": "tennis_ball_2 on table; tennis_ball_1 on top of box_2; both end effectors empty; top of box_1 free of objects.",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/both.png",
+      "pre_image_name": "both.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/4.png",
+      "post_image_name": "4.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "Both end effectors are visibly grasping a yellow tennis ball; the left gripper holds tennis_ball_1 and the right gripper holds tennis_ball_2."
+      },
+      "post_validation": {
+        "result": "matching",
+        "reason": "One tennis ball is on the table surface, the other tennis ball is on top of the red box (box_2); no end effectors are visible so they are assumed empty; the top of the green box (box_1) has no objects on it."
+      },
+      "pre_validation_time_seconds": 5.592424406000646,
+      "post_validation_time_seconds": 5.302966445000493,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_two_tennis/v5/2026-04-20_12-56-15/gpt-5.2/cycle_003/stage_002/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/4.png",
+      "next_image_name": "4.png"
+    }
+  ],
+  "outcome": "task_completed",
+  "end_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/4.png",
+  "end_image_name": "4.png"
+}

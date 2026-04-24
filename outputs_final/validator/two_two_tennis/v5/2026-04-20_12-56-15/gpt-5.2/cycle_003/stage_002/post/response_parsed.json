@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "One tennis ball is on the table surface, the other tennis ball is on top of the red box (box_2); no end effectors are visible so they are assumed empty; the top of the green box (box_1) has no objects on it."
+}

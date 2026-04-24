@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The right end-effector is grasping a tennis ball, but the green box top is not free because another tennis ball is resting on it."
+}

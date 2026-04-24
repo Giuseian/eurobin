@@ -1,0 +1,158 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "two_glasses_on_box",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-04-20_10-58-25",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-20_10-58-25",
+  "model": "gpt-5.2",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.0007066640000630287,
+  "timestamp": "2026-04-20T10:58:35.503277",
+  "scenario": {
+    "task": "Grasp the green box.",
+    "image": "1.png",
+    "image_path_abs": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmp7q5eyu__.json",
+    "safety_threshold": 0.11,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "green",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "blocked by cup_1, cup_2",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "cup_1",
+          "category": "cup",
+          "color": "black",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by box_1"
+          }
+        },
+        {
+          "name": "cup_2",
+          "category": "cup",
+          "color": "black",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by box_1"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "cup_1",
+          "relation": "on top of",
+          "object": "box_1"
+        },
+        {
+          "subject": "cup_2",
+          "relation": "on top of",
+          "object": "box_1"
+        },
+        {
+          "subject": "cup_2",
+          "relation": "right of",
+          "object": "cup_1"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-04-20_10-58-25",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_10-58-25",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  }
+}

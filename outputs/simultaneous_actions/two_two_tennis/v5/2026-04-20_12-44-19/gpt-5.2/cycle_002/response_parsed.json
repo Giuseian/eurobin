@@ -1,0 +1,19 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Left end-effector empty; tennis_ball_1 on box_1 top; green box top not required to be free yet",
+    "Postcondition": "Left end-effector grasping tennis_ball_1"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      3
+    ],
+    "Precondition": "Left end-effector grasping tennis_ball_1; right end-effector grasping tennis_ball_2; box_2 top accessible",
+    "Postcondition": "tennis_ball_1 placed on table; tennis_ball_2 placed on box_2 top; box_1 top free of objects"
+  }
+]

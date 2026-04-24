@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The left end-effector is not visible (assumed empty), and a yellow tennis ball is resting on the top surface of the green box (box_1)."
+}

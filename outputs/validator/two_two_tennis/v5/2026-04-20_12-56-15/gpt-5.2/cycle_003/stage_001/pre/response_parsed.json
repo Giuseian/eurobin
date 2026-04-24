@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows two tennis balls resting on top of the green box (box_1) and the red box (box_2), and no robot end-effectors are visible so they are assumed empty."
+}

@@ -1,0 +1,346 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-04-20_10-58-25",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-04-20_10-58-25",
+  "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+  "start_image_name": "1.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green"
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black"
+          },
+          {
+            "name": "cup_2",
+            "category": "cup",
+            "color": "black"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cup_1",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "cup_2",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "cup_2",
+            "relation": "right of",
+            "object": "cup_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 10.37868437599991
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by cup_1, cup_2",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "cup_1",
+            "category": "cup",
+            "color": "black",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_1"
+            }
+          },
+          {
+            "name": "cup_2",
+            "category": "cup",
+            "color": "black",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_1"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cup_1",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "cup_2",
+            "relation": "on top of",
+            "object": "box_1"
+          },
+          {
+            "subject": "cup_2",
+            "relation": "right of",
+            "object": "cup_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/scene_description_full.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-04-20_10-58-25/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.0007066640000630287
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "cup_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Single-arm (left)",
+        "Contact mode": "With claw",
+        "Object contact side": "right & left"
+      },
+      {
+        "Step_id": 2,
+        "Target": "table",
+        "Action concept": "Place",
+        "Manipulation mode": "Single-arm (left)",
+        "Contact mode": "With claw",
+        "Object contact side": "top"
+      },
+      {
+        "Step_id": 3,
+        "Target": "cup_2",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "Object contact side": "right & left"
+      },
+      {
+        "Step_id": 4,
+        "Target": "table",
+        "Action concept": "Place",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "With claw",
+        "Object contact side": "top"
+      },
+      {
+        "Step_id": 5,
+        "Target": "box_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/vlm_planning/two_glasses_on_box/v5/2026-04-20_10-58-25/o3/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_glasses_on_box/v5/2026-04-20_10-58-25/o3/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_glasses_on_box/v5/2026-04-20_10-58-25/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 8.855006896000305
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1,
+          3
+        ],
+        "Precondition": "Both end effectors empty; cup_1 and cup_2 accessible on box_1.",
+        "Postcondition": "Left end effector grasping cup_1; right end effector grasping cup_2."
+      },
+      {
+        "Stage_id": 2,
+        "Step_id": [
+          2,
+          4
+        ],
+        "Precondition": "Left end effector grasping cup_1; right end effector grasping cup_2; table top available for placement.",
+        "Postcondition": "cup_1 and cup_2 placed on table; both end effectors empty; box_1 top unblocked."
+      },
+      {
+        "Stage_id": 3,
+        "Step_id": [
+          5
+        ],
+        "Precondition": "Both end effectors empty; box_1 left and right sides accessible; box_1 top unblocked.",
+        "Postcondition": "box_1 grasped with dual-arm symmetric grasp."
+      }
+    ],
+    "paths": {
+      "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 3.9083748220000416
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "Both end effectors empty; cup_1 and cup_2 accessible on box_1.",
+      "postcondition": "Left end effector grasping cup_1; right end effector grasping cup_2.",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/1.png",
+      "pre_image_name": "1.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+      "post_image_name": "2.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "No robot end-effectors are visible, so they are assumed empty; both cup_1 and cup_2 are on top of box_1 with no objects blocking access."
+      },
+      "post_validation": {
+        "result": "matching",
+        "reason": "Both end effectors are visibly holding a black cup each: the left gripper holds one cup and the right gripper holds the other cup, consistent with cup_1 and cup_2 being grasped respectively."
+      },
+      "pre_validation_time_seconds": 5.352609200999723,
+      "post_validation_time_seconds": 6.61842937900019,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+      "next_image_name": "2.png"
+    },
+    {
+      "stage_id": 2,
+      "stage_name": "stage_002",
+      "precondition": "Left end effector grasping cup_1; right end effector grasping cup_2; table top available for placement.",
+      "postcondition": "cup_1 and cup_2 placed on table; both end effectors empty; box_1 top unblocked.",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/2.png",
+      "pre_image_name": "2.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/3.png",
+      "post_image_name": "3.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "Both robot end effectors are visible and each is grasping a black cup (cup_1 in the left gripper, cup_2 in the right gripper). The tabletop has clear free space for placement around the green box."
+      },
+      "post_validation": {
+        "result": "matching",
+        "reason": "Both black cups are on the table, the robot end-effectors are not visible (assumed empty), and the green box has nothing resting on its top surface."
+      },
+      "pre_validation_time_seconds": 6.235310086000027,
+      "post_validation_time_seconds": 5.366707146000408,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/3.png",
+      "next_image_name": "3.png"
+    },
+    {
+      "stage_id": 3,
+      "stage_name": "stage_003",
+      "precondition": "Both end effectors empty; box_1 left and right sides accessible; box_1 top unblocked.",
+      "postcondition": "box_1 grasped with dual-arm symmetric grasp.",
+      "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/3.png",
+      "pre_image_name": "3.png",
+      "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/4.png",
+      "post_image_name": "4.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "No robot end-effectors are visible (assumed empty). The green box_1 has no objects on its top, and the two black cups are positioned to the left and right with clear gaps, so box_1’s left and right sides appear accessible."
+      },
+      "post_validation": {
+        "result": "matching",
+        "reason": "The green box_1 is held between the robot's two end-effectors, with both arms symmetrically contacting opposite sides of the box."
+      },
+      "pre_validation_time_seconds": 5.658956338999815,
+      "post_validation_time_seconds": 5.418550964000133,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/pre/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/pre/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/post/prompt.txt",
+          "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/post/response_parsed.json",
+          "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/two_glasses_on_box/v5/2026-04-20_10-58-25/gpt-5.2/cycle_001/stage_003/post/run_info.json"
+        }
+      },
+      "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/4.png",
+      "next_image_name": "4.png"
+    }
+  ],
+  "outcome": "task_completed",
+  "end_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_glasses_on_box/4.png",
+  "end_image_name": "4.png"
+}

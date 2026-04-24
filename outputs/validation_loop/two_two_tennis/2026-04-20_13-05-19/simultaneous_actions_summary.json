@@ -1,0 +1,91 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "two_two_tennis",
+  "loop_timestamp": "2026-04-20_13-05-19",
+  "timestamp": "2026-04-20T13:07:09.800031",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_13-05-19",
+      "input_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_13-05-19/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-04-20_13-05-19/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Right end-effector grasping nothing; ball accessible; green box top free",
+          "Postcondition": "Right end-effector grasping ball; green box top free"
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "Right end-effector grasping ball; red box top accessible; green box top free",
+          "Postcondition": "Ball placed on red box top; right end-effector grasping nothing; green box top free"
+        }
+      ]
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-04-20_13-05-57",
+      "input_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/2.png",
+      "input_image_name": "2.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_002",
+        "scene_description_full_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/scene_description/two_two_tennis/v6/2026-04-20_13-05-19/gpt-5.2/cycle_002/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_002",
+        "vlm_planning_path": "/home/ecuzzocrea-iit.local/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-04-20_13-05-19/o3/cycle_002/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_002/prompt.txt",
+        "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_002/response_parsed.json",
+        "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-04-20_13-05-19/gpt-5.2/cycle_002/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1,
+            2
+          ],
+          "Precondition": "Right end-effector grasping tennis_ball_2; tennis_ball_1 on top of box_1; box_2 top accessible; left end-effector empty.",
+          "Postcondition": "tennis_ball_2 placed on box_2; left end-effector grasping tennis_ball_1; box_1 top cleared."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "Left end-effector grasping tennis_ball_1; box_1 top free.",
+          "Postcondition": "tennis_ball_1 placed on table; box_1 top remains free."
+        }
+      ]
+    }
+  ]
+}

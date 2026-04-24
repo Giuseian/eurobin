@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The black cup (cup_1) is visible resting on the tabletop, and no right end-effector is visible so it is assumed empty."
+}

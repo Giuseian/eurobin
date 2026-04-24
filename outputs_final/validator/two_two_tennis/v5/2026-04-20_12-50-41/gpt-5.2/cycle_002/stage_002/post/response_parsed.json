@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "A tennis ball is on the table, but the top of box_1 (green box) is not free because another box (red) is directly adjacent and touching its right side, blocking access to that face."
+}

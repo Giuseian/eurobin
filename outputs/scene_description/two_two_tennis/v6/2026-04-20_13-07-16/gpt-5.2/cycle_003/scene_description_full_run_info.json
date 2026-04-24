@@ -1,0 +1,167 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "two_two_tennis",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-04-20_13-07-16",
+  "cycle_name": "cycle_003",
+  "cycle_index": 3,
+  "cycle_timestamp": "2026-04-20_13-08-43",
+  "model": "gpt-5.2",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.001183590000437107,
+  "timestamp": "2026-04-20T13:08:56.358594",
+  "scenario": {
+    "task": "Place the ball on the red box. Additionally, make sure that the top of the green box is free of objects.",
+    "image": "3.png",
+    "image_path_abs": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/3.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpjn1yktg1.json",
+    "safety_threshold": 0.11,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "green",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "blocked by box_2",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "red",
+          "location": "zone B",
+          "sides": {
+            "left": "blocked by box_1",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "blocked by tennis_ball_2",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "tennis_ball_1",
+          "category": "ball",
+          "color": "yellow",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "accessible",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "tennis_ball_2",
+          "category": "ball",
+          "color": "yellow",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by box_2"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "tennis_ball_1"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "tennis_ball_2",
+          "relation": "on top of",
+          "object": "box_2"
+        },
+        {
+          "subject": "box_2",
+          "relation": "right of",
+          "object": "box_1"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_003",
+    "cycle_index": 3,
+    "cycle_timestamp": "2026-04-20_13-08-43",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_13-07-16",
+      "cycle_name": "cycle_003",
+      "model": "gpt-5.2"
+    }
+  }
+}

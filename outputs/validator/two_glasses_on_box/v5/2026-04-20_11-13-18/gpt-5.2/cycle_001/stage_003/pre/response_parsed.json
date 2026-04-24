@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible (assumed free). The green box has no objects on top, and the two black cups are positioned to the left and right without touching the box, leaving its left/right sides accessible and top unblocked."
+}

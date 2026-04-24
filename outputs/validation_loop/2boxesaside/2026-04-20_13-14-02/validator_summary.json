@@ -1,0 +1,167 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-04-20_13-14-02",
+  "timestamp": "2026-04-20T13:16:03.315661",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-04-20_13-14-02",
+      "start_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+      "start_image_name": "1.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Right end effector is free; cup_1 is accessible.",
+          "postcondition": "cup_1 is grasped by the right end effector.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so the right end effector is assumed free; cup_1 is present on the table with no object resting on it or directly blocking access."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The black cup (cup_1) is visibly held within the right gripper/end effector."
+          },
+          "pre_validation_time_seconds": 4.904733106001004,
+          "post_validation_time_seconds": 5.620392146998711,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "cup_1 is grasped by the right end effector; table top is available for placement.",
+          "postcondition": "cup_1 is placed on the table; right end effector is free.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The black cup (cup_1) is visibly held in the right gripper, and there is clear empty space on the tabletop not occupied by the boxes or cup, so the table top is available for placement."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The black cup (cup_1) is visible resting on the tabletop, and no right end-effector is visible, so it is assumed free."
+          },
+          "pre_validation_time_seconds": 5.664454874000512,
+          "post_validation_time_seconds": 4.487759014999028,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "Right end effector is free; box_2 front side is accessible.",
+          "postcondition": "box_2 has been pushed from the front.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so the right end effector is assumed free; the red box_2 front face has no object directly touching/occupying it, so it is accessible."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "There is no clear visual evidence contradicting that the red box (box_2) has been pushed from the front; the image shows only its current position without action history."
+          },
+          "pre_validation_time_seconds": 5.073427139001069,
+          "post_validation_time_seconds": 7.041099178000877,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/4.png",
+          "next_image_name": "4.png"
+        },
+        {
+          "stage_id": 4,
+          "stage_name": "stage_004",
+          "precondition": "Both end effectors are free; box_1 left and right sides are accessible.",
+          "postcondition": "box_1 is grasped with dual-arm symmetric grasp.",
+          "pre_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/4.png",
+          "pre_image_name": "4.png",
+          "post_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/5.png",
+          "post_image_name": "5.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so they are assumed free. The green box (box_1) has no objects directly adjacent/touching its left or right faces, so both sides appear accessible."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The green box_1 is held between the robot's two end-effectors, with both arms contacting opposite sides in a symmetric grasp."
+          },
+          "pre_validation_time_seconds": 8.436411194001266,
+          "post_validation_time_seconds": 4.979635609999605,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/pre/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/pre/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/ecuzzocrea-iit.local/eurobin/prompts_scenarios/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/post/prompt.txt",
+              "response_parsed": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/post/response_parsed.json",
+              "run_info": "/home/ecuzzocrea-iit.local/eurobin/outputs/validator/2boxesaside/v5/2026-04-20_13-14-02/gpt-5.2/cycle_001/stage_004/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/ecuzzocrea-iit.local/eurobin/image_data/2boxesaside/5.png",
+          "next_image_name": "5.png"
+        }
+      ]
+    }
+  ]
+}

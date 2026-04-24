@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible so the right end-effector is assumed to be grasping nothing; the tennis_ball is unobstructed on the table; and nothing is on top of the green box so its top face is free."
+}

@@ -1,0 +1,115 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "two_two_tennis",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-04-20_12-44-19",
+  "cycle_name": "cycle_002",
+  "cycle_index": 2,
+  "cycle_timestamp": "2026-04-20_12-45-01",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 10.86287218599864,
+  "timestamp": "2026-04-20T12:45:12.668071",
+  "scenario": {
+    "task": "Place the ball on the red box. Additionally, make sure that the top of the green box is free of objects.",
+    "image": "2.png",
+    "image_path_abs": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis/2.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "green"
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "red"
+        },
+        {
+          "name": "tennis_ball_1",
+          "category": "ball",
+          "color": "yellow"
+        },
+        {
+          "name": "tennis_ball_2",
+          "category": "ball",
+          "color": "yellow"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "tennis_ball_2"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "tennis_ball_1",
+          "relation": "on top of",
+          "object": "box_1"
+        },
+        {
+          "subject": "box_2",
+          "relation": "right of",
+          "object": "box_1"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_002",
+    "cycle_index": 2,
+    "cycle_timestamp": "2026-04-20_12-45-01",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/ecuzzocrea-iit.local/eurobin/image_data/two_two_tennis"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-04-20_12-44-19",
+      "cycle_name": "cycle_002",
+      "model": "gpt-5.2"
+    }
+  }
+}

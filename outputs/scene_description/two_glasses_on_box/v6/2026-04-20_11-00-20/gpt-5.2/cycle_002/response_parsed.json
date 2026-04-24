@@ -1,0 +1,22 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box",
+        "category": "box",
+        "color": "green"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "box"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "box"
+      }
+    ],
+    "spatial_relationships": []
+  }
+}
