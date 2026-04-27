@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="glass_model">
+    <static>true</static>
+
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <!-- VISUAL (solo grafica) -->
+      <visual name="visual">
+      <!-- <pose>-0.075 -0.145 0.0 0 0 0</pose> -->
+      <!-- <pose>-0.05 -0.096 0.0 0 0 0</pose> -->
+        <geometry>
+          <mesh>
+            <uri>model://glass_model/meshes/glass.glb</uri>
+            <!-- <scale>0.35 0.35 0.35</scale> -->
+            <scale>0.26 0.26 0.26</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- COLLISION (fisica reale) -->
+      <collision name="collision">
+        <geometry>
+          <box>
+            <!-- <size>0.1 0.18 0.1</size> -->
+            <size>0.076 0.138 0.076</size>
+          </box>
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+
+          <!-- <contact>
+            <ode>
+              <kp>10000000.0</kp>
+              <kd>1000.0</kd>
+              <max_vel>0.0</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact> -->
+        </surface>
+
+      </collision>
+
+      <!-- Aggiungiamo massa e inerzia (importantissimo se static=false) -->
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>10000</ixx>
+          <iyy>10000</iyy>
+          <izz>10000</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+    </link>
+  </model>
+</sdf>

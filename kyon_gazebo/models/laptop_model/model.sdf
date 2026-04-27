@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="laptop_model">
+    <static>true</static>
+
+    <!-- Se vuoi poterlo spostare/urti, metti static=false e aggiungi inertia/mass -->
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://laptop_model/meshes/laptop1.glb</uri>
+            <scale>0.013 0.013 0.013</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.2 0.005 0.2</size>
+            <scale>0.02 0.02 0.02</scale>
+          </box>
+        </geometry>
+      </collision> -->
+
+    </link>
+  </model>
+</sdf>

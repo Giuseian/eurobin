@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="book_model">
+    <static>true</static>
+
+    <!-- Se vuoi poterlo spostare/urti, metti static=false e aggiungi inertia/mass -->
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://book_model/meshes/book1.glb</uri>
+            <scale>0.12 0.12 0.12</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://book_model/meshes/book1.glb</uri>
+            <scale>0.11 0.11 0.11</scale>
+          </mesh>
+        </geometry>
+      </collision> -->
+
+    </link>
+  </model>
+</sdf>

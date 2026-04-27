@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="box3_model">
+    <static>false</static>
+    
+
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <gravity>false</gravity>
+
+      <!-- VISUAL (solo grafica) -->
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://box3_model/meshes/colored_box.obj</uri>
+            <!-- <scale>0.012 0.01 0.008</scale> -->
+            <scale>0.00001 0.00001 0.00001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+
+    </link>
+  </model>
+</sdf>

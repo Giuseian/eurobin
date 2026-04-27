@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="kyon">
+
+<xacro:include filename="$(find kyon_urdf)/urdf/kyon_robot.urdf.xacro" />
+<xacro:include filename="$(find kyon_gazebo)/urdf/kyon_sensors.urdf.xacro" />
+
+</robot>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="box3_model">
+    <static>false</static>
+
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <!-- VISUAL (solo grafica) -->
+      <visual name="visual">
+      <pose>-0.075 -0.145 0.0 0 0 0</pose>
+      <!-- <pose>-0.05 -0.096 0.0 0 0 0</pose> -->
+        <geometry>
+          <mesh>
+            <uri>model://box3_model/meshes/colored_box.obj</uri>
+            <scale>0.012 0.01 0.008</scale>
+            <!-- <scale>0.008 0.006 0.0053</scale> -->
+          </mesh>
+        </geometry>
+      </visual>
+
+      <!-- COLLISION (fisica reale) -->
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.285 0.275 0.285</size>
+            <!-- <size>0.19 0.183 0.19</size> -->
+          </box>
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>10.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+
+          <!-- <contact>
+            <ode>
+              <kp>10000000.0</kp>
+              <kd>1000.0</kd>
+              <max_vel>0.0</max_vel>
+              <min_depth>0.001</min_depth>
+            </ode>
+          </contact> -->
+        </surface>
+
+      </collision>
+
+      <!-- Aggiungiamo massa e inerzia (importantissimo se static=false) -->
+      <inertial>
+        <mass>2</mass>
+        <inertia>
+          <ixx>10000</ixx>
+          <iyy>10000</iyy>
+          <izz>10000</izz>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyz>0.0</iyz>
+        </inertia>
+      </inertial>
+
+    </link>
+  </model>
+</sdf>

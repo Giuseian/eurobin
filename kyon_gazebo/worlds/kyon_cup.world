@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <!-- We use a custom world for the rrbot so that the camera angle is launched correctly -->
+
+  <world name="default">
+
+    <plugin
+      filename="gz-sim-physics-system"
+      name="gz::sim::systems::Physics">
+    </plugin>
+    <plugin
+      filename="gz-sim-air-pressure-system"
+      name="gz::sim::systems::AirPressure">
+    </plugin>
+    <plugin
+      filename="gz-sim-altimeter-system"
+      name="gz::sim::systems::Altimeter">
+    </plugin>
+    <plugin
+      filename="gz-sim-imu-system"
+      name="gz::sim::systems::Imu">
+    </plugin>
+    <plugin
+      filename="gz-sim-sensors-system"
+      name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="gz-sim-magnetometer-system"
+      name="gz::sim::systems::Magnetometer">
+    </plugin>
+    <plugin
+      filename="gz-sim-forcetorque-system"
+      name="gz::sim::systems::ForceTorque">
+    </plugin>
+    <plugin
+      filename="gz-sim-user-commands-system"
+      name="gz::sim::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="gz-sim-scene-broadcaster-system"
+      name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    <gravity>0 0 -9.81</gravity>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- <model name="sofa_001">
+        <include>
+            <uri>model://sofa_model</uri>
+        </include>
+        <pose>0.0 0.0 0.0 1.57 0.0 0.0</pose>
+    </model> -->
+
+    <!-- <model name="table_001">
+        <include>
+            <uri>model://table_model</uri>
+        </include>
+        <pose>4.0 0.0 0.0 1.57 0.0 -1.57</pose>
+    </model> -->
+
+    <model name="table2_001">
+        <include>
+            <uri>model://table2_model</uri>
+        </include>
+        <pose>5.0 -0.5 0.5 1.57 0.0 -1.57</pose>
+    </model>
+
+    <!-- <model name="box_001">
+        <include>
+            <uri>model://box_model</uri>
+        </include>
+        <pose>4.66 -0.43 0.9 1.57 0.0 -1.57</pose>
+    </model> -->
+
+    <!-- <model name="box2_001">
+        <include>
+            <uri>model://box2_model</uri>
+        </include>
+        <pose>4.0 0.14 0.8 1.57 0.0 -1.57</pose>
+    </model>
+
+    <model name="box3_001">
+        <include>
+            <uri>model://box3_model</uri>
+        </include>
+        <pose>4.0 -0.2 0.8 1.57 0.0 -1.57</pose>
+    </model> -->
+
+    <model name="box_green_001">
+        <include>
+            <uri>model://box_green_model</uri>
+        </include>
+        <pose>4.0 0.14 0.8 1.57 0.0 -1.57</pose>
+    </model>
+
+    <model name="box_red_001">
+        <include>
+            <uri>model://box_red_model</uri>
+        </include>
+        <pose>4.0 -0.2 0.8 1.57 0.0 -1.57</pose>
+    </model>
+
+    <model name="pin_001">
+        <include>
+            <uri>model://pin_model</uri>
+        </include>
+        <!-- Default -->
+        <pose>5.68 -0.04 -0.26 0.0 0.0 0.0</pose>
+        <!-- Top view -->
+        <!-- <pose>4.16 -0.05 -0.71 0.0 0.9 3.14</pose> -->
+    </model>
+    
+
+
+    <!-- <model name="room_001">
+        <include>
+            <uri>model://room_model</uri>
+        </include>
+        <pose>2.0 0.0 0.02 1.57 0.0 3.14</pose>
+    </model> -->
+
+    <!-- <model name="cone_001">
+        <include>
+            <uri>model://cone_model</uri>
+        </include>
+        <pose>4.0 1.9 0.0 1.57 0.0 -1.57</pose>
+    </model> -->
+
+    <!-- <model name="laptop_001">
+        <include>
+            <uri>model://laptop_model</uri>
+        </include>
+        <pose>4.48 0.91 0.88 1.57 0.0 -1.28</pose>
+    </model> -->
+
+    <!-- <model name="book_001">
+        <include>
+            <uri>model://book_model</uri>
+        </include>
+        <pose>3.92 1.0 0.91 1.56 0.0 -1.76</pose>
+    </model> -->
+
+    <!-- <model name="bottle_001">
+        <include>
+            <uri>model://bottle_model</uri>
+        </include>
+        <pose>3.92 1.0 1.9 1.56 0.0 -1.76</pose>
+    </model> -->
+
+    <model name="glass_001">
+        <include>
+            <uri>model://glass_model</uri>
+        </include>
+        <pose>3.62 -0.18 0.7 1.57 0.0 -1.57</pose>
+    </model>
+
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>4.927360 -4.376610 3.740080 0.000000 0.275643 2.356190</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+    <physics name="update_rate" type="ode">
+      <real_time_update_rate>2000</real_time_update_rate>
+      <max_step_size>0.0005</max_step_size>
+      <max_contacts>10</max_contacts>
+      <bullet>
+        <solver>
+          <iters>100</iters>
+          <sor>1.55</sor>
+        </solver>
+        <constraints>
+          <contact_surface_layer>0.2</contact_surface_layer>
+          <cfm>0.005</cfm>
+          <erp>0.2</erp>
+        </constraints>
+      </bullet>
+      <ode>
+        <solver>
+          <!--          <type>quick</type> -->
+          <iters>50</iters>
+          <sor>1.20</sor>
+        </solver>
+        <constraints>
+          <contact_surface_layer>0.0002</contact_surface_layer>
+          <contact_max_correcting_vel>500</contact_max_correcting_vel>
+          <cfm>0.000001</cfm>
+          <erp>0.3</erp>
+        </constraints>
+      </ode>
+    </physics>
+
+  </world>
+</sdf>
