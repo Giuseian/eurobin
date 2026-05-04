@@ -1,0 +1,806 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /TF1
+        - /TF1/Frames1
+        - /TF1/Frames1/ci/arm1_81
+      Splitter Ratio: 0.5
+    Tree Height: 752
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Tool Properties
+    Expanded:
+      - /2D Goal Pose1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.5886790156364441
+  - Class: rviz_common/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz_common/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description File: ""
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: robot_description
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        D435_head_camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435_head_camera_gz_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435_head_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        D435i_camera_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        D435i_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        ankle1_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle1_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle1_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle1_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle2_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle2_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle2_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ankle2_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm1_8:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        arm2_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        arm2_8:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        contact_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        contact_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        contact_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        contact_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        d435_head_motor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        dagana_1_bottom_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        dagana_1_tcp:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        dagana_1_top_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        dagana_2_bottom_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        dagana_2_tcp:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        dagana_2_top_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip1_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip1_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip1_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip1_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip2_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip2_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip2_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        hip2_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        knee_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        knee_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        knee_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        knee_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        neck_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pelvis:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        torso_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        velodyne_motor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Mass Properties:
+        Inertia: false
+        Mass: false
+      Name: RobotModel
+      TF Prefix: ci
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz_default_plugins/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Interactive Markers Namespace: /arm1_8_cartesian_marker_server
+      Name: InteractiveMarkers
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Value: true
+    - Class: rviz_default_plugins/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: true
+      Interactive Markers Namespace: /arm2_8_cartesian_marker_server
+      Name: InteractiveMarkers
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Value: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        D435_head_camera_bottom_screw_frame:
+          Value: false
+        D435_head_camera_gz_optical_frame:
+          Value: false
+        D435_head_camera_link:
+          Value: false
+        D435i_camera_bottom_screw_frame:
+          Value: false
+        D435i_camera_link:
+          Value: false
+        ankle1_1:
+          Value: false
+        ankle1_2:
+          Value: false
+        ankle1_3:
+          Value: false
+        ankle1_4:
+          Value: false
+        ankle2_1:
+          Value: false
+        ankle2_2:
+          Value: false
+        ankle2_3:
+          Value: false
+        ankle2_4:
+          Value: false
+        arm1_1:
+          Value: false
+        arm1_2:
+          Value: false
+        arm1_3:
+          Value: false
+        arm1_4:
+          Value: false
+        arm1_5:
+          Value: false
+        arm1_6:
+          Value: false
+        arm1_8:
+          Value: false
+        arm2_1:
+          Value: false
+        arm2_2:
+          Value: false
+        arm2_3:
+          Value: false
+        arm2_4:
+          Value: false
+        arm2_5:
+          Value: false
+        arm2_6:
+          Value: false
+        arm2_8:
+          Value: false
+        base_link:
+          Value: false
+        ci/D435_head_camera_bottom_screw_frame:
+          Value: false
+        ci/D435_head_camera_gz_optical_frame:
+          Value: false
+        ci/D435_head_camera_link:
+          Value: false
+        ci/D435i_camera_bottom_screw_frame:
+          Value: false
+        ci/D435i_camera_link:
+          Value: false
+        ci/ankle1_1:
+          Value: false
+        ci/ankle1_2:
+          Value: false
+        ci/ankle1_3:
+          Value: false
+        ci/ankle1_4:
+          Value: false
+        ci/ankle2_1:
+          Value: false
+        ci/ankle2_2:
+          Value: false
+        ci/ankle2_3:
+          Value: false
+        ci/ankle2_4:
+          Value: false
+        ci/arm1_1:
+          Value: false
+        ci/arm1_2:
+          Value: false
+        ci/arm1_3:
+          Value: false
+        ci/arm1_4:
+          Value: false
+        ci/arm1_5:
+          Value: false
+        ci/arm1_6:
+          Value: false
+        ci/arm1_8:
+          Value: true
+        ci/arm2_1:
+          Value: false
+        ci/arm2_2:
+          Value: false
+        ci/arm2_3:
+          Value: false
+        ci/arm2_4:
+          Value: false
+        ci/arm2_5:
+          Value: false
+        ci/arm2_6:
+          Value: false
+        ci/arm2_8:
+          Value: true
+        ci/base_link:
+          Value: false
+        ci/contact_1:
+          Value: false
+        ci/contact_2:
+          Value: false
+        ci/contact_3:
+          Value: false
+        ci/contact_4:
+          Value: false
+        ci/d435_head_motor:
+          Value: false
+        ci/dagana_1_bottom_link:
+          Value: false
+        ci/dagana_1_tcp:
+          Value: false
+        ci/dagana_1_top_link:
+          Value: false
+        ci/dagana_2_bottom_link:
+          Value: false
+        ci/dagana_2_tcp:
+          Value: false
+        ci/dagana_2_top_link:
+          Value: false
+        ci/hip1_1:
+          Value: false
+        ci/hip1_2:
+          Value: false
+        ci/hip1_3:
+          Value: false
+        ci/hip1_4:
+          Value: false
+        ci/hip2_1:
+          Value: false
+        ci/hip2_2:
+          Value: false
+        ci/hip2_3:
+          Value: false
+        ci/hip2_4:
+          Value: false
+        ci/imu_link:
+          Value: false
+        ci/knee_1:
+          Value: false
+        ci/knee_2:
+          Value: false
+        ci/knee_3:
+          Value: false
+        ci/knee_4:
+          Value: false
+        ci/neck_1:
+          Value: false
+        ci/pelvis:
+          Value: false
+        ci/torso_2:
+          Value: false
+        ci/velodyne_motor:
+          Value: false
+        ci/wheel_1:
+          Value: false
+        ci/wheel_2:
+          Value: false
+        ci/wheel_3:
+          Value: false
+        ci/wheel_4:
+          Value: false
+        ci/world:
+          Value: false
+        contact_1:
+          Value: false
+        contact_2:
+          Value: false
+        contact_3:
+          Value: false
+        contact_4:
+          Value: false
+        d435_head_motor:
+          Value: false
+        dagana_1_bottom_link:
+          Value: false
+        dagana_1_tcp:
+          Value: false
+        dagana_1_top_link:
+          Value: false
+        dagana_2_bottom_link:
+          Value: false
+        dagana_2_tcp:
+          Value: false
+        dagana_2_top_link:
+          Value: false
+        hip1_1:
+          Value: false
+        hip1_2:
+          Value: false
+        hip1_3:
+          Value: false
+        hip1_4:
+          Value: false
+        hip2_1:
+          Value: false
+        hip2_2:
+          Value: false
+        hip2_3:
+          Value: false
+        hip2_4:
+          Value: false
+        imu_link:
+          Value: false
+        knee_1:
+          Value: false
+        knee_2:
+          Value: false
+        knee_3:
+          Value: false
+        knee_4:
+          Value: false
+        neck_1:
+          Value: false
+        pelvis:
+          Value: false
+        torso_2:
+          Value: false
+        velodyne_motor:
+          Value: false
+        wheel_1:
+          Value: false
+        wheel_2:
+          Value: false
+        wheel_3:
+          Value: false
+        wheel_4:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        ci/world:
+          ci/pelvis:
+            ci/D435i_camera_bottom_screw_frame:
+              ci/D435i_camera_link:
+                {}
+            ci/base_link:
+              {}
+            ci/hip1_1:
+              ci/hip2_1:
+                ci/knee_1:
+                  ci/ankle1_1:
+                    ci/ankle2_1:
+                      ci/contact_1:
+                        {}
+                      ci/wheel_1:
+                        {}
+            ci/hip1_2:
+              ci/hip2_2:
+                ci/knee_2:
+                  ci/ankle1_2:
+                    ci/ankle2_2:
+                      ci/contact_2:
+                        {}
+                      ci/wheel_2:
+                        {}
+            ci/hip1_3:
+              ci/hip2_3:
+                ci/knee_3:
+                  ci/ankle1_3:
+                    ci/ankle2_3:
+                      ci/contact_3:
+                        {}
+                      ci/wheel_3:
+                        {}
+            ci/hip1_4:
+              ci/hip2_4:
+                ci/knee_4:
+                  ci/ankle1_4:
+                    ci/ankle2_4:
+                      ci/contact_4:
+                        {}
+                      ci/wheel_4:
+                        {}
+            ci/imu_link:
+              {}
+            ci/torso_2:
+              ci/arm1_1:
+                ci/arm1_2:
+                  ci/arm1_3:
+                    ci/arm1_4:
+                      ci/arm1_5:
+                        ci/arm1_6:
+                          ci/dagana_1_top_link:
+                            ci/dagana_1_bottom_link:
+                              ci/arm1_8:
+                                {}
+                            ci/dagana_1_tcp:
+                              {}
+              ci/arm2_1:
+                ci/arm2_2:
+                  ci/arm2_3:
+                    ci/arm2_4:
+                      ci/arm2_5:
+                        ci/arm2_6:
+                          ci/dagana_2_top_link:
+                            ci/dagana_2_bottom_link:
+                              ci/arm2_8:
+                                {}
+                            ci/dagana_2_tcp:
+                              {}
+              ci/neck_1:
+                ci/d435_head_motor:
+                  ci/D435_head_camera_bottom_screw_frame:
+                    ci/D435_head_camera_link:
+                      ci/D435_head_camera_gz_optical_frame:
+                        {}
+                ci/velodyne_motor:
+                  {}
+      Update Interval: 0
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: ci/world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+    - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initialpose
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /goal_pose
+    - Class: rviz_default_plugins/PublishPoint
+      Single click: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /clicked_point
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.159154176712036
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: 0.2746807932853699
+        Y: -0.29013702273368835
+        Z: 0.009268281981348991
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.48039814829826355
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+      Yaw: 0.220396488904953
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1043
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd00000004000000000000023800000379fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000379000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000379fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003b00000379000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000003efc0100000002fb0000000800540069006d00650100000000000007800000025300fffffffb0000000800540069006d00650100000000000004500000000000000000000005420000037900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1920
+  X: 1080
+  Y: 0
