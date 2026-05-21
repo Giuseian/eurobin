@@ -1,3 +1,8 @@
+"""`run_pipeline.py` is the script that runs the full pipeline on a scenario.
+It takes a scenario, reads its `scenario.json` and image, then runs the main steps in sequence: first `scene_description`, which uses Azure OpenAI and the image to describe the scene; then `scene_description_full`, which enriches that description using static poses from `poses.json`; then `vlm_planning`, which generates a sequential manipulation plan; and finally `simultaneous_actions`, which converts that plan into a more compact/parallel action plan.
+During the run, it also saves all related artifacts: the rendered prompts, parsed JSON responses, `run_info.json` files, `scene_object_list.json`, and `scene_description_full.json`.
+In short: `run_pipeline.py` is the end-to-end command that starts from a scenario and automatically produces the scene description, enriched/grounded scene representation, sequential plan, and parallel plan, all linked by the same timestamp and run name."""
+
 from __future__ import annotations
 
 import argparse

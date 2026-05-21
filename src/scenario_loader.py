@@ -1,3 +1,11 @@
+""" 
+`scenario_loader.py` is a small helper file used to load a scenario from disk.
+It takes a scenario name, looks for ```text scenarios/<scenario_name>/scenario.json``` and reads that JSON file into a Python dictionary. It also checks that the scenario directory and `scenario.json` actually exist.
+If the `scenario.json` contains an `image` field, it resolves that image into an absolute path, checks that the image exists, and adds it to the returned data as ```python image_path_abs```. 
+It also adds: ```python scenario_name scenario_dir_abs ``` . So other scripts do not need to manually reconstruct where the scenario folder or image file are.
+In short: `scenario_loader.py` is the common utility that loads a scenario, validates its image path, and returns a ready-to-use `scenario_data` dictionary for the pipeline scripts.
+"""
+
 from __future__ import annotations
 
 import json

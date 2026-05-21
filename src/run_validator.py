@@ -1,3 +1,10 @@
+""" `run_validator.py` is the standalone script for running only the validator.
+It takes one image, one condition, and a `scene_object_list`, then asks Azure OpenAI whether that condition matches the current scene. The condition can be something like a precondition or postcondition, for example `pre_1` or `post_1`.
+The validator prompt is built from the validator base prompt, the condition text, and the `scene_object_list`. That `scene_object_list` can either be passed directly with `--scene-object-list-path`, or loaded automatically from a previous `scene_description` run using `--scene-version`, `--scene-model`, `--upstream-timestamp`, and `--run-name`.
+It then calls Azure OpenAI with the selected image and expects a JSON response containing:
+```json "result": "matching" ``` or ```json "result": "non_matching"``` plus a `reason`.
+In short: `run_validator.py` is useful when you want to test a single validation check independently, without running the full validation loop or the full pipeline. It saves the rendered validator prompt, the parsed validator response, and metadata linking the check back to the upstream planning outputs.
+"""
 from __future__ import annotations
 
 import argparse

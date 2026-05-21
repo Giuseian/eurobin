@@ -1,6 +1,10 @@
-""" This script allows running a single module in the robotic VLM pipeline with flexible configuration.
-It supports running the scene description + scene enrichment + scene_object_list,
-VLM planning, or simultaneous actions modules independently. """
+""" `run_modules.py` is the script used to run one pipeline module at a time.
+Instead of executing the whole flow end-to-end, it lets you run only `scene_description`, only `vlm_planning`, or only `simultaneous_actions`. This is useful when you want to test or regenerate a specific step without rerunning the entire pipeline.
+If you run `scene_description`, it reads the scenario image, calls Azure OpenAI, saves the parsed scene description, then also creates `scene_object_list.json` and `scene_description_full.json` using the static poses.
+If you run `vlm_planning`, it loads a previous `scene_description_full.json`, combines it with the scenario task and the planning prompt, then calls Azure OpenAI to generate a sequential plan.
+If you run `simultaneous_actions`, it loads both the previous `scene_description_full.json` and the previous `vlm_planning` output, then calls Azure OpenAI to generate the compact/parallel action plan.
+In short: `run_modules.py` is the manual, modular version of the pipeline. It lets you rerun or test individual stages while still saving prompts, parsed JSON outputs, and run metadata in the same organized folder structure. """
+
 
 from __future__ import annotations
 

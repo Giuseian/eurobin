@@ -1,3 +1,9 @@
+""" `run_validation_loop.py` is the offline validation loop that uses a predefined sequence of images.
+It starts from an initial image, either passed with `--initial-image-path` or taken from `scenario.json`. Then it reads all images inside `--frames-dir` and uses them one by one as simulated “post-deploy” images. So, unlike `run_validation_image.py`, it does not ask you manually which image to use next; it automatically consumes the next frame in chronological order.
+For each cycle, it runs the normal pipeline from the current image: `scene_description`, `scene_description_full`, `vlm_planning`, and `simultaneous_actions`. The enrichment step uses `poses_by_image.json`, which maps each image filename to object poses.
+Then it validates each planned stage. It calls the validator on the current image and the stage precondition. If the precondition fails, it replans from the same image. If it passes, the script takes the next image from `frames-dir` as the simulated result of the action, and validates the postcondition on that image. If the postcondition fails, it replans from that new image.
+In short: `run_validation_loop.py` is an automatic offline validation and replanning loop. It tests the full planning/validation logic over a sequence of prepared images, without Gazebo, robot execution, or manual image selection during the run. """
+
 from __future__ import annotations
 
 import argparse

@@ -1,3 +1,8 @@
+""" `run_real_deploy_replay.py` is the script used to replay a previously saved real deployment run.
+Instead of calling Azure OpenAI again, it loads an existing `full_pipeline_summary.json` from a previous run and reuses the saved artifacts: the scene description, enriched scene, planning output, simultaneous actions output, and validator results. It can also sleep for the recorded execution times, capped by `--max-sleep`, so the replay roughly follows the timing of the original run.
+Then it executes the real manipulation scripts again, stage by stage. For each stage, it reads the saved precondition validator result, runs the corresponding robot action script, takes a new Gazebo screenshot, and then reads the saved postcondition validator result. If a saved validator result says `non_matching`, it follows the validation-loop logic and triggers a replan cycle, up to `--max-replans`.
+In short: `run_real_deploy_replay.py` is for reproducing a previous real deployment execution using saved pipeline and validator outputs, while still actually running the robot manipulation scripts and recording new screenshots. """
+
 from __future__ import annotations
 
 import argparse

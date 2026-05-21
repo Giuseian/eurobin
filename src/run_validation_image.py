@@ -1,3 +1,10 @@
+""" run_validation_image.py is the offline image-based validation loop.
+Instead of using Gazebo screenshots or real robot execution, it works with images stored under image_data/<scenario>. At the start, it asks you in the terminal to manually choose the initial image. For every later stage, after the precondition validator passes, it asks you again to choose the “next” image manually, as if that image represented the result after deployment.
+For each selected image, it runs the normal VLM pipeline: scene_description, scene_description_full, vlm_planning, and simultaneous_actions. The enrichment step uses poses_by_image.json, which maps each image filename to object poses, instead of reading poses from Gazebo.
+Then it validates each planned stage. It calls the validator model on the current image and the precondition. If the precondition fails, it replans from the same image. If it passes, you manually select the next image, and the validator checks the postcondition on that new image. If the postcondition fails, it replans from the new image.
+In short: run_validation_image.py is a manual, offline version of the validation loop. It lets you test planning, validation, and replanning logic using a folder of prepared images instead of live robot execution or Gazebo screenshots. """
+
+
 from __future__ import annotations
 
 import argparse

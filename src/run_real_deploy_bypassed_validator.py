@@ -1,5 +1,10 @@
 ### TO BE MODIFIED WITH NEW ADJUSTMENTS TO RUN_REAL_DEPLOY_BYPASSED_VALIDATOR.PY 
-
+"""`run_real_deploy_bypassed_validator.py` is the script that runs the full pipeline on the real/Gazebo deployment setup, but with the validator temporarily bypassed.
+It starts by moving the robot to `homing.py`, takes an initial Gazebo screenshot, and uses that screenshot as the image for `scene_description`. Then it runs the normal VLM pipeline steps: `scene_description`, `scene_description_full`, `vlm_planning`, and `simultaneous_actions`. The difference from `run_pipeline.py` is that `scene_description_full` uses live Gazebo poses from a topic instead of the static `poses.json`.
+After the compact parallel plan is produced, the script extracts the stages. For each stage, it creates a fake/forced validator result for the precondition, runs the corresponding real manipulation script, takes a new screenshot, and then creates another fake/forced validator result for the postcondition.
+So the validator artifacts are still saved for traceability, but no real validator model call is made. Each validation result is forced to:
+```json "result": "matching" ``` In short: `run_real_deploy_bypassed_validator.py` is an end-to-end real deployment script that plans from a live screenshot, executes the robot manipulation stages, records screenshots after each stage, and saves validator-like artifacts while bypassing the actual validator decision.
+"""
 from __future__ import annotations
 
 import argparse

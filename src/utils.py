@@ -1,3 +1,10 @@
+"""
+`utils.py` is the shared helper file for the project.
+It handles common operations used by the pipeline scripts: creating timestamps and run names, building standard paths, loading prompts, reading/writing JSON files, parsing model responses, rendering prompts, and saving outputs.
+In practice, it keeps the project organized by enforcing the same folder structure for prompts and results, such as:
+```text prompts/ prompts_scenarios/ outputs/```. It also saves standard artifacts like ```text response_parsed.json run_info.json scene_description_full.json```
+In short: `utils.py` contains the reusable infrastructure functions that all the other scripts rely on.
+"""
 from __future__ import annotations
 
 import json

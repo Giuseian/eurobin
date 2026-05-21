@@ -1,3 +1,11 @@
+""" `scene_enrichment.py` is the file that turns a raw VLM scene description into a grounded and enriched scene description.
+The VLM first describes objects and spatial relationships from an image. `scene_enrichment.py` then connects those VLM object names to actual object poses, either from Gazebo live poses or from a static JSON pose file. This is the grounding step: it tries to match VLM objects like `box_1` or `green box` to concrete entities such as `box_green_001`.
+After the objects are matched, it adds geometry-based information to each object. In particular, it computes the object’s approximate location zone and which sides are accessible or blocked. For example, an object may get information like left side accessible, bottom blocked by the table, top blocked by another object, or back not reachable.
+The main function is `enrich_scene(...)`. It receives the parsed `scene_description`, reads object poses, resolves object dimensions, computes accessibility, and returns a new enriched JSON structure. This enriched output is what the rest of the pipeline calls `scene_description_full.json`.
+It can work in two modes ```text pose_source="static" ``` for files like `poses.json` or `poses_by_image.json`, and ```text pose_source="gazebo"``` for live Gazebo pose data.
+In short: `scene_enrichment.py` adds physical grounding to the VLM scene description. It converts “objects seen in the image” into objects with positions, dimensions, zones, and accessibility information, so the planner can reason about what can actually be manipulated.
+"""
+
 
 #!/usr/bin/env python3
 

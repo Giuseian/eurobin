@@ -1,4 +1,9 @@
 ### ADDED TIMESTAMP TO MANIPULATION PART 
+""" run_real_deploy_validation_loop.py is the full real deployment script with an active validation and replanning loop.
+It starts by sending the robot to homing.py, takes an initial Gazebo screenshot, and uses that image as the starting point for the first cycle. In each cycle, it runs the full VLM pipeline from the current screenshot: scene_description, scene_description_full using live Gazebo poses, vlm_planning, and simultaneous_actions.
+Then it executes the planned stages one by one. Before each real robot action, it calls the validator model on the current screenshot and the stage precondition. If the precondition is non_matching, it stops that cycle and replans from the same image. If the precondition passes, it runs the corresponding manipulation script, takes a new screenshot, and calls the validator again on the postcondition. If the postcondition is non_matching, it replans from the new image.
+So unlike run_real_deploy_bypassed_validator.py, this file actually calls the validator model and uses its result to decide whether to continue or replan. The loop continues until the task is completed, an error occurs, or --max-replans is reached.
+In short: run_real_deploy_validation_loop.py is the most complete real-deployment pipeline. It plans from live screenshots, executes robot actions, validates preconditions and postconditions with Azure OpenAI, replans when validation fails, and saves detailed summaries for every cycle. """
 
 from __future__ import annotations
 
