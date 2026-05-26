@@ -24,6 +24,9 @@ python src/plot_metrics_from_csv.py --csv-path outputs_final/metrics/metrics_mas
 # PLOT INFERENCE TIMES
 python src/plot_times_from_csv.py --csv-path outputs_final/metrics/metrics_master.csv
 
+# PLOT INFERENCE TIMES POSTER
+python src/plot_times_from_csv_poster.py --csv-path outputs_final/metrics/metrics_master.csv
+
 
 
 NEW RUNNING INSTRUCTIONS BASED ON TEMPERATURE 

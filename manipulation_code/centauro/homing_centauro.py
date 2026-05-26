@@ -13,8 +13,8 @@ class DualArmHoming(Node):
     def __init__(self):
         super().__init__('dual_arm_homing')
 
-        self.client_1 = ActionClient(self, ReachPose, '/arm1_8/reach')
-        self.client_2 = ActionClient(self, ReachPose, '/arm2_8/reach')
+        self.client_1 = ActionClient(self, ReachPose, '/dagana_1_tcp/reach')
+        self.client_2 = ActionClient(self, ReachPose, '/dagana_2_tcp/reach')
 
         # # ===== POSIZIONI ASSOLUTE HOMING =====
         # self.declare_parameter('d1_x', 0.50693)
@@ -56,27 +56,47 @@ class DualArmHoming(Node):
         # self.declare_parameter('d2_qz', 0.0)
         # self.declare_parameter('d2_qw', 0.0)
 
-        # ===== POSIZIONI ASSOLUTE HOMING =====
-        self.declare_parameter('d1_x', 0.53)
+        # # ===== POSIZIONI ASSOLUTE HOMING =====
+        # self.declare_parameter('d1_x', 0.53)
+        # self.declare_parameter('d1_y', 0.3)
+        # self.declare_parameter('d1_z', 0.29)
+
+        # self.declare_parameter('d2_x', 0.53)
+        # self.declare_parameter('d2_y', -0.3)
+        # self.declare_parameter('d2_z', 0.29)
+
+        # # ===== ORIENTAZIONI HOMING =====
+        # self.declare_parameter('d1_qx', 0.5)
+        # self.declare_parameter('d1_qy', 0.5)
+        # self.declare_parameter('d1_qz', 0.5)
+        # self.declare_parameter('d1_qw', -0.5)
+
+        # self.declare_parameter('d2_qx', -0.5)
+        # self.declare_parameter('d2_qy', -0.5)
+        # self.declare_parameter('d2_qz', -0.5)
+        # self.declare_parameter('d2_qw', 0.5)
+
+        # ===== POSIZIONI ASSOLUTE HOMING TCP =====
+        self.declare_parameter('d1_x', 0.8)
         self.declare_parameter('d1_y', 0.3)
-        self.declare_parameter('d1_z', 0.29)
+        self.declare_parameter('d1_z', 0.25)
 
-        self.declare_parameter('d2_x', 0.53)
-        self.declare_parameter('d2_y', -0.3)
-        self.declare_parameter('d2_z', 0.29)
+        self.declare_parameter('d2_x', 0.8)
+        self.declare_parameter('d2_y', -0.35)
+        self.declare_parameter('d2_z', 0.25)
 
-        # ===== ORIENTAZIONI HOMING =====
-        self.declare_parameter('d1_qx', 0.5)
-        self.declare_parameter('d1_qy', 0.5)
-        self.declare_parameter('d1_qz', 0.5)
-        self.declare_parameter('d1_qw', -0.5)
+        # ===== ORIENTAZIONI HOMING TCP =====
+        self.declare_parameter('d1_qx', 0.0)
+        self.declare_parameter('d1_qy', 0.7)
+        self.declare_parameter('d1_qz', 0.0)
+        self.declare_parameter('d1_qw', 0.7)
 
-        self.declare_parameter('d2_qx', -0.5)
-        self.declare_parameter('d2_qy', -0.5)
-        self.declare_parameter('d2_qz', -0.5)
-        self.declare_parameter('d2_qw', 0.5)
+        self.declare_parameter('d2_qx', 0.0)
+        self.declare_parameter('d2_qy', 0.7)
+        self.declare_parameter('d2_qz', 0.0)
+        self.declare_parameter('d2_qw', 0.7)
 
-        self.declare_parameter('motion_time', 8.0)
+        self.declare_parameter('motion_time', 10.0)
 
         self.d1_x = self.get_parameter('d1_x').value
         self.d1_y = self.get_parameter('d1_y').value
@@ -134,9 +154,9 @@ class DualArmHoming(Node):
         gh2 = future_2.result()
 
         if gh1 is None or not gh1.accepted:
-            raise RuntimeError('Goal arm1_8 rejected')
+            raise RuntimeError('Goal dagana_1_tcp rejected')
         if gh2 is None or not gh2.accepted:
-            raise RuntimeError('Goal arm2_8 rejected')
+            raise RuntimeError('Goal dagana_2_tcp rejected')
 
         r1 = gh1.get_result_async()
         r2 = gh2.get_result_async()
@@ -145,19 +165,19 @@ class DualArmHoming(Node):
         rclpy.spin_until_future_complete(self, r2)
 
         if r1.result() is None:
-            raise RuntimeError('No result from arm1_8')
+            raise RuntimeError('No result from dagana_1_tcp')
         if r2.result() is None:
-            raise RuntimeError('No result from arm2_8')
+            raise RuntimeError('No result from dagana_2_tcp')
 
         self.get_logger().info('Homing motion completed successfully.')
 
     def execute(self):
         self.get_logger().info(
-            f"arm1_8 pos: ({self.d1_x}, {self.d1_y}, {self.d1_z}) | "
+            f"dagana_1_tcp pos: ({self.d1_x}, {self.d1_y}, {self.d1_z}) | "
             f"quat: ({self.d1_qx}, {self.d1_qy}, {self.d1_qz}, {self.d1_qw})"
         )
         self.get_logger().info(
-            f"arm2_8 pos: ({self.d2_x}, {self.d2_y}, {self.d2_z}) | "
+            f"dagana_2_tcp pos: ({self.d2_x}, {self.d2_y}, {self.d2_z}) | "
             f"quat: ({self.d2_qx}, {self.d2_qy}, {self.d2_qz}, {self.d2_qw})"
         )
 
