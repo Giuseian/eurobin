@@ -1,6 +1,18 @@
 python3 homing_centauro.py
 
 
+python3 grasp_centauro_test.py --ros-args \
+      -p object_pose_file:=object_pose.txt \
+      -p base_frame:=pelvis \
+      -p camera_frame:=D435_head_camera_gz_optical_frame \
+      -p approach_mode:=yz \
+      -p grasp_offset_x:=-0.0 \
+      -p grasp_offset_y:=-0.05 \
+      -p grasp_offset_z:=0.0 \
+      -p phase1_split_fraction:=0.5 \
+      -p constrain_orientation:=true
+
+
 python3 grasp_centauro_clean.py --ros-args \
   -p box_name:=box_red_001 \
   -p approach_mode:=yz \
