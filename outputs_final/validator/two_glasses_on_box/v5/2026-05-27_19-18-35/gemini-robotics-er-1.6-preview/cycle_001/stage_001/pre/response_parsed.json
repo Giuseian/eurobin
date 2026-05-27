@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The end effectors are not in contact with any objects and are therefore considered free."
+}

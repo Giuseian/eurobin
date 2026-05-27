@@ -1,0 +1,100 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-05-27_18-57-15",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-05-27_18-57-15",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "gemini-robotics-er-1.6-preview",
+  "execution_time_seconds": 5.130718918000639,
+  "timestamp": "2026-05-27T18:57:21.427747",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. The red box is very fragile.",
+    "image": "1.png",
+    "image_path_abs": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "red_box",
+          "category": "box",
+          "color": "red"
+        },
+        {
+          "name": "green_box",
+          "category": "box",
+          "color": "green"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "red_box",
+          "relation": "on top of",
+          "object": "green_box"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-05-27_18-57-15",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  }
+}

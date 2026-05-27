@@ -1,0 +1,133 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-05-27_18-57-15",
+  "timestamp": "2026-05-27T18:59:53.390700",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-05-27_18-57-15",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Arms empty and red_box on green_box.",
+          "postcondition": "red_box held by arms.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The robot arms are empty and the red box is visibly stacked on top of the green box."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box is held between the robot's end-effectors."
+          },
+          "pre_validation_time_seconds": 2.660879814000509,
+          "post_validation_time_seconds": 2.7254391189999296,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "red_box held by arms.",
+          "postcondition": "Arms empty and green_box top accessible.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red_box is clearly being held between the robot's end-effectors in the current image."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The robot arms are not grasping any object and the top face of the green box is clear of any obstructions."
+          },
+          "pre_validation_time_seconds": 2.894931661998271,
+          "post_validation_time_seconds": 2.7087450889957836,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "Arms empty and green_box clear.",
+          "postcondition": "green_box held by arms.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The robot arms are not currently grasping any objects and nothing is placed on top of the green_box."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The green_box is held by dual-arm symmetric contact on its sides as seen in the image."
+          },
+          "pre_validation_time_seconds": 5.547270934999688,
+          "post_validation_time_seconds": 3.5070849339972483,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v5/2026-05-27_18-57-15/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/4.png",
+          "next_image_name": "4.png"
+        }
+      ]
+    }
+  ]
+}

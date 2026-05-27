@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The robot arms are not currently grasping any objects and nothing is placed on top of the green_box."
+}

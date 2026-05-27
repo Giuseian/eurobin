@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The end effectors are not seen grasping any objects, and objects in the scene are resting on the table."
+}

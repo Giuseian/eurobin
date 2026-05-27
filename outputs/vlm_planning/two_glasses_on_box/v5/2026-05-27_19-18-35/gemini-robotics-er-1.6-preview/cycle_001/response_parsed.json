@@ -1,0 +1,42 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "black_cup_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "with claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "table",
+    "Action concept": "Place",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "with claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 3,
+    "Target": "black_cup_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 4,
+    "Target": "table",
+    "Action concept": "Place",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 5,
+    "Target": "green_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]

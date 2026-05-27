@@ -1,0 +1,19 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      2
+    ],
+    "Precondition": "tennis_ball_2 is held by the right end-effector and tennis_ball_1 is on the green_box.",
+    "Postcondition": "tennis_ball_2 is on the red_box and tennis_ball_1 is held by the left end-effector."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "tennis_ball_1 is held by the left end-effector.",
+    "Postcondition": "tennis_ball_1 is on the table and the top of the green_box is free."
+  }
+]

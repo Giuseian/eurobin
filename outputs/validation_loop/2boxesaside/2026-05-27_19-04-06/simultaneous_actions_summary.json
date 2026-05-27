@@ -1,0 +1,70 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-05-27_19-04-06",
+  "timestamp": "2026-05-27T19:10:40.737578",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-05-27_19-04-06",
+      "input_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/2boxesaside/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-05-27_19-04-06/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/2boxesaside/v5/2026-05-27_19-04-06/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/2boxesaside/v5/2026-05-27_19-04-06/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/2boxesaside/v5/2026-05-27_19-04-06/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/2boxesaside/v5/2026-05-27_19-04-06/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "End effectors empty, cup_1 accessible.",
+          "Postcondition": "cup_1 held by end_effector_right."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "cup_1 held by end_effector_right.",
+          "Postcondition": "cup_1 placed, end_effector_right free."
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "box_2 front accessible, end_effector_right free.",
+          "Postcondition": "box_2 moved, box_1 right side accessible."
+        },
+        {
+          "Stage_id": 4,
+          "Step_id": [
+            4
+          ],
+          "Precondition": "box_1 sides accessible, end effectors empty.",
+          "Postcondition": "box_1 held by both end effectors."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_1 (green) has a ball resting on its top face, meaning the top is not free."
+}

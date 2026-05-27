@@ -1,0 +1,24 @@
+{
+  "objects": [
+    {
+      "name": "green_box",
+      "category": "box",
+      "color": "green"
+    },
+    {
+      "name": "red_box",
+      "category": "box",
+      "color": "red"
+    },
+    {
+      "name": "tennis_ball_1",
+      "category": "ball",
+      "color": "yellow"
+    },
+    {
+      "name": "tennis_ball_2",
+      "category": "ball",
+      "color": "yellow"
+    }
+  ]
+}

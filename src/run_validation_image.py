@@ -19,7 +19,7 @@ from typing import Any
 
 from settings import load_settings
 from scenario_loader import load_scenario
-from azure_openai_client import call_azure_chat_completion
+from llm_client import call_llm_completion
 from build_scene_object_list import build_scene_object_list_from_cycle
 from scene_enrichment import enrich_scene
 from utils import (
@@ -40,7 +40,7 @@ from utils import (
     read_json,
 )
 
-SUPPORTED_MODELS = ["o3", "gpt-5.2"]
+SUPPORTED_MODELS = ["o3", "gpt-5.2", "gemini-robotics-er-1.6-preview"]
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
 
 
@@ -694,7 +694,7 @@ def execute_scene_description_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -880,7 +880,7 @@ def execute_vlm_planning_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -988,7 +988,7 @@ def execute_simultaneous_actions_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -1112,7 +1112,7 @@ def execute_validator_step(
     prompt_path = prompt_dir / "prompt.txt"
     write_text(prompt_path, system_prompt)
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=validator_model,
         system_prompt=system_prompt,
@@ -1942,6 +1942,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 
 

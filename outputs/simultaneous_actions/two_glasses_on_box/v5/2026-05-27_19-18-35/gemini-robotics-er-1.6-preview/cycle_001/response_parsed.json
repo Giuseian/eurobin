@@ -1,0 +1,28 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Precondition": "End effectors are free.",
+    "Postcondition": "Black cups are grasped."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Precondition": "Black cups are held.",
+    "Postcondition": "End effectors are free and green box is cleared."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Precondition": "End effectors are free.",
+    "Postcondition": "Green box is grasped."
+  }
+]

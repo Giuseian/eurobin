@@ -15,6 +15,22 @@ python src/run_validation_image.py \
 --validator-model gpt-5.2
 
 
+
+RUN WITH GEMINI
+python src/run_validation_image.py \
+--scenario two_glasses_on_box \
+--scene-v v6 \
+--plan-v v5 \
+--sim-v v5 \
+--validator-v v5 \
+--scene-model gemini-robotics-er-1.6-preview \
+--plan-model gemini-robotics-er-1.6-preview \
+--sim-model gemini-robotics-er-1.6-preview \
+--validator-model gemini-robotics-er-1.6-preview
+
+
+
+
 # BUILDING THE .CSV 
 python src/build_metrics_master_csv.py
 

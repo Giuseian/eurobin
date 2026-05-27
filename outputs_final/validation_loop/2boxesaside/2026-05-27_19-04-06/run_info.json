@@ -1,0 +1,45 @@
+{
+  "module": "validation_loop",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-05-27_19-04-06",
+  "timestamp": "2026-05-27T19:04:06.952565",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/2boxesaside/1.png",
+  "scenario_image_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/2boxesaside",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/2boxesaside/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/2boxesaside"
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 10
+  }
+}

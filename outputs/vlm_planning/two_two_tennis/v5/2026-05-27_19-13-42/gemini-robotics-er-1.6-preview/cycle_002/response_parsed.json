@@ -1,0 +1,26 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "red_box",
+    "Action concept": "place",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 2,
+    "Target": "tennis_ball_1",
+    "Action concept": "grasp",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "with claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 3,
+    "Target": "table",
+    "Action concept": "place",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "with claw",
+    "Object contact side": "top"
+  }
+]

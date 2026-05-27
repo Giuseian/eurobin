@@ -1,0 +1,26 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "red_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "Table",
+    "Action concept": "Place",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 3,
+    "Target": "green_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]

@@ -1,0 +1,133 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-05-27_19-18-35",
+  "timestamp": "2026-05-27T19:20:28.176433",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-05-27_19-18-35",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/1.png",
+      "start_image_name": "1.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "End effectors are free.",
+          "postcondition": "Black cups are grasped.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The end effectors are not in contact with any objects and are therefore considered free."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "Both black cups are held within the robot's end-effectors, indicating they are grasped."
+          },
+          "pre_validation_time_seconds": 2.8075617190042976,
+          "post_validation_time_seconds": 2.969249765003042,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "next_image_name": "2.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "Black cups are held.",
+          "postcondition": "End effectors are free and green box is cleared.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "Both black cups are visibly held by the robot's left and right end-effectors."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The end effectors are not grasping any objects and the top face of the green box is free of any items."
+          },
+          "pre_validation_time_seconds": 3.8149012100038817,
+          "post_validation_time_seconds": 2.9730053189996397,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 3,
+          "stage_name": "stage_003",
+          "precondition": "End effectors are free.",
+          "postcondition": "Green box is grasped.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The end effectors are not seen grasping any objects, and objects in the scene are resting on the table."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The green box is held in a dual-arm grasp by the visible robot end-effectors."
+          },
+          "pre_validation_time_seconds": 2.863160301996686,
+          "post_validation_time_seconds": 3.3423046589959995,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_glasses_on_box/v5/2026-05-27_19-18-35/gemini-robotics-er-1.6-preview/cycle_001/stage_003/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_glasses_on_box/4.png",
+          "next_image_name": "4.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "module": "validator",
+  "execution_mode": "validation_loop",
+  "scenario_name": "stacked_boxes",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-05-27_18-57-15",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-05-27_18-57-15",
+  "stage_id": 3,
+  "stage_name": "stage_003",
+  "condition_kind": "post",
+  "condition_text": "green_box held by arms.",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "gemini-robotics-er-1.6-preview",
+  "execution_time_seconds": 3.5070849339972483,
+  "timestamp": "2026-05-27T18:59:53.388408",
+  "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/4.png",
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-05-27_18-57-15",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "sampling_config": {
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "response_parsed": {
+    "result": "matching",
+    "reason": "The green_box is held by dual-arm symmetric contact on its sides as seen in the image."
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "End effectors empty, cup_1 accessible.",
+    "Postcondition": "cup_1 held by end_effector_right."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "cup_1 held by end_effector_right.",
+    "Postcondition": "cup_1 placed, end_effector_right free."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_2 front accessible, end_effector_right free.",
+    "Postcondition": "box_2 moved, box_1 right side accessible."
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      4
+    ],
+    "Precondition": "box_1 sides accessible, end effectors empty.",
+    "Postcondition": "box_1 held by both end effectors."
+  }
+]

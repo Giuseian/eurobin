@@ -1,0 +1,574 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "two_two_tennis",
+  "loop_timestamp": "2026-05-27_19-13-42",
+  "timestamp": "2026-05-27T19:13:42.849102",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/1.png",
+  "scenario_image_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis"
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 1,
+  "task_completed": true,
+  "final_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/4.png",
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-05-27_19-13-42",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/1.png",
+      "start_image_name": "1.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              },
+              {
+                "name": "tennis_ball_1",
+                "category": "ball",
+                "color": "yellow"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              },
+              {
+                "subject": "tennis_ball_1",
+                "relation": "right of",
+                "object": "box_2"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "deployment_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 6.57381168500433
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "blocked by box_2",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red",
+                "location": "zone B",
+                "sides": {
+                  "left": "blocked by box_1",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "tennis_ball_1",
+                "category": "ball",
+                "color": "yellow",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              },
+              {
+                "subject": "tennis_ball_1",
+                "relation": "right of",
+                "object": "box_2"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.0014170159993227571
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "tennis_ball_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "With claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 2,
+            "Target": "box_2",
+            "Action concept": "Place",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "With claw",
+            "Object contact side": "top"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 3.4632592690031743
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "end_effector_right free, tennis_ball_1 accessible, box_1 top free",
+            "Postcondition": "end_effector_right grasping tennis_ball_1, box_1 top free"
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Precondition": "end_effector_right grasping tennis_ball_1, box_2 top accessible, box_1 top free",
+            "Postcondition": "tennis_ball_1 placed on box_2, box_1 top free"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 4.493665795002016
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "end_effector_right free, tennis_ball_1 accessible, box_1 top free",
+          "postcondition": "end_effector_right grasping tennis_ball_1, box_1 top free",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/2.png",
+          "post_image_name": "2.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The right end-effector is empty, the tennis ball is on the table with no obstructions, and nothing is resting on the green box."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "box_1 (green) has a ball resting on its top face, meaning the top is not free."
+          },
+          "pre_validation_time_seconds": 3.481458747999568,
+          "post_validation_time_seconds": 5.235263855000085,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/2.png",
+          "next_image_name": "2.png"
+        }
+      ],
+      "outcome": "replan_on_post_stage_1",
+      "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/2.png",
+      "end_image_name": "2.png"
+    },
+    {
+      "cycle_name": "cycle_002",
+      "cycle_index": 2,
+      "cycle_timestamp": "2026-05-27_19-14-23",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/2.png",
+      "start_image_name": "2.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "green_box",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "red_box",
+                "category": "box",
+                "color": "red"
+              },
+              {
+                "name": "tennis_ball_1",
+                "category": "ball",
+                "color": "yellow"
+              },
+              {
+                "name": "tennis_ball_2",
+                "category": "ball",
+                "color": "yellow"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "tennis_ball_2"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "tennis_ball_1",
+                "relation": "on top of",
+                "object": "green_box"
+              },
+              {
+                "subject": "red_box",
+                "relation": "right of",
+                "object": "green_box"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/scene_object_list.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "deployment_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 5.928576645004796
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "green_box",
+                "category": "box",
+                "color": "green",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "blocked by red_box",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "blocked by tennis_ball_1",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "red_box",
+                "category": "box",
+                "color": "red",
+                "location": "zone B",
+                "sides": {
+                  "left": "blocked by green_box",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "tennis_ball_1",
+                "category": "ball",
+                "color": "yellow",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by green_box"
+                }
+              },
+              {
+                "name": "tennis_ball_2",
+                "category": "ball",
+                "color": "yellow",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "tennis_ball_2"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "tennis_ball_1",
+                "relation": "on top of",
+                "object": "green_box"
+              },
+              {
+                "subject": "red_box",
+                "relation": "right of",
+                "object": "green_box"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/scene_description_full.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.001523656006611418
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "red_box",
+            "Action concept": "place",
+            "Manipulation mode": "single-arm (right)",
+            "Contact mode": "with claw",
+            "Object contact side": "top"
+          },
+          {
+            "Step_id": 2,
+            "Target": "tennis_ball_1",
+            "Action concept": "grasp",
+            "Manipulation mode": "single-arm (left)",
+            "Contact mode": "with claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 3,
+            "Target": "table",
+            "Action concept": "place",
+            "Manipulation mode": "single-arm (left)",
+            "Contact mode": "with claw",
+            "Object contact side": "top"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 7.466812091995962
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1,
+              2
+            ],
+            "Precondition": "tennis_ball_2 is held by the right end-effector and tennis_ball_1 is on the green_box.",
+            "Postcondition": "tennis_ball_2 is on the red_box and tennis_ball_1 is held by the left end-effector."
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              3
+            ],
+            "Precondition": "tennis_ball_1 is held by the left end-effector.",
+            "Postcondition": "tennis_ball_1 is on the table and the top of the green_box is free."
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 4.904104921995895
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "tennis_ball_2 is held by the right end-effector and tennis_ball_1 is on the green_box.",
+          "postcondition": "tennis_ball_2 is on the red_box and tennis_ball_1 is held by the left end-effector.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/2.png",
+          "pre_image_name": "2.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/3.png",
+          "post_image_name": "3.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "tennis_ball_2 is grasped by the right end-effector and tennis_ball_1 is resting on the green_box."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The image shows one tennis ball on the red box and another tennis ball held by the left end-effector, consistent with the condition provided."
+          },
+          "pre_validation_time_seconds": 3.3115907720057294,
+          "post_validation_time_seconds": 5.17910080600268,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/3.png",
+          "next_image_name": "3.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "tennis_ball_1 is held by the left end-effector.",
+          "postcondition": "tennis_ball_1 is on the table and the top of the green_box is free.",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/3.png",
+          "pre_image_name": "3.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/4.png",
+          "post_image_name": "4.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "One of the tennis balls is visibly grasped by the left end-effector in the image."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "tennis_ball_1 is on the table and the top surface of the green_box is not occupied by any other object."
+          },
+          "pre_validation_time_seconds": 3.8446002330019837,
+          "post_validation_time_seconds": 4.714933878000011,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/two_two_tennis/v5/2026-05-27_19-13-42/gemini-robotics-er-1.6-preview/cycle_002/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/4.png",
+          "next_image_name": "4.png"
+        }
+      ],
+      "outcome": "task_completed",
+      "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/two_two_tennis/4.png",
+      "end_image_name": "4.png"
+    }
+  ]
+}

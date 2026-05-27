@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "box_1 is held by symmetric dual-arm contact between both robot end-effectors."
+}
