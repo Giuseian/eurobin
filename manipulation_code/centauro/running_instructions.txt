@@ -1,6 +1,6 @@
 python3 homing_centauro.py
 
-
+### BIMANUAL GRASP OF A BOX. INPUT: POSE OF THE BOX (.txt) WRT THE CENTAURO HEAD CAMERA  
 python3 grasp_centauro_test.py --ros-args \
       -p object_pose_file:=object_pose.txt \
       -p base_frame:=pelvis \
@@ -12,7 +12,15 @@ python3 grasp_centauro_test.py --ros-args \
       -p phase1_split_fraction:=0.5 \
       -p constrain_orientation:=true
 
+python3 place_centauro_clean.py --ros-args \
+    -p box_name:=box_red_001 \
+    -p place_world_x:=0.95 \
+    -p place_world_y:=0.0 \
+    -p place_world_z:=0.9 \
+    -p place_world_yaw:=0.0
 
+
+### BIMANUAL GRASP OF A BOX. INPUT: POSE OF THE ROBOT BASE (gazebo) AND POSE OF THE BOX (gazebo), BOTH WRT TO THE WORLD
 python3 grasp_centauro_clean.py --ros-args \
   -p box_name:=box_red_001 \
   -p approach_mode:=yz \
@@ -22,14 +30,7 @@ python3 grasp_centauro_clean.py --ros-args \
   -p phase1_split_fraction:=0.5
 
 
-python3 place_centauro_clean.py --ros-args \
-    -p box_name:=box_red_001 \
-    -p place_world_x:=0.95 \
-    -p place_world_y:=0.0 \
-    -p place_world_z:=0.9 \
-    -p place_world_yaw:=0.0
-
-
+### BIMANUAL GRASP OF A BOX. INPUT: POSE OF THE ROBOT BASE (.txt) AND POSE OF THE BOX (.txt), BOTH WRT TO THE WORLD FROM TXT
 python3 grasp_centauro_real.py --ros-args \
       -p poses_file:=poses.txt \
       -p approach_mode:=yz \
