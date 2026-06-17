@@ -5,7 +5,7 @@ Centauro dual-arm grasp test from an object pose measured in the robot camera.
 
 Run from this folder:
 
-python3 grasp_centauro_test.py --ros-args \
+python3 grasp_centauro_test_world.py --ros-args \
     -p object_pose_file:=object_pose.txt \
     -p base_frame:=world \
     -p cartesian_world_frame:=ci/world \

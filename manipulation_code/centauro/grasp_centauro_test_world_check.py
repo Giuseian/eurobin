@@ -8,7 +8,7 @@ sends ReachPose goals and never calls Cartesian task-weight services.
 
 Run from this folder with the same relevant parameters used for the real grasp:
 
-python3 grasp_centauro_test_check.py --ros-args \
+python3 grasp_centauro_test_world_check.py --ros-args \
   -p object_pose_file:=object_pose.txt \
   -p base_frame:=world \
   -p cartesian_world_frame:=ci/world \
