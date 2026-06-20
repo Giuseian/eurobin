@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import shlex
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -27,7 +28,6 @@ class LivePoseResult:
 def run_command(command: list[str], label: str) -> None:
     print(f"\n[LIVE_IO][{label}] Running:")
     print(" ".join(command))
-
     subprocess.run(command, check=True)
 
 
@@ -59,14 +59,7 @@ def build_live_frame(
     depth_png_path = data_root / "depth" / timestamp / "png" / f"{frame_id}.png"
     intrinsics_path = data_root / "camera" / timestamp / "intrinsics.yaml"
 
-    required_paths = [
-        rgb_path,
-        depth_npy_path,
-        depth_png_path,
-        intrinsics_path,
-    ]
-
-    for path in required_paths:
+    for path in [rgb_path, depth_npy_path, depth_png_path, intrinsics_path]:
         if not path.exists():
             raise FileNotFoundError(f"Expected live frame file not found: {path}")
 
@@ -81,32 +74,10 @@ def build_live_frame(
     )
 
 
-def capture_single_frame_from_robot(
-    host_robot_compose_path: str | Path,
-    robot_service: str = "dev",
-    robot_save_script: str = "/home/user/PoseEstimation/pipeline/save_realsense_rgbd.py",
-    robot_shared_data_root: str = "/home/user/shared_data",
+def get_latest_live_frame(
     perception_shared_data_root: str | Path = "/workspace/shared_data",
     frame_id: str = "000000",
 ) -> LiveFrame:
-    command = [
-        "docker",
-        "compose",
-        "-f",
-        str(host_robot_compose_path),
-        "exec",
-        "-T",
-        robot_service,
-        "python",
-        robot_save_script,
-        "--save_dir",
-        robot_shared_data_root,
-        "--max_frames",
-        "1",
-    ]
-
-    run_command(command, label="capture_single_frame")
-
     perception_shared_data_root = Path(perception_shared_data_root)
     rgb_root = perception_shared_data_root / "realsense" / "rgb"
 
@@ -122,29 +93,25 @@ def capture_single_frame_from_robot(
 def run_sam3_for_frame(
     frame: LiveFrame,
     sam_prompt: str,
-    sam_script_path: str = "pipeline/sam_script_fp.py",
+    sam_script_path: str = "/workspace/PoseEstimation/pipeline/sam_script_fp.py",
     score_threshold: float | None = None,
     mask_mode: str = "best",
 ) -> Path:
-    command = [
-        "run_sam3",
-        "python",
-        sam_script_path,
-        "--data_root",
-        str(frame.data_root),
-        "--timestamp",
-        frame.timestamp,
-        "--prompt",
-        sam_prompt,
-        "--image_id",
-        frame.frame_id,
-        "--mask_mode",
-        mask_mode,
-    ]
+    cmd = (
+        "source /opt/conda/etc/profile.d/conda.sh && "
+        "conda activate sam3 && "
+        f"python {shlex.quote(str(sam_script_path))} "
+        f"--data_root {shlex.quote(str(frame.data_root))} "
+        f"--timestamp {shlex.quote(frame.timestamp)} "
+        f"--prompt {shlex.quote(sam_prompt)} "
+        f"--image_id {shlex.quote(frame.frame_id)} "
+        f"--mask_mode {shlex.quote(mask_mode)}"
+    )
 
     if score_threshold is not None:
-        command.extend(["--score_threshold", str(score_threshold)])
+        cmd += f" --score_threshold {score_threshold}"
 
+    command = ["bash", "-lc", cmd]
     run_command(command, label="sam3")
 
     mask_path = frame.data_root / "masks" / frame.timestamp / f"{frame.frame_id}.png"
@@ -158,33 +125,26 @@ def run_sam3_for_frame(
 def run_foundationpose_for_frame(
     frame: LiveFrame,
     mesh_file: str | Path,
-    fp_script_path: str = "pipeline/run_fp_single_frame.py",
+    fp_script_path: str = "/workspace/PoseEstimation/pipeline/run_fp_single_frame.py",
     est_refine_iter: int = 5,
     track_refine_iter: int = 2,
     debug: int = 1,
 ) -> Path:
-    command = [
-        "run_foundationpose",
-        "python",
-        fp_script_path,
-        "--data_root",
-        str(frame.data_root),
-        "--timestamp",
-        frame.timestamp,
-        "--mesh_file",
-        str(mesh_file),
-        "--start_frame",
-        frame.frame_id,
-        "--max_frames",
-        "1",
-        "--est_refine_iter",
-        str(est_refine_iter),
-        "--track_refine_iter",
-        str(track_refine_iter),
-        "--debug",
-        str(debug),
-    ]
+    cmd = (
+        "source /opt/conda/etc/profile.d/conda.sh && "
+        "conda activate my && "
+        f"python {shlex.quote(str(fp_script_path))} "
+        f"--data_root {shlex.quote(str(frame.data_root))} "
+        f"--timestamp {shlex.quote(frame.timestamp)} "
+        f"--mesh_file {shlex.quote(str(mesh_file))} "
+        f"--start_frame {shlex.quote(frame.frame_id)} "
+        "--max_frames 1 "
+        f"--est_refine_iter {est_refine_iter} "
+        f"--track_refine_iter {track_refine_iter} "
+        f"--debug {debug}"
+    )
 
+    command = ["bash", "-lc", cmd]
     run_command(command, label="foundationpose")
 
     pose_path = (
@@ -201,12 +161,13 @@ def run_foundationpose_for_frame(
     return pose_path
 
 
+
 def run_live_pose_estimation(
     frame: LiveFrame,
     sam_prompt: str,
     mesh_file: str | Path,
-    sam_script_path: str = "pipeline/sam_script_fp.py",
-    fp_script_path: str = "pipeline/run_fp_single_frame.py",
+    sam_script_path: str = "/workspace/PoseEstimation/pipeline/sam_script_fp.py",
+    fp_script_path: str = "/workspace/PoseEstimation/pipeline/run_fp_single_frame.py",
     score_threshold: float | None = None,
     mask_mode: str = "best",
     est_refine_iter: int = 5,
@@ -246,28 +207,4 @@ def run_live_pose_estimation(
         mask_path=mask_path,
         pose_path=pose_path,
         visualization_path=visualization_path,
-    )
-
-
-def capture_and_estimate_pose(
-    host_robot_compose_path: str | Path,
-    robot_service: str,
-    robot_save_script: str,
-    robot_shared_data_root: str,
-    perception_shared_data_root: str | Path,
-    sam_prompt: str,
-    mesh_file: str | Path,
-) -> LivePoseResult:
-    frame = capture_single_frame_from_robot(
-        host_robot_compose_path=host_robot_compose_path,
-        robot_service=robot_service,
-        robot_save_script=robot_save_script,
-        robot_shared_data_root=robot_shared_data_root,
-        perception_shared_data_root=perception_shared_data_root,
-    )
-
-    return run_live_pose_estimation(
-        frame=frame,
-        sam_prompt=sam_prompt,
-        mesh_file=mesh_file,
     )
