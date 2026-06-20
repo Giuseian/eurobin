@@ -9,18 +9,18 @@ sends ReachPose goals and never calls Cartesian task-weight services.
 Run from this folder with the same relevant parameters used for the real grasp:
 
 python3 grasp_centauro_test_world_check.py --ros-args \
-  -p object_pose_file:=object_pose.txt \
-  -p base_frame:=world \
-  -p cartesian_world_frame:=ci/world \
-  -p cartesian_robot_base_frame:=ci/pelvis \
-  -p robot_base_frame:=pelvis \
-  -p camera_frame:=D435_head_camera_gz_optical_frame \
-  -p approach_mode:=yz \
-  -p grasp_offset_x:=-0.0 \
-  -p grasp_offset_y:=-0.05 \
-  -p grasp_offset_z:=0.0 \
-  -p phase1_split_fraction:=0.5 \
-  -p constrain_orientation:=true
+    -p object_pose_file:=object_pose.txt \
+    -p base_frame:=world \
+    -p cartesian_world_frame:=ci/world \
+    -p cartesian_robot_base_frame:=ci/pelvis \
+    -p robot_base_frame:=pelvis \
+    -p camera_frame:=D435_head_camera_link \
+    -p approach_mode:=yz \
+    -p grasp_offset_x:=0.12 \
+    -p grasp_offset_y:=-0.075 \
+    -p grasp_offset_z:=0.0 \
+    -p phase1_split_fraction:=0.5 \
+    -p constrain_orientation:=true
 """
 
 from pathlib import Path
@@ -51,7 +51,7 @@ class CentauroCameraGraspCheck(Node):
         self.declare_parameter('cartesian_robot_base_frame', 'ci/pelvis')
         self.declare_parameter('robot_base_frame', 'pelvis')
         self.declare_parameter('camera_frame', 'D435_head_camera_gz_optical_frame')
-        self.declare_parameter('tf_lookup_timeout', 5.0)
+        self.declare_parameter('tf_lookup_timeout', 20.0)
 
         self.declare_parameter('d1_start_x', 0.8)
         self.declare_parameter('d1_start_y', 0.3)
@@ -91,11 +91,11 @@ class CentauroCameraGraspCheck(Node):
         self.declare_parameter('phase3_extra_squeeze', 0.0)
         self.declare_parameter('lift_z_phase4', 0.0)
 
-        self.declare_parameter('time_start_pose', 10.0)
-        self.declare_parameter('time_phase1', 10.0)
-        self.declare_parameter('time_phase2', 10.0)
-        self.declare_parameter('time_phase3', 10.0)
-        self.declare_parameter('time_phase4', 10.0)
+        self.declare_parameter('time_start_pose', 5.0)
+        self.declare_parameter('time_phase1', 5.0)
+        self.declare_parameter('time_phase2', 5.0)
+        self.declare_parameter('time_phase3', 5.0)
+        self.declare_parameter('time_phase4', 5.0)
 
         self.object_pose_file = self.get_parameter('object_pose_file').value
         self.base_frame = str(self.get_parameter('base_frame').value)

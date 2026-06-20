@@ -11,10 +11,10 @@ python3 grasp_centauro_test_world.py --ros-args \
     -p cartesian_world_frame:=ci/world \
     -p cartesian_robot_base_frame:=ci/pelvis \
     -p robot_base_frame:=pelvis \
-    -p camera_frame:=D435_head_camera_gz_optical_frame \
+    -p camera_frame:=D435_head_camera_link \
     -p approach_mode:=yz \
-    -p grasp_offset_x:=-0.0 \
-    -p grasp_offset_y:=-0.05 \
+    -p grasp_offset_x:=0.12 \
+    -p grasp_offset_y:=-0.075 \
     -p grasp_offset_z:=0.0 \
     -p phase1_split_fraction:=0.5 \
     -p constrain_orientation:=true
@@ -124,7 +124,7 @@ class CentauroCameraGrasp(Node):
         self.declare_parameter('cartesian_robot_base_frame', 'ci/pelvis')
         self.declare_parameter('robot_base_frame', 'pelvis')
         self.declare_parameter('camera_frame', 'D435_head_camera_gz_optical_frame')
-        self.declare_parameter('tf_lookup_timeout', 5.0)
+        self.declare_parameter('tf_lookup_timeout', 20.0)
 
         self.declare_parameter('d1_start_x', 0.8)
         self.declare_parameter('d1_start_y', 0.3)
