@@ -1,9 +1,1 @@
-# Object pose expressed in the robot camera frame.
-
-object.position: 0.00 0.30 0.70
-
-
-#camera  red_box pose
-#0.214605    0.94    0.69
-#0.073650    0.08    0.00
-#1.382077    1.12    0.56
+object.position: 0.75473 0.063639 -0.025299

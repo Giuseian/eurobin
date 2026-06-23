@@ -89,7 +89,7 @@ class CentauroCameraGraspCheck(Node):
         self.declare_parameter('set_weight_timeout', 20.0)
 
         self.declare_parameter('phase3_extra_squeeze', 0.0)
-        self.declare_parameter('lift_z_phase4', 0.0)
+        self.declare_parameter('lift_z_phase4', 0.15)
 
         self.declare_parameter('time_start_pose', 5.0)
         self.declare_parameter('time_phase1', 5.0)

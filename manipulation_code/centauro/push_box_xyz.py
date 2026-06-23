@@ -1,50 +1,40 @@
 #!/usr/bin/env python3
 
 """
-Centauro dual-arm grasp test from an object pose measured in the robot camera.
+Centauro single-arm push test from an object pose measured in the robot camera.
 
 Run from this folder:
 
-python3 /home/user/eurobin/manipulation_code/centauro/grasp_centauro_test_world.py --ros-args \
+python3 push_box_xyz.py --ros-args \
     -p object_pose_file:=object_pose.txt \
     -p base_frame:=world \
     -p cartesian_world_frame:=ci/world \
     -p cartesian_robot_base_frame:=ci/pelvis \
     -p robot_base_frame:=pelvis \
-    -p camera_frame:=D435_head_camera_link \
-    -p approach_mode:=yz \
-    -p grasp_offset_x:=0.12 \
-    -p grasp_offset_y:=-0.075 \
-    -p grasp_offset_z:=0.02 \
-    -p phase1_split_fraction:=0.5 \
+    -p camera_frame:=D435_head_camera_gz_optical_frame \
+    -p push_offset_x:=0.0 \
+    -p push_offset_y:=-0.0 \
+    -p push_offset_z:=0.02 \
+    -p push_direction_x:=1.0 \
+    -p push_direction_y:=0.0 \
+    -p push_direction_z:=0.0 \
+    -p pre_push_distance:=0.08 \
+    -p push_distance:=0.10 \
+    -p retreat_distance:=0.0 \
     -p constrain_orientation:=true \
-    -p box_width:=0.335
-
-python3 /home/user/eurobin/manipulation_code/centauro/grasp_centauro_test_world.py --ros-args \
-    -p object_pose_file:=object_pose.txt \
-    -p base_frame:=world \
-    -p cartesian_world_frame:=ci/world \
-    -p cartesian_robot_base_frame:=ci/pelvis \
-    -p robot_base_frame:=pelvis \
-    -p camera_frame:=D435_head_camera_link \
-    -p approach_mode:=yz \
-    -p grasp_offset_x:=0.12 \
-    -p grasp_offset_y:=-0.075 \
-    -p grasp_offset_z:=0.0 \
-    -p phase1_split_fraction:=0.5 \
-    -p constrain_orientation:=true \
-    -p box_width:=0.514
-
-
+    -p push_dagana:=1
 
 What it does:
     1. Reads the object pose from a text file in the robot camera frame.
     2. Reads the camera pose from TF and transforms the object into the
        Cartesio task base frame.
     3. Uses a task-base-aligned object frame, ignoring object orientation.
-    4. Moves the two end-effectors to the sides of the object.
-    5. Closes symmetrically along the base Y axis.
-    6. Lifts the object after contact.
+    4. Deactivates the non-pushing Dagana Cartesian task.
+    5. Moves only the pushing Dagana to its configurable safe start pose.
+    6. Moves to a pre-push pose, then to contact.
+    7. Pushes along a configurable direction for a configurable distance.
+    8. Optionally retreats after the push.
+    9. Reactivates the non-pushing Dagana Cartesian task.
 
 Input pose file format:
     The file is read from the same folder by default. Values are whitespace
@@ -53,14 +43,14 @@ Input pose file format:
         object.position: 0.50 0.00 0.20
 
     The position above is expressed in camera_frame. Object orientation is
-    intentionally ignored; the grasp frame is aligned with base_frame.
+    intentionally ignored; the push frame is aligned with base_frame.
 
 Most useful ROS parameters:
     object_pose_file:
         Text file containing the object pose in the camera frame. Relative
         paths are resolved from this script folder.
     base_frame:
-        Robot base frame used as target frame for the grasp. Default: world.
+        Robot base frame used as target frame for the push. Default: world.
     camera_frame:
         Camera frame in which object_pose_file is expressed. Default:
         D435_head_camera_gz_optical_frame.
@@ -72,24 +62,26 @@ Most useful ROS parameters:
         Robot TF base frame used to locate the camera. Default: pelvis.
     tf_lookup_timeout:
         Seconds to wait for the required TF transforms.
-    approach_mode:
-        yz, xz, or xy. Selects which axes are solved in phase 1 vs phase 2.
-    grasp_offset_x/y/z:
-        Offset of the grasp center relative to the box center, expressed in
-        the task-base-aligned object frame.
-    box_width:
-        Distance used to place the two grippers on opposite sides of the box.
-    phase1_clearance:
-        Extra distance from the box side before closing.
-    phase3_extra_squeeze:
-        Extra inward motion after first contact.
-    lift_z_phase4:
-        Vertical lift after grasping, expressed in the Cartesio task base frame.
+    push_offset_x/y/z:
+        Offset of the push contact point relative to the box center, expressed
+        in the task-base-aligned object frame.
+    push_direction_x/y/z:
+        Push direction expressed in the task-base-aligned object frame. It is
+        normalized internally.
+    push_dagana:
+        Which Dagana executes homing and push after the other one is disabled.
+        Use 1 or 2.
+    pre_push_distance:
+        Distance before the contact point, opposite to the push direction.
+    push_distance:
+        Distance covered during the push.
+    retreat_distance:
+        Distance moved back after the push. Set to 0.0 to skip retreat.
     align_orientation_to_box_yaw:
         If true, rotates the commanded gripper orientation by the box yaw in
         the Cartesio task base frame.
     constrain_orientation:
-        If false, sets both arm Cartesian task weights to position-only
+        If false, sets the Dagana 2 Cartesian task weights to position-only
         [tx, ty, tz, rx, ry, rz] = [1, 1, 1, 0, 0, 0] before moving.
         At the end the script restores full 6D weights only if
         restore_orientation_weight_at_end is true.
@@ -97,7 +89,7 @@ Most useful ROS parameters:
         Initial safe pose for each Dagana, expressed in Cartesio task base frame.
     d1_qx/qy/qz/qw, d2_qx/qy/qz/qw:
         Base gripper orientations used by the Cartesian action goals.
-    time_start_pose, time_phase1, time_phase2, time_phase3, time_phase4:
+    time_start_pose, time_pre_push, time_contact, time_push, time_retreat:
         Motion duration for each phase.
 """
 
@@ -113,17 +105,23 @@ from rclpy.time import Time
 from tf2_ros import Buffer, TransformException, TransformListener
 
 from cartesian_interface_ros.action import ReachPose
-from cartesian_interface_ros.srv import SetWeight
+from cartesian_interface_ros.srv import SetTaskActive, SetWeight
 from geometry_msgs.msg import Pose
 
 
-class CentauroCameraGrasp(Node):
+class CentauroCameraPush(Node):
 
     def __init__(self):
-        super().__init__('centauro_camera_grasp_test')
+        super().__init__('centauro_camera_push_test')
 
         self.client_1 = ActionClient(self, ReachPose, '/dagana_1_tcp/reach')
         self.client_2 = ActionClient(self, ReachPose, '/dagana_2_tcp/reach')
+        self.set_active_client_1 = self.create_client(
+            SetTaskActive, '/cartesian/dagana_1_tcp/set_active'
+        )
+        self.set_active_client_2 = self.create_client(
+            SetTaskActive, '/cartesian/dagana_2_tcp/set_active'
+        )
         self.set_weight_client_1 = self.create_client(
             SetWeight, '/cartesian/dagana_1_tcp/set_weight'
         )
@@ -134,6 +132,8 @@ class CentauroCameraGrasp(Node):
         self.tf_listener = TransformListener(self.tf_buffer, self)
 
         self.declare_parameter('object_pose_file', 'object_pose.txt')
+        self.declare_parameter('d1_set_active_service', '/cartesian/dagana_1_tcp/set_active')
+        self.declare_parameter('d2_set_active_service', '/cartesian/dagana_2_tcp/set_active')
         self.declare_parameter('d1_set_weight_service', '/cartesian/dagana_1_tcp/set_weight')
         self.declare_parameter('d2_set_weight_service', '/cartesian/dagana_2_tcp/set_weight')
 
@@ -142,7 +142,7 @@ class CentauroCameraGrasp(Node):
         self.declare_parameter('cartesian_robot_base_frame', 'ci/pelvis')
         self.declare_parameter('robot_base_frame', 'pelvis')
         self.declare_parameter('camera_frame', 'D435_head_camera_gz_optical_frame')
-        self.declare_parameter('tf_lookup_timeout', 20.0)
+        self.declare_parameter('tf_lookup_timeout', 5.0)
 
         self.declare_parameter('d1_start_x', 0.8)
         self.declare_parameter('d1_start_y', 0.3)
@@ -151,7 +151,6 @@ class CentauroCameraGrasp(Node):
         self.declare_parameter('d2_start_y', -0.35)
         self.declare_parameter('d2_start_z', 0.25)
 
-        # ===== ORIENTAZIONI HOMING TCP =====
         self.declare_parameter('d1_qx', 0.0)
         self.declare_parameter('d1_qy', 0.7)
         self.declare_parameter('d1_qz', 0.0)
@@ -162,34 +161,34 @@ class CentauroCameraGrasp(Node):
         self.declare_parameter('d2_qz', 0.0)
         self.declare_parameter('d2_qw', 0.7)
 
-        self.declare_parameter('box_width', 0.335)
-        self.declare_parameter('phase1_clearance', 0.1)
-        self.declare_parameter('phase1_extra_margin_x', 0.0)
-        self.declare_parameter('phase1_extra_margin_y', 0.0)
-        self.declare_parameter('phase1_extra_margin_z', 0.0)
-        self.declare_parameter('approach_mode', 'yz')
-        self.declare_parameter('phase1_split_fraction', 0.5)
+        self.declare_parameter('push_dagana', 2)
+        self.declare_parameter('push_offset_x', 0.0)
+        self.declare_parameter('push_offset_y', 0.0)
+        self.declare_parameter('push_offset_z', 0.0)
+        self.declare_parameter('push_direction_x', 1.0)
+        self.declare_parameter('push_direction_y', 0.0)
+        self.declare_parameter('push_direction_z', 0.0)
+        self.declare_parameter('pre_push_distance', 0.08)
+        self.declare_parameter('push_distance', 0.10)
+        self.declare_parameter('retreat_distance', 0.05)
 
-        self.declare_parameter('grasp_offset_x', 0.0)
-        self.declare_parameter('grasp_offset_y', 0.0)
-        self.declare_parameter('grasp_offset_z', 0.0)
         self.declare_parameter('align_orientation_to_box_yaw', True)
         self.declare_parameter('constrain_orientation', True)
         self.declare_parameter('position_weight', 1.0)
         self.declare_parameter('orientation_weight', 0.0)
         self.declare_parameter('restore_orientation_weight_at_end', False)
+        self.declare_parameter('set_active_timeout', 20.0)
         self.declare_parameter('set_weight_timeout', 20.0)
 
-        self.declare_parameter('phase3_extra_squeeze', 0.0)
-        self.declare_parameter('lift_z_phase4', 0.15)
-
         self.declare_parameter('time_start_pose', 5.0)
-        self.declare_parameter('time_phase1', 5.0)
-        self.declare_parameter('time_phase2', 5.0)
-        self.declare_parameter('time_phase3', 5.0)
-        self.declare_parameter('time_phase4', 5.0)
+        self.declare_parameter('time_pre_push', 5.0)
+        self.declare_parameter('time_contact', 5.0)
+        self.declare_parameter('time_push', 5.0)
+        self.declare_parameter('time_retreat', 5.0)
 
         self.object_pose_file = self.get_parameter('object_pose_file').value
+        self.d1_set_active_service = self.get_parameter('d1_set_active_service').value
+        self.d2_set_active_service = self.get_parameter('d2_set_active_service').value
         self.d1_set_weight_service = self.get_parameter('d1_set_weight_service').value
         self.d2_set_weight_service = self.get_parameter('d2_set_weight_service').value
         self.base_frame = str(self.get_parameter('base_frame').value)
@@ -207,6 +206,15 @@ class CentauroCameraGrasp(Node):
 
         self.camera_position = None
         self.camera_orientation = None
+
+        if self.d1_set_active_service != '/cartesian/dagana_1_tcp/set_active':
+            self.set_active_client_1 = self.create_client(
+                SetTaskActive, self.d1_set_active_service
+            )
+        if self.d2_set_active_service != '/cartesian/dagana_2_tcp/set_active':
+            self.set_active_client_2 = self.create_client(
+                SetTaskActive, self.d2_set_active_service
+            )
 
         if self.d1_set_weight_service != '/cartesian/dagana_1_tcp/set_weight':
             self.set_weight_client_1 = self.create_client(
@@ -233,17 +241,17 @@ class CentauroCameraGrasp(Node):
         self.d2_qz = self.get_parameter('d2_qz').value
         self.d2_qw = self.get_parameter('d2_qw').value
 
-        self.box_width = self.get_parameter('box_width').value
-        self.phase1_clearance = self.get_parameter('phase1_clearance').value
-        self.phase1_extra_margin_x = self.get_parameter('phase1_extra_margin_x').value
-        self.phase1_extra_margin_y = self.get_parameter('phase1_extra_margin_y').value
-        self.phase1_extra_margin_z = self.get_parameter('phase1_extra_margin_z').value
-        self.approach_mode = str(self.get_parameter('approach_mode').value).strip().lower()
-        self.phase1_split_fraction = self.get_parameter('phase1_split_fraction').value
+        self.push_dagana = int(self.get_parameter('push_dagana').value)
+        self.push_offset_x = self.get_parameter('push_offset_x').value
+        self.push_offset_y = self.get_parameter('push_offset_y').value
+        self.push_offset_z = self.get_parameter('push_offset_z').value
+        self.push_direction_x = self.get_parameter('push_direction_x').value
+        self.push_direction_y = self.get_parameter('push_direction_y').value
+        self.push_direction_z = self.get_parameter('push_direction_z').value
+        self.pre_push_distance = self.get_parameter('pre_push_distance').value
+        self.push_distance = self.get_parameter('push_distance').value
+        self.retreat_distance = self.get_parameter('retreat_distance').value
 
-        self.grasp_offset_x = self.get_parameter('grasp_offset_x').value
-        self.grasp_offset_y = self.get_parameter('grasp_offset_y').value
-        self.grasp_offset_z = self.get_parameter('grasp_offset_z').value
         self.align_orientation_to_box_yaw = self.get_parameter('align_orientation_to_box_yaw').value
         self.constrain_orientation = self.get_parameter('constrain_orientation').value
         self.position_weight = self.get_parameter('position_weight').value
@@ -251,38 +259,86 @@ class CentauroCameraGrasp(Node):
         self.restore_orientation_weight_at_end = self.get_parameter(
             'restore_orientation_weight_at_end'
         ).value
+        self.set_active_timeout = self.get_parameter('set_active_timeout').value
         self.set_weight_timeout = self.get_parameter('set_weight_timeout').value
 
-        self.phase3_extra_squeeze = self.get_parameter('phase3_extra_squeeze').value
-        self.lift_z_phase4 = self.get_parameter('lift_z_phase4').value
-
         self.time_start_pose = self.get_parameter('time_start_pose').value
-        self.time_phase1 = self.get_parameter('time_phase1').value
-        self.time_phase2 = self.get_parameter('time_phase2').value
-        self.time_phase3 = self.get_parameter('time_phase3').value
-        self.time_phase4 = self.get_parameter('time_phase4').value
+        self.time_pre_push = self.get_parameter('time_pre_push').value
+        self.time_contact = self.get_parameter('time_contact').value
+        self.time_push = self.get_parameter('time_push').value
+        self.time_retreat = self.get_parameter('time_retreat').value
 
-        if self.approach_mode not in ('yz', 'xz', 'xy'):
-            raise ValueError(
-                f'approach_mode="{self.approach_mode}" non valido. Usa: yz, xz, xy'
-            )
+        if self.push_dagana not in (1, 2):
+            raise ValueError(f'push_dagana={self.push_dagana} non valido. Usa 1 oppure 2.')
+
+        if self.vector_norm((
+            self.push_direction_x,
+            self.push_direction_y,
+            self.push_direction_z,
+        )) <= 0.0:
+            raise ValueError('La direzione di push non puo essere nulla.')
 
         self.box_position = None
         self.box_orientation = None
 
     # ------------------------------------------------------------------
+    # Arm activation
+    # ------------------------------------------------------------------
+    def push_arm(self):
+        if self.push_dagana == 1:
+            return 'left'
+        return 'right'
+
+    def inactive_arm(self):
+        if self.push_dagana == 1:
+            return 'right'
+        return 'left'
+
+    def set_active_client_for_arm(self, arm):
+        if arm == 'left':
+            return self.set_active_client_1
+        return self.set_active_client_2
+
+    def active_service_name_for_arm(self, arm):
+        if arm == 'left':
+            return self.d1_set_active_service
+        return self.d2_set_active_service
+
+    def set_arm_active(self, arm, active):
+        client = self.set_active_client_for_arm(arm)
+        service_name = self.active_service_name_for_arm(arm)
+        self.get_logger().info(
+            f'{"Attivo" if active else "Disattivo"} task {arm}: {service_name}'
+        )
+
+        if not client.wait_for_service(timeout_sec=float(self.set_active_timeout)):
+            raise RuntimeError(
+                f'Service {service_name} non disponibile dopo '
+                f'{self.set_active_timeout:.1f} s.'
+            )
+
+        request = SetTaskActive.Request()
+        request.activation_state = bool(active)
+        future = client.call_async(request)
+        rclpy.spin_until_future_complete(
+            self, future, timeout_sec=float(self.set_active_timeout)
+        )
+
+        response = future.result()
+        if response is None:
+            raise RuntimeError(
+                f'Chiamata a {service_name} scaduta dopo '
+                f'{self.set_active_timeout:.1f} s.'
+            )
+        if not response.success:
+            raise RuntimeError(
+                f'{service_name} ha risposto success=false: {response.message}'
+            )
+        self.get_logger().info(f'{service_name}: {response.message}')
+
+    # ------------------------------------------------------------------
     # Cartesian task weights
     # ------------------------------------------------------------------
-    def set_weight_client_for_arm(self, arm):
-        if arm == 'left':
-            return self.set_weight_client_1
-        return self.set_weight_client_2
-
-    def weight_service_name_for_arm(self, arm):
-        if arm == 'left':
-            return self.d1_set_weight_service
-        return self.d2_set_weight_service
-
     def task_weight_for_current_orientation_mode(self):
         pos_w = float(self.position_weight)
         if self.constrain_orientation:
@@ -294,6 +350,16 @@ class CentauroCameraGrasp(Node):
     def full_pose_task_weight(self):
         pos_w = float(self.position_weight)
         return [pos_w, pos_w, pos_w, pos_w, pos_w, pos_w]
+
+    def set_weight_client_for_arm(self, arm):
+        if arm == 'left':
+            return self.set_weight_client_1
+        return self.set_weight_client_2
+
+    def weight_service_name_for_arm(self, arm):
+        if arm == 'left':
+            return self.d1_set_weight_service
+        return self.d2_set_weight_service
 
     def set_arm_task_weight(self, arm, weight=None):
         client = self.set_weight_client_for_arm(arm)
@@ -333,8 +399,7 @@ class CentauroCameraGrasp(Node):
         self.get_logger().info(f'{service_name}: {response.message}')
 
     def configure_task_weights(self):
-        self.set_arm_task_weight('left')
-        self.set_arm_task_weight('right')
+        self.set_arm_task_weight(self.push_arm())
 
     def restore_full_pose_task_weights(self):
         errors = []
@@ -395,11 +460,17 @@ class CentauroCameraGrasp(Node):
     def vector_add(self, a, b):
         return (a[0] + b[0], a[1] + b[1], a[2] + b[2])
 
-    def vector_sub(self, a, b):
-        return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
-
     def vector_scale(self, v, scale):
         return (v[0] * scale, v[1] * scale, v[2] * scale)
+
+    def vector_norm(self, v):
+        return math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2])
+
+    def vector_normalize(self, v):
+        norm = self.vector_norm(v)
+        if norm <= 0.0:
+            raise ValueError('Impossibile normalizzare un vettore nullo.')
+        return (v[0] / norm, v[1] / norm, v[2] / norm)
 
     def pose_from_transform(self, transform):
         translation = transform.transform.translation
@@ -574,9 +645,9 @@ class CentauroCameraGrasp(Node):
         )
 
     # ------------------------------------------------------------------
-    # Grasp planner
+    # Push planner
     # ------------------------------------------------------------------
-    def box_target_components(self):
+    def push_target_components(self):
         box_position_robot = self.box_position
         box_orientation_robot = self.box_orientation
         if box_position_robot is None or box_orientation_robot is None:
@@ -586,14 +657,27 @@ class CentauroCameraGrasp(Node):
         box_y_axis_robot = self.quat_rotate_vector(box_orientation_robot, (0.0, 1.0, 0.0))
         box_z_axis_robot = self.quat_rotate_vector(box_orientation_robot, (0.0, 0.0, 1.0))
 
-        grasp_offset_robot = self.vector_add(
+        push_offset_robot = self.vector_add(
             self.vector_add(
-                self.vector_scale(box_x_axis_robot, self.grasp_offset_x),
-                self.vector_scale(box_y_axis_robot, self.grasp_offset_y)
+                self.vector_scale(box_x_axis_robot, self.push_offset_x),
+                self.vector_scale(box_y_axis_robot, self.push_offset_y)
             ),
-            self.vector_scale(box_z_axis_robot, self.grasp_offset_z)
+            self.vector_scale(box_z_axis_robot, self.push_offset_z)
         )
-        grasp_position_robot = self.vector_add(box_position_robot, grasp_offset_robot)
+        contact_position_robot = self.vector_add(box_position_robot, push_offset_robot)
+
+        local_push_direction = self.vector_normalize((
+            self.push_direction_x,
+            self.push_direction_y,
+            self.push_direction_z,
+        ))
+        push_direction_robot = self.vector_normalize(self.vector_add(
+            self.vector_add(
+                self.vector_scale(box_x_axis_robot, local_push_direction[0]),
+                self.vector_scale(box_y_axis_robot, local_push_direction[1])
+            ),
+            self.vector_scale(box_z_axis_robot, local_push_direction[2])
+        ))
         box_yaw_robot = self.quat_to_yaw(box_orientation_robot)
 
         self.get_logger().info(
@@ -602,142 +686,77 @@ class CentauroCameraGrasp(Node):
             f'yaw={box_yaw_robot:.6f} rad'
         )
         self.get_logger().info(
-            f'Grasp center in frame di calcolo: x={grasp_position_robot[0]:.6f}, '
-            f'y={grasp_position_robot[1]:.6f}, z={grasp_position_robot[2]:.6f}'
+            f'Push contact in frame di calcolo: x={contact_position_robot[0]:.6f}, '
+            f'y={contact_position_robot[1]:.6f}, z={contact_position_robot[2]:.6f}'
+        )
+        self.get_logger().info(
+            f'Push direction in frame di calcolo: x={push_direction_robot[0]:.6f}, '
+            f'y={push_direction_robot[1]:.6f}, z={push_direction_robot[2]:.6f}'
         )
 
         return {
-            'grasp_position': grasp_position_robot,
-            'box_y_axis': box_y_axis_robot,
+            'contact_position': contact_position_robot,
+            'push_direction': push_direction_robot,
         }
 
-    def split_axis_value(self, start_value, target_value):
-        return start_value + self.phase1_split_fraction * (target_value - start_value)
-
     def compute_all_phase_targets(self):
-        target = self.box_target_components()
+        target = self.push_target_components()
         if target is None:
             return None
 
-        grasp_position = target['grasp_position']
-        box_y_axis = target['box_y_axis']
-        half_box = self.box_width / 2.0
+        contact_position = target['contact_position']
+        push_direction = target['push_direction']
 
-        start_d1_x = self.d1_start_x
-        start_d1_y = self.d1_start_y
-        start_d1_z = self.d1_start_z
-        start_d2_x = self.d2_start_x
-        start_d2_y = self.d2_start_y
-        start_d2_z = self.d2_start_z
-
-        pre_d1 = self.vector_add(
-            grasp_position,
-            self.vector_scale(box_y_axis, half_box + self.phase1_clearance)
+        start_pose = (
+            self.d1_start_x, self.d1_start_y, self.d1_start_z,
+            self.d2_start_x, self.d2_start_y, self.d2_start_z,
         )
-        pre_d2 = self.vector_add(
-            grasp_position,
-            self.vector_scale(box_y_axis, -half_box - self.phase1_clearance)
+        pre_push = self.vector_add(
+            contact_position,
+            self.vector_scale(push_direction, -float(self.pre_push_distance))
         )
-        pre_d1_x, pre_d1_y, pre_d1_z = pre_d1
-        pre_d2_x, pre_d2_y, pre_d2_z = pre_d2
-
-        if self.approach_mode == 'yz':
-            phase1_d1_x = self.split_axis_value(start_d1_x, pre_d1_x) + self.phase1_extra_margin_x
-            phase1_d1_y = pre_d1_y + self.phase1_extra_margin_y
-            phase1_d1_z = pre_d1_z + self.phase1_extra_margin_z
-            phase1_d2_x = self.split_axis_value(start_d2_x, pre_d2_x) + self.phase1_extra_margin_x
-            phase1_d2_y = pre_d2_y + self.phase1_extra_margin_y
-            phase1_d2_z = pre_d2_z + self.phase1_extra_margin_z
-            phase2_d1_x = pre_d1_x
-            phase2_d1_y = phase1_d1_y
-            phase2_d1_z = phase1_d1_z
-            phase2_d2_x = pre_d2_x
-            phase2_d2_y = phase1_d2_y
-            phase2_d2_z = phase1_d2_z
-        elif self.approach_mode == 'xz':
-            phase1_d1_x = pre_d1_x + self.phase1_extra_margin_x
-            phase1_d1_y = self.split_axis_value(start_d1_y, pre_d1_y) + self.phase1_extra_margin_y
-            phase1_d1_z = pre_d1_z + self.phase1_extra_margin_z
-            phase1_d2_x = pre_d2_x + self.phase1_extra_margin_x
-            phase1_d2_y = self.split_axis_value(start_d2_y, pre_d2_y) + self.phase1_extra_margin_y
-            phase1_d2_z = pre_d2_z + self.phase1_extra_margin_z
-            phase2_d1_x = phase1_d1_x
-            phase2_d1_y = pre_d1_y
-            phase2_d1_z = phase1_d1_z
-            phase2_d2_x = phase1_d2_x
-            phase2_d2_y = pre_d2_y
-            phase2_d2_z = phase1_d2_z
-        else:
-            phase1_d1_x = pre_d1_x + self.phase1_extra_margin_x
-            phase1_d1_y = pre_d1_y + self.phase1_extra_margin_y
-            phase1_d1_z = self.split_axis_value(start_d1_z, pre_d1_z) + self.phase1_extra_margin_z
-            phase1_d2_x = pre_d2_x + self.phase1_extra_margin_x
-            phase1_d2_y = pre_d2_y + self.phase1_extra_margin_y
-            phase1_d2_z = self.split_axis_value(start_d2_z, pre_d2_z) + self.phase1_extra_margin_z
-            phase2_d1_x = phase1_d1_x
-            phase2_d1_y = phase1_d1_y
-            phase2_d1_z = pre_d1_z
-            phase2_d2_x = phase1_d2_x
-            phase2_d2_y = phase1_d2_y
-            phase2_d2_z = pre_d2_z
-
-        contact_d1 = self.vector_add(grasp_position, self.vector_scale(box_y_axis, half_box))
-        contact_d2 = self.vector_add(grasp_position, self.vector_scale(box_y_axis, -half_box))
-        contact_d1_x, contact_d1_y = contact_d1[0], contact_d1[1]
-        contact_d2_x, contact_d2_y = contact_d2[0], contact_d2[1]
-        contact_d1_z = phase2_d1_z
-        contact_d2_z = phase2_d2_z
-
-        lift_d1 = self.vector_add(
-            grasp_position,
-            self.vector_scale(box_y_axis, half_box - self.phase3_extra_squeeze)
+        push_end = self.vector_add(
+            contact_position,
+            self.vector_scale(push_direction, float(self.push_distance))
         )
-        lift_d2 = self.vector_add(
-            grasp_position,
-            self.vector_scale(box_y_axis, -half_box + self.phase3_extra_squeeze)
+        retreat = self.vector_add(
+            push_end,
+            self.vector_scale(push_direction, -float(self.retreat_distance))
         )
-        lift_d1_x, lift_d1_y = lift_d1[0], lift_d1[1]
-        lift_d2_x, lift_d2_y = lift_d2[0], lift_d2[1]
-        lift_d1_z = contact_d1_z + self.lift_z_phase4
-        lift_d2_z = contact_d2_z + self.lift_z_phase4
 
         phases = {
-            'start_pose': (
-                start_d1_x, start_d1_y, start_d1_z,
-                start_d2_x, start_d2_y, start_d2_z
-            ),
-            'phase1': (
-                phase1_d1_x, phase1_d1_y, phase1_d1_z,
-                phase1_d2_x, phase1_d2_y, phase1_d2_z
-            ),
-            'phase2': (
-                phase2_d1_x, phase2_d1_y, phase2_d1_z,
-                phase2_d2_x, phase2_d2_y, phase2_d2_z
-            ),
-            'phase3': (
-                contact_d1_x, contact_d1_y, contact_d1_z,
-                contact_d2_x, contact_d2_y, contact_d2_z
-            ),
-            'phase4': (
-                lift_d1_x, lift_d1_y, lift_d1_z,
-                lift_d2_x, lift_d2_y, lift_d2_z
-            ),
+            'start_pose': start_pose,
+            'pre_push': pre_push,
+            'contact': contact_position,
+            'push': push_end,
         }
+        if abs(float(self.retreat_distance)) > 0.0:
+            phases['retreat'] = retreat
+
         self.log_phase_targets(phases)
         return phases
 
     def log_phase_targets(self, phases):
-        self.get_logger().info('=== Target grasp calcolati ===')
+        self.get_logger().info('=== Target push calcolati ===')
+        self.get_logger().info(
+            f'braccio push attivo = {self.push_arm()}, braccio disattivato = {self.inactive_arm()}'
+        )
         self.get_logger().info(f'target frame = {self.base_frame}')
         self.get_logger().info(f'cartesian tf world = {self.cartesian_world_frame}')
         self.get_logger().info(f'cartesian tf pelvis = {self.cartesian_robot_base_frame}')
-        self.get_logger().info(f'approach_mode = {self.approach_mode}')
+        self.get_logger().info(f'push dagana = {self.push_dagana}')
         for phase_name, values in phases.items():
-            x1, y1, z1, x2, y2, z2 = values
-            self.get_logger().info(
-                f'{phase_name}: d1=({x1:.6f}, {y1:.6f}, {z1:.6f}), '
-                f'd2=({x2:.6f}, {y2:.6f}, {z2:.6f})'
-            )
+            if phase_name == 'start_pose':
+                x1, y1, z1, x2, y2, z2 = values
+                self.get_logger().info(
+                    f'{phase_name}: d1=({x1:.6f}, {y1:.6f}, {z1:.6f}), '
+                    f'd2=({x2:.6f}, {y2:.6f}, {z2:.6f})'
+                )
+            else:
+                x, y, z = values
+                self.get_logger().info(
+                    f'{phase_name}: d{self.push_dagana}=({x:.6f}, {y:.6f}, {z:.6f})'
+                )
 
     # ------------------------------------------------------------------
     # Action helpers
@@ -775,44 +794,66 @@ class CentauroCameraGrasp(Node):
             self.quat_normalize(self.quat_multiply(yaw_q, d2_q)),
         )
 
-    def send_two_goals_and_wait(self, phase_name, goal1, goal2):
+    def push_client(self):
+        if self.push_dagana == 1:
+            return self.client_1
+        return self.client_2
+
+    def push_goal_orientation(self):
+        d1_q, d2_q = self.current_goal_orientations()
+        if self.push_dagana == 1:
+            return d1_q
+        return d2_q
+
+    def push_dagana_label(self):
+        return f'dagana_{self.push_dagana}_tcp'
+
+    def send_goal_and_wait(self, phase_name, goal):
         self.get_logger().info(f'=== Starting {phase_name} ===')
-        self.client_1.wait_for_server()
-        self.client_2.wait_for_server()
+        client = self.push_client()
+        dagana_label = self.push_dagana_label()
+        client.wait_for_server()
 
-        fut_send1 = self.client_1.send_goal_async(goal1)
-        fut_send2 = self.client_2.send_goal_async(goal2)
-        rclpy.spin_until_future_complete(self, fut_send1)
-        rclpy.spin_until_future_complete(self, fut_send2)
+        fut_send = client.send_goal_async(goal)
+        rclpy.spin_until_future_complete(self, fut_send)
 
-        gh1 = fut_send1.result()
-        gh2 = fut_send2.result()
-        if gh1 is None or not gh1.accepted:
-            raise RuntimeError(f'{phase_name}: goal dagana_1_tcp rejected.')
-        if gh2 is None or not gh2.accepted:
-            raise RuntimeError(f'{phase_name}: goal dagana_2_tcp rejected.')
+        gh = fut_send.result()
+        if gh is None or not gh.accepted:
+            raise RuntimeError(f'{phase_name}: goal {dagana_label} rejected.')
 
-        fut_res1 = gh1.get_result_async()
-        fut_res2 = gh2.get_result_async()
-        rclpy.spin_until_future_complete(self, fut_res1)
-        rclpy.spin_until_future_complete(self, fut_res2)
+        fut_res = gh.get_result_async()
+        rclpy.spin_until_future_complete(self, fut_res)
 
-        if fut_res1.result() is None:
-            raise RuntimeError(f'{phase_name}: no result dagana_1_tcp.')
-        if fut_res2.result() is None:
-            raise RuntimeError(f'{phase_name}: no result dagana_2_tcp.')
+        if fut_res.result() is None:
+            raise RuntimeError(f'{phase_name}: no result {dagana_label}.')
         self.get_logger().info(f'=== Finished {phase_name} ===')
 
-    def run_phase(self, phase_name, phase_targets, time_s):
+    def run_start_pose(self, phase_targets, time_s):
         x1, y1, z1, x2, y2, z2 = phase_targets
         d1_q, d2_q = self.current_goal_orientations()
-        goal1 = self.make_goal(x1, y1, z1, *d1_q, time_s=time_s)
-        goal2 = self.make_goal(x2, y2, z2, *d2_q, time_s=time_s)
-        self.send_two_goals_and_wait(phase_name, goal1, goal2)
+        if self.push_dagana == 1:
+            goal = self.make_goal(x1, y1, z1, *d1_q, time_s=time_s)
+        else:
+            goal = self.make_goal(x2, y2, z2, *d2_q, time_s=time_s)
+        self.send_goal_and_wait('START_POSE', goal)
+
+    def run_phase(self, phase_name, phase_target, time_s):
+        x, y, z = phase_target
+        q = self.push_goal_orientation()
+        goal = self.make_goal(x, y, z, *q, time_s=time_s)
+        self.send_goal_and_wait(phase_name, goal)
 
     def execute(self):
         task_weights_configured = False
+        inactive_arm_disabled = False
         try:
+            self.get_logger().info(
+                f'Disattivo {self.inactive_arm()} per push con {self.push_arm()}...'
+            )
+            self.set_arm_active(self.inactive_arm(), False)
+            inactive_arm_disabled = True
+            self.set_arm_active(self.push_arm(), True)
+
             self.update_camera_pose_from_tf()
 
             self.get_logger().info('Lettura pose da file...')
@@ -826,12 +867,13 @@ class CentauroCameraGrasp(Node):
             self.configure_task_weights()
             task_weights_configured = True
 
-            self.run_phase('START_POSE', phases['start_pose'], self.time_start_pose)
-            self.run_phase(f'PHASE 1 - {self.approach_mode.upper()}', phases['phase1'], self.time_phase1)
-            self.run_phase('PHASE 2 - COMPLETE_REMAINING_AXIS', phases['phase2'], self.time_phase2)
-            self.run_phase('PHASE 3 - CLOSE_ON_OBJECT_LOCAL_Y', phases['phase3'], self.time_phase3)
-            self.run_phase('PHASE 4 - SQUEEZE_AND_LIFT', phases['phase4'], self.time_phase4)
-            self.get_logger().info('Grasp completed.')
+            self.run_start_pose(phases['start_pose'], self.time_start_pose)
+            self.run_phase('PHASE 1 - PRE_PUSH', phases['pre_push'], self.time_pre_push)
+            self.run_phase('PHASE 2 - CONTACT', phases['contact'], self.time_contact)
+            self.run_phase('PHASE 3 - PUSH', phases['push'], self.time_push)
+            if 'retreat' in phases:
+                self.run_phase('PHASE 4 - RETREAT', phases['retreat'], self.time_retreat)
+            self.get_logger().info('Push completed.')
         finally:
             if task_weights_configured and self.restore_orientation_weight_at_end:
                 try:
@@ -840,11 +882,22 @@ class CentauroCameraGrasp(Node):
                     self.get_logger().info('Pesi 6D arm ripristinati.')
                 except Exception as exc:
                     self.get_logger().warn(f'Ripristino pesi 6D arm fallito: {exc}')
+            if inactive_arm_disabled:
+                try:
+                    self.get_logger().info(
+                        f'Riattivo {self.inactive_arm()} dopo il push...'
+                    )
+                    self.set_arm_active(self.inactive_arm(), True)
+                    self.get_logger().info(f'{self.inactive_arm()} riattivato.')
+                except Exception as exc:
+                    self.get_logger().warn(
+                        f'Riattivazione {self.inactive_arm()} fallita: {exc}'
+                    )
 
 
 def main():
     rclpy.init()
-    node = CentauroCameraGrasp()
+    node = CentauroCameraPush()
 
     try:
         node.execute()
