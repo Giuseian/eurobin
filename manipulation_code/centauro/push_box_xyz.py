@@ -5,7 +5,7 @@ Centauro single-arm push test from an object pose measured in the robot camera.
 
 Run from this folder:
 
-python3 push_box_xyz.py --ros-args \
+python3 /home/user/eurobin/manipulation_code/centauro/push_box_xyz.py --ros-args \
     -p object_pose_file:=object_pose.txt \
     -p base_frame:=world \
     -p cartesian_world_frame:=ci/world \
