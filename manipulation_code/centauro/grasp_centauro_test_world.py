@@ -14,7 +14,7 @@ python3 /home/user/eurobin/manipulation_code/centauro/grasp_centauro_test_world.
     -p camera_frame:=D435_head_camera_link \
     -p approach_mode:=yz \
     -p grasp_offset_x:=0.12 \
-    -p grasp_offset_y:=-0.075 \
+    -p grasp_offset_y:=-0.03 \
     -p grasp_offset_z:=0.02 \
     -p phase1_split_fraction:=0.5 \
     -p constrain_orientation:=true \
@@ -29,8 +29,8 @@ python3 /home/user/eurobin/manipulation_code/centauro/grasp_centauro_test_world.
     -p camera_frame:=D435_head_camera_link \
     -p approach_mode:=yz \
     -p grasp_offset_x:=0.12 \
-    -p grasp_offset_y:=-0.075 \
-    -p grasp_offset_z:=0.0 \
+    -p grasp_offset_y:=-0.03 \
+    -p grasp_offset_z:=0.02 \
     -p phase1_split_fraction:=0.5 \
     -p constrain_orientation:=true \
     -p box_width:=0.514

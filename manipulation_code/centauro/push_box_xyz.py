@@ -11,7 +11,7 @@ python3 push_box_xyz.py --ros-args \
     -p cartesian_world_frame:=ci/world \
     -p cartesian_robot_base_frame:=ci/pelvis \
     -p robot_base_frame:=pelvis \
-    -p camera_frame:=D435_head_camera_gz_optical_frame \
+    -p camera_frame:=D435_head_camera_link \
     -p push_offset_x:=0.0 \
     -p push_offset_y:=-0.0 \
     -p push_offset_z:=0.02 \
@@ -19,10 +19,10 @@ python3 push_box_xyz.py --ros-args \
     -p push_direction_y:=0.0 \
     -p push_direction_z:=0.0 \
     -p pre_push_distance:=0.08 \
-    -p push_distance:=0.10 \
+    -p push_distance:=0.15 \
     -p retreat_distance:=0.0 \
     -p constrain_orientation:=true \
-    -p push_dagana:=1
+    -p push_dagana:=2
 
 What it does:
     1. Reads the object pose from a text file in the robot camera frame.
