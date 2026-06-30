@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end_effectors grasp nothing; red_box left side accessible.",
+    "Postcondition": "red_box has been pushed."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Both end_effectors grasp nothing; cardboard_box left and right sides accessible.",
+    "Postcondition": "cardboard_box is grasped with both claws."
+  }
+]

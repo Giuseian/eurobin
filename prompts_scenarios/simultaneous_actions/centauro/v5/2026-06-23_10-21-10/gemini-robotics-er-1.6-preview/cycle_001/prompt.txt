@@ -1,0 +1,272 @@
+GENERAL INSTRUCTIONS
+You are a high-level manipulation plan scheduler for a quadruped robot equipped with two manipulator arms. Your task is NOT to generate a new manipulation plan from scratch, and NOT to modify the content of the original actions. Your task is only to reorganize an already valid sequential manipulation plan into a more compact execution schedule by grouping together the actions that can be executed in parallel.
+
+You will receive three inputs:
+
+1. TASK:
+The high-level task the robot must accomplish.
+
+2. SCENE DESCRIPTION:
+A structured JSON description of the scene, including objects, their properties, accessibility, spatial relations, and the current robot end-effector states.
+
+3. SEQUENTIAL PLAN:
+A valid step-by-step manipulation plan in JSON format. Assume that every action in this plan is already correct and feasible when executed sequentially. You must preserve the original action semantics exactly as given.
+
+Your objective is to transform the SEQUENTIAL PLAN into a COMPACT PARALLEL PLAN by grouping existing step_ids into execution stages. Each stage may contain one or more original step_ids that can be executed simultaneously.
+
+STAGE PRECONDITION AND POSTCONDITION
+For each execution stage, you must also generate:
+- a Stage Precondition: a super short description of the scene state that must hold before all actions in that stage can start together;
+- a Stage Postcondition: a super short description of the expected scene state after all actions in that stage have been completed.
+
+The Stage Precondition and Stage Postcondition must refer to the whole stage, not to individual actions separately.
+
+TASK REQUIREMENT RULE
+- The TASK may include additional requirements beyond the main objective.
+- Any requirement expressed as "make sure", "ensure", "keep", or similar must be continuously satisfied throughout the execution.
+- These requirements must:
+  - hold before each stage starts,
+  - not be violated by any action within the stage,
+  - still hold after the stage is completed.
+
+CONDITION MINIMALITY RULE
+- Conditions have to be written as short as possible.
+
+SCHEDULING OBJECTIVE
+Produce the most compact valid execution schedule.
+
+OUTPUT EXAMPLE
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [1, 3],
+    "Precondition": "...",
+    "Postcondition": "..."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [2, 4],
+    "Precondition": "...",
+    "Postcondition": "..."
+  }
+]
+
+OBJECTIVE
+Given the TASK, the SCENE DESCRIPTION, and the SEQUENTIAL PLAN, generate the COMPACT PARALLEL PLAN.
+
+TASK
+Grasp the brown box. The red box can also fall on the ground.
+
+SCENE DESCRIPTION
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cardboard_box",
+        "category": "box",
+        "color": "brown",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by cardboard_box"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "on top of",
+        "object": "cardboard_box"
+      }
+    ]
+  },
+  "_debug": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpto6xujob.json",
+    "direct_name_matching": true,
+    "direct_name_mapping": {
+      "cardboard_box": "cardboard_box",
+      "red_box": "red_box"
+    },
+    "matching_warnings": [],
+    "objects_with_geometry": [
+      {
+        "name": "cardboard_box",
+        "gazebo_name": "cardboard_box",
+        "pose": [
+          0.735671,
+          -0.081734,
+          0.017915
+        ],
+        "dimension": [
+          0.292,
+          0.394,
+          0.16
+        ],
+        "mesh_id": "box_big",
+        "mesh_assignment": {
+          "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+          "mesh_relative_path": "meshes/box_big/box_big.obj",
+          "mesh_id": "box_big",
+          "mesh_metadata_found": true
+        },
+        "dimension_debug": {
+          "object_name": "cardboard_box",
+          "mesh_id": "box_big",
+          "mesh_metadata_found": true,
+          "dimension_source": "mesh_metadata",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+            "mesh_relative_path": "meshes/box_big/box_big.obj",
+            "mesh_id": "box_big",
+            "mesh_metadata_found": true
+          },
+          "dimensions_m": {
+            "width": 0.394,
+            "height": 0.16,
+            "depth": 0.292
+          },
+          "dimension_aabb_order": {
+            "x_depth": 0.292,
+            "y_width": 0.394,
+            "z_height": 0.16
+          }
+        }
+      },
+      {
+        "name": "red_box",
+        "gazebo_name": "red_box",
+        "pose": [
+          0.66193,
+          -0.136853,
+          0.146087
+        ],
+        "dimension": [
+          0.16,
+          0.215,
+          0.11
+        ],
+        "mesh_id": "box_amazon_model",
+        "mesh_assignment": {
+          "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+          "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+          "mesh_id": "box_amazon_model",
+          "mesh_metadata_found": true
+        },
+        "dimension_debug": {
+          "object_name": "red_box",
+          "mesh_id": "box_amazon_model",
+          "mesh_metadata_found": true,
+          "dimension_source": "mesh_metadata",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_id": "box_amazon_model",
+            "mesh_metadata_found": true
+          },
+          "dimensions_m": {
+            "width": 0.215,
+            "height": 0.11,
+            "depth": 0.16
+          },
+          "dimension_aabb_order": {
+            "x_depth": 0.16,
+            "y_width": 0.215,
+            "z_height": 0.11
+          }
+        }
+      }
+    ],
+    "computed_accessibility": {
+      "cardboard_box": {
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        },
+        "aabb": {
+          "x": [
+            0.589671,
+            0.881671
+          ],
+          "y": [
+            -0.27873400000000004,
+            0.11526600000000001
+          ],
+          "z": [
+            -0.062085,
+            0.097915
+          ]
+        }
+      },
+      "red_box": {
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by cardboard_box"
+        },
+        "aabb": {
+          "x": [
+            0.5819300000000001,
+            0.74193
+          ],
+          "y": [
+            -0.244353,
+            -0.029353000000000004
+          ],
+          "z": [
+            0.091087,
+            0.201087
+          ]
+        }
+      }
+    },
+    "data_root": "/workspace/shared_data/realsense",
+    "mesh_metadata_file": "/workspace/shared_data/realsense/meshes/mesh_metadata.json",
+    "mesh_assignments_file": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_17-21-04/mesh_assignments.json"
+  }
+}
+
+SEQUENTIAL PLAN
+[
+  {
+    "Step_id": 1,
+    "Target": "cardboard_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]

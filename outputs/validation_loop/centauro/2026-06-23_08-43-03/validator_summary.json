@@ -1,0 +1,68 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_08-43-03",
+  "timestamp": "2026-06-23T08:53:06.869406",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_08-44-03",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_15-42-57/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_1",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "box_2 on top of box_1",
+          "postcondition": "box_1 top clear",
+          "pre_realsense_timestamp": "2026-06-23_15-42-57",
+          "post_realsense_timestamp": "2026-06-23_15-53-01",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_15-42-57/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_15-53-01/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "box_2 (red) is clearly resting on top of box_1 (brown)."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "The top of box_1 is blocked by box_2, which is resting on it."
+          },
+          "pre_validation_time_seconds": 2.3305704669983243,
+          "post_validation_time_seconds": 3.239112286002637,
+          "new_frame_wait_time_seconds": 525.5964518159999,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_08-43-03/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_15-53-01/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_03-33-26",
+  "timestamp": "2026-06-22T04:00:24.323152",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_03-59-43",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_2",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "bottle_1 is right of box_1; both end effectors grasp nothing",
+          "postcondition": "bottle_1 has been pushed from its right side; box_1 right side is unblocked",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "In the image, bottle_1 is positioned to the right of box_1, and no robot end-effectors are visible, so both are assumed to be grasping nothing."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "There is no clear evidence contradicting that bottle_1 was pushed from its right side, and box_1’s right side appears unobstructed with no object directly adjacent to it on that side."
+          },
+          "pre_validation_time_seconds": 4.369478279000759,
+          "post_validation_time_seconds": 4.933252111999536,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": null,
+          "next_image_name": null
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "box_1 right & left sides are accessible; both end effectors grasp nothing",
+          "postcondition": "box_1 is grasped with a dual-arm symmetric grasp",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "box_1 has no objects directly adjacent to its left or right faces, so both side faces appear accessible; no robot end-effectors are visible in the image, so they are assumed to be grasping nothing."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "box_1 is resting on the table and no robot end-effectors are visible making symmetric dual-arm contact with its left and right sides."
+          },
+          "pre_validation_time_seconds": 6.121103985000445,
+          "post_validation_time_seconds": 4.645362045999718,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_03-33-26/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": null,
+          "next_image_name": null
+        }
+      ]
+    }
+  ]
+}

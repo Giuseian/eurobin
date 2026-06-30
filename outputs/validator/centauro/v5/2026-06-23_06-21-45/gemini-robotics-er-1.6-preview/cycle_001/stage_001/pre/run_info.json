@@ -1,0 +1,49 @@
+{
+  "module": "validator",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-06-23_06-21-45",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_06-23-18",
+  "stage_id": 1,
+  "stage_name": "stage_001",
+  "condition_kind": "pre",
+  "condition_text": "brown_box top blocked",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "gemini-robotics-er-1.6-preview",
+  "execution_time_seconds": 2.468622894000873,
+  "timestamp": "2026-06-23T06:23:32.433212",
+  "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-21-38/000000.png",
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-23_06-21-45",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-23_06-21-45",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-23_06-21-45",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "sampling_config": {
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "response_parsed": {
+    "result": "matching",
+    "reason": "The red_box is resting on the top surface of the brown_box."
+  }
+}

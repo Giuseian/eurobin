@@ -1,0 +1,52 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_05-33-21",
+  "timestamp": "2026-06-23T05:35:38.721715",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_05-34-19",
+      "input_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-33-16/000000.png",
+      "input_image_name": "000000.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-33-21/gpt-5.2/cycle_001/scene_description_full.json"
+      },
+      "vlm_planning_paths": {
+        "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-06-23_05-33-21/o3/cycle_001/prompt.txt",
+        "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_05-33-21/o3/cycle_001/response_parsed.json",
+        "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_05-33-21/o3/cycle_001/run_info.json"
+      },
+      "vlm_planning_output": [
+        {
+          "Step_id": 1,
+          "Target": "box_2",
+          "Action concept": "Push",
+          "Manipulation mode": "Single-arm (right)",
+          "Contact mode": "Without claw",
+          "Object contact side": "right"
+        },
+        {
+          "Step_id": 2,
+          "Target": "box_1",
+          "Action concept": "Grasp",
+          "Manipulation mode": "Dual-arm symmetric",
+          "Contact mode": "Without claw",
+          "Object contact side": "right & left"
+        }
+      ]
+    }
+  ]
+}

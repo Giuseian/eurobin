@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed to be grasping nothing. The cardboard_box has open space on both its left and right sides (no object directly adjacent), so both side faces are accessible."
+}

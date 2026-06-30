@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The robot end-effectors are not visible and, per policy, must be considered as grasping nothing."
+}

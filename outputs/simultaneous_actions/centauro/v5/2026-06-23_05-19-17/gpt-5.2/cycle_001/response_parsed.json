@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_2 is on top of box_1; both end effectors grasp nothing.",
+    "Postcondition": "box_2 is grasped with dual-arm symmetric grasp."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_2 is grasped with dual-arm symmetric grasp.",
+    "Postcondition": "box_2 is placed on the table; both end effectors grasp nothing; box_1 top is unblocked."
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_1 top is unblocked; both end effectors grasp nothing.",
+    "Postcondition": "box_1 is grasped with dual-arm symmetric grasp."
+  }
+]

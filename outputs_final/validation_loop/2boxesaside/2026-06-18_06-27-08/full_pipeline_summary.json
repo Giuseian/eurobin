@@ -1,0 +1,66 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-06-18_06-27-08",
+  "timestamp": "2026-06-18T06:27:08.253870",
+  "initial_image_path": "/workspace/eurobin/image_data/2boxesaside/1.png",
+  "scenario_image_dir": "/workspace/eurobin/image_data/2boxesaside",
+  "poses_by_image_path": "/workspace/eurobin/image_data/2boxesaside/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/workspace/eurobin/image_data/2boxesaside"
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "final_image_path": null,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-18_06-27-08",
+      "start_image_path": "/workspace/eurobin/image_data/2boxesaside/1.png",
+      "start_image_name": "1.png",
+      "scene_description": null,
+      "scene_description_full": null,
+      "vlm_planning": null,
+      "simultaneous_actions": null,
+      "stages": [],
+      "outcome": "cycle_error: Missing Azure OpenAI configuration values in .env: AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_VERSION, AZURE_OPENAI_DEPLOYMENT for model 'gpt-5.2'",
+      "end_image_path": "/workspace/eurobin/image_data/2boxesaside/1.png",
+      "end_image_name": "1.png"
+    }
+  ],
+  "error": "Missing Azure OpenAI configuration values in .env: AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_VERSION, AZURE_OPENAI_DEPLOYMENT for model 'gpt-5.2'"
+}

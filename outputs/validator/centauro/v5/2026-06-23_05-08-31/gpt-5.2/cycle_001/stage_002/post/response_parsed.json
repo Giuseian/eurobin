@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_1 (brown box) is resting on the table with box_2 on top, and no robot end-effectors are visible making dual-arm symmetric contact on its left and right sides."
+}

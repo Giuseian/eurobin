@@ -1,10 +1,32 @@
-CSVS EXPORT 
+CSVS EXPORT
+
+python /workspace/eurobin/src/run_validation_live1.py \
+--scenario centauro \
+--scene-v v6 \
+--scene-model gpt-5.2
+
+python /workspace/eurobin/src/run_validation_live1.py \
+--scenario centauro \
+--scene-v v6 \
+--scene-model gemini-robotics-er-1.6-preview
+
+python /workspace/eurobin/src/run_validation_live2.py \
+--scenario centauro \
+--task "Grasp the box." \
+--scene-v v6 \
+--plan-v v5 \
+--sim-v v5 \
+--validator-v v5 \
+--scene-model gpt-5.2 \
+--plan-model o3 \
+--sim-model gpt-5.2 \
+--validator-model gpt-5.2
 
 
 
-# CUSTOM FILE 
-python src/run_validation_image.py \
---scenario 2boxesaside \
+# CUSTOM FILE
+python /workspace/eurobin/src/run_validation_image.py \
+--scenario centauro \
 --scene-v v6 \
 --plan-v v5 \
 --sim-v v5 \
@@ -114,10 +136,10 @@ python src_code/run_real_deploy_replay.py \
 
 EXAMPLES OF RUNNING INSTRUCTIONS 
 
-python src/run_modules.py \
+python /workspace/eurobin/src/run_modules.py \
   --module scene_description \
-  --scenario stacked_boxes \
-  --version v4 \
+  --scenario centauro \
+  --version v6 \
   --models gpt-5.2 \
   --repeats 1
 
@@ -125,13 +147,13 @@ python src/run_modules.py \
 
 2026-04-16_18-14-02
 
-python src/run_modules.py \
+python /workspace/eurobin/src/run_modules.py \
   --module vlm_planning \
-  --scenario stacked_boxes \
-  --version v4 \
+  --scenario centauro \
+  --version v5 \
   --models o3 \
   --scene-version v6 \
-  --scene-timestamp 2026-04-16_18-15-20 \
+  --scene-timestamp 2026-06-18_08-16-46 \
   --scene-model gpt-5.2 \
   --scene-run run_001
 

@@ -1,0 +1,43 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box",
+        "category": "cardboard box",
+        "color": "brown"
+      },
+      {
+        "name": "book_1",
+        "category": "book",
+        "color": "blue"
+      },
+      {
+        "name": "book_2",
+        "category": "book",
+        "color": "brown"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box",
+        "relation": "on top of",
+        "object": "book_1"
+      },
+      {
+        "subject": "book_1",
+        "relation": "on top of",
+        "object": "book_2"
+      }
+    ]
+  }
+}

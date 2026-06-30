@@ -1,0 +1,81 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-06-22_02-17-08",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_02-17-08",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 12.159945200000038,
+  "timestamp": "2026-06-22T02:17:21.151643",
+  "scenario": {
+    "task": null,
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-22_09-17-03/000000.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "cardboard box",
+          "color": "brown"
+        },
+        {
+          "name": "box_2",
+          "category": "cardboard box",
+          "color": "brown"
+        },
+        {
+          "name": "book_1",
+          "category": "book",
+          "color": "blue"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box_1",
+          "relation": "on top of",
+          "object": "book_1"
+        },
+        {
+          "subject": "book_1",
+          "relation": "on top of",
+          "object": "box_2"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live1",
+    "timestamp": "2026-06-22T02:17:08.964144",
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_09-17-03/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_09-17-03",
+      "frame_id": "000000"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    }
+  }
+}

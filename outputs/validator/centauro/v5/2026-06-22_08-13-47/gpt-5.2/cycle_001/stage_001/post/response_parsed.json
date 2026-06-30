@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_2 (red box) is resting on top of box_1 and there are no visible robot end-effectors contacting it from both sides, so it is not in a dual-arm symmetric grasp."
+}

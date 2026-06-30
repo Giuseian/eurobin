@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors grasp nothing; box_2 is on top of box_1.",
+    "Postcondition": "box_2 has been pushed from its right side and may fall to the ground."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Both end effectors grasp nothing; box_1 is accessible from left and right.",
+    "Postcondition": "box_1 is grasped with dual-arm symmetric contact on its right & left sides."
+  }
+]

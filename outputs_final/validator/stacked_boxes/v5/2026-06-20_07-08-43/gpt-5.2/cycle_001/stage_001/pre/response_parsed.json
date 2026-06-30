@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The image shows the red box (box_1) stacked on top of the green box (box_2). No robot end-effectors are visible, so they are assumed empty. No objects are touching box_1’s side faces, so its sides appear accessible; delicate handling cannot be contradicted from the scene."
+}

@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors grasp nothing; box_1 front & left sides accessible; handle delicately; avoid stressing fragile box_2.",
+    "Postcondition": "end_effector_left grasps box_1 (front & left) delicately; box_2 remains undisturbed."
+  }
+]

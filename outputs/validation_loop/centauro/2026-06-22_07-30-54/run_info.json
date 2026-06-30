@@ -1,0 +1,63 @@
+{
+  "module": "validation_loop",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_07-30-54",
+  "timestamp": "2026-06-22T07:32:03.245716",
+  "initial_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47/000000.png",
+  "scenario_image_dir": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47",
+  "poses_by_image_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_14-30-47/poses.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-22T07:32:03.245667",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_14-30-47",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_14-30-47/poses.json",
+      "poses_timestamp": "2026-06-22_14-30-47"
+    },
+    "task": "Grasp the box.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 300.0,
+      "poll_seconds": 1.0
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

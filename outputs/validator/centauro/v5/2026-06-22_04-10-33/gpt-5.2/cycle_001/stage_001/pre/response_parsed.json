@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed to grasp nothing. The black bottle is positioned to the right of the brown box and is adjacent enough to block access to the box’s right side."
+}

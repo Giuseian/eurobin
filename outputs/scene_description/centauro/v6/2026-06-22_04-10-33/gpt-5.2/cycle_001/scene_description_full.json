@@ -1,0 +1,51 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by bottle_1",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "bottle_1",
+        "category": "bottle",
+        "color": "black",
+        "location": "zone B",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "bottle_1",
+        "relation": "right of",
+        "object": "box_1"
+      }
+    ]
+  }
+}

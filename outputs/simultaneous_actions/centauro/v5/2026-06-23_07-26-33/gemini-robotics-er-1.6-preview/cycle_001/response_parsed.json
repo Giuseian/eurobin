@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_2 is on box_1, end_effector_right is free.",
+    "Postcondition": "box_1 top is accessible, box_2 is displaced."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 top is accessible, both end_effectors are free.",
+    "Postcondition": "box_1 is grasped by the robot."
+  }
+]

@@ -1,0 +1,266 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_05-56-00",
+  "timestamp": "2026-06-23T05:58:20.555930",
+  "initial_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17/000000.png",
+  "scenario_image_dir": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17",
+  "poses_by_image_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_12-55-17/poses.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T05:58:20.555695",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_12-55-17",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_12-55-17/poses.json",
+      "poses_timestamp": "2026-06-23_12-55-17"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "final_image_path": null,
+  "final_realsense_timestamp": null,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_05-58-20",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17/000000.png",
+      "start_image_name": "000000.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "cardboard box",
+                "color": "brown"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "on top of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/run_info.json",
+          "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/scene_object_list.json"
+        }
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "cardboard box",
+                "color": "brown",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "blocked by box_2",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by box_1"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "on top of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/scene_description_full.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_05-56-00/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.00015785700088599697
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "box_2",
+            "Action concept": "Push",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "Without claw",
+            "Object contact side": "front"
+          },
+          {
+            "Step_id": 2,
+            "Target": "box_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "right & left"
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-06-23_05-56-00/o3/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_05-56-00/o3/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_05-56-00/o3/cycle_001/run_info.json"
+        },
+        "model_name": "o3",
+        "execution_time_seconds": 10.503092022998317
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "box_2 is on top of box_1; right end effector is free.",
+            "Postcondition": "box_2 is pushed from the front and no longer blocks box_1 top."
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Precondition": "box_1 left and right sides are accessible; both end effectors are free.",
+            "Postcondition": "box_1 is grasped with dual-arm symmetric contact on left & right."
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/run_info.json"
+        },
+        "model_name": "gpt-5.2",
+        "execution_time_seconds": 2.3612899580002704
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "box_2 is on top of box_1; right end effector is free.",
+          "postcondition": "box_2 is pushed from the front and no longer blocks box_1 top.",
+          "pre_realsense_timestamp": "2026-06-23_12-55-17",
+          "post_realsense_timestamp": null,
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": null,
+          "post_image_name": null,
+          "pre_validation": {
+            "result": "non_matching",
+            "reason": "The red box (box_2) is behind the brown cardboard box (box_1) on the table, not on top of it; the right end effector appears visible and not grasping anything (free)."
+          },
+          "post_validation": null,
+          "pre_validation_time_seconds": 4.7744881610015,
+          "post_validation_time_seconds": null,
+          "new_frame_wait_time_seconds": null,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-56-00/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": null
+          },
+          "next_image_path": null,
+          "next_image_name": null
+        }
+      ],
+      "outcome": "stopped_replan_on_pre_stage_1",
+      "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-55-17/000000.png",
+      "end_image_name": "000000.png"
+    }
+  ]
+}

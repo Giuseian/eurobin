@@ -1,0 +1,105 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_05-08-31",
+  "timestamp": "2026-06-23T05:23:31.339757",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_05-10-13",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-08-24/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_2",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors grasp nothing; box_2 is on top of box_1; box_2 right side accessible.",
+          "postcondition": "box_2 has been pushed from its right side; both end effectors grasp nothing.",
+          "pre_realsense_timestamp": "2026-06-23_12-08-24",
+          "post_realsense_timestamp": "2026-06-23_12-19-10",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-08-24/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-19-10/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so they are assumed to grasp nothing. The red box_2 is resting on top of the brown box_1, and there is no object adjacent to box_2 on its right side, so that side appears accessible."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The red box (box_2) is present on top of the brown box, and no robot end-effectors are visible in the image, so they are assumed to be grasping nothing; there is no clear evidence contradicting that box_2 was pushed from its right side."
+          },
+          "pre_validation_time_seconds": 4.600872207000066,
+          "post_validation_time_seconds": 4.872522251000191,
+          "new_frame_wait_time_seconds": 519.5304742780008,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-19-10/000000.png",
+          "next_image_name": "000000.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "Both end effectors grasp nothing; box_1 left and right sides accessible.",
+          "postcondition": "box_1 is grasped with dual-arm symmetric contact on its left & right sides.",
+          "pre_realsense_timestamp": "2026-06-23_12-19-10",
+          "post_realsense_timestamp": "2026-06-23_12-23-25",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-19-10/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-23-25/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so they are assumed to be grasping nothing. box_1’s left and right sides appear unobstructed by other objects (box_2 is on top, not blocking the sides)."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "box_1 (brown box) is resting on the table with box_2 on top, and no robot end-effectors are visible making dual-arm symmetric contact on its left and right sides."
+          },
+          "pre_validation_time_seconds": 4.317204991999461,
+          "post_validation_time_seconds": 3.444067217000338,
+          "new_frame_wait_time_seconds": 245.87329107599908,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_05-08-31/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-23-25/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}

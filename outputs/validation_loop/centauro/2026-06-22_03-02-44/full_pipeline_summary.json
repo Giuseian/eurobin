@@ -1,0 +1,119 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_03-02-44",
+  "timestamp": "2026-06-22T03:24:19.328277",
+  "initial_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+  "scenario_image_dir": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39",
+  "poses_by_image_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_10-02-39/poses.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-22T03:24:19.328226",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_10-02-39",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_10-02-39/poses.json",
+      "poses_timestamp": "2026-06-22_10-02-39"
+    },
+    "task": "Grasp the green box. Be delicate. The red box is very fragile.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "final_image_path": null,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_03-24-19",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+      "start_image_name": "000000.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "brown"
+              },
+              {
+                "name": "bottle_1",
+                "category": "bottle",
+                "color": "black"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "bottle_1",
+                "relation": "right of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/run_info.json",
+          "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/scene_object_list.json"
+        }
+      },
+      "scene_description_full": null,
+      "vlm_planning": null,
+      "simultaneous_actions": null,
+      "stages": [],
+      "outcome": "cycle_error: No Gazebo candidates found for VLM object 'bottle_1' with category='bottle' and color='black'.",
+      "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+      "end_image_name": "000000.png"
+    }
+  ],
+  "error": "No Gazebo candidates found for VLM object 'bottle_1' with category='bottle' and color='black'."
+}

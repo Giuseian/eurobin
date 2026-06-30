@@ -1,0 +1,17 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_08-53-07",
+  "timestamp": "2026-06-23T08:54:04.612041",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "cycles": []
+}

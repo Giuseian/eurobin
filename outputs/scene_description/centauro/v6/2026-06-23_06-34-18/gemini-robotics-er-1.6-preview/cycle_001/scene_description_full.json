@@ -1,0 +1,51 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "brown_box",
+        "category": "box",
+        "color": "brown",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by brown_box"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "on top of",
+        "object": "brown_box"
+      }
+    ]
+  }
+}

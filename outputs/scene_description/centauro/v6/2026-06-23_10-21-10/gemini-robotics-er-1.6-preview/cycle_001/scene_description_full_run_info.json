@@ -1,0 +1,291 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-06-23_10-21-10",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_10-22-08",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.003916310000931844,
+  "timestamp": "2026-06-23T10:22:08.404343",
+  "scenario": {
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-23_17-21-04/000000.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpto6xujob.json",
+    "safety_threshold": 0.11,
+    "include_debug_mapping": true
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "cardboard_box",
+          "category": "box",
+          "color": "brown",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "blocked by red_box",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "red_box",
+          "category": "box",
+          "color": "red",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by cardboard_box"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "red_box",
+          "relation": "on top of",
+          "object": "cardboard_box"
+        }
+      ]
+    },
+    "_debug": {
+      "pose_source": "static",
+      "pose_file": "/tmp/tmpto6xujob.json",
+      "direct_name_matching": true,
+      "direct_name_mapping": {
+        "cardboard_box": "cardboard_box",
+        "red_box": "red_box"
+      },
+      "matching_warnings": [],
+      "objects_with_geometry": [
+        {
+          "name": "cardboard_box",
+          "gazebo_name": "cardboard_box",
+          "pose": [
+            0.735671,
+            -0.081734,
+            0.017915
+          ],
+          "dimension": [
+            0.292,
+            0.394,
+            0.16
+          ],
+          "mesh_id": "box_big",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+            "mesh_relative_path": "meshes/box_big/box_big.obj",
+            "mesh_id": "box_big",
+            "mesh_metadata_found": true
+          },
+          "dimension_debug": {
+            "object_name": "cardboard_box",
+            "mesh_id": "box_big",
+            "mesh_metadata_found": true,
+            "dimension_source": "mesh_metadata",
+            "mesh_assignment": {
+              "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+              "mesh_relative_path": "meshes/box_big/box_big.obj",
+              "mesh_id": "box_big",
+              "mesh_metadata_found": true
+            },
+            "dimensions_m": {
+              "width": 0.394,
+              "height": 0.16,
+              "depth": 0.292
+            },
+            "dimension_aabb_order": {
+              "x_depth": 0.292,
+              "y_width": 0.394,
+              "z_height": 0.16
+            }
+          }
+        },
+        {
+          "name": "red_box",
+          "gazebo_name": "red_box",
+          "pose": [
+            0.66193,
+            -0.136853,
+            0.146087
+          ],
+          "dimension": [
+            0.16,
+            0.215,
+            0.11
+          ],
+          "mesh_id": "box_amazon_model",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_id": "box_amazon_model",
+            "mesh_metadata_found": true
+          },
+          "dimension_debug": {
+            "object_name": "red_box",
+            "mesh_id": "box_amazon_model",
+            "mesh_metadata_found": true,
+            "dimension_source": "mesh_metadata",
+            "mesh_assignment": {
+              "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+              "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+              "mesh_id": "box_amazon_model",
+              "mesh_metadata_found": true
+            },
+            "dimensions_m": {
+              "width": 0.215,
+              "height": 0.11,
+              "depth": 0.16
+            },
+            "dimension_aabb_order": {
+              "x_depth": 0.16,
+              "y_width": 0.215,
+              "z_height": 0.11
+            }
+          }
+        }
+      ],
+      "computed_accessibility": {
+        "cardboard_box": {
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "blocked by red_box",
+            "bottom": "blocked by the table"
+          },
+          "aabb": {
+            "x": [
+              0.589671,
+              0.881671
+            ],
+            "y": [
+              -0.27873400000000004,
+              0.11526600000000001
+            ],
+            "z": [
+              -0.062085,
+              0.097915
+            ]
+          }
+        },
+        "red_box": {
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by cardboard_box"
+          },
+          "aabb": {
+            "x": [
+              0.5819300000000001,
+              0.74193
+            ],
+            "y": [
+              -0.244353,
+              -0.029353000000000004
+            ],
+            "z": [
+              0.091087,
+              0.201087
+            ]
+          }
+        }
+      },
+      "data_root": "/workspace/shared_data/realsense",
+      "mesh_metadata_file": "/workspace/shared_data/realsense/meshes/mesh_metadata.json",
+      "mesh_assignments_file": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_17-21-04/mesh_assignments.json"
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-23_10-21-10",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T10:22:08.399354",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-21-04/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_17-21-04",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_17-21-04/poses.json",
+      "poses_timestamp": "2026-06-23_17-21-04"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": true
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_08-26-55",
+  "timestamp": "2026-06-22T08:36:57.939313",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_08-28-19",
+      "input_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_15-26-44/000000.png",
+      "input_image_name": "000000.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_08-26-55/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-22_08-26-55/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-22_08-26-55/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-22_08-26-55/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-22_08-26-55/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Both end effectors empty; box_1 accessible on sides; red box remains handled gently.",
+          "Postcondition": "box_1 grasped with dual arms; red box remains intact."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "box_1 grasped; placement area on table available; red box remains handled gently.",
+          "Postcondition": "box_1 placed on table; box_2 top unblocked; red box remains intact."
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Precondition": "Both end effectors empty; box_2 accessible on sides; red box remains intact.",
+          "Postcondition": "box_2 grasped with dual arms; red box remains intact."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_10-25-19",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_10-26-20",
+  "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-25-10/000000.png",
+  "start_image_name": "000000.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red"
+          },
+          {
+            "name": "brown_box",
+            "category": "box",
+            "color": "brown"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "red_box",
+            "relation": "on top of",
+            "object": "brown_box"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+    }
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by brown_box"
+            }
+          },
+          {
+            "name": "brown_box",
+            "category": "box",
+            "color": "brown",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by red_box",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "red_box",
+            "relation": "on top of",
+            "object": "brown_box"
+          }
+        ]
+      },
+      "_debug": {
+        "pose_source": "static",
+        "pose_file": "/tmp/tmpwh_chzv4.json",
+        "direct_name_matching": true,
+        "direct_name_mapping": {
+          "red_box": "red_box",
+          "brown_box": "brown_box"
+        },
+        "matching_warnings": [],
+        "objects_with_geometry": [
+          {
+            "name": "red_box",
+            "gazebo_name": "red_box",
+            "pose": [
+              0.661239,
+              -0.136707,
+              0.146464
+            ],
+            "dimension": [
+              0.16,
+              0.215,
+              0.11
+            ],
+            "mesh_id": "box_amazon_model",
+            "mesh_assignment": {
+              "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+              "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+              "mesh_id": "box_amazon_model",
+              "mesh_metadata_found": true
+            },
+            "dimension_debug": {
+              "object_name": "red_box",
+              "mesh_id": "box_amazon_model",
+              "mesh_metadata_found": true,
+              "dimension_source": "mesh_metadata",
+              "mesh_assignment": {
+                "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+                "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+                "mesh_id": "box_amazon_model",
+                "mesh_metadata_found": true
+              },
+              "dimensions_m": {
+                "width": 0.215,
+                "height": 0.11,
+                "depth": 0.16
+              },
+              "dimension_aabb_order": {
+                "x_depth": 0.16,
+                "y_width": 0.215,
+                "z_height": 0.11
+              }
+            }
+          },
+          {
+            "name": "brown_box",
+            "gazebo_name": "brown_box",
+            "pose": [
+              0.734558,
+              -0.081594,
+              0.017636
+            ],
+            "dimension": [
+              0.292,
+              0.394,
+              0.16
+            ],
+            "mesh_id": "box_big",
+            "mesh_assignment": {
+              "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+              "mesh_relative_path": "meshes/box_big/box_big.obj",
+              "mesh_id": "box_big",
+              "mesh_metadata_found": true
+            },
+            "dimension_debug": {
+              "object_name": "brown_box",
+              "mesh_id": "box_big",
+              "mesh_metadata_found": true,
+              "dimension_source": "mesh_metadata",
+              "mesh_assignment": {
+                "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+                "mesh_relative_path": "meshes/box_big/box_big.obj",
+                "mesh_id": "box_big",
+                "mesh_metadata_found": true
+              },
+              "dimensions_m": {
+                "width": 0.394,
+                "height": 0.16,
+                "depth": 0.292
+              },
+              "dimension_aabb_order": {
+                "x_depth": 0.292,
+                "y_width": 0.394,
+                "z_height": 0.16
+              }
+            }
+          }
+        ],
+        "computed_accessibility": {
+          "red_box": {
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by brown_box"
+            },
+            "aabb": {
+              "x": [
+                0.5812390000000001,
+                0.741239
+              ],
+              "y": [
+                -0.244207,
+                -0.029206999999999997
+              ],
+              "z": [
+                0.09146400000000002,
+                0.201464
+              ]
+            }
+          },
+          "brown_box": {
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by red_box",
+              "bottom": "blocked by the table"
+            },
+            "aabb": {
+              "x": [
+                0.588558,
+                0.8805580000000001
+              ],
+              "y": [
+                -0.278594,
+                0.11540600000000001
+              ],
+              "z": [
+                -0.062364,
+                0.097636
+              ]
+            }
+          }
+        },
+        "data_root": "/workspace/shared_data/realsense",
+        "mesh_metadata_file": "/workspace/shared_data/realsense/meshes/mesh_metadata.json",
+        "mesh_assignments_file": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_17-25-10/mesh_assignments.json"
+      }
+    },
+    "paths": {
+      "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.0033995749981841072
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "brown_box",
+        "Action concept": "Grasp",
+        "Manipulation mode": "dual-arm symmetric",
+        "Contact mode": "without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+    },
+    "model_name": "gemini-robotics-er-1.6-preview",
+    "execution_time_seconds": 6.161657499003923
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Precondition": "brown_box left and right sides are accessible",
+        "Postcondition": "brown_box is grasped by dual-arm symmetric"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+    },
+    "model_name": "gemini-robotics-er-1.6-preview",
+    "execution_time_seconds": 3.0062223839995568
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "brown_box left and right sides are accessible",
+      "postcondition": "brown_box is grasped by dual-arm symmetric",
+      "pre_realsense_timestamp": "2026-06-23_17-25-10",
+      "post_realsense_timestamp": "2026-06-23_17-36-46",
+      "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-25-10/000000.png",
+      "pre_image_name": "000000.png",
+      "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-36-46/000000.png",
+      "post_image_name": "000000.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "The left and right sides of the brown_box are clear of any other objects, making them accessible."
+      },
+      "post_validation": {
+        "result": "non_matching",
+        "reason": "The end-effectors are not visible and are therefore assumed to be free, and the brown_box is seen resting stationary on the table."
+      },
+      "pre_validation_time_seconds": 2.594576406001579,
+      "post_validation_time_seconds": 3.90211325600103,
+      "new_frame_wait_time_seconds": 616.6022296869996,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_10-25-19/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-36-46/000000.png",
+      "next_image_name": "000000.png"
+    }
+  ],
+  "outcome": "stopped_replan_on_post_stage_1",
+  "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-25-10/000000.png",
+  "end_image_name": "000000.png"
+}

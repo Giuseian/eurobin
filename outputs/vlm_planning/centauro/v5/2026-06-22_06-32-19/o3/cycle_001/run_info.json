@@ -1,0 +1,88 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-06-22_06-32-19",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_06-33-09",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 8.55122782000035,
+  "timestamp": "2026-06-22T06:33:18.132476",
+  "scenario": {
+    "task": "Grasp the box.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-22_13-32-14/000000.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "Object contact side": "Right & Left"
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-22_06-32-19",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-22T06:33:09.562415",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_13-32-14/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_13-32-14",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_13-32-14/poses.json",
+      "poses_timestamp": "2026-06-22_13-32-14"
+    },
+    "task": "Grasp the box.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

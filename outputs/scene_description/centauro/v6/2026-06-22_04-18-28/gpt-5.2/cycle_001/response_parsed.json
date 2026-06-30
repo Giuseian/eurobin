@@ -1,0 +1,33 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box",
+        "category": "box",
+        "color": "brown"
+      },
+      {
+        "name": "bottle",
+        "category": "bottle",
+        "color": "black"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "bottle",
+        "relation": "right of",
+        "object": "box"
+      }
+    ]
+  }
+}

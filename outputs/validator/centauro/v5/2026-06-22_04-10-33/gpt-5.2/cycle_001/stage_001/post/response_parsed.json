@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The scene shows bottle_1 present on the table, but there is no visible evidence confirming whether it was pushed from the front by the robot's right arm; due to this uncertainty, the condition is treated as matching."
+}

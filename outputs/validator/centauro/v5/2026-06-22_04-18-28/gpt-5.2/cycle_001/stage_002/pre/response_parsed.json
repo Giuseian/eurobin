@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so they are assumed free. The box’s left and right side faces appear unobstructed with no objects directly adjacent to those sides."
+}

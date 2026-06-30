@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "brown_box left and right sides are accessible",
+    "Postcondition": "brown_box is grasped by dual-arm symmetric"
+  }
+]

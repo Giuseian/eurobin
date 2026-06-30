@@ -1,0 +1,19 @@
+{
+  "objects": [
+    {
+      "name": "cardboard_box",
+      "category": "box",
+      "color": "brown"
+    },
+    {
+      "name": "book_1",
+      "category": "book",
+      "color": "blue"
+    },
+    {
+      "name": "book_2",
+      "category": "book",
+      "color": "brown"
+    }
+  ]
+}

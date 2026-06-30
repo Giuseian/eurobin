@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "box_2 (red box) is present and not blocked on its sides; no robot end-effectors are visible, so both are assumed to be grasping nothing."
+}

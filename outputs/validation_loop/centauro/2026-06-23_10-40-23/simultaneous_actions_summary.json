@@ -1,0 +1,54 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_10-40-23",
+  "timestamp": "2026-06-23T10:46:37.731885",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_10-41-20",
+      "input_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_17-40-15/000000.png",
+      "input_image_name": "000000.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_10-40-23/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_10-40-23/gpt-5.2/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-23_10-40-23/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_10-40-23/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_10-40-23/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Both end_effectors grasp nothing; red_box left side accessible.",
+          "Postcondition": "red_box has been pushed."
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Precondition": "Both end_effectors grasp nothing; cardboard_box left and right sides accessible.",
+          "Postcondition": "cardboard_box is grasped with both claws."
+        }
+      ]
+    }
+  ]
+}

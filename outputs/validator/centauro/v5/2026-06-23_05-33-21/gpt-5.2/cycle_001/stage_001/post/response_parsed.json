@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "Only one brown box (box_1) is visible on the table and its top appears unblocked, but the red box (box_2) is not present in the scene, so it cannot be verified as having been pushed from its right side."
+}

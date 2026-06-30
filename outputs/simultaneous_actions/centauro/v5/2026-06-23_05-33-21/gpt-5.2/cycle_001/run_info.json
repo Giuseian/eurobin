@@ -1,0 +1,109 @@
+{
+  "module": "simultaneous_actions",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-06-23_05-33-21",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_05-34-19",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 2.5733197270001256,
+  "timestamp": "2026-06-23T05:34:35.200704",
+  "scenario": {
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-23_12-33-16/000000.png"
+  },
+  "response_parsed": [
+    {
+      "Stage_id": 1,
+      "Step_id": [
+        1
+      ],
+      "Precondition": "box_2 is on top of box_1; right end effector is free.",
+      "Postcondition": "box_2 has been pushed from its right side; box_1 top is unblocked."
+    },
+    {
+      "Stage_id": 2,
+      "Step_id": [
+        2
+      ],
+      "Precondition": "box_1 left and right sides are accessible; both end effectors are free.",
+      "Postcondition": "box_1 is grasped with dual-arm symmetric contact on its left and right sides."
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-23_05-33-21",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-23_05-33-21",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T05:34:19.590978",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_12-33-16/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_12-33-16",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_12-33-16/poses.json",
+      "poses_timestamp": "2026-06-23_12-33-16"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

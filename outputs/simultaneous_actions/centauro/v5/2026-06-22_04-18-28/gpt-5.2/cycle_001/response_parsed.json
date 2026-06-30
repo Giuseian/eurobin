@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Right end-effector free; bottle front accessible.",
+    "Postcondition": "Bottle pushed; box right side unblocked."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Both end-effectors free; box left & right sides accessible.",
+    "Postcondition": "Box grasped with dual-arm symmetric grasp."
+  }
+]

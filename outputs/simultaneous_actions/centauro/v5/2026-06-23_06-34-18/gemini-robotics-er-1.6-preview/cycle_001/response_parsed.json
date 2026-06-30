@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "brown_box topped by red_box.",
+    "Postcondition": "brown_box top clear."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "brown_box top clear, both effectors free.",
+    "Postcondition": "brown_box grasped."
+  }
+]

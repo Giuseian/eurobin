@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The cardboard_box is resting on the table and no robot claws/end-effectors are visible grasping it with both claws."
+}

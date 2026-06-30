@@ -1,0 +1,17 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-06-18_06-27-08",
+  "timestamp": "2026-06-18T06:27:08.268702",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    }
+  },
+  "cycles": []
+}

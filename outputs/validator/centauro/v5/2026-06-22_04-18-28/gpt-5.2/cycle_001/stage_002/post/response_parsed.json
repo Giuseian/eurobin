@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The brown box is resting on the table and no robot end-effectors are visible grasping it, so a dual-arm symmetric grasp is not present."
+}

@@ -1,0 +1,5 @@
+{
+  "scenario_id": "centauro",
+  "task": "Grasp the green box. Do not push the red box.",
+  "image": "1.png"
+}

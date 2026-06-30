@@ -1,0 +1,18 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "red_box",
+    "Action concept": "Push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "cardboard_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "with claw",
+    "Object contact side": "right & left"
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-06-20_10-24-02",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-20_10-24-02",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 7.4333661919990845,
+  "timestamp": "2026-06-20T10:24:09.540561",
+  "scenario": {
+    "task": "Grasp the green box. Be delicate. The red box is very fragile.",
+    "image": "1.png",
+    "image_path_abs": "/workspace/eurobin/image_data/centauro/1.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "cardboard box",
+          "color": "brown"
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "blue"
+        },
+        {
+          "name": "box_3",
+          "category": "box",
+          "color": "brown"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box_1",
+          "relation": "on top of",
+          "object": "box_2"
+        },
+        {
+          "subject": "box_2",
+          "relation": "on top of",
+          "object": "box_3"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "cycle_name": "cycle_001",
+    "cycle_index": 1,
+    "cycle_timestamp": "2026-06-20_10-24-02",
+    "image_input": {
+      "mode": "manual_terminal_selection_relative_to_scenario_dir",
+      "scenario_image_dir": "/workspace/eurobin/image_data/centauro"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-20_10-24-02",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-20_10-24-02",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-20_10-24-02",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-20_10-24-02",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-20_10-24-02",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  }
+}

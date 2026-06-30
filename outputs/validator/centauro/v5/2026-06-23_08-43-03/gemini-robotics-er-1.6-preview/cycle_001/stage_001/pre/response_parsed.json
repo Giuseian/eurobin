@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "box_2 (red) is clearly resting on top of box_1 (brown)."
+}

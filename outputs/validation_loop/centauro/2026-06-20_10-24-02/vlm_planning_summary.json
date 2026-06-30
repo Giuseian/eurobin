@@ -1,0 +1,17 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-20_10-24-02",
+  "timestamp": "2026-06-20T10:24:09.543680",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    }
+  },
+  "cycles": []
+}

@@ -1,0 +1,135 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-06-22_03-33-26",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_03-59-43",
+  "model": "gpt-5.2",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 9.580799996911082e-05,
+  "timestamp": "2026-06-22T03:59:43.108512",
+  "scenario": {
+    "task": "Grasp the box.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpspdm352d.json",
+    "safety_threshold": 0.11,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "brown",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "blocked by bottle_1",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        },
+        {
+          "name": "bottle_1",
+          "category": "bottle",
+          "color": "black",
+          "location": "zone B",
+          "sides": {
+            "left": "blocked by box_1",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by the table"
+          }
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "bottle_1",
+          "relation": "right of",
+          "object": "box_1"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-22_03-33-26",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-22T03:59:43.107693",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-33-21/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_10-33-21",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_10-33-21/poses.json",
+      "poses_timestamp": "2026-06-22_10-33-21"
+    },
+    "task": "Grasp the box.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

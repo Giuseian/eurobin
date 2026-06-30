@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No end-effectors are visible so they are assumed empty; box_2 (brown box) has clear left/right side access with no adjacent objects; the red box (box_1) appears intact with no visible damage."
+}

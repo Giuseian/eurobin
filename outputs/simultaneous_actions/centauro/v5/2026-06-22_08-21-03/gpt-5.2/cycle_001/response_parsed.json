@@ -1,0 +1,26 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_2 is on top of box_1; both end_effectors grasp nothing; red box must not be damaged",
+    "Postcondition": "box_2 is grasped with dual-arm symmetric grasp; red box not damaged"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_2 is grasped; red box must not be damaged",
+    "Postcondition": "box_2 is placed on the table; both end_effectors grasp nothing; red box not damaged"
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Precondition": "box_2 is on the table (not on box_1); both end_effectors grasp nothing; red box must not be damaged",
+    "Postcondition": "box_1 is grasped with dual-arm symmetric grasp; red box not damaged"
+  }
+]

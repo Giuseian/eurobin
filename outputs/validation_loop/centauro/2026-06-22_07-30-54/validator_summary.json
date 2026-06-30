@@ -1,0 +1,30 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_07-30-54",
+  "timestamp": "2026-06-22T07:32:22.350127",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_07-32-03",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "cycle_error: Expected Realsense RGB image not found: /workspace/shared_data/realsense/rgb/2026-06-22_14-32-21/000000.png",
+      "stages": []
+    }
+  ]
+}

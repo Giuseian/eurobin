@@ -1,0 +1,58 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_03-02-44",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_03-24-19",
+  "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+  "start_image_name": "000000.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "brown"
+          },
+          {
+            "name": "bottle_1",
+            "category": "bottle",
+            "color": "black"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "bottle_1",
+            "relation": "right of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_03-02-44/gpt-5.2/cycle_001/scene_object_list.json"
+    }
+  },
+  "scene_description_full": null,
+  "vlm_planning": null,
+  "simultaneous_actions": null,
+  "stages": [],
+  "outcome": "cycle_error: No Gazebo candidates found for VLM object 'bottle_1' with category='bottle' and color='black'.",
+  "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_10-02-39/000000.png",
+  "end_image_name": "000000.png"
+}

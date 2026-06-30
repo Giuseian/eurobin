@@ -1,0 +1,73 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "brown",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_2",
+          "bottom": "blocked by the table"
+        },
+        "pose": [
+          0.732761,
+          -0.082284,
+          0.015212
+        ],
+        "dimension": [
+          0.28,
+          0.28,
+          0.28
+        ],
+        "mesh_id": null
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red",
+        "location": "zone B",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_1"
+        },
+        "pose": [
+          0.658962,
+          -0.136687,
+          0.144294
+        ],
+        "dimension": [
+          0.28,
+          0.28,
+          0.28
+        ],
+        "mesh_id": null
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "module": "validation_loop",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-20_11-29-25",
+  "timestamp": "2026-06-20T11:37:08.381321",
+  "initial_image_path": "/workspace/eurobin/image_data/centauro/image.png",
+  "scenario_image_dir": "/workspace/eurobin/image_data/centauro",
+  "poses_by_image_path": "/workspace/eurobin/image_data/centauro/poses_by_image.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-20T11:37:08.381259",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "automatic_single_image",
+      "scenario_image_dir": "/workspace/eurobin/image_data/centauro",
+      "image_name": "image.png"
+    },
+    "task": "Grasp the green box. Be delicate. The red box is very fragile.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

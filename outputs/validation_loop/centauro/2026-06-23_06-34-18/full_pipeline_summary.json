@@ -1,0 +1,310 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_06-34-18",
+  "timestamp": "2026-06-23T06:35:25.327753",
+  "initial_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-34-12/000000.png",
+  "scenario_image_dir": "/workspace/shared_data/realsense/rgb/2026-06-23_13-34-12",
+  "poses_by_image_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_13-34-12/poses.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T06:35:25.327703",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-34-12/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_13-34-12",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_13-34-12/poses.json",
+      "poses_timestamp": "2026-06-23_13-34-12"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "final_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-38-19/000000.png",
+  "final_realsense_timestamp": "2026-06-23_13-38-19",
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_06-35-25",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-34-12/000000.png",
+      "start_image_name": "000000.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "brown_box",
+                "category": "box",
+                "color": "brown"
+              },
+              {
+                "name": "red_box",
+                "category": "box",
+                "color": "red"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "red_box",
+                "relation": "on top of",
+                "object": "brown_box"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "brown_box",
+                "category": "box",
+                "color": "brown",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "blocked by red_box",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "red_box",
+                "category": "box",
+                "color": "red",
+                "location": "zone B",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by brown_box"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "red_box",
+                "relation": "on top of",
+                "object": "brown_box"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 8.0339999840362e-05
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "red_box",
+            "Action concept": "push",
+            "Manipulation mode": "single-arm (right)",
+            "Contact mode": "without claw",
+            "Object contact side": "front"
+          },
+          {
+            "Step_id": 2,
+            "Target": "brown_box",
+            "Action concept": "grasp",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "right & left"
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 8.38060488300107
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "brown_box topped by red_box.",
+            "Postcondition": "brown_box top clear."
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Precondition": "brown_box top clear, both effectors free.",
+            "Postcondition": "brown_box grasped."
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 4.861275637002109
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "brown_box topped by red_box.",
+          "postcondition": "brown_box top clear.",
+          "pre_realsense_timestamp": "2026-06-23_13-34-12",
+          "post_realsense_timestamp": "2026-06-23_13-37-16",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-34-12/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-37-16/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The image clearly shows the red box resting on top of the brown box."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The top surface of the brown_box is clearly visible and no objects are resting on it."
+          },
+          "pre_validation_time_seconds": 3.190320410998538,
+          "post_validation_time_seconds": 3.423235720001685,
+          "new_frame_wait_time_seconds": 96.6082555949979,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-37-16/000000.png",
+          "next_image_name": "000000.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "brown_box top clear, both effectors free.",
+          "postcondition": "brown_box grasped.",
+          "pre_realsense_timestamp": "2026-06-23_13-37-16",
+          "post_realsense_timestamp": "2026-06-23_13-38-19",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-37-16/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-38-19/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The brown_box has a clear top face, and both robot end-effectors are visible and free."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The brown box is visibly held between the two robotic end-effectors above the surface."
+          },
+          "pre_validation_time_seconds": 4.44606410599954,
+          "post_validation_time_seconds": 3.424630288998742,
+          "new_frame_wait_time_seconds": 55.11399010400055,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_06-34-18/gemini-robotics-er-1.6-preview/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-38-19/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ],
+      "outcome": "task_completed",
+      "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_13-38-19/000000.png",
+      "end_image_name": "000000.png"
+    }
+  ]
+}

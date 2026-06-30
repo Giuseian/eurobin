@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The top face of the brown_box is occupied by the red_box."
+}

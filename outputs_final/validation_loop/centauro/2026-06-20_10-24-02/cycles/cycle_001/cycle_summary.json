@@ -1,0 +1,71 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-20_10-24-02",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-20_10-24-02",
+  "start_image_path": "/workspace/eurobin/image_data/centauro/1.png",
+  "start_image_name": "1.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "cardboard box",
+            "color": "brown"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "blue"
+          },
+          {
+            "name": "box_3",
+            "category": "box",
+            "color": "brown"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_1",
+            "relation": "on top of",
+            "object": "box_2"
+          },
+          {
+            "subject": "box_2",
+            "relation": "on top of",
+            "object": "box_3"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/scene_description/centauro/v6/2026-06-20_10-24-02/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-20_10-24-02/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-20_10-24-02/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-20_10-24-02/gpt-5.2/cycle_001/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 7.4333661919990845
+  },
+  "scene_description_full": null,
+  "vlm_planning": null,
+  "simultaneous_actions": null,
+  "stages": [],
+  "outcome": "cycle_error: No Gazebo candidates found for VLM object 'box_1' with category='cardboard box' and color='brown'.",
+  "end_image_path": "/workspace/eurobin/image_data/centauro/1.png",
+  "end_image_name": "1.png"
+}

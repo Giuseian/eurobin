@@ -1,0 +1,200 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cardboard_box",
+        "category": "box",
+        "color": "brown",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by cardboard_box"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "on top of",
+        "object": "cardboard_box"
+      }
+    ]
+  },
+  "_debug": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpto6xujob.json",
+    "direct_name_matching": true,
+    "direct_name_mapping": {
+      "cardboard_box": "cardboard_box",
+      "red_box": "red_box"
+    },
+    "matching_warnings": [],
+    "objects_with_geometry": [
+      {
+        "name": "cardboard_box",
+        "gazebo_name": "cardboard_box",
+        "pose": [
+          0.735671,
+          -0.081734,
+          0.017915
+        ],
+        "dimension": [
+          0.292,
+          0.394,
+          0.16
+        ],
+        "mesh_id": "box_big",
+        "mesh_assignment": {
+          "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+          "mesh_relative_path": "meshes/box_big/box_big.obj",
+          "mesh_id": "box_big",
+          "mesh_metadata_found": true
+        },
+        "dimension_debug": {
+          "object_name": "cardboard_box",
+          "mesh_id": "box_big",
+          "mesh_metadata_found": true,
+          "dimension_source": "mesh_metadata",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_big/box_big.obj",
+            "mesh_relative_path": "meshes/box_big/box_big.obj",
+            "mesh_id": "box_big",
+            "mesh_metadata_found": true
+          },
+          "dimensions_m": {
+            "width": 0.394,
+            "height": 0.16,
+            "depth": 0.292
+          },
+          "dimension_aabb_order": {
+            "x_depth": 0.292,
+            "y_width": 0.394,
+            "z_height": 0.16
+          }
+        }
+      },
+      {
+        "name": "red_box",
+        "gazebo_name": "red_box",
+        "pose": [
+          0.66193,
+          -0.136853,
+          0.146087
+        ],
+        "dimension": [
+          0.16,
+          0.215,
+          0.11
+        ],
+        "mesh_id": "box_amazon_model",
+        "mesh_assignment": {
+          "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+          "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+          "mesh_id": "box_amazon_model",
+          "mesh_metadata_found": true
+        },
+        "dimension_debug": {
+          "object_name": "red_box",
+          "mesh_id": "box_amazon_model",
+          "mesh_metadata_found": true,
+          "dimension_source": "mesh_metadata",
+          "mesh_assignment": {
+            "mesh_path": "/workspace/shared_data/realsense/meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_relative_path": "meshes/box_amazon_model/meshes/box_amazon_model.obj",
+            "mesh_id": "box_amazon_model",
+            "mesh_metadata_found": true
+          },
+          "dimensions_m": {
+            "width": 0.215,
+            "height": 0.11,
+            "depth": 0.16
+          },
+          "dimension_aabb_order": {
+            "x_depth": 0.16,
+            "y_width": 0.215,
+            "z_height": 0.11
+          }
+        }
+      }
+    ],
+    "computed_accessibility": {
+      "cardboard_box": {
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by red_box",
+          "bottom": "blocked by the table"
+        },
+        "aabb": {
+          "x": [
+            0.589671,
+            0.881671
+          ],
+          "y": [
+            -0.27873400000000004,
+            0.11526600000000001
+          ],
+          "z": [
+            -0.062085,
+            0.097915
+          ]
+        }
+      },
+      "red_box": {
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by cardboard_box"
+        },
+        "aabb": {
+          "x": [
+            0.5819300000000001,
+            0.74193
+          ],
+          "y": [
+            -0.244353,
+            -0.029353000000000004
+          ],
+          "z": [
+            0.091087,
+            0.201087
+          ]
+        }
+      }
+    },
+    "data_root": "/workspace/shared_data/realsense",
+    "mesh_metadata_file": "/workspace/shared_data/realsense/meshes/mesh_metadata.json",
+    "mesh_assignments_file": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_17-21-04/mesh_assignments.json"
+  }
+}

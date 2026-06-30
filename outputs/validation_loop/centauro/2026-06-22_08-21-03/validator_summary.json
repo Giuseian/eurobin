@@ -1,0 +1,68 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_08-21-03",
+  "timestamp": "2026-06-22T08:36:52.852941",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_08-22-11",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_15-20-56/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_1",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "box_2 is on top of box_1; both end_effectors grasp nothing; red box must not be damaged",
+          "postcondition": "box_2 is grasped with dual-arm symmetric grasp; red box not damaged",
+          "pre_realsense_timestamp": "2026-06-22_15-20-56",
+          "post_realsense_timestamp": "2026-06-22_15-26-44",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_15-20-56/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_15-26-44/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_2) is visibly resting on top of the brown box (box_1); no robot end-effectors are visible so they are assumed to grasp nothing; the red box appears intact with no obvious damage."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "The red box (box_2) is resting on top of the brown box and is not being held by two robot arms; no dual-arm symmetric grasp is visible."
+          },
+          "pre_validation_time_seconds": 5.351881200000207,
+          "post_validation_time_seconds": 605.9384675010006,
+          "new_frame_wait_time_seconds": 257.17875829200057,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_08-21-03/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_15-26-44/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}

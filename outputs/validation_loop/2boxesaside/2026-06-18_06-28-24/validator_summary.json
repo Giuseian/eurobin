@@ -1,0 +1,30 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-06-18_06-28-24",
+  "timestamp": "2026-06-18T06:28:24.164514",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 10
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-18_06-28-24",
+      "start_image_path": "/workspace/eurobin/image_data/2boxesaside/1.png",
+      "start_image_name": "1.png",
+      "outcome": "cycle_error: Missing Azure OpenAI configuration values in .env: AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, AZURE_OPENAI_API_VERSION, AZURE_OPENAI_DEPLOYMENT for model 'gpt-5.2'",
+      "stages": []
+    }
+  ]
+}

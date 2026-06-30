@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "End effectors are not visible and thus considered empty, and no objects are physically blocking the side surfaces of the brown cardboard_box."
+}

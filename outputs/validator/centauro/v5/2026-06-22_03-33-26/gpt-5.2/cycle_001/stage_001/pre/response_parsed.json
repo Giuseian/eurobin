@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "In the image, bottle_1 is positioned to the right of box_1, and no robot end-effectors are visible, so both are assumed to be grasping nothing."
+}

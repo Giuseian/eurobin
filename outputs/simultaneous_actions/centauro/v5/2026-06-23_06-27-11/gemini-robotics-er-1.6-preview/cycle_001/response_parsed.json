@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Box_2 is on top of box_1; end-effectors are empty.",
+    "Postcondition": "Box_2 is pushed off box_1; box_1 top side is accessible."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "Box_1 top is clear; end-effectors are available.",
+    "Postcondition": "Box_1 is grasped by both end-effectors."
+  }
+]

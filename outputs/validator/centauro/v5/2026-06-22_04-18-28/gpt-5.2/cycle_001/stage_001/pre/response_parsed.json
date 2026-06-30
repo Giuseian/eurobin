@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "No robot end-effectors are visible, so the right end-effector is assumed free; the bottle’s front side appears unobstructed with no object directly touching or blocking it."
+}

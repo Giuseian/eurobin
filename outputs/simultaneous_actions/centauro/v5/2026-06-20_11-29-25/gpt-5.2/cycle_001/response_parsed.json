@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors empty; box_1 accessible; red box_2 not contacted.",
+    "Postcondition": "box_1 grasped with dual-arm symmetric front & back contact; box_2 remains untouched."
+  }
+]

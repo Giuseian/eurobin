@@ -1,0 +1,151 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_07-30-54",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_07-32-03",
+  "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47/000000.png",
+  "start_image_name": "000000.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "brown"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_2",
+            "relation": "on top of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/scene_object_list.json"
+    }
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "brown",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by box_2",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "red",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_1"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_2",
+            "relation": "on top of",
+            "object": "box_1"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/scene_description_full.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-22_07-30-54/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 7.43589989724569e-05
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "box_2",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "Right & Left"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-06-22_07-30-54/o3/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-22_07-30-54/o3/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-22_07-30-54/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 10.06620889199985
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Precondition": "box_2 accessible; both end effectors grasping nothing.",
+        "Postcondition": "box_2 grasped with dual-arm symmetric grasp."
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-22_07-30-54/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-22_07-30-54/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-22_07-30-54/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 2.413953710001806
+  },
+  "stages": [],
+  "outcome": "cycle_error: Expected Realsense RGB image not found: /workspace/shared_data/realsense/rgb/2026-06-22_14-32-21/000000.png",
+  "end_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_14-30-47/000000.png",
+  "end_image_name": "000000.png"
+}

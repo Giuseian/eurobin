@@ -1,0 +1,64 @@
+{
+  "module": "scene_description",
+  "execution_mode": "single_module",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "experiment_timestamp": "2026-06-18_08-00-36",
+  "run_name": "run_001",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 7.709341671001312,
+  "timestamp": "2026-06-18T08:00:43.947618",
+  "scenario": {
+    "task": "Grasp the yellow box",
+    "image": "1.png",
+    "image_path_abs": "/workspace/eurobin/scenarios/centauro/1.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box",
+          "category": "box",
+          "color": "brown"
+        },
+        {
+          "name": "book_1",
+          "category": "book",
+          "color": "blue"
+        },
+        {
+          "name": "book_2",
+          "category": "book",
+          "color": "brown"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box",
+          "relation": "on top of",
+          "object": "book_1"
+        },
+        {
+          "subject": "book_1",
+          "relation": "on top of",
+          "object": "book_2"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "temperature": 0.0,
+    "top_p": 1.0
+  }
+}

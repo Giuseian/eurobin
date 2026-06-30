@@ -1,0 +1,17 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_08-53-07",
+  "timestamp": "2026-06-23T08:54:04.612039",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "cycles": []
+}

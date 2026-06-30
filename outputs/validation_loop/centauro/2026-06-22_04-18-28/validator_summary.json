@@ -1,0 +1,99 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-22_04-18-28",
+  "timestamp": "2026-06-22T04:20:24.258576",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-22_04-19-50",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_2",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Right end-effector free; bottle front accessible.",
+          "postcondition": "Bottle pushed; box right side unblocked.",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so the right end-effector is assumed free; the bottle’s front side appears unobstructed with no object directly touching or blocking it."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The black bottle is present and appears positioned away from the box, and there is no object directly adjacent to the box’s right side, so the box right face is unblocked."
+          },
+          "pre_validation_time_seconds": 4.068587314000979,
+          "post_validation_time_seconds": 4.484692252999594,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": null,
+          "next_image_name": null
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "Both end-effectors free; box left & right sides accessible.",
+          "postcondition": "Box grasped with dual-arm symmetric grasp.",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so they are assumed free. The box’s left and right side faces appear unobstructed with no objects directly adjacent to those sides."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "The brown box is resting on the table and no robot end-effectors are visible grasping it, so a dual-arm symmetric grasp is not present."
+          },
+          "pre_validation_time_seconds": 4.813897644999088,
+          "post_validation_time_seconds": 5.0518899300004705,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-22_04-18-28/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": null,
+          "next_image_name": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The end-effectors are not visible and are therefore assumed to be free, and the brown_box is seen resting stationary on the table."
+}

@@ -1,0 +1,26 @@
+{
+  "module": "scene_description_summary",
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-06-18_06-28-24",
+  "timestamp": "2026-06-18T06:28:24.164500",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    }
+  },
+  "cycles": []
+}

@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "box_2 (red box) is resting stably on top of box_1, with no visible sign of being pushed from its right side or falling toward the ground."
+}

@@ -1,0 +1,164 @@
+{
+  "module": "scene_description_full",
+  "stored_under_module": "scene_description",
+  "artifact_filename": "scene_description_full.json",
+  "execution_mode": "validation_loop_side_artifact",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-06-23_08-43-03",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_08-44-03",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "deterministic_scene_enrichment",
+  "execution_time_seconds": 0.00023356100064120255,
+  "timestamp": "2026-06-23T08:44:03.359461",
+  "scenario": {
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-23_15-42-57/000000.png"
+  },
+  "enrichment_config": {
+    "pose_source": "static",
+    "pose_file": "/tmp/tmpy7pe347o.json",
+    "safety_threshold": 0.11,
+    "include_debug_mapping": false
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "brown",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "blocked by box_2",
+            "bottom": "blocked by the table"
+          },
+          "pose": [
+            0.732761,
+            -0.082284,
+            0.015212
+          ],
+          "dimension": [
+            0.28,
+            0.28,
+            0.28
+          ],
+          "mesh_id": null
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "red",
+          "location": "zone B",
+          "sides": {
+            "left": "accessible",
+            "right": "accessible",
+            "front": "accessible",
+            "back": "not reachable",
+            "top": "accessible",
+            "bottom": "blocked by box_1"
+          },
+          "pose": [
+            0.658962,
+            -0.136687,
+            0.144294
+          ],
+          "dimension": [
+            0.28,
+            0.28,
+            0.28
+          ],
+          "mesh_id": null
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box_2",
+          "relation": "on top of",
+          "object": "box_1"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "scene_description": {
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-23_08-43-03",
+      "cycle_name": "cycle_001",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T08:44:03.358503",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_15-42-57/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_15-42-57",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_15-42-57/poses.json",
+      "poses_timestamp": "2026-06-23_15-42-57"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

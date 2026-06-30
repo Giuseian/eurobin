@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "name": "box",
+      "category": "box",
+      "color": "brown"
+    },
+    {
+      "name": "bottle",
+      "category": "bottle",
+      "color": "black"
+    }
+  ]
+}

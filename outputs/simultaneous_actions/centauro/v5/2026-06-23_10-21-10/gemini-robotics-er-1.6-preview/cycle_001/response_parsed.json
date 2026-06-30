@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors are empty and the side surfaces of the brown cardboard_box are accessible.",
+    "Postcondition": "The cardboard_box is grasped by both end effectors."
+  }
+]

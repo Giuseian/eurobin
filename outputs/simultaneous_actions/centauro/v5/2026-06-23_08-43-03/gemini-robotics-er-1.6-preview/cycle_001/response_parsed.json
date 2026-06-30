@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_2 on top of box_1",
+    "Postcondition": "box_1 top clear"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 top clear",
+    "Postcondition": "box_1 grasped"
+  }
+]

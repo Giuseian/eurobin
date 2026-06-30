@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "red_box_1 is on brown_box_1",
+    "Postcondition": "red_box_1 moved, brown_box_1 top clear"
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "end effectors free, brown_box_1 accessible",
+    "Postcondition": "brown_box_1 is grasped"
+  }
+]

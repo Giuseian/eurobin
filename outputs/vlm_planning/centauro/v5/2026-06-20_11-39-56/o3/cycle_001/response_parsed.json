@@ -1,0 +1,10 @@
+[
+  {
+    "Step_id": 1,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front & left"
+  }
+]

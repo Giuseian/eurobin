@@ -1,0 +1,18 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "box_2 is on top of box_1; right end effector is free.",
+    "Postcondition": "box_2 is pushed from the front and no longer blocks box_1 top."
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Precondition": "box_1 left and right sides are accessible; both end effectors are free.",
+    "Postcondition": "box_1 is grasped with dual-arm symmetric contact on left & right."
+  }
+]

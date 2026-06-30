@@ -1,0 +1,102 @@
+{
+  "module": "simultaneous_actions",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-06-22_04-18-28",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-22_04-19-50",
+  "model": "gpt-5.2",
+  "deployment_name": "hhcm-FoundationModels_gpt52",
+  "execution_time_seconds": 2.601294550999228,
+  "timestamp": "2026-06-22T04:20:05.814932",
+  "scenario": {
+    "task": "Grasp the box.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png"
+  },
+  "response_parsed": [
+    {
+      "Stage_id": 1,
+      "Step_id": [
+        1
+      ],
+      "Precondition": "Right end-effector free; bottle front accessible.",
+      "Postcondition": "Bottle pushed; box right side unblocked."
+    },
+    {
+      "Stage_id": 2,
+      "Step_id": [
+        2
+      ],
+      "Precondition": "Both end-effectors free; box left & right sides accessible.",
+      "Postcondition": "Box grasped with dual-arm symmetric grasp."
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-22_04-18-28",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "loop_timestamp": "2026-06-22_04-18-28",
+      "cycle_name": "cycle_001",
+      "model": "o3"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-22T04:19:50.477214",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-22_11-18-21/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-22_11-18-21",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-22_11-18-21/poses.json",
+      "poses_timestamp": "2026-06-22_11-18-21"
+    },
+    "task": "Grasp the box.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

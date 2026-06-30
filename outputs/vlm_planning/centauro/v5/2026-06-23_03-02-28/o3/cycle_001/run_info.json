@@ -1,0 +1,111 @@
+{
+  "module": "vlm_planning",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v5",
+  "loop_timestamp": "2026-06-23_03-02-28",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-06-23_03-03-42",
+  "model": "o3",
+  "deployment_name": "hhcm-FoundationModels_o3",
+  "execution_time_seconds": 14.716356527000244,
+  "timestamp": "2026-06-23T03:03:57.386428",
+  "scenario": {
+    "task": "Grasp the brown box. Be careful, the red box is very fragile.",
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-06-23_10-02-20/000000.png"
+  },
+  "response_parsed": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "Object contact side": "right & left"
+    },
+    {
+      "Step_id": 2,
+      "Target": "table",
+      "Action concept": "Place",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "Object contact side": "Top"
+    },
+    {
+      "Step_id": 3,
+      "Target": "box_1",
+      "Action concept": "Grasp",
+      "Manipulation mode": "Dual-arm symmetric",
+      "Contact mode": "Without claw",
+      "Object contact side": "right & left"
+    }
+  ],
+  "dependencies": {
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "loop_timestamp": "2026-06-23_03-02-28",
+      "cycle_name": "cycle_001",
+      "model": "gpt-5.2"
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-06-23T03:03:42.635530",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_10-02-20/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-06-23_10-02-20",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-06-23_10-02-20/poses.json",
+      "poses_timestamp": "2026-06-23_10-02-20"
+    },
+    "task": "Grasp the brown box. Be careful, the red box is very fragile.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  }
+}

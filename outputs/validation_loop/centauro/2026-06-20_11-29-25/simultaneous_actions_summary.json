@@ -1,0 +1,46 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-20_11-29-25",
+  "timestamp": "2026-06-20T11:37:33.421195",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-20_11-37-08",
+      "input_image_path": "/workspace/eurobin/image_data/centauro/image.png",
+      "input_image_name": "image.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-06-20_11-29-25/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-06-20_11-29-25/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-06-20_11-29-25/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-20_11-29-25/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-06-20_11-29-25/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Precondition": "Both end effectors empty; box_1 accessible; red box_2 not contacted.",
+          "Postcondition": "box_1 grasped with dual-arm symmetric front & back contact; box_2 remains untouched."
+        }
+      ]
+    }
+  ]
+}

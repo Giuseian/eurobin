@@ -1,0 +1,27 @@
+{
+  "module": "scene_description_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_08-53-07",
+  "timestamp": "2026-06-23T08:54:04.612033",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    }
+  },
+  "cycles": []
+}

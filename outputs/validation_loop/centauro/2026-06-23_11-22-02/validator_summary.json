@@ -1,0 +1,105 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-06-23_11-22-02",
+  "timestamp": "2026-06-23T11:25:11.179007",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-06-23_11-23-13",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-21-56/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_2",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors grasp nothing; box_2 is on top of box_1.",
+          "postcondition": "box_2 is no longer on top of box_1; both end effectors grasp nothing.",
+          "pre_realsense_timestamp": "2026-06-23_18-21-56",
+          "post_realsense_timestamp": "2026-06-23_18-24-18",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-21-56/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-24-18/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The red box (box_2) is visibly resting on top of the brown box (box_1), and no robot end-effectors are visible, so they are assumed to be grasping nothing."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "In the image, the red box_2 is on the table behind the brown box_1 rather than stacked on top of it, and both robot end-effectors appear empty (grasping nothing)."
+          },
+          "pre_validation_time_seconds": 3.6839192130064475,
+          "post_validation_time_seconds": 3.632975152999279,
+          "new_frame_wait_time_seconds": 49.523429135006154,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-24-18/000000.png",
+          "next_image_name": "000000.png"
+        },
+        {
+          "stage_id": 2,
+          "stage_name": "stage_002",
+          "precondition": "box_1 left and right sides are accessible; both end effectors grasp nothing.",
+          "postcondition": "box_1 is grasped with both end effectors.",
+          "pre_realsense_timestamp": "2026-06-23_18-24-18",
+          "post_realsense_timestamp": "2026-06-23_18-25-07",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-24-18/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-25-07/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "box_1 is present with no objects directly adjacent to its left or right faces, so both sides appear accessible; the robot end-effectors are not visible and thus are assumed to be grasping nothing."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "box_1 is resting on the surface and neither of the robot end-effectors is visibly grasping it with both arms."
+          },
+          "pre_validation_time_seconds": 3.960873755000648,
+          "post_validation_time_seconds": 3.4571321650000755,
+          "new_frame_wait_time_seconds": 40.4022412169943,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-06-23_11-22-02/gpt-5.2/cycle_001/stage_002/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-06-23_18-25-07/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}
