@@ -574,23 +574,18 @@ def print_execution_plan(execution_plan: list[dict[str, Any]]) -> None:
     print("======================================================")
 
 
+
 def ask_execution_plan_approval() -> bool:
-    answer = input("Approve this executable plan before robot execution? [y/N]: ").strip()
+    print("Approve this executable plan before robot execution? [y/N]: ", end="", flush=True)
+    answer = input().strip()
     return answer in {
-        "y",
-        "Y",
-        "yes",
-        "Yes",
-        "YES",
-        "s",
-        "S",
-        "si",
-        "Si",
-        "SI",
-        "sì",
-        "Sì",
-        "SÌ",
+        "y", "Y",
+        "yes", "Yes", "YES",
+        "s", "S",
+        "si", "Si", "SI",
+        "sì", "Sì", "SÌ",
     }
+    
 
 
 def build_action_request_for_stage(
