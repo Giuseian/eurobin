@@ -180,12 +180,13 @@ class CentauroCameraPush(Node):
         self.declare_parameter('set_active_timeout', 20.0)
         self.declare_parameter('set_weight_timeout', 20.0)
 
-        self.declare_parameter('time_start_pose', 5.0)
-        self.declare_parameter('time_pre_push', 5.0)
-        self.declare_parameter('time_contact', 5.0)
-        self.declare_parameter('time_push', 5.0)
-        self.declare_parameter('time_retreat', 5.0)
+        self.declare_parameter('time_start_pose', 3.0)
+        self.declare_parameter('time_pre_push', 3.0)
+        self.declare_parameter('time_contact', 3.0)
+        self.declare_parameter('time_push', 3.0)
+        self.declare_parameter('time_retreat', 3.0)
 
+        
         self.object_pose_file = self.get_parameter('object_pose_file').value
         self.d1_set_active_service = self.get_parameter('d1_set_active_service').value
         self.d2_set_active_service = self.get_parameter('d2_set_active_service').value

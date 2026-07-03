@@ -185,11 +185,11 @@ class CentauroCameraGrasp(Node):
         self.declare_parameter('phase3_extra_squeeze', 0.0)
         self.declare_parameter('lift_z_phase4', 0.15)
 
-        self.declare_parameter('time_start_pose', 5.0)
-        self.declare_parameter('time_phase1', 5.0)
-        self.declare_parameter('time_phase2', 5.0)
-        self.declare_parameter('time_phase3', 5.0)
-        self.declare_parameter('time_phase4', 5.0)
+        self.declare_parameter('time_start_pose', 3.0)
+        self.declare_parameter('time_phase1', 3.0)
+        self.declare_parameter('time_phase2', 3.0)
+        self.declare_parameter('time_phase3', 3.0)
+        self.declare_parameter('time_phase4', 3.0)
 
         self.object_pose_file = self.get_parameter('object_pose_file').value
         self.d1_set_weight_service = self.get_parameter('d1_set_weight_service').value

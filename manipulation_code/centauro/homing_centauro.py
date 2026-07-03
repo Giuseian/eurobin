@@ -118,7 +118,7 @@ class DualArmHoming(Node):
         self.declare_parameter('d2_qz', 0.11202)
         self.declare_parameter('d2_qw', 0.93656)
 
-        self.declare_parameter('motion_time', 10.0)
+        self.declare_parameter('motion_time', 5.0)
 
         self.d1_x = self.get_parameter('d1_x').value
         self.d1_y = self.get_parameter('d1_y').value
