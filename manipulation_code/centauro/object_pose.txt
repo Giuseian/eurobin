@@ -1,1 +1,2 @@
-object.position: 0.853593 0.035180 0.229798
+object.position: 0.8 0.0 0.07510365677470998
+object.yaw: -0.301749
