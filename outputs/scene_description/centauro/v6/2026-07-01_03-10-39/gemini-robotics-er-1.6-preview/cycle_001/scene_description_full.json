@@ -1,0 +1,49 @@
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cardboard_box",
+        "category": "box",
+        "color": "brown",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "blocked by red_box",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "blocked by cardboard_box",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "cardboard_box",
+        "relation": "in front of",
+        "object": "red_box"
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "box_1 is held between the dual end-effectors and is lifted off the surface."
+}

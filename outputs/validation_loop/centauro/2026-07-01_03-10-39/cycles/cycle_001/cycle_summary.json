@@ -1,0 +1,187 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-07-01_03-10-39",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-07-01_03-11-46",
+  "start_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-10-32/000000.png",
+  "start_image_name": "000000.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "cardboard_box",
+            "category": "box",
+            "color": "brown"
+          },
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cardboard_box",
+            "relation": "in front of",
+            "object": "red_box"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+    }
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "cardboard_box",
+            "category": "box",
+            "color": "brown",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "blocked by red_box",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "blocked by cardboard_box",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "cardboard_box",
+            "relation": "in front of",
+            "object": "red_box"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_03-10-39/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.0031103110013646074
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "cardboard_box",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-07-01_03-10-39/o3/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-01_03-10-39/o3/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-01_03-10-39/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 19.992504460002237
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Precondition": "Both end effectors are free; cardboard_box left & right sides accessible.",
+        "Postcondition": "cardboard_box grasped with dual-arm symmetric grasp."
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 2.344662369003345
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "Both end effectors are free; cardboard_box left & right sides accessible.",
+      "postcondition": "cardboard_box grasped with dual-arm symmetric grasp.",
+      "pre_realsense_timestamp": "2026-07-01_10-10-32",
+      "post_realsense_timestamp": "2026-07-01_10-13-42",
+      "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-10-32/000000.png",
+      "pre_image_name": "000000.png",
+      "post_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-13-42/000000.png",
+      "post_image_name": "000000.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "No robot end-effectors are visible, so they are assumed free. The cardboard_box has clear space on both its left and right sides with no objects directly adjacent to those faces."
+      },
+      "post_validation": {
+        "result": "non_matching",
+        "reason": "The cardboard_box is on the table with no visible robot end-effectors contacting its left and right sides; there is no dual-arm symmetric grasp."
+      },
+      "pre_validation_time_seconds": 4.641175700999156,
+      "post_validation_time_seconds": 121.03184504000092,
+      "new_frame_wait_time_seconds": 90.93451056000049,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-13-42/000000.png",
+      "next_image_name": "000000.png"
+    }
+  ],
+  "outcome": "stopped_replan_on_post_stage_1",
+  "end_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-10-32/000000.png",
+  "end_image_name": "000000.png"
+}

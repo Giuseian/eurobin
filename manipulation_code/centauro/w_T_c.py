@@ -105,6 +105,17 @@ class FoundationPoseWorldTransformer(Node):
         )
         return (rotated[0], rotated[1], rotated[2])
 
+    def quat_from_yaw(self, yaw):
+        half_yaw = float(yaw) / 2.0
+        return self.quat_normalize((0.0, 0.0, math.sin(half_yaw), math.cos(half_yaw)))
+
+    def yaw_from_quat(self, q):
+        x, y, z, w = self.quat_normalize(q)
+        return math.atan2(
+            2.0 * (w * z + x * y),
+            1.0 - 2.0 * (y * y + z * z),
+        )
+
     def vector_add(self, a, b):
         return (a[0] + b[0], a[1] + b[1], a[2] + b[2])
 
@@ -256,6 +267,11 @@ class FoundationPoseWorldTransformer(Node):
                 orientation = self.quat_normalize(tuple(float(v) for v in entry[3:7]))
                 return position, orientation
 
+            if len(entry) == 4 and all(isinstance(v, (int, float)) for v in entry):
+                position = tuple(float(v) for v in entry[:3])
+                orientation = self.quat_from_yaw(float(entry[3]))
+                return position, orientation
+
             if (
                 len(entry) == 4
                 and all(isinstance(row, list) and len(row) == 4 for row in entry)
@@ -276,6 +292,8 @@ class FoundationPoseWorldTransformer(Node):
                 or entry.get('quaternion')
                 or entry.get('xyzw')
             )
+            yaw_raw = entry.get('yaw_raw')
+            yaw = entry.get('yaw')
             if position_raw is None and 'pose' in entry:
                 return self.parse_pose_entry(entry['pose'])
             if (
@@ -293,6 +311,10 @@ class FoundationPoseWorldTransformer(Node):
                     orientation = self.quat_normalize(
                         tuple(float(v) for v in orientation_raw)
                     )
+                elif isinstance(yaw_raw, (int, float)):
+                    orientation = self.quat_from_yaw(float(yaw_raw))
+                elif isinstance(yaw, (int, float)):
+                    orientation = self.quat_from_yaw(float(yaw))
                 return position, orientation
 
         raise ValueError(
@@ -306,6 +328,7 @@ class FoundationPoseWorldTransformer(Node):
         return {
             'position': [float(v) for v in position],
             'orientation_xyzw': [float(v) for v in orientation],
+            'yaw': float(self.yaw_from_quat(orientation)),
         }
 
     def build_output(self, poses_by_image, world_pelvis_pose, pelvis_camera_pose, world_camera_pose):

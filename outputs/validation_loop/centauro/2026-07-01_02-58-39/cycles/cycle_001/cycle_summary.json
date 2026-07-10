@@ -1,0 +1,203 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-07-01_02-58-39",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-07-01_03-00-04",
+  "start_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_09-58-32/000000.png",
+  "start_image_name": "000000.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "brown_box",
+            "category": "box",
+            "color": "brown"
+          },
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "red_box",
+            "relation": "on top of",
+            "object": "brown_box"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+      "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+    }
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "brown_box",
+            "category": "box",
+            "color": "brown",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by red_box",
+              "bottom": "blocked by the table"
+            }
+          },
+          {
+            "name": "red_box",
+            "category": "box",
+            "color": "red",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by brown_box"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "red_box",
+            "relation": "on top of",
+            "object": "brown_box"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+      "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-01_02-58-39/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.005883902995265089
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "red_box",
+        "Action concept": "Push",
+        "Manipulation mode": "Single-arm (right)",
+        "Contact mode": "Without claw",
+        "Object contact side": "front"
+      },
+      {
+        "Step_id": 2,
+        "Target": "brown_box",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "left & right"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-07-01_02-58-39/o3/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-01_02-58-39/o3/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-01_02-58-39/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 10.253946786993765
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Precondition": "red_box on top of brown_box; both end_effectors grasping nothing",
+        "Postcondition": "red_box pushed from front and no longer blocking brown_box top; both end_effectors grasping nothing"
+      },
+      {
+        "Stage_id": 2,
+        "Step_id": [
+          2
+        ],
+        "Precondition": "brown_box left & right sides accessible; both end_effectors grasping nothing",
+        "Postcondition": "brown_box grasped with dual-arm symmetric grasp"
+      }
+    ],
+    "paths": {
+      "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 3.144597430997237
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_name": "stage_001",
+      "precondition": "red_box on top of brown_box; both end_effectors grasping nothing",
+      "postcondition": "red_box pushed from front and no longer blocking brown_box top; both end_effectors grasping nothing",
+      "pre_realsense_timestamp": "2026-07-01_09-58-32",
+      "post_realsense_timestamp": "2026-07-01_10-03-29",
+      "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_09-58-32/000000.png",
+      "pre_image_name": "000000.png",
+      "post_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-03-29/000000.png",
+      "post_image_name": "000000.png",
+      "pre_validation": {
+        "result": "matching",
+        "reason": "The image shows the red_box resting on top of the brown_box, and no robot end-effectors are visible, so they are assumed to be grasping nothing."
+      },
+      "post_validation": {
+        "result": "non_matching",
+        "reason": "The red_box is visibly resting on the top surface of the brown_box, so it is still blocking the brown_box top; the robot end-effectors appear visible and are not grasping anything."
+      },
+      "pre_validation_time_seconds": 7.279731059999904,
+      "post_validation_time_seconds": 7.034872578995419,
+      "new_frame_wait_time_seconds": 187.403112840002,
+      "validator_paths": {
+        "pre": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_02-58-39/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "next_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-03-29/000000.png",
+      "next_image_name": "000000.png"
+    }
+  ],
+  "outcome": "stopped_replan_on_post_stage_1",
+  "end_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_09-58-32/000000.png",
+  "end_image_name": "000000.png"
+}

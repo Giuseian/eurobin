@@ -1,0 +1,4 @@
+{
+  "result": "matching",
+  "reason": "The end effectors are not grasping any objects and the sides of box_1 are clear of any obstructions."
+}

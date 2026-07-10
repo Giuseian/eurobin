@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The cardboard_box is on the table with no visible robot end-effectors contacting its left and right sides; there is no dual-arm symmetric grasp."
+}

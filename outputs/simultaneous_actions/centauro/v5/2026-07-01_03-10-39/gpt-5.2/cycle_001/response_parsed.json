@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "Both end effectors are free; cardboard_box left & right sides accessible.",
+    "Postcondition": "cardboard_box grasped with dual-arm symmetric grasp."
+  }
+]

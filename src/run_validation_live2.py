@@ -36,12 +36,102 @@ from run_validation_live import (
     execute_validator_step,
     execute_vlm_planning_step,
     extract_stages,
-    load_poses_by_image_map,
     print_pose_dict_for_image,
     save_cycle_summary,
     save_validation_loop_artifacts,
     validate_sampling_args,
 )
+
+
+def clean_live_pose_entry(image_name: str, obj_name: str, pose: Any) -> Any:
+    if isinstance(pose, list):
+        if len(pose) not in {3, 4}:
+            raise ValueError(
+                f"poses_by_image['{image_name}']['{obj_name}'] must be "
+                "[x, y, z], [x, y, z, yaw], or an object with position."
+            )
+        if not all(isinstance(v, (int, float)) for v in pose):
+            raise ValueError(
+                f"poses_by_image['{image_name}']['{obj_name}'] must contain only numeric values."
+            )
+        return [float(v) for v in pose]
+
+    if isinstance(pose, dict):
+        position = pose.get("position")
+        if not isinstance(position, list) or len(position) != 3:
+            raise ValueError(
+                f"poses_by_image['{image_name}']['{obj_name}'] must contain "
+                "position=[x, y, z]."
+            )
+        if not all(isinstance(v, (int, float)) for v in position):
+            raise ValueError(
+                f"poses_by_image['{image_name}']['{obj_name}'].position must contain only numeric values."
+            )
+
+        cleaned: dict[str, Any] = {
+            "position": [float(v) for v in position],
+        }
+
+        for key in ["yaw", "yaw_raw"]:
+            value = pose.get(key)
+            if value is None:
+                continue
+            if not isinstance(value, (int, float)):
+                raise ValueError(
+                    f"poses_by_image['{image_name}']['{obj_name}'].{key} must be numeric."
+                )
+            cleaned[key] = float(value)
+
+        orientation_quadrant = pose.get("orientation_quadrant")
+        if orientation_quadrant is not None:
+            if isinstance(orientation_quadrant, bool) or not isinstance(orientation_quadrant, int):
+                raise ValueError(
+                    f"poses_by_image['{image_name}']['{obj_name}'].orientation_quadrant "
+                    "must be an integer."
+                )
+            cleaned["orientation_quadrant"] = orientation_quadrant % 4
+
+        return cleaned
+
+    raise ValueError(
+        f"poses_by_image['{image_name}']['{obj_name}'] must be "
+        "[x, y, z], [x, y, z, yaw], or an object with position."
+    )
+
+
+def load_poses_by_image_map(path: str | Path) -> dict[str, dict[str, Any]]:
+    data = read_json(path)
+    if not isinstance(data, dict):
+        raise ValueError(
+            f"poses_by_image mapping must be a JSON object. Found: {type(data).__name__}"
+        )
+
+    validated: dict[str, dict[str, Any]] = {}
+
+    for image_name, pose_dict in data.items():
+        if not isinstance(image_name, str):
+            raise ValueError("Each poses_by_image key must be an image filename string.")
+
+        if not isinstance(pose_dict, dict):
+            raise ValueError(
+                f"poses_by_image['{image_name}'] must be an object mapping object names to poses."
+            )
+
+        cleaned_pose_dict: dict[str, Any] = {}
+        for obj_name, pose in pose_dict.items():
+            if not isinstance(obj_name, str):
+                raise ValueError(
+                    f"poses_by_image['{image_name}'] contains a non-string object name."
+                )
+            cleaned_pose_dict[obj_name] = clean_live_pose_entry(
+                image_name=image_name,
+                obj_name=obj_name,
+                pose=pose,
+            )
+
+        validated[image_name] = cleaned_pose_dict
+
+    return validated
 
 
 def build_parser() -> argparse.ArgumentParser:

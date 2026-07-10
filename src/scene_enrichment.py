@@ -216,6 +216,77 @@ def require_existing_file(path: str, label: str) -> str:
 # =========================================================
 # Static pose IO
 # =========================================================
+def is_static_pose_entry(value: Any) -> bool:
+    if isinstance(value, list) and len(value) in {3, 4}:
+        return True
+
+    if isinstance(value, dict):
+        position = value.get("position")
+        return isinstance(position, list) and len(position) == 3
+
+    return False
+
+
+def parse_static_pose_entry(
+    name: str,
+    pose: Any,
+    source_name: str,
+) -> Tuple[List[float], Dict[str, Any]]:
+    pose_metadata: Dict[str, Any] = {}
+
+    if isinstance(pose, list):
+        if len(pose) not in {3, 4}:
+            raise RuntimeError(
+                f"{source_name}: pose for '{name}' must be [x, y, z] or [x, y, z, yaw]."
+            )
+
+        if not all(isinstance(v, (int, float)) for v in pose):
+            raise RuntimeError(
+                f"{source_name}: pose for '{name}' must contain only numeric values."
+            )
+
+        position = [float(v) for v in pose[:3]]
+        if len(pose) == 4:
+            pose_metadata["yaw"] = float(pose[3])
+
+        return position, pose_metadata
+
+    if isinstance(pose, dict):
+        position = pose.get("position")
+        if not isinstance(position, list) or len(position) != 3:
+            raise RuntimeError(
+                f"{source_name}: pose for '{name}' must contain position=[x, y, z]."
+            )
+
+        if not all(isinstance(v, (int, float)) for v in position):
+            raise RuntimeError(
+                f"{source_name}: position for '{name}' must contain only numeric values."
+            )
+
+        for key in ["yaw", "yaw_raw"]:
+            value = pose.get(key)
+            if value is not None:
+                if not isinstance(value, (int, float)):
+                    raise RuntimeError(
+                        f"{source_name}: {key} for '{name}' must be numeric."
+                    )
+                pose_metadata[key] = float(value)
+
+        orientation_quadrant = pose.get("orientation_quadrant")
+        if orientation_quadrant is not None:
+            if not isinstance(orientation_quadrant, int):
+                raise RuntimeError(
+                    f"{source_name}: orientation_quadrant for '{name}' must be an integer."
+                )
+            pose_metadata["orientation_quadrant"] = orientation_quadrant % 4
+
+        return [float(v) for v in position], pose_metadata
+
+    raise RuntimeError(
+        f"{source_name}: pose for '{name}' must be [x, y, z] or an object with position."
+    )
+
+
 def validate_positions_dict(raw_positions: Dict[str, Any], source_name: str) -> Dict[str, List[float]]:
     positions: Dict[str, List[float]] = {}
 
@@ -226,19 +297,26 @@ def validate_positions_dict(raw_positions: Dict[str, Any], source_name: str) -> 
         if not isinstance(name, str):
             raise RuntimeError(f"{source_name}: each object name must be a string.")
 
-        if not isinstance(pose, list) or len(pose) != 3:
-            raise RuntimeError(
-                f"{source_name}: pose for '{name}' must be a list of exactly 3 numeric values."
-            )
-
-        if not all(isinstance(v, (int, float)) for v in pose):
-            raise RuntimeError(
-                f"{source_name}: pose for '{name}' must contain only numeric values."
-            )
-
-        positions[name] = [float(v) for v in pose]
+        position, _pose_metadata = parse_static_pose_entry(name, pose, source_name)
+        positions[name] = position
 
     return positions
+
+
+def extract_pose_metadata_dict(raw_positions: Dict[str, Any], source_name: str) -> Dict[str, Dict[str, Any]]:
+    pose_metadata_by_name: Dict[str, Dict[str, Any]] = {}
+
+    if not isinstance(raw_positions, dict):
+        raise RuntimeError(f"{source_name} must contain a JSON object mapping object names to poses.")
+
+    for name, pose in raw_positions.items():
+        if not isinstance(name, str):
+            raise RuntimeError(f"{source_name}: each object name must be a string.")
+
+        _position, pose_metadata = parse_static_pose_entry(name, pose, source_name)
+        pose_metadata_by_name[name] = pose_metadata
+
+    return pose_metadata_by_name
 
 
 def extract_positions_from_foundationpose_poses_json(data: Dict[str, Any]) -> Dict[str, Any]:
@@ -264,7 +342,7 @@ def extract_positions_from_foundationpose_poses_json(data: Dict[str, Any]) -> Di
 
     direct_like = True
     for value in data.values():
-        if not (isinstance(value, list) and len(value) == 3):
+        if not is_static_pose_entry(value):
             direct_like = False
             break
 
@@ -294,6 +372,12 @@ def read_all_positions_from_static_file(pose_file: str) -> Dict[str, List[float]
     data = read_json_file(pose_file)
     positions_data = extract_positions_from_foundationpose_poses_json(data)
     return validate_positions_dict(positions_data, f"Static pose file '{pose_file}'")
+
+
+def read_static_pose_metadata(pose_file: str) -> Dict[str, Dict[str, Any]]:
+    data = read_json_file(pose_file)
+    positions_data = extract_positions_from_foundationpose_poses_json(data)
+    return extract_pose_metadata_dict(positions_data, f"Static pose file '{pose_file}'")
 
 
 # =========================================================
@@ -574,6 +658,7 @@ def dimension_from_mesh_metadata(
     object_name: str,
     mesh_assignment: Dict[str, Any],
     mesh_metadata: Dict[str, Any],
+    orientation_quadrant: Optional[int] = None,
 ) -> Tuple[List[float], Dict[str, Any]]:
     """
     Return dimension for AABB in pose frame order:
@@ -634,7 +719,11 @@ def dimension_from_mesh_metadata(
             f"width={width!r}, height={height!r}, depth={depth!r}"
         ) from exc
 
-    dimension = [depth_f, width_f, height_f]
+    swaps_depth_width = orientation_quadrant in {0, 2}
+    aabb_depth = width_f if swaps_depth_width else depth_f
+    aabb_width = depth_f if swaps_depth_width else width_f
+
+    dimension = [aabb_depth, aabb_width, height_f]
 
     debug_info = {
         "object_name": object_name,
@@ -647,9 +736,11 @@ def dimension_from_mesh_metadata(
             "height": height_f,
             "depth": depth_f,
         },
+        "orientation_quadrant": orientation_quadrant,
+        "swaps_depth_width": swaps_depth_width,
         "dimension_aabb_order": {
-            "x_depth": depth_f,
-            "y_width": width_f,
+            "x_depth": aabb_depth,
+            "y_width": aabb_width,
             "z_height": height_f,
         },
     }
@@ -911,6 +1002,9 @@ def build_objects_with_geometry(
         topic=topic,
         timeout_sec=timeout_sec,
     )
+    static_pose_metadata: Dict[str, Dict[str, Any]] = {}
+    if pose_source == POSE_SOURCE_STATIC and pose_file:
+        static_pose_metadata = read_static_pose_metadata(pose_file)
 
     resolved_data_root = infer_data_root(
         data_root=data_root,
@@ -954,6 +1048,7 @@ def build_objects_with_geometry(
             )
 
         pose = all_positions[vlm_name]
+        pose_metadata = static_pose_metadata.get(vlm_name, {})
         vlm_to_gazebo[vlm_name] = vlm_name
 
         if pose_source == POSE_SOURCE_STATIC:
@@ -966,6 +1061,7 @@ def build_objects_with_geometry(
                 object_name=vlm_name,
                 mesh_assignment=mesh_assignment,
                 mesh_metadata=mesh_metadata,
+                orientation_quadrant=pose_metadata.get("orientation_quadrant"),
             )
 
             mesh_id = dimension_debug["mesh_id"]
@@ -990,6 +1086,7 @@ def build_objects_with_geometry(
                 "name": vlm_name,
                 "gazebo_name": vlm_name,
                 "pose": pose,
+                "pose_metadata": pose_metadata,
                 "dimension": dimension,
                 "mesh_id": mesh_id,
                 "mesh_assignment": mesh_assignment,
@@ -1000,6 +1097,7 @@ def build_objects_with_geometry(
         print(
             f"[DEBUG] Object {vlm_name}: "
             f"pose={pose}, "
+            f"pose_metadata={pose_metadata}, "
             f"mesh_id={mesh_id}, "
             f"dimension_aabb=[depth,width,height]={dimension}"
         )

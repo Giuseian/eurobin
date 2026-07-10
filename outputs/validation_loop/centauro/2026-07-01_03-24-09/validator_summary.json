@@ -1,0 +1,68 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-07-01_03-24-09",
+  "timestamp": "2026-07-01T03:26:11.643249",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-01_03-25-11",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-23-56/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "task_completed",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "end effectors empty and box_1 sides reachable",
+          "postcondition": "box_1 held by end effectors",
+          "pre_realsense_timestamp": "2026-07-01_10-23-56",
+          "post_realsense_timestamp": "2026-07-01_10-26-04",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-23-56/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-26-04/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The end effectors are not grasping any objects and the sides of box_1 are clear of any obstructions."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "box_1 is held between the dual end-effectors and is lifted off the surface."
+          },
+          "pre_validation_time_seconds": 7.610370637004962,
+          "post_validation_time_seconds": 6.094122408998373,
+          "new_frame_wait_time_seconds": 37.59020978400076,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-24-09/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-26-04/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}

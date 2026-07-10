@@ -1,0 +1,10 @@
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "end effectors empty and box_1 sides reachable",
+    "Postcondition": "box_1 held by end effectors"
+  }
+]

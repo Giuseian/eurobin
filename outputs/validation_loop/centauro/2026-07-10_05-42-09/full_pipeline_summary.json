@@ -1,0 +1,298 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-07-10_05-42-09",
+  "timestamp": "2026-07-10T05:44:04.085486",
+  "initial_image_path": "/workspace/shared_data/realsense/rgb/2026-07-10_12-42-03/000000.png",
+  "scenario_image_dir": "/workspace/shared_data/realsense/rgb/2026-07-10_12-42-03",
+  "poses_by_image_path": "/workspace/shared_data/realsense/outputs_by_object/2026-07-10_12-42-03/poses.json",
+  "config": {
+    "module": "run_validation_live2",
+    "timestamp": "2026-07-10T05:44:04.085427",
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-07-10_12-42-03/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-07-10_12-42-03",
+      "frame_id": "000000"
+    },
+    "poses_input": {
+      "mode": "latest_outputs_by_object_poses",
+      "poses_path": "/workspace/shared_data/realsense/outputs_by_object/2026-07-10_12-42-03/poses.json",
+      "poses_timestamp": "2026-07-10_12-42-03"
+    },
+    "task": "Grasp the brown box. The red box can also fall on the ground.",
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "source": "latest_run_validation_live1_output"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.11,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "live_frame_refresh": {
+      "mode": "wait_for_new_realsense_rgb_timestamp_after_precondition",
+      "timeout_seconds": 3600.0,
+      "poll_seconds": 1.0,
+      "file_timeout_seconds": 30.0,
+      "file_poll_seconds": 0.1
+    },
+    "max_replans": 0,
+    "replanning_policy": "stop_on_first_replan_request"
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "final_image_path": null,
+  "final_realsense_timestamp": null,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-10_05-44-04",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-07-10_12-42-03/000000.png",
+      "start_image_name": "000000.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "brown"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "on top of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/run_info.json",
+          "scene_object_list": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/scene_object_list.json"
+        }
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "brown",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "blocked by box_2",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by box_1"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "on top of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/scene_description_full.json",
+          "run_info": "/workspace/eurobin/outputs/scene_description/centauro/v6/2026-07-10_05-42-09/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.011244974000874208
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "box_2",
+            "Action concept": "Push",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "Without claw",
+            "Object contact side": "Right"
+          },
+          {
+            "Step_id": 2,
+            "Target": "box_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "Right & Left"
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/vlm_planning/centauro/v5/2026-07-10_05-42-09/o3/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-10_05-42-09/o3/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/vlm_planning/centauro/v5/2026-07-10_05-42-09/o3/cycle_001/run_info.json"
+        },
+        "model_name": "o3",
+        "execution_time_seconds": 34.32368960999884
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "box_2 on top of box_1; both end effectors grasp nothing",
+            "Postcondition": "box_2 pushed from its right side; both end effectors grasp nothing"
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Precondition": "box_1 left and right sides accessible; both end effectors grasp nothing",
+            "Postcondition": "box_1 grasped with both end effectors"
+          }
+        ],
+        "paths": {
+          "prompt": "/workspace/eurobin/prompts_scenarios/simultaneous_actions/centauro/v5/2026-07-10_05-42-09/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-10_05-42-09/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/workspace/eurobin/outputs/simultaneous_actions/centauro/v5/2026-07-10_05-42-09/gpt-5.2/cycle_001/run_info.json"
+        },
+        "model_name": "gpt-5.2",
+        "execution_time_seconds": 3.1409956440002134
+      },
+      "stages": [],
+      "outcome": "cycle_error: EOF when reading a line",
+      "end_image_path": "/workspace/shared_data/realsense/rgb/2026-07-10_12-42-03/000000.png",
+      "end_image_name": "000000.png",
+      "execution_plan": [
+        {
+          "stage_id": 1,
+          "step_ids": [
+            1
+          ],
+          "action": "push",
+          "object": "box_2",
+          "action_concept": "Push",
+          "target": "box_2",
+          "manipulation_mode": "Single-arm (right)",
+          "contact_mode": "Without claw",
+          "object_contact_side": "Right",
+          "precondition": "box_2 on top of box_1; both end effectors grasp nothing",
+          "postcondition": "box_2 pushed from its right side; both end effectors grasp nothing",
+          "raw_stage": {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "box_2 on top of box_1; both end effectors grasp nothing",
+            "Postcondition": "box_2 pushed from its right side; both end effectors grasp nothing"
+          },
+          "raw_step": {
+            "Step_id": 1,
+            "Target": "box_2",
+            "Action concept": "Push",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "Without claw",
+            "Object contact side": "Right"
+          }
+        },
+        {
+          "stage_id": 2,
+          "step_ids": [
+            2
+          ],
+          "action": "grasp",
+          "object": "box_1",
+          "action_concept": "Grasp",
+          "target": "box_1",
+          "manipulation_mode": "Dual-arm symmetric",
+          "contact_mode": "Without claw",
+          "object_contact_side": "Right & Left",
+          "precondition": "box_1 left and right sides accessible; both end effectors grasp nothing",
+          "postcondition": "box_1 grasped with both end effectors",
+          "raw_stage": {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Precondition": "box_1 left and right sides accessible; both end effectors grasp nothing",
+            "Postcondition": "box_1 grasped with both end effectors"
+          },
+          "raw_step": {
+            "Step_id": 2,
+            "Target": "box_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "Right & Left"
+          }
+        }
+      ]
+    }
+  ],
+  "error": "EOF when reading a line"
+}

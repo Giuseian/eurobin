@@ -1,0 +1,68 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "centauro",
+  "loop_timestamp": "2026-07-01_03-10-39",
+  "timestamp": "2026-07-01T03:15:45.539543",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 0
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-01_03-11-46",
+      "start_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-10-32/000000.png",
+      "start_image_name": "000000.png",
+      "outcome": "stopped_replan_on_post_stage_1",
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "Both end effectors are free; cardboard_box left & right sides accessible.",
+          "postcondition": "cardboard_box grasped with dual-arm symmetric grasp.",
+          "pre_realsense_timestamp": "2026-07-01_10-10-32",
+          "post_realsense_timestamp": "2026-07-01_10-13-42",
+          "pre_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-10-32/000000.png",
+          "pre_image_name": "000000.png",
+          "post_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-13-42/000000.png",
+          "post_image_name": "000000.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "No robot end-effectors are visible, so they are assumed free. The cardboard_box has clear space on both its left and right sides with no objects directly adjacent to those faces."
+          },
+          "post_validation": {
+            "result": "non_matching",
+            "reason": "The cardboard_box is on the table with no visible robot end-effectors contacting its left and right sides; there is no dual-arm symmetric grasp."
+          },
+          "pre_validation_time_seconds": 4.641175700999156,
+          "post_validation_time_seconds": 121.03184504000092,
+          "new_frame_wait_time_seconds": 90.93451056000049,
+          "validator_paths": {
+            "pre": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/workspace/eurobin/prompts_scenarios/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/workspace/eurobin/outputs/validator/centauro/v5/2026-07-01_03-10-39/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/workspace/shared_data/realsense/rgb/2026-07-01_10-13-42/000000.png",
+          "next_image_name": "000000.png"
+        }
+      ]
+    }
+  ]
+}

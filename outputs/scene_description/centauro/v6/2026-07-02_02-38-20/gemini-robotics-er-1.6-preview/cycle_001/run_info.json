@@ -1,0 +1,76 @@
+{
+  "module": "scene_description",
+  "execution_mode": "validation_loop",
+  "scenario_name": "centauro",
+  "prompt_version": "v6",
+  "loop_timestamp": "2026-07-02_02-38-20",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-07-02_02-38-20",
+  "model": "gemini-robotics-er-1.6-preview",
+  "deployment_name": "gemini-robotics-er-1.6-preview",
+  "execution_time_seconds": 6.622112253999944,
+  "timestamp": "2026-07-02T02:38:27.786508",
+  "scenario": {
+    "task": null,
+    "image": "000000.png",
+    "image_path_abs": "/workspace/shared_data/realsense/rgb/2026-07-02_09-38-13/000000.png"
+  },
+  "response_parsed": {
+    "scene_description": {
+      "objects": [
+        {
+          "name": "box_1",
+          "category": "box",
+          "color": "brown"
+        },
+        {
+          "name": "box_2",
+          "category": "box",
+          "color": "red"
+        },
+        {
+          "name": "container_1",
+          "category": "container",
+          "color": "orange"
+        }
+      ],
+      "end_effectors": [
+        {
+          "name": "end_effector_left",
+          "grasping": "nothing"
+        },
+        {
+          "name": "end_effector_right",
+          "grasping": "nothing"
+        }
+      ],
+      "spatial_relationships": [
+        {
+          "subject": "box_2",
+          "relation": "on top of",
+          "object": "box_1"
+        }
+      ]
+    }
+  },
+  "pipeline_config": {
+    "module": "run_validation_live1",
+    "timestamp": "2026-07-02T02:38:20.675532",
+    "image_input": {
+      "mode": "latest_realsense_rgb_frame",
+      "image_path": "/workspace/shared_data/realsense/rgb/2026-07-02_09-38-13/000000.png",
+      "shared_data_root": "/workspace/shared_data",
+      "realsense_timestamp": "2026-07-02_09-38-13",
+      "frame_id": "000000"
+    },
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  }
+}

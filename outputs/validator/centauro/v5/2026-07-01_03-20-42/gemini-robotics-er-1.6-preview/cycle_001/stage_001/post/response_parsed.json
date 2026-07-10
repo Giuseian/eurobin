@@ -1,0 +1,4 @@
+{
+  "result": "non_matching",
+  "reason": "The brown box is resting on the platform and is not in contact with the robot's visible end-effectors."
+}
