@@ -1,0 +1,89 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_03-54-36",
+  "timestamp": "2026-07-23T03:55:20.093223",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-23_03-54-36",
+      "input_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+      "input_image_name": "1.png",
+      "dependencies": {
+        "scene_description_cycle": "cycle_001",
+        "scene_description_full_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_03-54-36/gpt-5.2/cycle_001/scene_description_full.json",
+        "vlm_planning_cycle": "cycle_001",
+        "vlm_planning_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-07-23_03-54-36/o3/cycle_001/response_parsed.json"
+      },
+      "simultaneous_actions_paths": {
+        "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v6/2026-07-23_03-54-36/gpt-5.2/cycle_001/prompt.txt",
+        "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_03-54-36/gpt-5.2/cycle_001/response_parsed.json",
+        "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_03-54-36/gpt-5.2/cycle_001/run_info.json"
+      },
+      "simultaneous_actions_output": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric contact.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_1 left side is accessible.",
+            "box_1 right side is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping box_1.",
+            "end_effector_right is grasping box_1."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Local_goal": "Place box_1 onto the table using dual-arm symmetric contact.",
+          "Preconditions": [
+            "end_effector_left is grasping box_1.",
+            "end_effector_right is grasping box_1.",
+            "The top of the table is accessible."
+          ],
+          "Postconditions": [
+            "box_1 is on top of the table.",
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing."
+          ]
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Local_goal": "Grasp box_2 from its left and right sides using dual-arm symmetric contact.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_2 left side is accessible.",
+            "box_2 right side is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping box_2.",
+            "end_effector_right is grasping box_2."
+          ]
+        }
+      ]
+    }
+  ]
+}

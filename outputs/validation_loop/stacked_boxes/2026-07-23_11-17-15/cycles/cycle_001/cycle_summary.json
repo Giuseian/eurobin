@@ -1,0 +1,450 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_11-17-15",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-07-23_11-17-15",
+  "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+  "start_image_name": "1.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "red"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "green"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_1",
+            "relation": "on top of",
+            "object": "box_2"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 8.018597474991111
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "red",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_2"
+            }
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by box_1",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_1",
+            "relation": "on top of",
+            "object": "box_2"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/scene_description_full.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.001450133990147151
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "box_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      },
+      {
+        "Step_id": 2,
+        "Target": "table",
+        "Action concept": "Place",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "top"
+      },
+      {
+        "Step_id": 3,
+        "Target": "box_2",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/stacked_boxes/v5/2026-07-23_11-17-15/o3/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-07-23_11-17-15/o3/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-07-23_11-17-15/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 11.256563068003743
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric grasp.",
+        "Preconditions": [
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing.",
+          "box_1 left side is accessible.",
+          "box_1 right side is accessible."
+        ],
+        "Postconditions": [
+          "end_effector_left is grasping box_1.",
+          "end_effector_right is grasping box_1.",
+          "box_1 is not on top of box_2."
+        ]
+      },
+      {
+        "Stage_id": 2,
+        "Step_id": [
+          2
+        ],
+        "Local_goal": "Place box_1 on the table.",
+        "Preconditions": [
+          "end_effector_left is grasping box_1.",
+          "end_effector_right is grasping box_1.",
+          "The top of the table is accessible."
+        ],
+        "Postconditions": [
+          "box_1 is on top of the table.",
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing."
+        ]
+      },
+      {
+        "Stage_id": 3,
+        "Step_id": [
+          3
+        ],
+        "Local_goal": "Grasp box_2 from its left and right sides using dual-arm symmetric grasp.",
+        "Preconditions": [
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing.",
+          "box_2 left side is accessible.",
+          "box_2 right side is accessible."
+        ],
+        "Postconditions": [
+          "end_effector_left is grasping box_2.",
+          "end_effector_right is grasping box_2."
+        ]
+      }
+    ],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 3.8531421090010554
+  },
+  "stages": [
+    {
+      "stage_id": 1,
+      "stage_position": 1,
+      "stage_name": "stage_001",
+      "step_ids": [
+        1
+      ],
+      "local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric grasp.",
+      "preconditions": [
+        "end_effector_left is grasping nothing.",
+        "end_effector_right is grasping nothing.",
+        "box_1 left side is accessible.",
+        "box_1 right side is accessible."
+      ],
+      "postconditions": [
+        "end_effector_left is grasping box_1.",
+        "end_effector_right is grasping box_1.",
+        "box_1 is not on top of box_2."
+      ],
+      "planned_stage_context": {
+        "Stage_id": 1,
+        "Step_id": [
+          1
+        ],
+        "Local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric grasp."
+      },
+      "attempt_ids": [
+        "cycle_001_stage_001_attempt_001"
+      ],
+      "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "pre_image_name": "1.png",
+      "pre_validation": {
+        "overall_status": "satisfied",
+        "results": [
+          {
+            "condition": "end_effector_left is grasping nothing.",
+            "status": "satisfied",
+            "reason": "Scene object list states end_effector_left is grasping nothing; no end-effector is visible in the image to contradict this."
+          },
+          {
+            "condition": "end_effector_right is grasping nothing.",
+            "status": "satisfied",
+            "reason": "Scene object list states end_effector_right is grasping nothing; no end-effector is visible in the image to contradict this."
+          },
+          {
+            "condition": "box_1 left side is accessible.",
+            "status": "satisfied",
+            "reason": "Scene object list marks box_1 left side as accessible, and the image shows no object directly adjacent to block that side."
+          },
+          {
+            "condition": "box_1 right side is accessible.",
+            "status": "satisfied",
+            "reason": "Scene object list marks box_1 right side as accessible, and the image shows no object directly adjacent to block that side."
+          }
+        ]
+      },
+      "validator_paths": {
+        "pre": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+        },
+        "post": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+          "pre_image": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+          "post_image": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/stacked_boxes/v6/precondition/2026-07-23_11-17-15/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+        }
+      },
+      "execution": {
+        "started": true,
+        "completed": true,
+        "started_at": "2026-07-23T11:17:50.258100",
+        "completed_at": "2026-07-23T11:17:50.258233",
+        "mode": "offline_consecutive_state_frames"
+      },
+      "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "post_image_name": "2.png",
+      "post_validation": {
+        "overall_status": "violated",
+        "results": [
+          {
+            "condition": "end_effector_left is grasping box_1.",
+            "status": "uncertain",
+            "reason": "In I_post the left arm/end-effector is positioned against the left side of the red box, but the image does not clearly show a secure grasp/contact state (no clear enclosure or attachment visible)."
+          },
+          {
+            "condition": "end_effector_right is grasping box_1.",
+            "status": "uncertain",
+            "reason": "In I_post the right arm/end-effector is positioned against the right side of the red box, but the image does not clearly show a secure grasp/contact state (no clear enclosure or attachment visible)."
+          },
+          {
+            "condition": "box_1 is not on top of box_2.",
+            "status": "violated",
+            "reason": "In both I_pre and I_post, the red box (box_1) remains stacked on top of the green box (box_2)."
+          }
+        ]
+      },
+      "attempt_outcome": "failure",
+      "attempt_history_event_id": "attempt_event_0001"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt_id": "cycle_001_stage_001_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 1,
+      "step_ids": [
+        1
+      ],
+      "local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric grasp.",
+      "status": "closed_failure",
+      "outcome": "failure",
+      "opened_at": "2026-07-23T11:17:38.976204",
+      "closed_at": "2026-07-23T11:17:59.650312",
+      "pre": {
+        "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+        "image_name": "1.png",
+        "scene_description_full_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_11-17-15/gpt-5.2/cycle_001/scene_description_full.json",
+        "conditions": [
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing.",
+          "box_1 left side is accessible.",
+          "box_1 right side is accessible."
+        ],
+        "validation": {
+          "overall_status": "satisfied",
+          "results": [
+            {
+              "condition": "end_effector_left is grasping nothing.",
+              "status": "satisfied",
+              "reason": "Scene object list states end_effector_left is grasping nothing; no end-effector is visible in the image to contradict this."
+            },
+            {
+              "condition": "end_effector_right is grasping nothing.",
+              "status": "satisfied",
+              "reason": "Scene object list states end_effector_right is grasping nothing; no end-effector is visible in the image to contradict this."
+            },
+            {
+              "condition": "box_1 left side is accessible.",
+              "status": "satisfied",
+              "reason": "Scene object list marks box_1 left side as accessible, and the image shows no object directly adjacent to block that side."
+            },
+            {
+              "condition": "box_1 right side is accessible.",
+              "status": "satisfied",
+              "reason": "Scene object list marks box_1 right side as accessible, and the image shows no object directly adjacent to block that side."
+            }
+          ]
+        },
+        "evidence_rounds": []
+      },
+      "execution": {
+        "started": true,
+        "completed": true,
+        "started_at": "2026-07-23T11:17:50.258100",
+        "completed_at": "2026-07-23T11:17:50.258233",
+        "mode": "offline_consecutive_state_frames"
+      },
+      "post": {
+        "image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+        "image_name": "2.png",
+        "scene_description_full_path": null,
+        "conditions": [
+          "end_effector_left is grasping box_1.",
+          "end_effector_right is grasping box_1.",
+          "box_1 is not on top of box_2."
+        ],
+        "validation": {
+          "overall_status": "violated",
+          "results": [
+            {
+              "condition": "end_effector_left is grasping box_1.",
+              "status": "uncertain",
+              "reason": "In I_post the left arm/end-effector is positioned against the left side of the red box, but the image does not clearly show a secure grasp/contact state (no clear enclosure or attachment visible)."
+            },
+            {
+              "condition": "end_effector_right is grasping box_1.",
+              "status": "uncertain",
+              "reason": "In I_post the right arm/end-effector is positioned against the right side of the red box, but the image does not clearly show a secure grasp/contact state (no clear enclosure or attachment visible)."
+            },
+            {
+              "condition": "box_1 is not on top of box_2.",
+              "status": "violated",
+              "reason": "In both I_pre and I_post, the red box (box_1) remains stacked on top of the green box (box_2)."
+            }
+          ]
+        },
+        "evidence_rounds": []
+      },
+      "failure_report": {
+        "failure_type": "postcondition_failure",
+        "attempt_id": "cycle_001_stage_001_attempt_001",
+        "stage_id": 1,
+        "execution_started": true,
+        "execution_completed": true,
+        "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+        "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+        "violated_conditions": [
+          {
+            "condition": "box_1 is not on top of box_2.",
+            "status": "violated",
+            "reason": "In both I_pre and I_post, the red box (box_1) remains stacked on top of the green box (box_2)."
+          }
+        ],
+        "created_at": "2026-07-23T11:17:59.650289"
+      }
+    }
+  ],
+  "attempt_history": [
+    {
+      "event_id": "attempt_event_0001",
+      "event_type": "attempt_closed",
+      "timestamp": "2026-07-23T11:17:59.650312",
+      "attempt_id": "cycle_001_stage_001_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 1,
+      "step_ids": [
+        1
+      ],
+      "local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric grasp.",
+      "terminal_status": "closed_failure",
+      "outcome": "failure",
+      "pre_status": "satisfied",
+      "post_status": "violated",
+      "execution_started": true,
+      "execution_completed": true,
+      "execution_mode": "offline_consecutive_state_frames",
+      "i_pre": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "i_post": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "failure_type": "postcondition_failure"
+    }
+  ],
+  "outcome": "postconditions_violated_stage_1",
+  "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+  "end_image_name": "2.png"
+}

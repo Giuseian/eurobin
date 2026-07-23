@@ -1,0 +1,102 @@
+{
+  "module": "validation_loop_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_12-00-32",
+  "timestamp": "2026-07-23T12:00:32.026154",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_sim_per_image",
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v6/precondition",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 3
+  },
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+  "final_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+  "task_completed": false,
+  "replans_done": 0,
+  "total_cycles": 1,
+  "error": null,
+  "attempt_history": [
+    {
+      "event_id": "attempt_event_0001",
+      "event_type": "attempt_closed",
+      "timestamp": "2026-07-23T12:01:31.850699",
+      "attempt_id": "cycle_001_stage_001_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 1,
+      "step_ids": [
+        1
+      ],
+      "local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric contact.",
+      "terminal_status": "closed_success",
+      "outcome": "success",
+      "pre_status": "satisfied",
+      "post_status": "satisfied",
+      "execution_started": true,
+      "execution_completed": true,
+      "execution_mode": "offline_consecutive_state_frames",
+      "i_pre": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "i_post": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "failure_type": null
+    },
+    {
+      "event_id": "attempt_event_0002",
+      "event_type": "attempt_closed",
+      "timestamp": "2026-07-23T12:01:42.118787",
+      "attempt_id": "cycle_001_stage_002_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 2,
+      "step_ids": [
+        2
+      ],
+      "local_goal": "Place box_1 on the table.",
+      "terminal_status": "closed_not_executed",
+      "outcome": "not_executed",
+      "pre_status": "violated",
+      "post_status": null,
+      "execution_started": false,
+      "execution_completed": false,
+      "execution_mode": null,
+      "i_pre": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "i_post": null,
+      "failure_type": "precondition_failure"
+    }
+  ],
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-23_12-00-32",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "outcome": "preconditions_violated_stage_2"
+    }
+  ]
+}

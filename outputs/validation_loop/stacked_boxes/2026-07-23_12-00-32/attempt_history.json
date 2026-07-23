@@ -1,0 +1,54 @@
+{
+  "module": "attempt_history",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_12-00-32",
+  "timestamp": "2026-07-23T12:01:42.125188",
+  "events": [
+    {
+      "event_id": "attempt_event_0001",
+      "event_type": "attempt_closed",
+      "timestamp": "2026-07-23T12:01:31.850699",
+      "attempt_id": "cycle_001_stage_001_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 1,
+      "step_ids": [
+        1
+      ],
+      "local_goal": "Grasp box_1 from its left and right sides using dual-arm symmetric contact.",
+      "terminal_status": "closed_success",
+      "outcome": "success",
+      "pre_status": "satisfied",
+      "post_status": "satisfied",
+      "execution_started": true,
+      "execution_completed": true,
+      "execution_mode": "offline_consecutive_state_frames",
+      "i_pre": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/1.png",
+      "i_post": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "failure_type": null
+    },
+    {
+      "event_id": "attempt_event_0002",
+      "event_type": "attempt_closed",
+      "timestamp": "2026-07-23T12:01:42.118787",
+      "attempt_id": "cycle_001_stage_002_attempt_001",
+      "attempt_index": 1,
+      "cycle_index": 1,
+      "stage_id": 2,
+      "step_ids": [
+        2
+      ],
+      "local_goal": "Place box_1 on the table.",
+      "terminal_status": "closed_not_executed",
+      "outcome": "not_executed",
+      "pre_status": "violated",
+      "post_status": null,
+      "execution_started": false,
+      "execution_completed": false,
+      "execution_mode": null,
+      "i_pre": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/stacked_boxes/2.png",
+      "i_post": null,
+      "failure_type": "precondition_failure"
+    }
+  ]
+}

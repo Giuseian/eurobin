@@ -11,6 +11,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any
+import re 
 
 from src.settings import load_settings
 from src.azure_openai_client import call_azure_chat_completion
@@ -154,19 +155,57 @@ def render_validator_prompt(
     preconditions: list[str],
     scene_description_full: dict[str, Any],
 ) -> str:
+    """
+    Render the PRE-validator prompt and fail immediately when a template
+    placeholder has not been resolved.
+
+    Both scene placeholders are supported for backward compatibility:
+    - <SCENE_OBJECT_LIST> is used by the current PRE prompt;
+    - <SCENE_DESCRIPTION_FULL> was used by older prompt versions.
+    """
+    planned_stage_json = json.dumps(
+        planned_stage_context,
+        indent=2,
+        ensure_ascii=False,
+    )
+    preconditions_json = json.dumps(
+        preconditions,
+        indent=2,
+        ensure_ascii=False,
+    )
+    scene_context_json = json.dumps(
+        scene_description_full,
+        indent=2,
+        ensure_ascii=False,
+    )
+
     prompt = base_prompt
     prompt = prompt.replace(
         "<PLANNED_STAGE_CONTEXT>",
-        json.dumps(planned_stage_context, indent=2, ensure_ascii=False),
+        planned_stage_json,
     )
     prompt = prompt.replace(
         "<PRECONDITIONS>",
-        json.dumps(preconditions, indent=2, ensure_ascii=False),
+        preconditions_json,
+    )
+    prompt = prompt.replace(
+        "<SCENE_OBJECT_LIST>",
+        scene_context_json,
     )
     prompt = prompt.replace(
         "<SCENE_DESCRIPTION_FULL>",
-        json.dumps(scene_description_full, indent=2, ensure_ascii=False),
+        scene_context_json,
     )
+
+    unresolved_placeholders = sorted(
+        set(re.findall(r"<[A-Z][A-Z0-9_]*>", prompt))
+    )
+    if unresolved_placeholders:
+        raise ValueError(
+            "Unresolved PRE-validator prompt placeholders: "
+            + ", ".join(unresolved_placeholders)
+        )
+
     return prompt.strip()
 
 
