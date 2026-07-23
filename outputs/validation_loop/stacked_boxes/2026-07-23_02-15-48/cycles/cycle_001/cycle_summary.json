@@ -1,0 +1,228 @@
+{
+  "module": "cycle_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_02-15-48",
+  "cycle_name": "cycle_001",
+  "cycle_index": 1,
+  "cycle_timestamp": "2026-07-23_02-15-48",
+  "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+  "start_image_name": "1.png",
+  "scene_description": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "red"
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "green"
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_1",
+            "relation": "on top of",
+            "object": "box_2"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/run_info.json",
+      "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/scene_object_list.json"
+    },
+    "model_name": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52",
+    "execution_time_seconds": 6.041667619996588
+  },
+  "scene_description_full": {
+    "output": {
+      "scene_description": {
+        "objects": [
+          {
+            "name": "box_1",
+            "category": "box",
+            "color": "red",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "accessible",
+              "bottom": "blocked by box_2"
+            }
+          },
+          {
+            "name": "box_2",
+            "category": "box",
+            "color": "green",
+            "location": "zone B",
+            "sides": {
+              "left": "accessible",
+              "right": "accessible",
+              "front": "accessible",
+              "back": "not reachable",
+              "top": "blocked by box_1",
+              "bottom": "blocked by the table"
+            }
+          }
+        ],
+        "end_effectors": [
+          {
+            "name": "end_effector_left",
+            "grasping": "nothing"
+          },
+          {
+            "name": "end_effector_right",
+            "grasping": "nothing"
+          }
+        ],
+        "spatial_relationships": [
+          {
+            "subject": "box_1",
+            "relation": "on top of",
+            "object": "box_2"
+          }
+        ]
+      }
+    },
+    "paths": {
+      "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/scene_description_full.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+    },
+    "execution_time_seconds": 0.0006420019926736131
+  },
+  "vlm_planning": {
+    "output": [
+      {
+        "Step_id": 1,
+        "Target": "box_1",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      },
+      {
+        "Step_id": 2,
+        "Target": "Table",
+        "Action concept": "Place",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "top"
+      },
+      {
+        "Step_id": 3,
+        "Target": "box_2",
+        "Action concept": "Grasp",
+        "Manipulation mode": "Dual-arm symmetric",
+        "Contact mode": "Without claw",
+        "Object contact side": "right & left"
+      }
+    ],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/stacked_boxes/v5/2026-07-23_02-15-48/o3/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-07-23_02-15-48/o3/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v5/2026-07-23_02-15-48/o3/cycle_001/run_info.json"
+    },
+    "model_name": "o3",
+    "execution_time_seconds": 10.724772027999279
+  },
+  "simultaneous_actions": {
+    "output": [
+      {
+        "stage_id": 1,
+        "parallel_actions": [
+          {
+            "action_id": "1a",
+            "target": "box_1",
+            "action_concept": "Grasp",
+            "manipulation_mode": "Dual-arm symmetric",
+            "contact_mode": "Without claw",
+            "object_contact_side": [
+              "left",
+              "right"
+            ]
+          }
+        ],
+        "Preconditions": [
+          "box_1 is present in zone B.",
+          "The left side of box_1 is accessible.",
+          "The right side of box_1 is accessible.",
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing."
+        ]
+      },
+      {
+        "stage_id": 2,
+        "parallel_actions": [
+          {
+            "action_id": "2a",
+            "target": "Table",
+            "action_concept": "Place",
+            "manipulation_mode": "Dual-arm symmetric",
+            "contact_mode": "Without claw",
+            "object_contact_side": [
+              "top"
+            ]
+          }
+        ],
+        "Preconditions": [
+          "end_effector_left is grasping box_1.",
+          "end_effector_right is grasping box_1.",
+          "The top of the Table is accessible."
+        ]
+      },
+      {
+        "stage_id": 3,
+        "parallel_actions": [
+          {
+            "action_id": "3a",
+            "target": "box_2",
+            "action_concept": "Grasp",
+            "manipulation_mode": "Dual-arm symmetric",
+            "contact_mode": "Without claw",
+            "object_contact_side": [
+              "left",
+              "right"
+            ]
+          }
+        ],
+        "Preconditions": [
+          "box_2 is present in zone B.",
+          "The left side of box_2 is accessible.",
+          "The right side of box_2 is accessible.",
+          "end_effector_left is grasping nothing.",
+          "end_effector_right is grasping nothing."
+        ]
+      }
+    ],
+    "paths": {
+      "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/prompt.txt",
+      "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/response_parsed.json",
+      "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v6/2026-07-23_02-15-48/gpt-5.2/cycle_001/run_info.json"
+    },
+    "model_name": "gpt-5.2",
+    "execution_time_seconds": 3.929361271992093
+  },
+  "stages": [],
+  "outcome": "cycle_error: Stage at index 0 has invalid or missing 'Stage_id'.",
+  "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+  "end_image_name": "1.png"
+}

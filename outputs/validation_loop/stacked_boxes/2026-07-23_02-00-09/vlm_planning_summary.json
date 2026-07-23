@@ -1,0 +1,17 @@
+{
+  "module": "vlm_planning_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_02-00-09",
+  "timestamp": "2026-07-23T02:00:18.092125",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    }
+  },
+  "cycles": []
+}

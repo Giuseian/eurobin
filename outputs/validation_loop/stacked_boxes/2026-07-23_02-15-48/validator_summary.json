@@ -1,0 +1,30 @@
+{
+  "module": "validator_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_02-15-48",
+  "timestamp": "2026-07-23T02:16:08.894425",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "validator": {
+      "prompt_version": "v6/precondition",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 3
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-23_02-15-48",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/stacked_boxes/1.png",
+      "start_image_name": "1.png",
+      "outcome": "cycle_error: Stage at index 0 has invalid or missing 'Stage_id'.",
+      "stages": []
+    }
+  ]
+}

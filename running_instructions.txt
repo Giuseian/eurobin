@@ -337,6 +337,22 @@ python src/run_modules.py \
   --sim-model gpt-5.2 \
   --validator-model gpt-5.2 \
   --max-replans 1
+
+
+python -m src.humanoids.run_validation_loop \
+    --scenario stacked_boxes \
+    --scene-v v6 \
+    --plan-v v5 \
+    --sim-v v6 \
+    --validator-v v6/precondition \
+    --scene-model gpt-5.2 \
+    --plan-model o3 \
+    --sim-model gpt-5.2 \
+    --validator-model gpt-5.2 \
+    --image-data-root image_data \
+    --poses-by-image-path image_data/stacked_boxes/poses_by_image.json \
+    --max-replans 3
+
   
   
   Forzando una immagine iniziale specifica 

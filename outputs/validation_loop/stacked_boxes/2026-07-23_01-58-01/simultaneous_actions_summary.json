@@ -1,0 +1,17 @@
+{
+  "module": "simultaneous_actions_summary",
+  "scenario_name": "stacked_boxes",
+  "loop_timestamp": "2026-07-23_01-58-01",
+  "timestamp": "2026-07-23T01:58:01.798973",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    }
+  },
+  "cycles": []
+}
