@@ -1,9 +1,9 @@
 """ `scene_enrichment.py` is the file that turns a raw VLM scene description into a grounded and enriched scene description.
 The VLM first describes objects and spatial relationships from an image. `scene_enrichment.py` then connects those VLM object names to actual object poses, either from Gazebo live poses or from a static JSON pose file. This is the grounding step: it tries to match VLM objects like `box_1` or `green box` to concrete entities such as `box_green_001`.
-After the objects are matched, it adds geometry-based information to each object. In particular, it computes the object’s approximate location zone and which sides are accessible or blocked. For example, an object may get information like left side accessible, bottom blocked by the table, top blocked by another object, or back not reachable.
+After the objects are matched, it adds geometry-based information to each object. In particular, it computes which sides are accessible or blocked. For example, an object may get information like left side accessible, bottom blocked by the table, top blocked by another object, or back not reachable.
 The main function is `enrich_scene(...)`. It receives the parsed `scene_description`, reads object poses, resolves object dimensions, computes accessibility, and returns a new enriched JSON structure. This enriched output is what the rest of the pipeline calls `scene_description_full.json`.
 It can work in two modes ```text pose_source="static" ``` for files like `poses.json` or `poses_by_image.json`, and ```text pose_source="gazebo"``` for live Gazebo pose data.
-In short: `scene_enrichment.py` adds physical grounding to the VLM scene description. It converts “objects seen in the image” into objects with positions, dimensions, zones, and accessibility information, so the planner can reason about what can actually be manipulated.
+In short: `scene_enrichment.py` adds physical grounding to the VLM scene description. It converts “objects seen in the image” into objects with positions, dimensions, and accessibility information, so the planner can reason about what can actually be manipulated.
 """
 
 
@@ -283,26 +283,6 @@ def format_side_status(blocker_set: Set[str]) -> str:
         return f"blocked by {blocker}"
 
     return "blocked by " + ", ".join(sorted(blocker_set))
-
-
-def get_location(aabb: Dict[str, Tuple[float, float]]) -> str:
-    """
-    Zone logic:
-    - zone C: right face < -0.75
-    - zone A: left face > 0.65
-    - zone B: otherwise
-
-    Convention:
-    - left face  = y_min
-    - right face = y_max
-    """
-    y_min, y_max = aabb["y"]
-
-    if y_max < -0.75:
-        return "zone C"
-    if y_min > 0.65:
-        return "zone A"
-    return "zone B"
 
 
 def is_back_not_reachable(aabb: Dict[str, Tuple[float, float]]) -> bool:
@@ -859,7 +839,6 @@ def compute_accessibility(
     Return:
     {
         "vlm_object_name": {
-            "location": "zone B",
             "sides": {...}
         },
         ...
@@ -945,7 +924,6 @@ def compute_accessibility(
                 sides["back"] = "not reachable"
 
         result[name] = {
-            "location": get_location(aabb),
             "sides": sides,
         }
 
@@ -1061,7 +1039,6 @@ def enrich_scene(
     for obj in scene_objects:
         name = obj["name"]
         enriched_obj = dict(obj)
-        enriched_obj["location"] = computed_info[name]["location"]
         enriched_obj["sides"] = computed_info[name]["sides"]
         enriched_objects.append(enriched_obj)
 
@@ -1089,7 +1066,7 @@ def enrich_scene(
 # =========================================================
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Ground a VLM scene description into Gazebo or a static pose file and enrich it with location/sides."
+        description="Ground a VLM scene description into Gazebo or a static pose file and enrich it with sides accessibility."
     )
     parser.add_argument("input", type=str, help="Path to the input JSON file.")
     parser.add_argument(

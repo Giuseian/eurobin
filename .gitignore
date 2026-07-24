@@ -31,6 +31,9 @@ outputs/scene_description/stacked_boxes/*
 outputs/vlm_planning/stacked_boxes/*
 outputs/simultaneous_actions/stacked_boxes/*
 outputs/validator/stacked_boxes/*
+outputs/validation_loop/*
+outputs/*
+outputs/validation_loop/*
 
 
 ## prompts_scenarios
