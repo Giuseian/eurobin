@@ -3,7 +3,7 @@ from __future__ import annotations
 import time
 from mimetypes import guess_type
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 from settings import Settings, get_model_capabilities, validate_gemini_settings
 
@@ -90,6 +90,7 @@ def call_gemini_completion(
     system_prompt: str,
     user_text: str,
     image_path: str | Path | None = None,
+    image_paths: Sequence[str | Path] | None = None,
     temperature: float = 0.0,
     top_p: float = 1.0,
 ) -> dict[str, Any]:
@@ -99,6 +100,9 @@ def call_gemini_completion(
     contents: list[Any] = [user_text]
     if image_path is not None:
         contents.append(read_image_part(image_path))
+    if image_paths:
+        for path in image_paths:
+            contents.append(read_image_part(path))
 
     config = build_gemini_config(
         model_name=model_name,

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import Any, Sequence
 
 from azure_openai_client import call_azure_chat_completion
 from gemini_client import call_gemini_completion
@@ -14,6 +14,7 @@ def call_llm_completion(
     system_prompt: str,
     user_text: str,
     image_path: str | Path | None = None,
+    image_paths: Sequence[str | Path] | None = None,
     temperature: float = 0.0,
     top_p: float = 1.0,
 ) -> dict[str, Any]:
@@ -27,6 +28,7 @@ def call_llm_completion(
             system_prompt=system_prompt,
             user_text=user_text,
             image_path=image_path,
+            image_paths=image_paths,
             temperature=temperature,
             top_p=top_p,
         )
@@ -38,6 +40,7 @@ def call_llm_completion(
             system_prompt=system_prompt,
             user_text=user_text,
             image_path=image_path,
+            image_paths=image_paths,
             temperature=temperature,
             top_p=top_p,
         )
