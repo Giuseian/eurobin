@@ -7,7 +7,7 @@ import hashlib
 import json
 
 
-RECOVERY_DECISIONS = {"repeat", "modify", "replace", "replan", "abort"}
+RECOVERY_DECISIONS = {"repeat", "modify", "replan", "abort"}
 SCHEDULER_MODES = {"local_reschedule", "global_replan"}
 
 # These are the only symbolic fields that this module is allowed to modify.
@@ -137,7 +137,7 @@ def extract_relevant_history(
             for item in strategies
             if item.get("recovery_type") == decision
         )
-        for decision in ("repeat", "modify", "replace", "replan")
+        for decision in ("repeat", "modify", "replan")
     }
 
     return {
@@ -245,54 +245,6 @@ def _extract_supported_modifications(
     return result
 
 
-def _extract_replacement_spec(
-    failure_report: dict[str, Any],
-) -> dict[str, Any] | None:
-    """
-    Accept a replacement only when the failure report explicitly provides it.
-
-    Expected shape:
-      "replacement_subplan": {
-        "stages": [...],
-        "actions": [...],
-        "justification": "..."
-      }
-    """
-    replacement = failure_report.get("replacement_subplan")
-    if not isinstance(replacement, dict):
-        recommendation = failure_report.get("recovery_recommendation")
-        replacement = (
-            recommendation.get("replacement_subplan")
-            if isinstance(recommendation, dict)
-            else None
-        )
-
-    if not isinstance(replacement, dict):
-        return None
-
-    stages = replacement.get("stages")
-    actions = replacement.get("actions")
-    if not isinstance(stages, list) or not stages:
-        return None
-    if not isinstance(actions, list) or not actions:
-        return None
-    if not all(isinstance(item, dict) for item in stages):
-        return None
-    if not all(isinstance(item, dict) for item in actions):
-        return None
-
-    return {
-        "stages": deepcopy(stages),
-        "actions": deepcopy(actions),
-        "justification": str(
-            replacement.get(
-                "justification",
-                "Explicit replacement supplied by the failure report.",
-            )
-        ),
-    }
-
-
 def interpret_failure(
     *,
     failure_report: dict[str, Any],
@@ -356,7 +308,6 @@ def interpret_failure(
         if key not in existing_keys:
             modifications.append(deepcopy(candidate))
 
-    replacement_spec = _extract_replacement_spec(failure_report)
     stage_still_applicable = transition.get(
         "stage_still_applicable",
         True,
@@ -367,6 +318,15 @@ def interpret_failure(
     replan_required = (
         failure_phase == "pre"
         or not stage_still_applicable
+    )
+
+    post_validator_progress_observed = any(
+        item.get("progress_trend") == "moved_closer"
+        for item in (
+            failure_report.get("failed_conditions", [])
+            + failure_report.get("uncertain_conditions", [])
+        )
+        if isinstance(item, dict)
     )
 
     return {
@@ -396,15 +356,14 @@ def interpret_failure(
         ),
         "scene_transition": transition,
         "supported_symbolic_modifications": modifications,
-        "replacement_spec": replacement_spec,
-        "replacement_supported": replacement_spec is not None,
+        "post_validator_progress_observed": post_validator_progress_observed,
         "replan_required": replan_required,
         "failed_stage_id": failed_stage.get("Stage_id"),
         "interpreted_at": datetime.now().isoformat(),
     }
 
 
-def _repeat_assessment(
+def repeat_assessment(
     *,
     interpretation: dict[str, Any],
 ) -> tuple[bool, str]:
@@ -443,6 +402,13 @@ def _repeat_assessment(
         return True, (
             "The PRE/POST scene evidence shows progress toward the local "
             "goal while the stage remains applicable."
+        )
+
+    if interpretation.get("post_validator_progress_observed", False):
+        return True, (
+            "The postcondition validator observed the scene moving closer "
+            "to satisfying the postcondition between I_pre and I_post, "
+            "even though it is not yet fully satisfied."
         )
 
     if (
@@ -510,20 +476,19 @@ def plan_recovery_evidence_based(
     Select only recovery strategies justified by current evidence.
 
     Budgets constrain admissible choices but never constitute the reason
-    for selecting repeat, modify, or replace.
+    for selecting repeat or modify.
     """
     del failure_report, failed_stage, actions  # Already represented above.
 
     strategy_counts = relevant_history.get("strategy_counts", {})
     interpretation = failure_interpretation
 
-    repeat_ok, repeat_reason = _repeat_assessment(
+    repeat_ok, repeat_reason = repeat_assessment(
         interpretation=interpretation,
     )
     modifications = interpretation[
         "supported_symbolic_modifications"
     ]
-    replacement_spec = interpretation["replacement_spec"]
 
     admissibility = {
         "repeat": {
@@ -545,18 +510,6 @@ def plan_recovery_evidence_based(
                 "supported by the failure report."
                 if modifications
                 else "No concrete symbolic modification is supported."
-            ),
-        },
-        "replace": {
-            "admissible": (
-                replacement_spec is not None
-                and strategy_counts.get("replace", 0)
-                < limits["max_replacements"]
-            ),
-            "reason": (
-                "An explicit replacement subplan is available."
-                if replacement_spec is not None
-                else "No semantically grounded replacement subplan is available."
             ),
         },
         "replan": {
@@ -656,18 +609,6 @@ def plan_recovery_evidence_based(
             admissibility=admissibility,
         )
 
-    if admissibility["replace"]["admissible"]:
-        return _decision(
-            decision="replace",
-            reason=replacement_spec["justification"],
-            interpretation=interpretation,
-            remaining_task_goal=remaining_task_goal,
-            proposed_changes={
-                "replacement_subplan": replacement_spec,
-            },
-            admissibility=admissibility,
-        )
-
     if admissibility["replan"]["admissible"]:
         return _decision(
             decision="replan",
@@ -743,50 +684,12 @@ def apply_symbolic_modifications(
     return result, {"symbolic_modifications": applied}
 
 
-def _materialize_replacement(
-    *,
-    replacement_spec: dict[str, Any],
-    next_stage_id: int,
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    stages = deepcopy(replacement_spec["stages"])
-    actions = deepcopy(replacement_spec["actions"])
-
-    # Normalize IDs while preserving the supplied semantic decomposition.
-    step_cursor = next_stage_id * 100 + 1
-    step_map: dict[Any, int] = {}
-
-    for offset, stage in enumerate(stages):
-        stage["Stage_id"] = next_stage_id + offset
-        original_steps = stage.get("Step_id", [])
-        if not isinstance(original_steps, list):
-            original_steps = [original_steps]
-
-        normalized_steps: list[int] = []
-        for original in original_steps:
-            new_step = step_cursor
-            step_cursor += 1
-            step_map[original] = new_step
-            normalized_steps.append(new_step)
-        stage["Step_id"] = normalized_steps
-        stage["_recovery_generated"] = True
-
-    for action in actions:
-        original = action.get("Step_id")
-        if original in step_map:
-            action["Step_id"] = step_map[original]
-        elif stages:
-            action["Step_id"] = stages[0]["Step_id"][0]
-
-    return stages, actions
-
-
 def schedule_recovery(
     *,
     recovery_plan: dict[str, Any],
     failed_stage: dict[str, Any],
     failed_actions: list[dict[str, Any]],
     remaining_stages: list[dict[str, Any]],
-    next_stage_id: int,
     parent_attempt_id: str,
     next_attempt_number: int,
 ) -> dict[str, Any]:
@@ -867,52 +770,7 @@ def schedule_recovery(
             "recovery": recovery,
         }
 
-    if decision != "replace":
-        raise ValueError(f"Unsupported recovery decision: {decision}")
-
-    replacement_spec = recovery_plan.get(
-        "proposed_changes",
-        {},
-    ).get("replacement_subplan")
-    if not isinstance(replacement_spec, dict):
-        raise ValueError(
-            "Replace was selected without an explicit replacement subplan."
-        )
-
-    replacement_stages, replacement_actions = _materialize_replacement(
-        replacement_spec=replacement_spec,
-        next_stage_id=next_stage_id,
-    )
-    recovery = {
-        "parent_attempt_id": parent_attempt_id,
-        "recovery_type": "replace",
-        "attempt_number": next_attempt_number,
-        "changes": {
-            "replacement_stage_count": len(replacement_stages),
-            "justification": replacement_spec.get("justification"),
-        },
-        "reason": recovery_plan.get("reason"),
-    }
-
-    for stage in replacement_stages:
-        stage["_recovery"] = deepcopy(recovery)
-
-    # Associate actions to stages using normalized Step_id values.
-    for stage in replacement_stages:
-        step_ids = set(stage.get("Step_id", []))
-        stage["_actions"] = [
-            deepcopy(action)
-            for action in replacement_actions
-            if action.get("Step_id") in step_ids
-        ]
-
-    return {
-        "mode": "local_reschedule",
-        "stages": [*replacement_stages, *deepcopy(remaining_stages)],
-        "actions": replacement_actions,
-        "decision": decision,
-        "recovery": recovery,
-    }
+    raise ValueError(f"Unsupported recovery decision: {decision}")
 
 
 def check_recovery_limits(

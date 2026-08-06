@@ -1,0 +1,511 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            long_horizon
+Variant:             yes_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=1.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          9.880s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "blue_box",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "yellow_box",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "green_box",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "white_box",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "water_bottle",
+        "category": "bottle",
+        "color": "clear"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "yellow_box",
+        "relation": "on top of",
+        "object": "white_box"
+      },
+      {
+        "subject": "green_box",
+        "relation": "on top of",
+        "object": "white_box"
+      },
+      {
+        "subject": "blue_box",
+        "relation": "on top of",
+        "object": "green_box"
+      },
+      {
+        "subject": "red_box",
+        "relation": "right of",
+        "object": "white_box"
+      },
+      {
+        "subject": "green_box",
+        "relation": "right of",
+        "object": "yellow_box"
+      },
+      {
+        "subject": "water_bottle",
+        "relation": "on top of",
+        "object": "red_box"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpxucv5fec.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.077s
+[OUTPUT] scene_description_full (scene_enrichment):
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "blue_box",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by green_box"
+        }
+      },
+      {
+        "name": "yellow_box",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by green_box",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by white_box"
+        }
+      },
+      {
+        "name": "green_box",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "blocked by yellow_box",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by blue_box",
+          "bottom": "blocked by white_box"
+        }
+      },
+      {
+        "name": "white_box",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by red_box",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by green_box, yellow_box",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "blocked by white_box",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by water_bottle",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "water_bottle",
+        "category": "bottle",
+        "color": "clear",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "accessible",
+          "top": "accessible",
+          "bottom": "blocked by red_box"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "yellow_box",
+        "relation": "on top of",
+        "object": "white_box"
+      },
+      {
+        "subject": "green_box",
+        "relation": "on top of",
+        "object": "white_box"
+      },
+      {
+        "subject": "blue_box",
+        "relation": "on top of",
+        "object": "green_box"
+      },
+      {
+        "subject": "red_box",
+        "relation": "right of",
+        "object": "white_box"
+      },
+      {
+        "subject": "green_box",
+        "relation": "right of",
+        "object": "yellow_box"
+      },
+      {
+        "subject": "water_bottle",
+        "relation": "on top of",
+        "object": "red_box"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v6/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         14.208s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "blue_box",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 2,
+    "Target": "green_box",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 3,
+    "Target": "yellow_box",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 4,
+    "Target": "water_bottle",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 5,
+    "Target": "white_box",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 6,
+    "Target": "red_box",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 7,
+    "Target": "white_box",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/long_horizon/v8/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_05-59-02/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         20.687s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Push blue_box and yellow_box to clear items from the top of green_box and white_box.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The front of blue_box is accessible.",
+      "The front of yellow_box is accessible."
+    ],
+    "Postconditions": [
+      "The top of green_box is accessible.",
+      "yellow_box is not on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Push green_box away from white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The top of green_box is accessible.",
+      "The front of green_box is accessible."
+    ],
+    "Postconditions": [
+      "green_box is not on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      4
+    ],
+    "Local_goal": "Grasp water_bottle.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The left side of water_bottle is accessible.",
+      "The right side of water_bottle is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping water_bottle."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Place the water_bottle onto white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping water_bottle."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping nothing.",
+      "water_bottle is on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 5,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Push red_box to clear the right side of white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "water_bottle is not on top of red_box.",
+      "The front of red_box is accessible."
+    ],
+    "Postconditions": [
+      "The right side of white_box is accessible."
+    ]
+  },
+  {
+    "Stage_id": 6,
+    "Step_id": [
+      7
+    ],
+    "Local_goal": "Grasp white_box with both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "yellow_box is not on top of white_box.",
+      "green_box is not on top of white_box.",
+      "The left side of white_box is accessible.",
+      "The right side of white_box is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping white_box.",
+      "end_effector_right is grasping white_box."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Push blue_box and yellow_box to clear items from the top of green_box and white_box.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The front of blue_box is accessible.",
+      "The front of yellow_box is accessible."
+    ],
+    "Postconditions": [
+      "The top of green_box is accessible.",
+      "yellow_box is not on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Push green_box away from white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The top of green_box is accessible.",
+      "The front of green_box is accessible."
+    ],
+    "Postconditions": [
+      "green_box is not on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      4
+    ],
+    "Local_goal": "Grasp water_bottle.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The left side of water_bottle is accessible.",
+      "The right side of water_bottle is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping water_bottle."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Place the water_bottle onto white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping water_bottle."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping nothing.",
+      "water_bottle is on top of white_box."
+    ]
+  },
+  {
+    "Stage_id": 5,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Push red_box to clear the right side of white_box.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "water_bottle is not on top of red_box.",
+      "The front of red_box is accessible."
+    ],
+    "Postconditions": [
+      "The right side of white_box is accessible."
+    ]
+  },
+  {
+    "Stage_id": 6,
+    "Step_id": [
+      7
+    ],
+    "Local_goal": "Grasp white_box with both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "yellow_box is not on top of white_box.",
+      "green_box is not on top of white_box.",
+      "The left side of white_box is accessible.",
+      "The right side of white_box is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping white_box.",
+      "end_effector_right is grasping white_box."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          yes_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/long_horizon/2026-07-29_05-59-02/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/long_horizon/2026-07-29_05-59-02/terminal_log.txt
+======================================================

@@ -54,6 +54,7 @@ ALLOWED_ATTEMPT_TRANSITIONS: dict[str, set[str]] = {
 }
 
 CONDITION_STATUSES = {"satisfied", "violated", "uncertain"}
+PROGRESS_TRENDS = {"moved_closer", "no_change", "moved_away"}
 VALIDATION_PHASES = {"pre", "post"}
 VALIDATION_SCHEMA_VERSION = "1.0"
 
@@ -200,21 +201,32 @@ def normalize_validation_result(
         reason = item.get("reason")
         if not isinstance(reason, str) or not reason.strip():
             raise ValueError(f"Validator result at index {idx} has invalid reason.")
-        normalized_results.append(
-            {
-                "condition": expected_condition,
-                "status": status,
-                "reason": reason.strip(),
-            }
-        )
+
+        progress_trend = item.get("progress_trend")
+        if progress_trend is not None and progress_trend not in PROGRESS_TRENDS:
+            raise ValueError(
+                f"Validator result at index {idx} has invalid progress_trend: "
+                f"{progress_trend!r}."
+            )
+
+        normalized_item = {
+            "condition": expected_condition,
+            "status": status,
+            "reason": reason.strip(),
+        }
+        if progress_trend is not None:
+            normalized_item["progress_trend"] = progress_trend
+        normalized_results.append(normalized_item)
 
     computed = compute_overall_status(normalized_results)
     declared = raw_response.get("overall_status")
     if declared is not None and declared not in CONDITION_STATUSES:
         raise ValueError(f"Validator field 'overall_status' has invalid value: {declared!r}.")
     if declared is not None and declared != computed:
-        raise ValueError(
-            f"Inconsistent overall_status: expected {computed!r}, got {declared!r}."
+        print(
+            f"[WARN] Validator declared overall_status {declared!r} does not match "
+            f"the value computed from per-condition results ({computed!r}); "
+            f"using the computed value."
         )
 
     return {

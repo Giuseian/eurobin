@@ -1,0 +1,238 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            two_glasses_on_box
+Variant:             no_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=1.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          6.373s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "cup_1",
+        "category": "cup",
+        "color": "black"
+      },
+      {
+        "name": "cup_2",
+        "category": "cup",
+        "color": "black"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "cup_1",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "cup_2",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "cup_2",
+        "relation": "right of",
+        "object": "cup_1"
+      }
+    ]
+  }
+}
+[ABLATION] scene_description_full skipped -- planner receives the plain scene_description object list only.
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         7.755s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "cup_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "With claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "Table",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (left)",
+    "Contact mode": "With claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 3,
+    "Target": "cup_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 4,
+    "Target": "Table",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "Object contact side": "top"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-26-18/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         11.216s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Grasp cup_1 and cup_2 with end_effector_left and end_effector_right.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "cup_1 is on top of box_1.",
+      "cup_2 is on top of box_1."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping cup_1.",
+      "end_effector_right is grasping cup_2."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Local_goal": "Place cup_1 and cup_2 on the Table to clear box_1.",
+    "Preconditions": [
+      "end_effector_left is grasping cup_1.",
+      "end_effector_right is grasping cup_2."
+    ],
+    "Postconditions": [
+      "cup_1 is on top of the Table.",
+      "cup_2 is on top of the Table.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Grasp box_1 using dual-arm manipulation.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_1 is accessible.",
+      "The right side of box_1 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_1.",
+      "end_effector_right is grasping box_1."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Grasp cup_1 and cup_2 with end_effector_left and end_effector_right.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "cup_1 is on top of box_1.",
+      "cup_2 is on top of box_1."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping cup_1.",
+      "end_effector_right is grasping cup_2."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Local_goal": "Place cup_1 and cup_2 on the Table to clear box_1.",
+    "Preconditions": [
+      "end_effector_left is grasping cup_1.",
+      "end_effector_right is grasping cup_2."
+    ],
+    "Postconditions": [
+      "cup_1 is on top of the Table.",
+      "cup_2 is on top of the Table.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Grasp box_1 using dual-arm manipulation.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_1 is accessible.",
+      "The right side of box_1 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_1.",
+      "end_effector_right is grasping box_1."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          no_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/two_glasses_on_box/2026-07-29_06-26-18/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/two_glasses_on_box/2026-07-29_06-26-18/terminal_log.txt
+======================================================

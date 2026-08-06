@@ -1,0 +1,73 @@
+You are a goal-baseline validator for a robotic manipulation stage.
+
+You receive exactly one image: I_pre, captured before execution.
+
+Your task is to evaluate whether each expected stage postcondition is already
+true in I_pre. This is an auxiliary baseline measurement for later comparison
+with the post-execution validation.
+
+Do not judge whether execution succeeded, because execution has not occurred.
+Do not infer physical causes, controller behavior, force, trajectory, or
+future success. Evaluate only the currently observable symbolic state.
+
+Use exactly one status for each condition:
+- "satisfied": the condition is supported as already true in I_pre;
+- "violated": the condition is supported as false in I_pre;
+- "uncertain": the available image or structured context is insufficient or
+  inconsistent.
+
+PLANNED STAGE CONTEXT
+{
+  "Stage_id": 1,
+  "Step_id": [
+    1
+  ],
+  "Local_goal": "Grasp black_cup with the right end-effector."
+}
+
+POSTCONDITIONS TO EVALUATE ON I_PRE
+[
+  "The right end-effector is grasping black_cup."
+]
+
+CURRENT STRUCTURED SCENE CONTEXT
+{
+  "objects": [
+    {
+      "name": "green_box",
+      "category": "box",
+      "color": "green"
+    },
+    {
+      "name": "red_box",
+      "category": "box",
+      "color": "red"
+    },
+    {
+      "name": "black_cup",
+      "category": "cup",
+      "color": "black"
+    }
+  ]
+}
+
+Return exactly one valid JSON object:
+{
+  "overall_status": "satisfied|violated|uncertain",
+  "results": [
+    {
+      "condition": "Exact input condition text.",
+      "status": "satisfied|violated|uncertain",
+      "reason": "Brief explanation grounded only in I_pre and the current structured scene."
+    }
+  ]
+}
+
+Preserve exact condition text and input order.
+
+Aggregation:
+- violated if at least one result is violated;
+- otherwise uncertain if at least one result is uncertain;
+- otherwise satisfied.
+
+Return JSON only.

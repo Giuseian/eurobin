@@ -1,0 +1,347 @@
+{
+  "module": "ablation_scene_perception_planning_run_summary",
+  "variant": "no_enrichment",
+  "include_scene_enrichment": false,
+  "scenario_name": "fragile",
+  "loop_timestamp": "2026-07-29_05-56-47",
+  "timestamp": "2026-07-29T05:56:47.187762",
+  "config": {
+    "ablation_variant": "no_enrichment",
+    "include_scene_enrichment": false,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v8",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "frames": [
+    {
+      "cycle_index": 1,
+      "cycle_name": "cycle_001",
+      "image": "1.png",
+      "error": null,
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              },
+              {
+                "name": "box_3",
+                "category": "box",
+                "color": "white"
+              },
+              {
+                "name": "box_4",
+                "category": "box",
+                "color": "yellow"
+              },
+              {
+                "name": "box_5",
+                "category": "box",
+                "color": "blue"
+              },
+              {
+                "name": "box_6",
+                "category": "box",
+                "color": "pink"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_1",
+                "relation": "on top of",
+                "object": "box_2"
+              },
+              {
+                "subject": "box_2",
+                "relation": "on top of",
+                "object": "box_3"
+              },
+              {
+                "subject": "box_4",
+                "relation": "on top of",
+                "object": "box_5"
+              },
+              {
+                "subject": "box_5",
+                "relation": "on top of",
+                "object": "box_6"
+              },
+              {
+                "subject": "box_6",
+                "relation": "right of",
+                "object": "box_3"
+              },
+              {
+                "subject": "box_5",
+                "relation": "right of",
+                "object": "box_2"
+              },
+              {
+                "subject": "box_4",
+                "relation": "right of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "box_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 2,
+            "Target": "box_1",
+            "Action concept": "Release",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 3,
+            "Target": "box_2",
+            "Action concept": "Grasp",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 4,
+            "Target": "box_2",
+            "Action concept": "Release",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 5,
+            "Target": "box_3",
+            "Action concept": "Grasp",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "front & back"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v6/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Local_goal": "Grasp box_1 with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "box_1 is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping box_1.",
+              "end_effector_right is grasping box_1."
+            ]
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Local_goal": "Release box_1.",
+            "Preconditions": [
+              "end_effector_left is grasping box_1.",
+              "end_effector_right is grasping box_1."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "box_2 is accessible."
+            ]
+          },
+          {
+            "Stage_id": 3,
+            "Step_id": [
+              3
+            ],
+            "Local_goal": "Grasp box_2 with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "box_2 is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping box_2.",
+              "end_effector_right is grasping box_2."
+            ]
+          },
+          {
+            "Stage_id": 4,
+            "Step_id": [
+              4
+            ],
+            "Local_goal": "Release box_2.",
+            "Preconditions": [
+              "end_effector_left is grasping box_2.",
+              "end_effector_right is grasping box_2."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "box_3 is accessible."
+            ]
+          },
+          {
+            "Stage_id": 5,
+            "Step_id": [
+              5
+            ],
+            "Local_goal": "Grasp box_3 with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "box_3 is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping box_3.",
+              "end_effector_right is grasping box_3."
+            ]
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/fragile/v8/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_05-56-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "stages": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Local_goal": "Grasp box_1 with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_1 is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping box_1.",
+            "end_effector_right is grasping box_1."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Local_goal": "Release box_1.",
+          "Preconditions": [
+            "end_effector_left is grasping box_1.",
+            "end_effector_right is grasping box_1."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_2 is accessible."
+          ]
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Local_goal": "Grasp box_2 with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_2 is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping box_2.",
+            "end_effector_right is grasping box_2."
+          ]
+        },
+        {
+          "Stage_id": 4,
+          "Step_id": [
+            4
+          ],
+          "Local_goal": "Release box_2.",
+          "Preconditions": [
+            "end_effector_left is grasping box_2.",
+            "end_effector_right is grasping box_2."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_3 is accessible."
+          ]
+        },
+        {
+          "Stage_id": 5,
+          "Step_id": [
+            5
+          ],
+          "Local_goal": "Grasp box_3 with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "box_3 is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping box_3.",
+            "end_effector_right is grasping box_3."
+          ]
+        }
+      ]
+    }
+  ]
+}

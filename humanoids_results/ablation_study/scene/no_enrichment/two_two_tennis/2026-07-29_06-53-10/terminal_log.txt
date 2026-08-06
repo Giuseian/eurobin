@@ -1,0 +1,169 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            two_two_tennis
+Variant:             no_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=1.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          6.351s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "tennis_ball",
+        "category": "ball",
+        "color": "yellow"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "right of",
+        "object": "box_1"
+      },
+      {
+        "subject": "tennis_ball",
+        "relation": "right of",
+        "object": "box_2"
+      }
+    ]
+  }
+}
+[ABLATION] scene_description_full skipped -- planner receives the plain scene_description object list only.
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v6/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         4.059s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "tennis_ball",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_2",
+    "Action concept": "Place",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "Top"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v8/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v8/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v8/2026-07-29_06-53-10/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         5.296s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp tennis_ball with end_effector_right.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "tennis_ball is accessible.",
+      "The top of box_1 is free of objects."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping tennis_ball.",
+      "The top of box_1 is free of objects."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Place tennis_ball on top of box_2.",
+    "Preconditions": [
+      "end_effector_right is grasping tennis_ball.",
+      "The top of box_2 is accessible.",
+      "The top of box_1 is free of objects."
+    ],
+    "Postconditions": [
+      "tennis_ball is on top of box_2.",
+      "end_effector_right is grasping nothing.",
+      "The top of box_1 is free of objects."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp tennis_ball with end_effector_right.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "tennis_ball is accessible.",
+      "The top of box_1 is free of objects."
+    ],
+    "Postconditions": [
+      "end_effector_right is grasping tennis_ball.",
+      "The top of box_1 is free of objects."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Place tennis_ball on top of box_2.",
+    "Preconditions": [
+      "end_effector_right is grasping tennis_ball.",
+      "The top of box_2 is accessible.",
+      "The top of box_1 is free of objects."
+    ],
+    "Postconditions": [
+      "tennis_ball is on top of box_2.",
+      "end_effector_right is grasping nothing.",
+      "The top of box_1 is free of objects."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          no_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/two_two_tennis/2026-07-29_06-53-10/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/two_two_tennis/2026-07-29_06-53-10/terminal_log.txt
+======================================================

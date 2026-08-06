@@ -1,0 +1,594 @@
+[LOG] Complete terminal output: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/a_data_analysis_final/terminal_logs/fragile/gemini/validation_loop_2026-07-29_07-55-21.txt
+[LOG] Started at: 2026-07-29T07:55:21.544307
+======================================================
+
+======================================================
+VALIDATION LOOP CONFIG
+Scenario:                  fragile
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               3
+Max evidence rounds:       2
+Max attempts/stage:        5
+Max repeats:               1
+Max modifications:         2
+Max total actions:         20
+Modification proposal:     v1 / gpt-5.2
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png
+Loop ts:         2026-07-29_07-55-21
+Cycle ts meta:   2026-07-29_07-55-21
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          8.193s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "box_6",
+        "category": "box",
+        "color": "pink"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_1",
+        "relation": "on top of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_5",
+        "relation": "on top of",
+        "object": "box_6"
+      },
+      {
+        "subject": "box_4",
+        "relation": "right of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_5",
+        "relation": "right of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_6",
+        "relation": "right of",
+        "object": "box_3"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpyapytnyk.json
+[DEBUG] Filtered object catalog:
+box_yellow_001
+box_blue_001
+box_rose_001
+box_green_001
+box_red_001
+box_white_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.502s
+
+[scene_description_full] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_4",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_2"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_5",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_1",
+          "bottom": "blocked by box_3"
+        }
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_6",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_2",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_5"
+        }
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "blocked by box_2",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_4",
+          "bottom": "blocked by box_6"
+        }
+      },
+      {
+        "name": "box_6",
+        "category": "box",
+        "color": "pink",
+        "sides": {
+          "left": "blocked by box_3",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_5",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_1",
+        "relation": "on top of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_5",
+        "relation": "on top of",
+        "object": "box_6"
+      },
+      {
+        "subject": "box_4",
+        "relation": "right of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_5",
+        "relation": "right of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_6",
+        "relation": "right of",
+        "object": "box_3"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/fragile/v5/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v5/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v5/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         13.448s
+
+[vlm_planning] Parsed JSON:
+[
+  {
+    "Step_id": 1,
+    "Target": "box_1",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_2",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_4",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 4,
+    "Target": "box_5",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_6",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 6,
+    "Target": "box_3",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "left & right"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/fragile/v8/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         14.231s
+
+[simultaneous_actions] Parsed JSON:
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Push box_1 and box_4 from the front to clear the objects below them.",
+    "Preconditions": [
+      "The front of box_1 is accessible.",
+      "The front of box_4 is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "box_1 is pushed from the front.",
+      "box_4 is pushed from the front."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Local_goal": "Push box_2 and box_5 from the front to access the objects underneath.",
+    "Preconditions": [
+      "The front of box_2 is accessible.",
+      "The front of box_5 is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "box_2 is pushed from the front.",
+      "box_5 is pushed from the front.",
+      "The top of box_3 is accessible."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Push box_6 from the front to clear the right side of box_3.",
+    "Preconditions": [
+      "The front of box_6 is accessible.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "box_6 is pushed from the front.",
+      "The right side of box_3 is accessible."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Grasp box_3 from its left and right sides.",
+    "Preconditions": [
+      "The left side of box_3 is accessible.",
+      "The right side of box_3 is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_3.",
+      "end_effector_right is grasping box_3."
+    ]
+  }
+]
+
+[LOOP] Attempt opened
+[LOOP] Attempt ID:     cycle_001_stage_001_attempt_001
+[LOOP] Attempt status: open
+[LOOP] Stored I_pre:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png
+[LOOP] Attempt status: awaiting_pre_validation
+
+[LOOP] Stage 1 PRE batch validation
+[LOOP] PRE image: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png
+[
+  "The front of box_1 is accessible.",
+  "The front of box_4 is accessible.",
+  "end_effector_left is grasping nothing.",
+  "end_effector_right is grasping nothing."
+]
+
+[DEBUG][validator-pre-stage-1] Image path: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png
+[DEBUG][validator-pre-stage-1] Image key:  1.png
+[DEBUG][validator-pre-stage-1] Pose entries:
+  - box_yellow_001: [4.0, 0.1, 1.0]
+  - box_blue_001: [4.0, 0.1, 0.8]
+  - box_rose_001: [4.0, 0.1, 0.6]
+  - box_green_001: [4.0, -0.1, 1.0]
+  - box_red_001: [4.0, -0.1, 0.8]
+  - box_white_001: [4.0, -0.1, 0.6]
+[validator:pre_1] Scene context source: scene_object_list.json
+[OK][validator:pre_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/fragile/v6/precondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt
+[OK][validator:pre_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v6/precondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json
+[OK][validator:pre_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v6/precondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json
+[OK][validator:pre_1] Execution time:         5.246s
+
+[PRE validator:pre_1] Parsed JSON:
+{
+  "schema_version": "1.0",
+  "validation_phase": "pre",
+  "overall_status": "satisfied",
+  "results": [
+    {
+      "condition": "The front of box_1 is accessible.",
+      "status": "satisfied",
+      "reason": "The front face of the green box is visually clear of any obstructions."
+    },
+    {
+      "condition": "The front of box_4 is accessible.",
+      "status": "satisfied",
+      "reason": "The front face of the yellow box is visually clear of any obstructions."
+    },
+    {
+      "condition": "end_effector_left is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The left end-effector is visible and empty."
+    },
+    {
+      "condition": "end_effector_right is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The right end-effector is visible and empty."
+    }
+  ],
+  "evidence_used": [
+    {
+      "type": "image",
+      "role": "I_pre",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png"
+    }
+  ],
+  "validator_metadata": {
+    "stage_id": 1,
+    "condition_kind": "pre",
+    "model": "gemini-robotics-er-1.6-preview",
+    "deployment_name": "gemini-robotics-er-1.6-preview"
+  },
+  "normalized_at": "2026-07-29T07:56:04.781837"
+}
+[LOOP] PRE overall status: satisfied
+[LOOP] Attempt cycle_001_stage_001_attempt_001 is ready for execution.
+
+[LOOP] Stage 1 goal baseline validation on I_pre
+[validator:goal_baseline_1] Scene context source: scene_object_list.json
+[OK][validator:goal_baseline_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/fragile/v6/goal_baseline/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/prompt.txt
+[OK][validator:goal_baseline_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v6/goal_baseline/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/response_parsed.json
+[OK][validator:goal_baseline_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v6/goal_baseline/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/run_info.json
+[OK][validator:goal_baseline_1] Execution time:         5.649s
+[LOOP] Goal baseline overall status: violated
+
+[LOOP] Executing Stage 1 in offline mode
+
+[INTERACTIVE] Available images in --frames-dir:
+  [0] 1.png
+  [1] 2.png (natural next)
+  [2] 3.png
+  [3] 4.png
+  [4] 5.png
+  [5] 6.png
+  [6] 7.png
+  [7] 8.png
+  [8] 9.png
+[INTERACTIVE] Choose I_post (index or filename, Enter for '2.png'): [LOOP] Stored I_post:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/2.png
+[LOOP] Attempt status: awaiting_post_validation
+
+[LOOP] Stage 1 POST batch validation
+[
+  "box_1 is pushed from the front.",
+  "box_4 is pushed from the front."
+]
+[validator:post_1] Scene context source: scene_object_list.json
+[OK][validator:post_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/fragile/v7/postcondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt
+[OK][validator:post_1] I_pre:                  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png
+[OK][validator:post_1] I_post:                 /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/2.png
+[OK][validator:post_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v7/postcondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json
+[OK][validator:post_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/fragile/v7/postcondition/2026-07-29_07-55-21/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json
+[OK][validator:post_1] Execution time:         7.172s
+
+[POST validator:post_1] Parsed JSON:
+{
+  "schema_version": "1.0",
+  "validation_phase": "post",
+  "overall_status": "violated",
+  "results": [
+    {
+      "condition": "box_1 is pushed from the front.",
+      "status": "violated",
+      "reason": "box_1 (the green box) shows no visible change in position between I_pre and I_post.",
+      "progress_trend": "no_change"
+    },
+    {
+      "condition": "box_4 is pushed from the front.",
+      "status": "satisfied",
+      "reason": "box_4 (the yellow box) has been moved further back from its initial position on top of the blue box."
+    }
+  ],
+  "evidence_used": [
+    {
+      "type": "image",
+      "role": "I_pre",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/1.png"
+    },
+    {
+      "type": "image",
+      "role": "I_post",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/2.png"
+    }
+  ],
+  "validator_metadata": {
+    "stage_id": 1,
+    "condition_kind": "post",
+    "model": "gemini-robotics-er-1.6-preview",
+    "deployment_name": "gemini-robotics-er-1.6-preview"
+  },
+  "normalized_at": "2026-07-29T07:56:19.774513"
+}
+[LOOP] POST overall status: violated
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpdu7l291d.json
+[DEBUG] Filtered object catalog:
+box_yellow_001
+box_blue_001
+box_rose_001
+box_green_001
+box_red_001
+box_white_001
+
+[OK][scene_perception:post_recovery_state_stage_1] Updated scene graph saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/fragile/2026-07-29_07-55-21/cycles/cycle_001/evidence/stage_001/post/round_000/scene_perception/scene_description_full.json
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpvbei4qtj.json
+[DEBUG] Filtered object catalog:
+box_yellow_001
+box_blue_001
+box_rose_001
+box_green_001
+box_red_001
+box_white_001
+
+[OK][scene_perception:pre_recovery_state_stage_1] Updated scene graph saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/fragile/2026-07-29_07-55-21/cycles/cycle_001/evidence/stage_001/pre/round_000/scene_perception_recovery/scene_description_full.json
+[LOOP] Attempt cycle_001_stage_001_attempt_001 closed with postcondition failure.
+[LOOP] Attempt status after POST validation: closed_failure
+[LOOP] Stopping stage sequence at Stage 1: POST status is violated.
+
+[RECOVERY][INTERPRETATION] evidence=sufficient | phase=post | cause=unknown | execution_completed=True | same_failure_count=1 | goal_progress=positive | target_state_changed=True | post_validator_progress_observed=False | stage_still_applicable=False
+[RECOVERY][INTERPRETATION] supported_modifications=0 | replan_required=True
+[RECOVERY][CANDIDATE] repeat: admissible=False | The current scene no longer supports the failed local stage.
+[RECOVERY][CANDIDATE] modify: admissible=False | No concrete symbolic modification is supported.
+[RECOVERY][CANDIDATE] replan: admissible=True | Global replanning remains available from the latest observed world state.
+
+[RECOVERY] decision=replan | The failed stage's preconditions are not satisfied in the current world state; repeating or locally modifying its execution cannot repair them.
+[RECOVERY] Resume from current image: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/fragile/2.png
+
+[INTERACTIVE] Press Enter to continue to the next cycle...
+[LOG] Execution interrupted by the user.
+Traceback (most recent call last):
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 3510, in run_with_terminal_log
+    main()
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 4911, in main
+    input(
+KeyboardInterrupt
+======================================================
+[LOG] Finished at: 2026-07-29T07:56:44.523858
+[LOG] Exit code: 130

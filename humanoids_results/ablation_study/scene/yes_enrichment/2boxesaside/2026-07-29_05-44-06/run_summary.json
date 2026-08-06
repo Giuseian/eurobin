@@ -1,0 +1,340 @@
+{
+  "module": "ablation_scene_perception_planning_run_summary",
+  "variant": "yes_enrichment",
+  "include_scene_enrichment": true,
+  "scenario_name": "2boxesaside",
+  "loop_timestamp": "2026-07-29_05-44-06",
+  "timestamp": "2026-07-29T05:44:06.944140",
+  "config": {
+    "ablation_variant": "yes_enrichment",
+    "include_scene_enrichment": true,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v8",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "scene_description_full": {
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    }
+  },
+  "frames": [
+    {
+      "cycle_index": 1,
+      "cycle_name": "cycle_001",
+      "image": "1.png",
+      "error": null,
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              },
+              {
+                "name": "cup",
+                "category": "container",
+                "color": "black"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              },
+              {
+                "subject": "cup",
+                "relation": "in front of",
+                "object": "box_2"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green",
+                "sides": {
+                  "left": "accessible",
+                  "right": "blocked by box_2",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red",
+                "sides": {
+                  "left": "blocked by box_1",
+                  "right": "accessible",
+                  "front": "blocked by cup",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "cup",
+                "category": "container",
+                "color": "black",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "blocked by box_2",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              },
+              {
+                "subject": "cup",
+                "relation": "in front of",
+                "object": "box_2"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+        }
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "cup",
+            "Action concept": "Grasp",
+            "Manipulation mode": "single-arm (right)",
+            "Contact mode": "with claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 2,
+            "Target": "the table",
+            "Action concept": "Place",
+            "Manipulation mode": "single-arm (right)",
+            "Contact mode": "with claw",
+            "Object contact side": "top"
+          },
+          {
+            "Step_id": 3,
+            "Target": "box_2",
+            "Action concept": "Push",
+            "Manipulation mode": "single-arm (right)",
+            "Contact mode": "without claw",
+            "Object contact side": "front"
+          },
+          {
+            "Step_id": 4,
+            "Target": "box_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "dual-arm symmetric",
+            "Contact mode": "without claw",
+            "Object contact side": "right & left"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/2boxesaside/v6/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Local_goal": "Grasp the cup using the right end-effector.",
+            "Preconditions": [
+              "The right end-effector is grasping nothing.",
+              "The cup is reachable.",
+              "The right side of cup is accessible.",
+              "The left side of cup is accessible."
+            ],
+            "Postconditions": [
+              "The right end-effector is grasping cup."
+            ]
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Local_goal": "Place the cup on the table.",
+            "Preconditions": [
+              "The right end-effector is grasping cup."
+            ],
+            "Postconditions": [
+              "The right end-effector is grasping nothing.",
+              "The cup is on the table.",
+              "The front of box_2 is accessible."
+            ]
+          },
+          {
+            "Stage_id": 3,
+            "Step_id": [
+              3
+            ],
+            "Local_goal": "Push box_2 with the right end-effector to clear space next to box_1.",
+            "Preconditions": [
+              "The right end-effector is grasping nothing.",
+              "The front of box_2 is accessible."
+            ],
+            "Postconditions": [
+              "The right side of box_1 is accessible."
+            ]
+          },
+          {
+            "Stage_id": 4,
+            "Step_id": [
+              4
+            ],
+            "Local_goal": "Grasp box_1 using both end-effectors simultaneously.",
+            "Preconditions": [
+              "The left end-effector is grasping nothing.",
+              "The right end-effector is grasping nothing.",
+              "The left side of box_1 is accessible.",
+              "The right side of box_1 is accessible."
+            ],
+            "Postconditions": [
+              "The left end-effector is grasping box_1.",
+              "The right end-effector is grasping box_1."
+            ]
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/2boxesaside/v8/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/2boxesaside/v8/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/2boxesaside/v8/2026-07-29_05-44-06/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "stages": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Local_goal": "Grasp the cup using the right end-effector.",
+          "Preconditions": [
+            "The right end-effector is grasping nothing.",
+            "The cup is reachable.",
+            "The right side of cup is accessible.",
+            "The left side of cup is accessible."
+          ],
+          "Postconditions": [
+            "The right end-effector is grasping cup."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Local_goal": "Place the cup on the table.",
+          "Preconditions": [
+            "The right end-effector is grasping cup."
+          ],
+          "Postconditions": [
+            "The right end-effector is grasping nothing.",
+            "The cup is on the table.",
+            "The front of box_2 is accessible."
+          ]
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Local_goal": "Push box_2 with the right end-effector to clear space next to box_1.",
+          "Preconditions": [
+            "The right end-effector is grasping nothing.",
+            "The front of box_2 is accessible."
+          ],
+          "Postconditions": [
+            "The right side of box_1 is accessible."
+          ]
+        },
+        {
+          "Stage_id": 4,
+          "Step_id": [
+            4
+          ],
+          "Local_goal": "Grasp box_1 using both end-effectors simultaneously.",
+          "Preconditions": [
+            "The left end-effector is grasping nothing.",
+            "The right end-effector is grasping nothing.",
+            "The left side of box_1 is accessible.",
+            "The right side of box_1 is accessible."
+          ],
+          "Postconditions": [
+            "The left end-effector is grasping box_1.",
+            "The right end-effector is grasping box_1."
+          ]
+        }
+      ]
+    }
+  ]
+}

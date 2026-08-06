@@ -1,0 +1,229 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "moveabit",
+  "loop_timestamp": "2026-07-29_08-15-54",
+  "timestamp": "2026-07-29T08:15:54.026188",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/moveabit/1.png",
+  "frames_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/moveabit",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/moveabit/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "max_replans": 3
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "final_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/moveabit/box_ruotata.png",
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-29_08-15-54",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/moveabit/1.png",
+      "start_image_name": "1.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "deployment_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 5.857648489007261
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green",
+                "sides": {
+                  "left": "accessible",
+                  "right": "blocked by box_2",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red",
+                "sides": {
+                  "left": "blocked by box_1",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "not reachable",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.0016088680131360888
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "box_2",
+            "Action concept": "Push",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "Without claw",
+            "Object contact side": "front"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 5.233578616986051
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "box_2 front accessible",
+            "Postcondition": "box_2 pushed past box_1"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        },
+        "model_name": "gemini-robotics-er-1.6-preview",
+        "execution_time_seconds": 2.618979652004782
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "box_2 front accessible",
+          "postcondition": "box_2 pushed past box_1",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/moveabit/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/moveabit/box_ruotata.png",
+          "post_image_name": "box_ruotata.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The front face of box_2 is not physically blocked by any other object from the scene object list."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "There is no clear evidence to indicate that box_2 has not been pushed past box_1, as they are positioned close to each other in the scene."
+          },
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/moveabit/v5/2026-07-29_08-15-54/gemini-robotics-er-1.6-preview/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/moveabit/box_ruotata.png",
+          "next_image_name": "box_ruotata.png"
+        }
+      ],
+      "outcome": "task_completed",
+      "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/moveabit/box_ruotata.png",
+      "end_image_name": "box_ruotata.png"
+    }
+  ],
+  "replan_timings": []
+}

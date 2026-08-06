@@ -1,0 +1,651 @@
+[LOG] Complete terminal output: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/a_data_analysis_final/terminal_logs/long_horizon/gemini/validation_loop_2026-07-29_07-33-08.txt
+[LOG] Started at: 2026-07-29T07:33:08.399352
+======================================================
+
+======================================================
+VALIDATION LOOP CONFIG
+Scenario:                  long_horizon
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               3
+Max evidence rounds:       2
+Max attempts/stage:        5
+Max repeats:               1
+Max modifications:         2
+Max total actions:         20
+Modification proposal:     v1 / gpt-5.2
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+Loop ts:         2026-07-29_07-33-08
+Cycle ts meta:   2026-07-29_07-33-08
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          7.025s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_white",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "box_yellow",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "box_green",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_blue",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "box_red",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "bottle",
+        "category": "container",
+        "color": "clear"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_yellow",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_green",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "on top of",
+        "object": "box_yellow"
+      },
+      {
+        "subject": "box_green",
+        "relation": "right of",
+        "object": "box_yellow"
+      },
+      {
+        "subject": "box_red",
+        "relation": "right of",
+        "object": "box_white"
+      },
+      {
+        "subject": "bottle",
+        "relation": "on top of",
+        "object": "box_red"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmp1a9suh78.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.104s
+
+[scene_description_full] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_white",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_red",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_green, box_yellow",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_yellow",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_green",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_blue",
+          "bottom": "blocked by box_white"
+        }
+      },
+      {
+        "name": "box_green",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "blocked by box_yellow",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_white"
+        }
+      },
+      {
+        "name": "box_blue",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_yellow"
+        }
+      },
+      {
+        "name": "box_red",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "blocked by box_white",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by bottle",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "bottle",
+        "category": "container",
+        "color": "clear",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "accessible",
+          "top": "accessible",
+          "bottom": "blocked by box_red"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_yellow",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_green",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "on top of",
+        "object": "box_yellow"
+      },
+      {
+        "subject": "box_green",
+        "relation": "right of",
+        "object": "box_yellow"
+      },
+      {
+        "subject": "box_red",
+        "relation": "right of",
+        "object": "box_white"
+      },
+      {
+        "subject": "bottle",
+        "relation": "on top of",
+        "object": "box_red"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/long_horizon/v5/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v5/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v5/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         10.728s
+
+[vlm_planning] Parsed JSON:
+[
+  {
+    "Step_id": 1,
+    "Target": "box_blue",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "left & right"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_blue",
+    "Action concept": "Place",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "bottom"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_green",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "front & right"
+  },
+  {
+    "Step_id": 4,
+    "Target": "box_green",
+    "Action concept": "Place",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "bottom"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_yellow",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "left & right"
+  },
+  {
+    "Step_id": 6,
+    "Target": "box_yellow",
+    "Action concept": "Place",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "bottom"
+  },
+  {
+    "Step_id": 7,
+    "Target": "bottle",
+    "Action concept": "Grasp",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "left & right"
+  },
+  {
+    "Step_id": 8,
+    "Target": "bottle",
+    "Action concept": "Place",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "with claw",
+    "Object contact side": "bottom"
+  },
+  {
+    "Step_id": 9,
+    "Target": "box_red",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "front & right"
+  },
+  {
+    "Step_id": 10,
+    "Target": "box_red",
+    "Action concept": "Place",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "bottom"
+  },
+  {
+    "Step_id": 11,
+    "Target": "box_white",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "left & right"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/long_horizon/v8/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         17.165s
+
+[simultaneous_actions] Parsed JSON:
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp box_blue using dual-arm symmetric manipulation.",
+    "Preconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "The left side of box_blue is accessible.",
+      "The right side of box_blue is accessible."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping box_blue.",
+      "The right end-effector is grasping box_blue."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Place box_blue on the Table.",
+    "Preconditions": [
+      "The left end-effector is grasping box_blue.",
+      "The right end-effector is grasping box_blue."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "box_blue is on top of the Table.",
+      "The top side of box_yellow is free of objects."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Local_goal": "Grasp box_green using dual-arm symmetric manipulation.",
+    "Preconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "The front side of box_green is accessible.",
+      "The right side of box_green is accessible."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping box_green.",
+      "The right end-effector is grasping box_green."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      4
+    ],
+    "Local_goal": "Place box_green on the Table.",
+    "Preconditions": [
+      "The left end-effector is grasping box_green.",
+      "The right end-effector is grasping box_green."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "box_green is on top of the Table."
+    ]
+  },
+  {
+    "Stage_id": 5,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Grasp box_yellow using dual-arm symmetric manipulation.",
+    "Preconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "The left side of box_yellow is accessible.",
+      "The right side of box_yellow is accessible.",
+      "The top of box_yellow is free of objects."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping box_yellow.",
+      "The right end-effector is grasping box_yellow."
+    ]
+  },
+  {
+    "Stage_id": 6,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Place box_yellow on the Table.",
+    "Preconditions": [
+      "The left end-effector is grasping box_yellow.",
+      "The right end-effector is grasping box_yellow."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "box_yellow is on top of the Table.",
+      "The top of box_white is free of objects."
+    ]
+  },
+  {
+    "Stage_id": 7,
+    "Step_id": [
+      7
+    ],
+    "Local_goal": "Grasp the bottle with the right end-effector.",
+    "Preconditions": [
+      "The right end-effector is grasping nothing.",
+      "The left side of bottle is accessible.",
+      "The right side of bottle is accessible."
+    ],
+    "Postconditions": [
+      "The right end-effector is grasping bottle."
+    ]
+  },
+  {
+    "Stage_id": 8,
+    "Step_id": [
+      8
+    ],
+    "Local_goal": "Place the bottle on the Table.",
+    "Preconditions": [
+      "The right end-effector is grasping bottle."
+    ],
+    "Postconditions": [
+      "The right end-effector is grasping nothing.",
+      "bottle is on top of the Table.",
+      "The top of box_red is free of objects."
+    ]
+  },
+  {
+    "Stage_id": 9,
+    "Step_id": [
+      9
+    ],
+    "Local_goal": "Grasp box_red using dual-arm symmetric manipulation.",
+    "Preconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "The front side of box_red is accessible.",
+      "The right side of box_red is accessible.",
+      "The top of box_red is free of objects."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping box_red.",
+      "The right end-effector is grasping box_red."
+    ]
+  },
+  {
+    "Stage_id": 10,
+    "Step_id": [
+      10
+    ],
+    "Local_goal": "Place box_red on the Table.",
+    "Preconditions": [
+      "The left end-effector is grasping box_red.",
+      "The right end-effector is grasping box_red."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "box_red is on top of the Table.",
+      "The right side of box_white is accessible."
+    ]
+  },
+  {
+    "Stage_id": 11,
+    "Step_id": [
+      11
+    ],
+    "Local_goal": "Grasp box_white using dual-arm symmetric manipulation.",
+    "Preconditions": [
+      "The left end-effector is grasping nothing.",
+      "The right end-effector is grasping nothing.",
+      "The left side of box_white is accessible.",
+      "The right side of box_white is accessible.",
+      "The top of box_white is free of objects."
+    ],
+    "Postconditions": [
+      "The left end-effector is grasping box_white.",
+      "The right end-effector is grasping box_white."
+    ]
+  }
+]
+
+[LOOP] Attempt opened
+[LOOP] Attempt ID:     cycle_001_stage_001_attempt_001
+[LOOP] Attempt status: open
+[LOOP] Stored I_pre:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[LOOP] Attempt status: awaiting_pre_validation
+
+[LOOP] Stage 1 PRE batch validation
+[LOOP] PRE image: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[
+  "The left end-effector is grasping nothing.",
+  "The right end-effector is grasping nothing.",
+  "The left side of box_blue is accessible.",
+  "The right side of box_blue is accessible."
+]
+
+[DEBUG][validator-pre-stage-1] Image path: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[DEBUG][validator-pre-stage-1] Image key:  1.png
+[DEBUG][validator-pre-stage-1] Pose entries:
+  - box_white_001: [4.0, 0.0, 0.6]
+  - box_yellow_001: [4.0, -0.1, 0.8]
+  - box_green_001: [4.0, 0.1, 0.8]
+  - box_blue_001: [4.0, 0.0, 1.0]
+  - box_red_001: [4.0, 0.2, 0.6]
+  - bottle_001: [4.0, 0.2, 0.8]
+[validator:pre_1] Scene context source: scene_object_list.json
+[OK][validator:pre_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/long_horizon/v6/precondition/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/prompt.txt
+[OK][validator:pre_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/precondition/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/response_parsed.json
+[OK][validator:pre_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/precondition/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/pre/run_info.json
+[OK][validator:pre_1] Execution time:         6.708s
+
+[PRE validator:pre_1] Parsed JSON:
+{
+  "schema_version": "1.0",
+  "validation_phase": "pre",
+  "overall_status": "satisfied",
+  "results": [
+    {
+      "condition": "The left end-effector is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The left end-effector is clearly visible and is not holding any object."
+    },
+    {
+      "condition": "The right end-effector is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The right end-effector is clearly visible and is not holding any object."
+    },
+    {
+      "condition": "The left side of box_blue is accessible.",
+      "status": "satisfied",
+      "reason": "The left side of box_blue is not obstructed by any visible adjacent objects."
+    },
+    {
+      "condition": "The right side of box_blue is accessible.",
+      "status": "satisfied",
+      "reason": "The right side of box_blue is not obstructed by any visible adjacent objects."
+    }
+  ],
+  "evidence_used": [
+    {
+      "type": "image",
+      "role": "I_pre",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png"
+    }
+  ],
+  "validator_metadata": {
+    "stage_id": 1,
+    "condition_kind": "pre",
+    "model": "gemini-robotics-er-1.6-preview",
+    "deployment_name": "gemini-robotics-er-1.6-preview"
+  },
+  "normalized_at": "2026-07-29T07:33:51.794925"
+}
+[LOOP] PRE overall status: satisfied
+[LOOP] Attempt cycle_001_stage_001_attempt_001 is ready for execution.
+
+[LOOP] Stage 1 goal baseline validation on I_pre
+[validator:goal_baseline_1] Scene context source: scene_object_list.json
+[OK][validator:goal_baseline_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/long_horizon/v6/goal_baseline/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/prompt.txt
+[OK][validator:goal_baseline_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/goal_baseline/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/response_parsed.json
+[OK][validator:goal_baseline_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/goal_baseline/2026-07-29_07-33-08/gemini-robotics-er-1.6-preview/cycle_001/stage_001/goal_baseline/run_info.json
+[OK][validator:goal_baseline_1] Execution time:         3.870s
+[LOOP] Goal baseline overall status: violated
+
+[LOOP] Executing Stage 1 in offline mode
+
+[INTERACTIVE] Available images in --frames-dir:
+  [0] 1.png
+  [1] 2.png (natural next)
+  [2] 3.png
+  [3] 4.png
+  [4] 5.png
+  [5] 6.png
+  [6] 7.png
+  [7] 8.png
+  [8] 9.png
+[INTERACTIVE] Choose I_post (index or filename, Enter for '2.png'): 
+[LOG] Execution interrupted by the user.
+Traceback (most recent call last):
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 3510, in run_with_terminal_log
+    main()
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 4110, in main
+    prompt_for_post_image(frame_paths, frame_cursor)
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 929, in prompt_for_post_image
+    raw = input(prompt).strip()
+          ^^^^^^^^^^^^^
+KeyboardInterrupt
+======================================================
+[LOG] Finished at: 2026-07-29T07:34:44.268220
+[LOG] Exit code: 130

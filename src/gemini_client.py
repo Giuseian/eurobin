@@ -5,6 +5,7 @@ from mimetypes import guess_type
 from pathlib import Path
 from typing import Any, Sequence
 
+from azure_openai_client import normalize_image_paths
 from settings import Settings, get_model_capabilities, validate_gemini_settings
 
 
@@ -97,12 +98,14 @@ def call_gemini_completion(
     validate_gemini_settings(settings, model_name)
     client = make_gemini_client(settings)
 
+    normalized_paths = normalize_image_paths(
+        image_path=image_path,
+        image_paths=image_paths,
+    )
+
     contents: list[Any] = [user_text]
-    if image_path is not None:
-        contents.append(read_image_part(image_path))
-    if image_paths:
-        for path in image_paths:
-            contents.append(read_image_part(path))
+    for path in normalized_paths:
+        contents.append(read_image_part(path))
 
     config = build_gemini_config(
         model_name=model_name,

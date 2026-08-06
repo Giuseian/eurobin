@@ -1,0 +1,201 @@
+
+======================================================
+VALIDATION LOOP CONFIG (binary validator, interactive frames)
+Scenario:                  pick_glass
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               3
+Run output dir:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/validator/binary/pick_glass/2026-07-29_08-07-05
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png
+Loop ts:         2026-07-29_08-07-05
+Cycle ts meta:   2026-07-29_08-07-05
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          6.449s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup_1",
+        "category": "cup",
+        "color": "black"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": []
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmperdzxvbz.json
+[DEBUG] Filtered object catalog:
+glass_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.001s
+
+[scene_description_full] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup_1",
+        "category": "cup",
+        "color": "black",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "accessible",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": []
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         3.453s
+
+[vlm_planning] Parsed JSON:
+[
+  {
+    "Step_id": 1,
+    "Target": "cup_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "With claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         1.608s
+
+[simultaneous_actions] Parsed JSON:
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Precondition": "cup_1 accessible; end_effector_right grasping nothing",
+    "Postcondition": "end_effector_right grasping cup_1"
+  }
+]
+
+[LOOP] Stage 1 PRE
+[LOOP] PRE image:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png
+[LOOP] PRE condition:  cup_1 accessible; end_effector_right grasping nothing
+
+[DEBUG][validator-pre-stage-1] Image path: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png
+[DEBUG][validator-pre-stage-1] Image key:  1.png
+[DEBUG][validator-pre-stage-1] Pose entries:
+  - glass_001: [4.0, 0.0, 0.67]
+[OK][validator:pre_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/prompt.txt
+[OK][validator:pre_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json
+[OK][validator:pre_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/run_info.json
+[OK][validator:pre_1] Execution time:         4.126s
+
+[PRE validator:pre_1] Parsed JSON:
+{
+  "result": "matching",
+  "reason": "The black cup (cup_1) is unobstructed on the table, and the right end-effector is visible and not grasping any object."
+}
+[LOOP] PRE result:     matching
+[LOOP] PRE reason:     The black cup (cup_1) is unobstructed on the table, and the right end-effector is visible and not grasping any object.
+
+[INTERACTIVE] Available images in --frames-dir:
+  [0] 1.png (natural next)
+  [1] 2.png
+  [2] 3.png
+  [3] 4.png
+  [4] try.png
+[INTERACTIVE] Choose I_post (index or filename, Enter for '1.png'): 
+[LOOP] Stage 1 simulated deploy
+[LOOP] NEXT image:     /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png
+
+[LOOP] Stage 1 POST
+[LOOP] POST image:     /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png
+[LOOP] POST condition: end_effector_right grasping cup_1
+
+[DEBUG][validator-post-stage-1] Image path: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png
+[DEBUG][validator-post-stage-1] Image key:  try.png
+[DEBUG][validator-post-stage-1] Pose entries:
+  - glass_001: [4.0, 0.0, 0.67]
+[OK][validator:post_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/prompt.txt
+[OK][validator:post_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/response_parsed.json
+[OK][validator:post_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/run_info.json
+[OK][validator:post_1] Execution time:         4.287s
+
+[POST validator:post_1] Parsed JSON:
+{
+  "result": "matching",
+  "reason": "The right end-effector is visibly closed around and holding the black cup (cup_1)."
+}
+[LOOP] POST result:    matching
+[LOOP] POST reason:    The right end-effector is visibly closed around and holding the black cup (cup_1).
+
+======================================================
+[LOOP] TASK COMPLETED SUCCESSFULLY
+======================================================
+[OK][validation_loop] Cycle summary saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/cycles/cycle_001/cycle_summary.json
+
+======================================================
+VALIDATION LOOP COMPLETED
+Scenario:                  pick_glass
+Loop timestamp:            2026-07-29_08-07-05
+Temperature:               0.0
+Top-p:                     1.0
+Task completed:            True
+Replans done:              0
+Run info saved:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/run_info.json
+Loop summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/loop_summary.json
+Scene summary saved:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/scene_description_summary.json
+Planning summary saved:    /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/vlm_planning_summary.json
+Sim-actions summary saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/simultaneous_actions_summary.json
+Validator summary saved:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/validator_summary.json
+Full summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_08-07-05/full_pipeline_summary.json
+======================================================
+
+======================================================
+FULL REPLAN LATENCY (binary validator baseline)
+Each entry: wall-clock time from the validator call that returned 'non_matching' until the PRE validation status of the first stage of the next cycle is known -- i.e. scene_description + scene_description_full + vlm_planning + simultaneous_actions + PRE validation, rerun unconditionally on every mismatch.
+------------------------------------------------------
+No full replan was triggered during this run.
+======================================================
+[OK][validation_loop] Run summary (incl. replan_timings) saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/validator/binary/pick_glass/2026-07-29_08-07-05/run_summary.json

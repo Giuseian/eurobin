@@ -1,0 +1,441 @@
+{
+  "module": "ablation_scene_perception_planning_run_summary",
+  "variant": "no_enrichment",
+  "include_scene_enrichment": false,
+  "scenario_name": "long_horizon",
+  "loop_timestamp": "2026-07-29_06-07-09",
+  "timestamp": "2026-07-29T06:07:09.096827",
+  "config": {
+    "ablation_variant": "no_enrichment",
+    "include_scene_enrichment": false,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v8",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "frames": [
+    {
+      "cycle_index": 1,
+      "cycle_name": "cycle_001",
+      "image": "1.png",
+      "error": null,
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "white_box",
+                "category": "box",
+                "color": "white"
+              },
+              {
+                "name": "yellow_box",
+                "category": "box",
+                "color": "yellow"
+              },
+              {
+                "name": "green_box",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "light_blue_box",
+                "category": "box",
+                "color": "blue"
+              },
+              {
+                "name": "red_box",
+                "category": "box",
+                "color": "red"
+              },
+              {
+                "name": "clear_bottle",
+                "category": "bottle",
+                "color": "clear"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "yellow_box",
+                "relation": "on top of",
+                "object": "white_box"
+              },
+              {
+                "subject": "green_box",
+                "relation": "on top of",
+                "object": "white_box"
+              },
+              {
+                "subject": "green_box",
+                "relation": "right of",
+                "object": "yellow_box"
+              },
+              {
+                "subject": "light_blue_box",
+                "relation": "on top of",
+                "object": "yellow_box"
+              },
+              {
+                "subject": "light_blue_box",
+                "relation": "on top of",
+                "object": "green_box"
+              },
+              {
+                "subject": "red_box",
+                "relation": "right of",
+                "object": "white_box"
+              },
+              {
+                "subject": "clear_bottle",
+                "relation": "on top of",
+                "object": "red_box"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "light_blue_box",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 2,
+            "Target": "light_blue_box",
+            "Action concept": "Release",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 3,
+            "Target": "yellow_box",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 4,
+            "Target": "yellow_box",
+            "Action concept": "Release",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 5,
+            "Target": "green_box",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 6,
+            "Target": "green_box",
+            "Action concept": "Release",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          },
+          {
+            "Step_id": 7,
+            "Target": "white_box",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "front & back"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v6/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Local_goal": "Grasp light_blue_box with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "The front of light_blue_box is accessible.",
+              "The back of light_blue_box is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping light_blue_box.",
+              "end_effector_right is grasping light_blue_box."
+            ]
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2
+            ],
+            "Local_goal": "Release light_blue_box from both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping light_blue_box.",
+              "end_effector_right is grasping light_blue_box."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "light_blue_box is not on top of yellow_box.",
+              "light_blue_box is not on top of green_box."
+            ]
+          },
+          {
+            "Stage_id": 3,
+            "Step_id": [
+              3
+            ],
+            "Local_goal": "Grasp yellow_box with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "The front of yellow_box is accessible.",
+              "The back of yellow_box is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping yellow_box.",
+              "end_effector_right is grasping yellow_box."
+            ]
+          },
+          {
+            "Stage_id": 4,
+            "Step_id": [
+              4
+            ],
+            "Local_goal": "Release yellow_box from both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping yellow_box.",
+              "end_effector_right is grasping yellow_box."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "yellow_box is not on top of white_box."
+            ]
+          },
+          {
+            "Stage_id": 5,
+            "Step_id": [
+              5
+            ],
+            "Local_goal": "Grasp green_box with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "The front of green_box is accessible.",
+              "The back of green_box is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping green_box.",
+              "end_effector_right is grasping green_box."
+            ]
+          },
+          {
+            "Stage_id": 6,
+            "Step_id": [
+              6
+            ],
+            "Local_goal": "Release green_box from both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping green_box.",
+              "end_effector_right is grasping green_box."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "green_box is not on top of white_box."
+            ]
+          },
+          {
+            "Stage_id": 7,
+            "Step_id": [
+              7
+            ],
+            "Local_goal": "Grasp white_box with both end-effectors.",
+            "Preconditions": [
+              "end_effector_left is grasping nothing.",
+              "end_effector_right is grasping nothing.",
+              "yellow_box is not on top of white_box.",
+              "green_box is not on top of white_box.",
+              "The front of white_box is accessible.",
+              "The back of white_box is accessible."
+            ],
+            "Postconditions": [
+              "end_effector_left is grasping white_box.",
+              "end_effector_right is grasping white_box."
+            ]
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/long_horizon/v8/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_06-07-09/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "stages": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1
+          ],
+          "Local_goal": "Grasp light_blue_box with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "The front of light_blue_box is accessible.",
+            "The back of light_blue_box is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping light_blue_box.",
+            "end_effector_right is grasping light_blue_box."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2
+          ],
+          "Local_goal": "Release light_blue_box from both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping light_blue_box.",
+            "end_effector_right is grasping light_blue_box."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "light_blue_box is not on top of yellow_box.",
+            "light_blue_box is not on top of green_box."
+          ]
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            3
+          ],
+          "Local_goal": "Grasp yellow_box with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "The front of yellow_box is accessible.",
+            "The back of yellow_box is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping yellow_box.",
+            "end_effector_right is grasping yellow_box."
+          ]
+        },
+        {
+          "Stage_id": 4,
+          "Step_id": [
+            4
+          ],
+          "Local_goal": "Release yellow_box from both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping yellow_box.",
+            "end_effector_right is grasping yellow_box."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "yellow_box is not on top of white_box."
+          ]
+        },
+        {
+          "Stage_id": 5,
+          "Step_id": [
+            5
+          ],
+          "Local_goal": "Grasp green_box with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "The front of green_box is accessible.",
+            "The back of green_box is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping green_box.",
+            "end_effector_right is grasping green_box."
+          ]
+        },
+        {
+          "Stage_id": 6,
+          "Step_id": [
+            6
+          ],
+          "Local_goal": "Release green_box from both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping green_box.",
+            "end_effector_right is grasping green_box."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "green_box is not on top of white_box."
+          ]
+        },
+        {
+          "Stage_id": 7,
+          "Step_id": [
+            7
+          ],
+          "Local_goal": "Grasp white_box with both end-effectors.",
+          "Preconditions": [
+            "end_effector_left is grasping nothing.",
+            "end_effector_right is grasping nothing.",
+            "yellow_box is not on top of white_box.",
+            "green_box is not on top of white_box.",
+            "The front of white_box is accessible.",
+            "The back of white_box is accessible."
+          ],
+          "Postconditions": [
+            "end_effector_left is grasping white_box.",
+            "end_effector_right is grasping white_box."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "pick_glass",
+  "loop_timestamp": "2026-07-29_08-07-05",
+  "timestamp": "2026-07-29T08:07:05.349505",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+  "frames_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 3
+  },
+  "replans_done": 0,
+  "task_completed": true,
+  "final_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png",
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-29_08-07-05",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+      "start_image_name": "1.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "cup_1",
+                "category": "cup",
+                "color": "black"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": []
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_object_list.json"
+        },
+        "model_name": "gpt-5.2",
+        "deployment_name": "hhcm-FoundationModels_gpt52",
+        "execution_time_seconds": 6.448833239963278
+      },
+      "scene_description_full": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "cup_1",
+                "category": "cup",
+                "color": "black",
+                "sides": {
+                  "left": "accessible",
+                  "right": "accessible",
+                  "front": "accessible",
+                  "back": "accessible",
+                  "top": "accessible",
+                  "bottom": "blocked by the table"
+                }
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": []
+          }
+        },
+        "paths": {
+          "artifact": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_description_full.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_08-07-05/gpt-5.2/cycle_001/scene_description_full_run_info.json"
+        },
+        "execution_time_seconds": 0.0005632060347124934
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "cup_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "With claw",
+            "Object contact side": "right & left"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/pick_glass/v5/2026-07-29_08-07-05/o3/cycle_001/run_info.json"
+        },
+        "model_name": "o3",
+        "execution_time_seconds": 3.4526878700125962
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1
+            ],
+            "Precondition": "cup_1 accessible; end_effector_right grasping nothing",
+            "Postcondition": "end_effector_right grasping cup_1"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/run_info.json"
+        },
+        "model_name": "gpt-5.2",
+        "execution_time_seconds": 1.6079904239741154
+      },
+      "stages": [
+        {
+          "stage_id": 1,
+          "stage_name": "stage_001",
+          "precondition": "cup_1 accessible; end_effector_right grasping nothing",
+          "postcondition": "end_effector_right grasping cup_1",
+          "pre_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+          "pre_image_name": "1.png",
+          "post_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png",
+          "post_image_name": "try.png",
+          "pre_validation": {
+            "result": "matching",
+            "reason": "The black cup (cup_1) is unobstructed on the table, and the right end-effector is visible and not grasping any object."
+          },
+          "post_validation": {
+            "result": "matching",
+            "reason": "The right end-effector is visibly closed around and holding the black cup (cup_1)."
+          },
+          "validator_paths": {
+            "pre": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/pre/run_info.json"
+            },
+            "post": {
+              "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/prompt.txt",
+              "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/response_parsed.json",
+              "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/pick_glass/v5/2026-07-29_08-07-05/gpt-5.2/cycle_001/stage_001/post/run_info.json"
+            }
+          },
+          "next_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png",
+          "next_image_name": "try.png"
+        }
+      ],
+      "outcome": "task_completed",
+      "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass/try.png",
+      "end_image_name": "try.png"
+    }
+  ],
+  "replan_timings": []
+}

@@ -1,0 +1,212 @@
+{
+  "module": "ablation_scene_perception_planning_run_summary",
+  "variant": "no_enrichment",
+  "include_scene_enrichment": false,
+  "scenario_name": "two_two_tennis",
+  "loop_timestamp": "2026-07-29_08-32-33",
+  "timestamp": "2026-07-29T08:32:33.952650",
+  "config": {
+    "ablation_variant": "no_enrichment",
+    "include_scene_enrichment": false,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v8",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "frames": [
+    {
+      "cycle_index": 1,
+      "cycle_name": "cycle_001",
+      "image": "2.png",
+      "error": null,
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "ball_1",
+                "category": "ball",
+                "color": "yellow"
+              },
+              {
+                "name": "ball_2",
+                "category": "ball",
+                "color": "yellow"
+              },
+              {
+                "name": "box_1",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "box_2",
+                "category": "box",
+                "color": "red"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "ball_2"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "ball_1",
+                "relation": "on top of",
+                "object": "box_1"
+              },
+              {
+                "subject": "box_2",
+                "relation": "right of",
+                "object": "box_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "box_2",
+            "Action concept": "Place",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "with claw",
+            "Object contact side": "Top"
+          },
+          {
+            "Step_id": 2,
+            "Target": "ball_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Single-arm (left)",
+            "Contact mode": "with claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 3,
+            "Target": "box_2",
+            "Action concept": "Place",
+            "Manipulation mode": "Single-arm (left)",
+            "Contact mode": "with claw",
+            "Object contact side": "Top"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_two_tennis/v6/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1,
+              2
+            ],
+            "Local_goal": "Place ball_2 on box_2 and grasp ball_1 from box_1.",
+            "Preconditions": [
+              "end_effector_right is grasping ball_2.",
+              "end_effector_left is grasping nothing.",
+              "ball_1 is on top of box_1.",
+              "ball_1 is accessible.",
+              "box_2 is accessible."
+            ],
+            "Postconditions": [
+              "ball_2 is on top of box_2.",
+              "end_effector_right is grasping nothing.",
+              "end_effector_left is grasping ball_1.",
+              "The top of box_1 is free of objects."
+            ]
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              3
+            ],
+            "Local_goal": "Place ball_1 on box_2.",
+            "Preconditions": [
+              "end_effector_left is grasping ball_1.",
+              "box_2 is accessible.",
+              "The top of box_1 is free of objects."
+            ],
+            "Postconditions": [
+              "ball_1 is on top of box_2.",
+              "end_effector_left is grasping nothing.",
+              "The top of box_1 is free of objects."
+            ]
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_two_tennis/v8/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v8/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_two_tennis/v8/2026-07-29_08-32-33/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "stages": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1,
+            2
+          ],
+          "Local_goal": "Place ball_2 on box_2 and grasp ball_1 from box_1.",
+          "Preconditions": [
+            "end_effector_right is grasping ball_2.",
+            "end_effector_left is grasping nothing.",
+            "ball_1 is on top of box_1.",
+            "ball_1 is accessible.",
+            "box_2 is accessible."
+          ],
+          "Postconditions": [
+            "ball_2 is on top of box_2.",
+            "end_effector_right is grasping nothing.",
+            "end_effector_left is grasping ball_1.",
+            "The top of box_1 is free of objects."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            3
+          ],
+          "Local_goal": "Place ball_1 on box_2.",
+          "Preconditions": [
+            "end_effector_left is grasping ball_1.",
+            "box_2 is accessible.",
+            "The top of box_1 is free of objects."
+          ],
+          "Postconditions": [
+            "ball_1 is on top of box_2.",
+            "end_effector_left is grasping nothing.",
+            "The top of box_1 is free of objects."
+          ]
+        }
+      ]
+    }
+  ]
+}

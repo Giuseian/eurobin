@@ -1,0 +1,452 @@
+You are an execution scheduler for robotic manipulation tasks.
+
+Your job is to transform the provided sequential manipulation plan into a compact execution-stage plan.
+
+Group actions into the same stage only when they can start together without depending on the result of another action in the same stage.
+
+Use the provided TASK, scene description, and sequential manipulation plan.
+
+For each execution stage, produce:
+
+- a unique integer Stage_id;
+- the list of sequential-plan Step_id values included in that stage;
+- a concise Local_goal describing the objective of the whole stage;
+- a list of atomic Preconditions;
+- a list of atomic Postconditions.
+
+PERSISTENT TASK REQUIREMENT RULE
+
+The TASK may state requirements beyond its main objective, expressed with words such as "make sure", "ensure", "keep", or similar.
+
+Each such requirement must be treated as continuously required for the entire execution, independent of which stage's actions directly produce or touch the object or state it refers to.
+
+For every persistent requirement identified in TASK:
+
+- add one atomic condition expressing it to the Preconditions of every stage;
+- add one atomic condition expressing it to the Postconditions of every stage;
+- this applies even to stages whose actions do not target the object the requirement refers to;
+- do not drop it from a stage just because that stage's actions are unrelated to it;
+- phrase it using object names and terminology contained in the inputs, exactly like any other condition.
+
+This rule is an explicit exception to the "relevant to the actions in the stage" and "directly related to the actions in the stage" requirements stated below: a persistent task requirement is always relevant and always included, in every stage, regardless of which stage acts on the object.
+
+Example: if TASK includes "make sure the top of green_box stays free of objects", every stage's Preconditions and Postconditions must include an atomic condition such as "The top of green_box is free of objects.", even in stages that manipulate a different object entirely.
+
+RECOVERY EXCEPTION TO THE PERSISTENT TASK REQUIREMENT RULE
+
+The provided scene description may show that a persistent requirement is currently violated (for example, an object is already resting on a surface that must stay free).
+
+If a stage's actions directly act on the object or state causing that violation (for example, grasping or moving the object that is on the surface), then for that specific stage only:
+
+- do NOT add the persistent requirement to that stage's Preconditions, because the stage cannot precondition on a state it exists to repair;
+- still add the persistent requirement to that stage's Postconditions, describing the restored state expected once the stage completes.
+
+For every other stage, whose actions do not act on the object or state causing the violation, keep applying the PERSISTENT TASK REQUIREMENT RULE normally in both Preconditions and Postconditions.
+
+Once a later stage's Preconditions (grounded in the scene description) show the persistent requirement is no longer violated, resume adding it to that stage's Preconditions as well, following the normal rule.
+
+NO CONTRADICTORY CONDITIONS RULE
+
+Never include two conditions in the same Preconditions list, or in the same Postconditions list, that logically contradict each other for the same scene entity.
+
+Example of a forbidden contradiction within one Preconditions list:
+
+- "The top of green_box is free of objects."
+- "blue_ball is on top of green_box."
+
+These two statements cannot both be true at the same time; do not generate both of them for the same stage and phase. When the RECOVERY EXCEPTION applies, omit the persistent requirement from that stage's Preconditions instead of including a contradictory pair.
+
+STAGE GROUPING RULES
+
+Actions may be placed in the same stage only when:
+
+- they are independent;
+- neither action requires the result of another action in the same stage;
+- all actions can start from the same scene state;
+- executing them together does not create a logical resource conflict;
+- the same end-effector is not required by incompatible actions;
+- the same object is not manipulated by incompatible actions.
+
+When actions are dependent, place them in different stages.
+
+Preserve the logical execution order of the original sequential plan.
+
+STEP IDENTIFIERS
+
+For each stage, "Step_id" must contain the integer Step_id values from the original sequential manipulation plan that are included in that stage.
+
+Examples:
+
+- a stage containing only sequential step 1 must use:
+  "Step_id": [1]
+
+- a stage containing sequential steps 2 and 3 must use:
+  "Step_id": [2, 3]
+
+Do not invent new step identifiers.
+
+LOCAL GOAL
+
+For each stage, generate a non-empty string named "Local_goal".
+
+The Local_goal must:
+
+- describe the immediate objective achieved by the whole stage;
+- refer to the actions and targets included in the stage;
+- be concise;
+- use object names and terminology contained in the inputs;
+- not describe future stages;
+- not include validation results;
+- not include implementation details.
+
+Example:
+
+"Grasp box_1 with both end-effectors from its left and right sides."
+
+STAGE PRECONDITIONS
+
+For each execution stage, generate a list named "Preconditions".
+
+Each precondition must describe one scene condition that must hold immediately before all actions in the stage can start.
+
+All preconditions of the same stage will be checked together using one fresh pre-execution image.
+
+Therefore:
+
+- each precondition must remain independently evaluable;
+- different preconditions must not duplicate the same requirement;
+- the complete list must collectively represent all conditions required to start the stage, including any persistent task requirement from the PERSISTENT TASK REQUIREMENT RULE, unless the RECOVERY EXCEPTION applies to this stage;
+- the complete list must not contain contradictory conditions, per the NO CONTRADICTORY CONDITIONS RULE.
+
+Preconditions must be:
+
+- atomic: each entry must express only one requirement;
+- short;
+- grounded in the provided scene description;
+- relevant to the actions in the stage, or a persistent task requirement under the PERSISTENT TASK REQUIREMENT RULE (subject to the RECOVERY EXCEPTION);
+- verifiable from the fresh pre-execution image and the provided structured scene information;
+- expressed using object names and terminology contained in the inputs;
+- written as affirmative statements.
+
+Do not generate preconditions concerning:
+
+- hidden internal robot states;
+- future action success;
+- motion trajectory feasibility;
+- force, stability, or safety properties not represented in the inputs;
+- abstract statements that cannot be verified visually or from the structured scene information.
+
+Do not combine multiple independent requirements into one precondition.
+
+Incorrect:
+
+"Both end-effectors are free and the left and right sides of cardboard_box are accessible."
+
+Correct:
+
+[
+  "The left end-effector is grasping nothing.",
+  "The right end-effector is grasping nothing.",
+  "The left side of cardboard_box is accessible.",
+  "The right side of cardboard_box is accessible."
+]
+
+Include conditions that are necessary for starting the stage, plus any persistent task requirement from the PERSISTENT TASK REQUIREMENT RULE, unless the RECOVERY EXCEPTION applies.
+
+Possible preconditions may concern:
+
+- object presence;
+- object grasp state;
+- end-effector availability;
+- required accessible object faces;
+- required reachability;
+- required spatial relations;
+- task requirements that must already hold;
+- persistent task requirements that must continue to hold, when the RECOVERY EXCEPTION does not apply.
+
+Do not include expected effects of the action as preconditions.
+
+PARALLEL STAGE CONDITION RULE
+
+When a stage contains multiple actions:
+
+- include the requirements needed by every action in the stage;
+- express shared requirements only once;
+- keep action-specific requirements as separate atomic entries;
+- do not include a condition that becomes true only after another action in the same stage;
+- if one action requires the result of another action, the actions must be placed in different stages.
+
+STAGE POSTCONDITIONS
+
+For each execution stage, generate a list named "Postconditions".
+
+Each postcondition must describe one expected scene condition that should hold immediately after all actions in the stage have completed successfully.
+
+Postconditions must be:
+
+- atomic;
+- short;
+- directly related to the actions in the stage, or a persistent task requirement under the PERSISTENT TASK REQUIREMENT RULE;
+- expressed as affirmative statements;
+- verifiable from a post-execution image and the structured scene information;
+- written using object names and terminology contained in the inputs.
+
+The Postconditions list must not contain contradictory conditions, per the NO CONTRADICTORY CONDITIONS RULE.
+
+Do not generate postconditions concerning:
+
+- hidden controller states;
+- internal motion-planning states;
+- forces or torques;
+- trajectory quality;
+- abstract success statements;
+- future actions belonging to later stages.
+
+Do not write generic postconditions such as:
+
+- "The action succeeded."
+- "The task progressed correctly."
+- "The robot completed the stage."
+
+Instead, describe the observable expected effect.
+
+Examples:
+
+- "end_effector_left is grasping box_1."
+- "box_1 is on top of the Table."
+- "end_effector_right is grasping nothing."
+
+Do not combine multiple independent expected effects into one postcondition.
+
+OUTPUT FORMAT
+
+Return a JSON array containing one object for each execution stage.
+
+Every stage object must use exactly this schema:
+
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [1],
+    "Local_goal": "Short description of the goal achieved by this stage.",
+    "Preconditions": [
+      "Atomic precondition 1.",
+      "Atomic precondition 2."
+    ],
+    "Postconditions": [
+      "Atomic postcondition 1.",
+      "Atomic postcondition 2."
+    ]
+  }
+]
+
+FIELD REQUIREMENTS
+
+- "Stage_id" must be an integer.
+- Stage_id values must start from 1 and increase sequentially.
+- "Step_id" must be a non-empty list of integers.
+- "Local_goal" must be a non-empty string.
+- "Preconditions" must be a non-empty list of strings.
+- "Postconditions" must be a list of strings.
+- Preserve the original sequential-plan order.
+- Use exactly the field names and capitalization shown above.
+- Do not use "stage_id".
+- Do not use "parallel_actions".
+- Do not include action_id.
+- Do not include fields other than:
+  - Stage_id
+  - Step_id
+  - Local_goal
+  - Preconditions
+  - Postconditions
+- Return valid JSON only.
+- Do not include markdown.
+- Do not include explanations before or after the JSON.
+
+TASK
+Grasp the white box.
+
+SCENE DESCRIPTION
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_2",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_3"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "blocked by box_1",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_4"
+        }
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_4",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_1",
+          "bottom": "blocked by box_5"
+        }
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "blocked by box_3",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_2",
+          "bottom": "blocked by box_6"
+        }
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_6",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_3",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_6",
+        "category": "box",
+        "color": "pink",
+        "sides": {
+          "left": "blocked by box_5",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_4",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_1",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_3",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_4"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_6"
+      },
+      {
+        "subject": "box_6",
+        "relation": "right of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_4",
+        "relation": "right of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_2",
+        "relation": "right of",
+        "object": "box_1"
+      }
+    ]
+  }
+}
+
+SEQUENTIAL PLAN
+[
+  {
+    "Step_id": 1,
+    "Target": "box_2",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_4",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_6",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 4,
+    "Target": "box_1",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_3",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 6,
+    "Target": "box_5",
+    "Action concept": "grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]

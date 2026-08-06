@@ -35,6 +35,7 @@ DIMENSIONS_BY_NAME: Dict[str, List[float]] = {
     "glass_001": [0.08, 0.08, 0.08],
     "glass_002": [0.08, 0.08, 0.08],
     "ball_001": [0.07, 0.07, 0.07],
+    "bottle_001": [0.07, 0.07, 0.20],
 }
 
 DEFAULT_DIMENSIONS_BY_CATEGORY: Dict[str, List[float]] = {
@@ -51,6 +52,7 @@ GAZEBO_OBJECT_METADATA: Dict[str, Dict[str, Any]] = {
     "glass_001": {"category": "glass"},
     "glass_002": {"category": "glass"},
     "ball_001": {"category": "ball"},
+    "bottle_001": {"category": "glass", "color": "transparent"},
 }
 
 CATEGORY_ALIASES: Dict[str, str] = {
@@ -70,6 +72,8 @@ CATEGORY_ALIASES: Dict[str, str] = {
     "cups": "glass",
     "cylinder": "glass",
     "cylinders": "glass",
+    "bottle": "glass",
+    "bottles": "glass",
     "ball": "ball",
     "balls": "ball",
 }
@@ -102,6 +106,29 @@ NON_DISCRIMINATIVE_COLORS = {
     "mixed",
     "various",
     "varied",
+    "unknown",
+    "unspecified",
+    "any",
+}
+
+# Generic/ambiguous VLM category words that describe a broad shape or
+# function (e.g. "any container-like object") rather than a specific
+# catalog category. Two independent VLM calls on the same frame can label
+# the same object "cup" once and "container" the next time; treating words
+# like this as a hard category constraint would wrongly rule out every
+# Gazebo candidate. They are ignored as hard evidence, same as
+# NON_DISCRIMINATIVE_COLORS for colors.
+NON_DISCRIMINATIVE_CATEGORIES = {
+    "container",
+    "containers",
+    "object",
+    "objects",
+    "item",
+    "items",
+    "thing",
+    "things",
+    "vessel",
+    "vessels",
     "unknown",
     "unspecified",
     "any",
@@ -238,6 +265,13 @@ def original_color_is_non_discriminative(color: Optional[str]) -> bool:
     return normalized in NON_DISCRIMINATIVE_COLORS
 
 
+def original_category_is_non_discriminative(category: Optional[str]) -> bool:
+    if category is None:
+        return False
+    normalized = normalize_text(category)
+    return normalized in NON_DISCRIMINATIVE_CATEGORIES
+
+
 # =========================================================
 # Geometry
 # =========================================================
@@ -287,13 +321,13 @@ def format_side_status(blocker_set: Set[str]) -> str:
 
 def is_back_not_reachable(aabb: Dict[str, Tuple[float, float]]) -> bool:
     """
-    Back is not reachable if x_max > 3.75
+    Back is not reachable if x_max > 4.05
 
     Convention:
     - back face = x_max
     """
     _, x_max = aabb["x"]
-    return x_max > 3.75
+    return x_max > 4.05
 
 
 # =========================================================
@@ -524,7 +558,13 @@ def is_semantically_compatible(vlm_obj: Dict[str, Any], gz_obj: Dict[str, Any]) 
     Hard semantic filter:
     - category mismatch is incompatible
     - color is intentionally NOT a hard constraint, because VLM color can be noisy
+    - a generic/ambiguous VLM category (see NON_DISCRIMINATIVE_CATEGORIES) is
+      also NOT a hard constraint, because the same object can be labeled
+      "cup" in one VLM call and "container" in another
     """
+    if original_category_is_non_discriminative(vlm_obj.get("category")):
+        return True
+
     vlm_category = canonicalize_category(vlm_obj.get("category"))
     gz_category = canonicalize_category(gz_obj.get("category"))
 
@@ -694,6 +734,15 @@ def build_matching_warnings(
         vlm_name = vlm_obj["name"]
         gazebo_name = vlm_to_gazebo[vlm_name]
         gz_obj = gazebo_by_name[gazebo_name]
+
+        raw_vlm_category = vlm_obj.get("category")
+        if original_category_is_non_discriminative(raw_vlm_category):
+            warnings.append(
+                f"VLM object '{vlm_name}' has generic/ambiguous category "
+                f"'{raw_vlm_category}', so category was ignored as a hard "
+                f"constraint and matched to Gazebo entity '{gazebo_name}' "
+                f"(category='{gz_obj.get('category')}') using name/relation evidence."
+            )
 
         raw_vlm_color = vlm_obj.get("color")
         raw_gz_color = gz_obj.get("color")

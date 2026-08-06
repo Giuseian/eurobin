@@ -1,0 +1,473 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            fragile
+Variant:             yes_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=1.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          8.168s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_green",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_red",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "box_white",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "box_yellow",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "box_blue",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "box_pink",
+        "category": "box",
+        "color": "pink"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_green",
+        "relation": "on top of",
+        "object": "box_red"
+      },
+      {
+        "subject": "box_red",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_yellow",
+        "relation": "on top of",
+        "object": "box_blue"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "on top of",
+        "object": "box_pink"
+      },
+      {
+        "subject": "box_pink",
+        "relation": "right of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "right of",
+        "object": "box_red"
+      },
+      {
+        "subject": "box_yellow",
+        "relation": "right of",
+        "object": "box_green"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpgm17yb4a.json
+[DEBUG] Filtered object catalog:
+box_yellow_001
+box_blue_001
+box_rose_001
+box_green_001
+box_red_001
+box_white_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.495s
+[OUTPUT] scene_description_full (scene_enrichment):
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_green",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_yellow",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_red"
+        }
+      },
+      {
+        "name": "box_red",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_blue",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_green",
+          "bottom": "blocked by box_white"
+        }
+      },
+      {
+        "name": "box_white",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_pink",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_red",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_yellow",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "blocked by box_green",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_blue"
+        }
+      },
+      {
+        "name": "box_blue",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "blocked by box_red",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_yellow",
+          "bottom": "blocked by box_pink"
+        }
+      },
+      {
+        "name": "box_pink",
+        "category": "box",
+        "color": "pink",
+        "sides": {
+          "left": "blocked by box_white",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_blue",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_green",
+        "relation": "on top of",
+        "object": "box_red"
+      },
+      {
+        "subject": "box_red",
+        "relation": "on top of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_yellow",
+        "relation": "on top of",
+        "object": "box_blue"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "on top of",
+        "object": "box_pink"
+      },
+      {
+        "subject": "box_pink",
+        "relation": "right of",
+        "object": "box_white"
+      },
+      {
+        "subject": "box_blue",
+        "relation": "right of",
+        "object": "box_red"
+      },
+      {
+        "subject": "box_yellow",
+        "relation": "right of",
+        "object": "box_green"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/fragile/v6/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         16.686s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "box_green",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_red",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (left)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_yellow",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 4,
+    "Target": "box_blue",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_pink",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  },
+  {
+    "Step_id": 6,
+    "Target": "box_white",
+    "Action concept": "grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/fragile/v8/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/fragile/v8/2026-07-29_05-52-00/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         11.439s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Push box_green and box_yellow to expose the boxes beneath them.",
+    "Preconditions": [
+      "box_green is on top of box_red.",
+      "box_yellow is on top of box_blue.",
+      "The front side of box_green is accessible.",
+      "The front side of box_yellow is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The top of box_red is accessible.",
+      "The top of box_blue is accessible."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Local_goal": "Push box_red and box_blue to expose the boxes beneath them.",
+    "Preconditions": [
+      "The top of box_red is accessible.",
+      "The top of box_blue is accessible.",
+      "box_red is on top of box_white.",
+      "box_blue is on top of box_pink.",
+      "The front side of box_red is accessible.",
+      "The front side of box_blue is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The top of box_white is accessible.",
+      "The top of box_pink is accessible."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Push box_pink to clear the side of box_white.",
+    "Preconditions": [
+      "The top of box_pink is accessible.",
+      "The front side of box_pink is accessible.",
+      "box_pink is right of box_white.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The right side of box_white is accessible."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Grasp box_white with both end-effectors.",
+    "Preconditions": [
+      "The top of box_white is accessible.",
+      "The right side of box_white is accessible.",
+      "The left side of box_white is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_white.",
+      "end_effector_right is grasping box_white."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1,
+      3
+    ],
+    "Local_goal": "Push box_green and box_yellow to expose the boxes beneath them.",
+    "Preconditions": [
+      "box_green is on top of box_red.",
+      "box_yellow is on top of box_blue.",
+      "The front side of box_green is accessible.",
+      "The front side of box_yellow is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The top of box_red is accessible.",
+      "The top of box_blue is accessible."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2,
+      4
+    ],
+    "Local_goal": "Push box_red and box_blue to expose the boxes beneath them.",
+    "Preconditions": [
+      "The top of box_red is accessible.",
+      "The top of box_blue is accessible.",
+      "box_red is on top of box_white.",
+      "box_blue is on top of box_pink.",
+      "The front side of box_red is accessible.",
+      "The front side of box_blue is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The top of box_white is accessible.",
+      "The top of box_pink is accessible."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Push box_pink to clear the side of box_white.",
+    "Preconditions": [
+      "The top of box_pink is accessible.",
+      "The front side of box_pink is accessible.",
+      "box_pink is right of box_white.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "The right side of box_white is accessible."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Grasp box_white with both end-effectors.",
+    "Preconditions": [
+      "The top of box_white is accessible.",
+      "The right side of box_white is accessible.",
+      "The left side of box_white is accessible.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_white.",
+      "end_effector_right is grasping box_white."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          yes_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/fragile/2026-07-29_05-52-00/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/fragile/2026-07-29_05-52-00/terminal_log.txt
+======================================================

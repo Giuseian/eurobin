@@ -1,0 +1,633 @@
+[LOG] Complete terminal output: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/a_data_analysis_final/terminal_logs/long_horizon/gpt/validation_loop_2026-07-29_06-24-30.txt
+[LOG] Started at: 2026-07-29T06:24:30.355962
+======================================================
+
+======================================================
+VALIDATION LOOP CONFIG
+Scenario:                  long_horizon
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               0
+Max evidence rounds:       2
+Max attempts/stage:        5
+Max repeats:               1
+Max modifications:         2
+Max total actions:         20
+Modification proposal:     v1 / gpt-5.2
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+Loop ts:         2026-07-29_06-24-30
+Cycle ts meta:   2026-07-29_06-24-30
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          14.925s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "bottle_1",
+        "category": "bottle",
+        "color": "transparent"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_3",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "bottle_1",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_5",
+        "relation": "right of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_3",
+        "relation": "right of",
+        "object": "box_2"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmp662hj0yv.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_description_full] Image key used:       1.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-24-30/gpt-5.2/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.079s
+
+[scene_description_full] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "white",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_2, box_3",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "yellow",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by box_3",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_4",
+          "bottom": "blocked by box_1"
+        }
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "blocked by box_2",
+          "right": "blocked by box_5",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by box_4",
+          "bottom": "blocked by box_1"
+        }
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "blue",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by box_2, box_3"
+        }
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "blocked by box_3",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "blocked by bottle_1",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "bottle_1",
+        "category": "bottle",
+        "color": "transparent",
+        "sides": {
+          "left": "accessible",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "accessible",
+          "top": "accessible",
+          "bottom": "blocked by box_5"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_3",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_2"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "bottle_1",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_5",
+        "relation": "right of",
+        "object": "box_3"
+      },
+      {
+        "subject": "box_3",
+        "relation": "right of",
+        "object": "box_2"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/long_horizon/v5/2026-07-29_06-24-30/o3/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v5/2026-07-29_06-24-30/o3/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/long_horizon/v5/2026-07-29_06-24-30/o3/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         18.362s
+
+[vlm_planning] Parsed JSON:
+[
+  {
+    "Step_id": 1,
+    "Target": "box_4",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "Table",
+    "Action concept": "Place",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "Top"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 4,
+    "Target": "Table",
+    "Action concept": "Place",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "Top"
+  },
+  {
+    "Step_id": 5,
+    "Target": "box_3",
+    "Action concept": "Push",
+    "Manipulation mode": "Single-arm (right)",
+    "Contact mode": "Without claw",
+    "Object contact side": "Front"
+  },
+  {
+    "Step_id": 6,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "Dual-arm symmetric",
+    "Contact mode": "Without claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/long_horizon/v8/2026-07-29_06-24-30/gpt-5.2/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_06-24-30/gpt-5.2/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/long_horizon/v8/2026-07-29_06-24-30/gpt-5.2/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         5.520s
+
+[simultaneous_actions] Parsed JSON:
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp box_4 with both end-effectors from its left and right sides.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_4 is accessible.",
+      "The right side of box_4 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_4.",
+      "end_effector_right is grasping box_4."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Place box_4 on top of the Table.",
+    "Preconditions": [
+      "end_effector_left is grasping box_4.",
+      "end_effector_right is grasping box_4."
+    ],
+    "Postconditions": [
+      "box_4 is on top of the Table.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Local_goal": "Grasp box_2 with both end-effectors from its left and right sides.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_2 is accessible.",
+      "The right side of box_2 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ]
+  },
+  {
+    "Stage_id": 4,
+    "Step_id": [
+      4
+    ],
+    "Local_goal": "Place box_2 on top of the Table.",
+    "Preconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ],
+    "Postconditions": [
+      "box_2 is on top of the Table.",
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 5,
+    "Step_id": [
+      5
+    ],
+    "Local_goal": "Push box_3 from its front side using the right end-effector.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The front side of box_3 is accessible."
+    ],
+    "Postconditions": [
+      "box_3 is not on top of box_1."
+    ]
+  },
+  {
+    "Stage_id": 6,
+    "Step_id": [
+      6
+    ],
+    "Local_goal": "Grasp box_1 with both end-effectors from its left and right sides.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_1 is accessible.",
+      "The right side of box_1 is accessible.",
+      "The top of box_1 is free of objects."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_1.",
+      "end_effector_right is grasping box_1."
+    ]
+  }
+]
+
+[LOOP] Attempt opened
+[LOOP] Attempt ID:     cycle_001_stage_001_attempt_001
+[LOOP] Attempt status: open
+[LOOP] Stored I_pre:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[LOOP] Attempt status: awaiting_pre_validation
+
+[LOOP] Stage 1 PRE batch validation
+[LOOP] PRE image: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[
+  "end_effector_left is grasping nothing.",
+  "end_effector_right is grasping nothing.",
+  "The left side of box_4 is accessible.",
+  "The right side of box_4 is accessible."
+]
+
+[DEBUG][validator-pre-stage-1] Image path: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[DEBUG][validator-pre-stage-1] Image key:  1.png
+[DEBUG][validator-pre-stage-1] Pose entries:
+  - box_white_001: [4.0, 0.0, 0.6]
+  - box_yellow_001: [4.0, -0.1, 0.8]
+  - box_green_001: [4.0, 0.1, 0.8]
+  - box_blue_001: [4.0, 0.0, 1.0]
+  - box_red_001: [4.0, 0.2, 0.6]
+  - bottle_001: [4.0, 0.2, 0.8]
+[validator:pre_1] Scene context source: scene_object_list.json
+[OK][validator:pre_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/long_horizon/v6/precondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/pre/prompt.txt
+[OK][validator:pre_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/precondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/pre/response_parsed.json
+[OK][validator:pre_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/precondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/pre/run_info.json
+[OK][validator:pre_1] Execution time:         7.647s
+
+[PRE validator:pre_1] Parsed JSON:
+{
+  "schema_version": "1.0",
+  "validation_phase": "pre",
+  "overall_status": "uncertain",
+  "results": [
+    {
+      "condition": "end_effector_left is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The left end-effector is visible and not holding any object in the image."
+    },
+    {
+      "condition": "end_effector_right is grasping nothing.",
+      "status": "satisfied",
+      "reason": "The right end-effector is visible and not holding any object in the image."
+    },
+    {
+      "condition": "The left side of box_4 is accessible.",
+      "status": "uncertain",
+      "reason": "box_4 (blue box) is present, but the image does not provide enough evidence to confirm its left face is unobstructed."
+    },
+    {
+      "condition": "The right side of box_4 is accessible.",
+      "status": "uncertain",
+      "reason": "box_4 (blue box) is present, but the image does not provide enough evidence to confirm its right face is unobstructed."
+    }
+  ],
+  "evidence_used": [
+    {
+      "type": "image",
+      "role": "I_pre",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png"
+    }
+  ],
+  "validator_metadata": {
+    "stage_id": 1,
+    "condition_kind": "pre",
+    "model": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52"
+  },
+  "normalized_at": "2026-07-29T06:25:17.032374"
+}
+[LOOP] PRE overall status: uncertain
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmp7g86fna8.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_perception:pre_evidence_round_1] Updated scene graph saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/cycles/cycle_001/evidence/stage_001/pre/round_001/scene_perception/scene_description_full.json
+[LOOP] PRE status after evidence gathering: satisfied
+[LOOP] Attempt cycle_001_stage_001_attempt_001 is ready for execution.
+
+[LOOP] Stage 1 goal baseline validation on I_pre
+[validator:goal_baseline_1] Scene context source: scene_object_list.json
+[OK][validator:goal_baseline_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/long_horizon/v6/goal_baseline/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/goal_baseline/prompt.txt
+[OK][validator:goal_baseline_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/goal_baseline/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/goal_baseline/response_parsed.json
+[OK][validator:goal_baseline_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v6/goal_baseline/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/goal_baseline/run_info.json
+[OK][validator:goal_baseline_1] Execution time:         6.078s
+[LOOP] Goal baseline overall status: violated
+
+[LOOP] Executing Stage 1 in offline mode
+[LOOP] Stored I_post:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/2.png
+[LOOP] Attempt status: awaiting_post_validation
+
+[LOOP] Stage 1 POST batch validation
+[
+  "end_effector_left is grasping box_4.",
+  "end_effector_right is grasping box_4."
+]
+[validator:post_1] Scene context source: scene_object_list.json
+[OK][validator:post_1] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/validator/long_horizon/v7/postcondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/post/prompt.txt
+[OK][validator:post_1] I_pre:                  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+[OK][validator:post_1] I_post:                 /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/2.png
+[OK][validator:post_1] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v7/postcondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/post/response_parsed.json
+[OK][validator:post_1] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validator/long_horizon/v7/postcondition/2026-07-29_06-24-30/gpt-5.2/cycle_001/stage_001/post/run_info.json
+[OK][validator:post_1] Execution time:         6.284s
+
+[POST validator:post_1] Parsed JSON:
+{
+  "schema_version": "1.0",
+  "validation_phase": "post",
+  "overall_status": "violated",
+  "results": [
+    {
+      "condition": "end_effector_left is grasping box_4.",
+      "status": "violated",
+      "reason": "In I_post, the left end-effector is open and not in contact with the blue box_4; box_4 remains on top of the stack without being held.",
+      "progress_trend": "no_change"
+    },
+    {
+      "condition": "end_effector_right is grasping box_4.",
+      "status": "violated",
+      "reason": "In I_post, the right end-effector is holding the transparent bottle (bottle_1) near its opening, not the blue box_4; box_4 is not grasped.",
+      "progress_trend": "moved_away"
+    }
+  ],
+  "evidence_used": [
+    {
+      "type": "image",
+      "role": "I_pre",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png"
+    },
+    {
+      "type": "image",
+      "role": "I_post",
+      "path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/2.png"
+    }
+  ],
+  "validator_metadata": {
+    "stage_id": 1,
+    "condition_kind": "post",
+    "model": "gpt-5.2",
+    "deployment_name": "hhcm-FoundationModels_gpt52"
+  },
+  "normalized_at": "2026-07-29T06:25:48.436134"
+}
+[LOOP] POST overall status: violated
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpzul_uu50.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_perception:post_recovery_state_stage_1] Updated scene graph saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/cycles/cycle_001/evidence/stage_001/post/round_000/scene_perception/scene_description_full.json
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpdsgyafdb.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+[OK][scene_perception:pre_recovery_state_stage_1] Updated scene graph saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/cycles/cycle_001/evidence/stage_001/pre/round_000/scene_perception_recovery/scene_description_full.json
+[LOOP] Attempt cycle_001_stage_001_attempt_001 closed with postcondition failure.
+[LOOP] Attempt status after POST validation: closed_failure
+[LOOP] Stopping stage sequence at Stage 1: POST status is violated.
+
+[RECOVERY][INTERPRETATION] evidence=sufficient | phase=post | cause=unknown | execution_completed=True | same_failure_count=1 | goal_progress=none | target_state_changed=True | post_validator_progress_observed=False | stage_still_applicable=False
+[RECOVERY][INTERPRETATION] supported_modifications=0 | replan_required=True
+[RECOVERY][CANDIDATE] repeat: admissible=False | The current scene no longer supports the failed local stage.
+[RECOVERY][CANDIDATE] modify: admissible=False | No concrete symbolic modification is supported.
+[RECOVERY][CANDIDATE] replan: admissible=False | Global replanning remains available from the latest observed world state.
+[OK][validation_loop] Cycle summary saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/cycles/cycle_001/cycle_summary.json
+
+======================================================
+VALIDATION LOOP COMPLETED
+Scenario:                  long_horizon
+Loop timestamp:            2026-07-29_06-24-30
+Temperature:               0.0
+Top-p:                     1.0
+Task completed:            False
+Replans done:              0
+Run info saved:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/run_info.json
+Attempt history saved:     /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/attempt_history.json
+Loop summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/loop_summary.json
+Scene summary saved:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/scene_description_summary.json
+Planning summary saved:    /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/vlm_planning_summary.json
+Sim-actions summary saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/simultaneous_actions_summary.json
+Validator summary saved:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/validator_summary.json
+Full summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-24-30/full_pipeline_summary.json
+======================================================
+======================================================
+[LOG] Finished at: 2026-07-29T06:26:09.596350
+[LOG] Exit code: 0

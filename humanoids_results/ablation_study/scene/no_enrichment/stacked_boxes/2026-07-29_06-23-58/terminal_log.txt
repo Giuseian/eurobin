@@ -1,0 +1,199 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            stacked_boxes
+Variant:             no_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=1.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          6.038s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "red"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_1"
+      }
+    ]
+  }
+}
+[ABLATION] scene_description_full skipped -- planner receives the plain scene_description object list only.
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/stacked_boxes/v6/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         9.150s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "box_2",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 2,
+    "Target": "box_2",
+    "Action concept": "Release",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  },
+  {
+    "Step_id": 3,
+    "Target": "box_1",
+    "Action concept": "Grasp",
+    "Manipulation mode": "dual-arm symmetric",
+    "Contact mode": "without claw",
+    "Object contact side": "right & left"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/stacked_boxes/v8/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v8/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/stacked_boxes/v8/2026-07-29_06-23-58/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         10.204s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp box_2 using both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_2 is accessible.",
+      "The right side of box_2 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Release box_2 from both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Local_goal": "Grasp box_1 using both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_1 is accessible.",
+      "The right side of box_1 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_1.",
+      "end_effector_right is grasping box_1."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Grasp box_2 using both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_2 is accessible.",
+      "The right side of box_2 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ]
+  },
+  {
+    "Stage_id": 2,
+    "Step_id": [
+      2
+    ],
+    "Local_goal": "Release box_2 from both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping box_2.",
+      "end_effector_right is grasping box_2."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing."
+    ]
+  },
+  {
+    "Stage_id": 3,
+    "Step_id": [
+      3
+    ],
+    "Local_goal": "Grasp box_1 using both end-effectors.",
+    "Preconditions": [
+      "end_effector_left is grasping nothing.",
+      "end_effector_right is grasping nothing.",
+      "The left side of box_1 is accessible.",
+      "The right side of box_1 is accessible."
+    ],
+    "Postconditions": [
+      "end_effector_left is grasping box_1.",
+      "end_effector_right is grasping box_1."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          no_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/stacked_boxes/2026-07-29_06-23-58/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/no_enrichment/stacked_boxes/2026-07-29_06-23-58/terminal_log.txt
+======================================================

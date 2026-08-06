@@ -1,0 +1,149 @@
+[LOG] Complete terminal output: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/a_data_analysis_final/terminal_logs/long_horizon/gpt/validation_loop_2026-07-29_06-12-14.txt
+[LOG] Started at: 2026-07-29T06:12:14.635474
+======================================================
+
+======================================================
+VALIDATION LOOP CONFIG
+Scenario:                  long_horizon
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               3
+Max evidence rounds:       2
+Max attempts/stage:        5
+Max repeats:               1
+Max modifications:         2
+Max total actions:         20
+Modification proposal:     v1 / gpt-5.2
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/long_horizon/1.png
+Loop ts:         2026-07-29_06-12-14
+Cycle ts meta:   2026-07-29_06-12-14
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/long_horizon/v6/2026-07-29_06-12-14/gpt-5.2/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-12-14/gpt-5.2/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-12-14/gpt-5.2/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/long_horizon/v6/2026-07-29_06-12-14/gpt-5.2/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          14.016s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "box_1",
+        "category": "box",
+        "color": "white"
+      },
+      {
+        "name": "box_2",
+        "category": "box",
+        "color": "yellow"
+      },
+      {
+        "name": "box_3",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "box_4",
+        "category": "box",
+        "color": "blue"
+      },
+      {
+        "name": "box_5",
+        "category": "box",
+        "color": "red"
+      },
+      {
+        "name": "bottle_1",
+        "category": "bottle",
+        "color": "transparent"
+      },
+      {
+        "name": "label_1",
+        "category": "label",
+        "color": "red"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "box_2",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_3",
+        "relation": "on top of",
+        "object": "box_1"
+      },
+      {
+        "subject": "box_4",
+        "relation": "on top of",
+        "object": "box_2"
+      },
+      {
+        "subject": "label_1",
+        "relation": "on top of",
+        "object": "box_3"
+      },
+      {
+        "subject": "bottle_1",
+        "relation": "on top of",
+        "object": "box_5"
+      },
+      {
+        "subject": "box_3",
+        "relation": "right of",
+        "object": "box_2"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmpyrwajijv.json
+[DEBUG] Filtered object catalog:
+box_white_001
+box_yellow_001
+box_green_001
+box_blue_001
+box_red_001
+bottle_001
+
+
+[ERROR][validation_loop] No Gazebo candidates found for VLM object 'label_1' with category='label' and color='red'.
+[OK][validation_loop] Cycle summary saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/cycles/cycle_001/cycle_summary.json
+
+======================================================
+VALIDATION LOOP COMPLETED
+Scenario:                  long_horizon
+Loop timestamp:            2026-07-29_06-12-14
+Temperature:               0.0
+Top-p:                     1.0
+Task completed:            False
+Replans done:              0
+Run info saved:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/run_info.json
+Attempt history saved:     /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/attempt_history.json
+Loop summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/loop_summary.json
+Scene summary saved:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/scene_description_summary.json
+Planning summary saved:    /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/vlm_planning_summary.json
+Sim-actions summary saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/simultaneous_actions_summary.json
+Validator summary saved:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/validator_summary.json
+Full summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/long_horizon/2026-07-29_06-12-14/full_pipeline_summary.json
+======================================================
+======================================================
+[LOG] Finished at: 2026-07-29T06:12:28.730649
+[LOG] Exit code: 0

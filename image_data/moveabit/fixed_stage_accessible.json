@@ -1,0 +1,24 @@
+{
+  "stage": {
+    "Stage_id": 1,
+    "Step_id": [1],
+    "Local_goal": "Push box_2 from its front side to free the right side of box_1.",
+    "Preconditions": [
+      "end_effector_right is grasping nothing.",
+      "The front side of box_2 is accessible."
+    ],
+    "Postconditions": [
+      "The right side of box_1 is accessible."
+    ]
+  },
+  "actions": [
+    {
+      "Step_id": 1,
+      "Target": "box_2",
+      "Action concept": "Push",
+      "Manipulation mode": "Single-arm (right)",
+      "Contact mode": "Without claw",
+      "Object contact side": "Front"
+    }
+  ]
+}

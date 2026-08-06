@@ -1,0 +1,181 @@
+
+======================================================
+SCENE-PERCEPTION + PLANNING ABLATION (single-pass, no execution/validation)
+Scenario:            moveabit
+Variant:             yes_enrichment
+Frames to process:   1
+======================================================
+
+------------------------------------------------------
+FRAME 1/1 | image=box_ruotata.png
+------------------------------------------------------
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          6.794s
+[OUTPUT] scene_description:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "green_box",
+        "category": "box",
+        "color": "green"
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "right of",
+        "object": "green_box"
+      }
+    ]
+  }
+}
+
+[DEBUG] Pose source: static
+[DEBUG] Static pose file: /tmp/tmp_qvj96p1.json
+[DEBUG] Filtered object catalog:
+box_red_001
+box_green_001
+
+[OK][scene_description_full] Image key used:       box_ruotata.png
+[OK][scene_description_full] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full.json
+[OK][scene_description_full] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/scene_description_full_run_info.json
+[OK][scene_description_full] Execution time:         0.002s
+[OUTPUT] scene_description_full (scene_enrichment):
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "green_box",
+        "category": "box",
+        "color": "green",
+        "sides": {
+          "left": "accessible",
+          "right": "blocked by red_box",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      },
+      {
+        "name": "red_box",
+        "category": "box",
+        "color": "red",
+        "sides": {
+          "left": "blocked by green_box",
+          "right": "accessible",
+          "front": "accessible",
+          "back": "not reachable",
+          "top": "accessible",
+          "bottom": "blocked by the table"
+        }
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": [
+      {
+        "subject": "red_box",
+        "relation": "right of",
+        "object": "green_box"
+      }
+    ]
+  }
+}
+[OK][vlm_planning] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][vlm_planning] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][vlm_planning] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/moveabit/v6/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][vlm_planning] Execution time:         4.989s
+[OUTPUT] vlm_planning (sequential_plan):
+[
+  {
+    "Step_id": 1,
+    "Target": "red_box",
+    "Action concept": "push",
+    "Manipulation mode": "single-arm (right)",
+    "Contact mode": "without claw",
+    "Object contact side": "front"
+  }
+]
+[OK][simultaneous_actions] Prompt saved to:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/moveabit/v8/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt
+[OK][simultaneous_actions] Parsed output saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/moveabit/v8/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json
+[OK][simultaneous_actions] Run info saved to:      /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/moveabit/v8/2026-07-29_07-03-17/gemini-robotics-er-1.6-preview/cycle_001/run_info.json
+[OK][simultaneous_actions] Execution time:         6.591s
+[OUTPUT] simultaneous_actions (raw model output):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Push the red_box forward to move it past the green_box using the right end-effector.",
+    "Preconditions": [
+      "The green_box is not touched.",
+      "The end_effector_right is grasping nothing.",
+      "The front of red_box is accessible.",
+      "The red_box is reachable."
+    ],
+    "Postconditions": [
+      "The green_box is not touched.",
+      "The red_box is past the green_box.",
+      "The end_effector_right is grasping nothing."
+    ]
+  }
+]
+[OUTPUT] stages (normalized, with Preconditions/Postconditions):
+[
+  {
+    "Stage_id": 1,
+    "Step_id": [
+      1
+    ],
+    "Local_goal": "Push the red_box forward to move it past the green_box using the right end-effector.",
+    "Preconditions": [
+      "The green_box is not touched.",
+      "The end_effector_right is grasping nothing.",
+      "The front of red_box is accessible.",
+      "The red_box is reachable."
+    ],
+    "Postconditions": [
+      "The green_box is not touched.",
+      "The red_box is past the green_box.",
+      "The end_effector_right is grasping nothing."
+    ]
+  }
+]
+
+======================================================
+ABLATION RUN SUMMARY
+Variant:          yes_enrichment
+Frames run:       1
+Frames errored:   0
+run_summary.json: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/moveabit/2026-07-29_07-03-17/run_summary.json
+terminal_log.txt: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/scene/yes_enrichment/moveabit/2026-07-29_07-03-17/terminal_log.txt
+======================================================

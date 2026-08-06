@@ -1,0 +1,258 @@
+{
+  "module": "ablation_scene_perception_planning_run_summary",
+  "variant": "no_enrichment",
+  "include_scene_enrichment": false,
+  "scenario_name": "two_glasses_on_box",
+  "loop_timestamp": "2026-07-29_06-25-47",
+  "timestamp": "2026-07-29T06:25:47.556342",
+  "config": {
+    "ablation_variant": "no_enrichment",
+    "include_scene_enrichment": false,
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "vlm_planning": {
+      "prompt_version": "v6",
+      "model": "gemini-robotics-er-1.6-preview"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v8",
+      "model": "gemini-robotics-er-1.6-preview"
+    }
+  },
+  "frames": [
+    {
+      "cycle_index": 1,
+      "cycle_name": "cycle_001",
+      "image": "1.png",
+      "error": null,
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "box",
+                "category": "box",
+                "color": "green"
+              },
+              {
+                "name": "cup_1",
+                "category": "cup",
+                "color": "black"
+              },
+              {
+                "name": "cup_2",
+                "category": "cup",
+                "color": "black"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": [
+              {
+                "subject": "cup_1",
+                "relation": "on top of",
+                "object": "box"
+              },
+              {
+                "subject": "cup_2",
+                "relation": "on top of",
+                "object": "box"
+              },
+              {
+                "subject": "cup_2",
+                "relation": "right of",
+                "object": "cup_1"
+              }
+            ]
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/scene_object_list.json"
+        }
+      },
+      "vlm_planning": {
+        "output": [
+          {
+            "Step_id": 1,
+            "Target": "cup_1",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Single-arm (left)",
+            "Contact mode": "With claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 2,
+            "Target": "box",
+            "Action concept": "Place",
+            "Manipulation mode": "Single-arm (left)",
+            "Contact mode": "With claw",
+            "Object contact side": "top"
+          },
+          {
+            "Step_id": 3,
+            "Target": "cup_2",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "With claw",
+            "Object contact side": "right & left"
+          },
+          {
+            "Step_id": 4,
+            "Target": "box",
+            "Action concept": "Place",
+            "Manipulation mode": "Single-arm (right)",
+            "Contact mode": "With claw",
+            "Object contact side": "top"
+          },
+          {
+            "Step_id": 5,
+            "Target": "box",
+            "Action concept": "Grasp",
+            "Manipulation mode": "Dual-arm symmetric",
+            "Contact mode": "Without claw",
+            "Object contact side": "right & left"
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/vlm_planning/two_glasses_on_box/v6/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "simultaneous_actions": {
+        "output": [
+          {
+            "Stage_id": 1,
+            "Step_id": [
+              1,
+              3
+            ],
+            "Local_goal": "Grasp cup_1 and cup_2 simultaneously using both end-effectors.",
+            "Preconditions": [
+              "The end_effector_left is grasping nothing.",
+              "The end_effector_right is grasping nothing.",
+              "cup_1 is on top of box.",
+              "cup_2 is on top of box."
+            ],
+            "Postconditions": [
+              "The end_effector_left is grasping cup_1.",
+              "The end_effector_right is grasping cup_2."
+            ]
+          },
+          {
+            "Stage_id": 2,
+            "Step_id": [
+              2,
+              4
+            ],
+            "Local_goal": "Place cup_1 and cup_2 away to clear the top of the box.",
+            "Preconditions": [
+              "The end_effector_left is grasping cup_1.",
+              "The end_effector_right is grasping cup_2."
+            ],
+            "Postconditions": [
+              "The end_effector_left is grasping nothing.",
+              "The end_effector_right is grasping nothing.",
+              "cup_1 is not on top of box.",
+              "cup_2 is not on top of box."
+            ]
+          },
+          {
+            "Stage_id": 3,
+            "Step_id": [
+              5
+            ],
+            "Local_goal": "Grasp the green box with both end-effectors.",
+            "Preconditions": [
+              "The end_effector_left is grasping nothing.",
+              "The end_effector_right is grasping nothing.",
+              "cup_1 is not on top of box.",
+              "cup_2 is not on top of box."
+            ],
+            "Postconditions": [
+              "The end_effector_left is in contact with box.",
+              "The end_effector_right is in contact with box."
+            ]
+          }
+        ],
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/simultaneous_actions/two_glasses_on_box/v8/2026-07-29_06-25-47/gemini-robotics-er-1.6-preview/cycle_001/run_info.json"
+        }
+      },
+      "stages": [
+        {
+          "Stage_id": 1,
+          "Step_id": [
+            1,
+            3
+          ],
+          "Local_goal": "Grasp cup_1 and cup_2 simultaneously using both end-effectors.",
+          "Preconditions": [
+            "The end_effector_left is grasping nothing.",
+            "The end_effector_right is grasping nothing.",
+            "cup_1 is on top of box.",
+            "cup_2 is on top of box."
+          ],
+          "Postconditions": [
+            "The end_effector_left is grasping cup_1.",
+            "The end_effector_right is grasping cup_2."
+          ]
+        },
+        {
+          "Stage_id": 2,
+          "Step_id": [
+            2,
+            4
+          ],
+          "Local_goal": "Place cup_1 and cup_2 away to clear the top of the box.",
+          "Preconditions": [
+            "The end_effector_left is grasping cup_1.",
+            "The end_effector_right is grasping cup_2."
+          ],
+          "Postconditions": [
+            "The end_effector_left is grasping nothing.",
+            "The end_effector_right is grasping nothing.",
+            "cup_1 is not on top of box.",
+            "cup_2 is not on top of box."
+          ]
+        },
+        {
+          "Stage_id": 3,
+          "Step_id": [
+            5
+          ],
+          "Local_goal": "Grasp the green box with both end-effectors.",
+          "Preconditions": [
+            "The end_effector_left is grasping nothing.",
+            "The end_effector_right is grasping nothing.",
+            "cup_1 is not on top of box.",
+            "cup_2 is not on top of box."
+          ],
+          "Postconditions": [
+            "The end_effector_left is in contact with box.",
+            "The end_effector_right is in contact with box."
+          ]
+        }
+      ]
+    }
+  ]
+}

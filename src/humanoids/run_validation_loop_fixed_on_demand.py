@@ -20,7 +20,7 @@ from typing import Any
 
 from src.settings import load_settings
 from src.scenario_loader import load_scenario
-from src.azure_openai_client import call_azure_chat_completion
+from src.llm_client import call_llm_completion
 from src.humanoids.attempt_state_and_validation import (
     ATTEMPT_STATUSES,
     assert_attempt_invariants,
@@ -35,10 +35,12 @@ from src.humanoids.failure_reporting import (
     build_uncertainty_exhausted_report,
 )
 from src.humanoids.recovery_and_history import (
+    SUPPORTED_SYMBOLIC_FIELDS,
     check_recovery_limits,
     extract_relevant_history,
     interpret_failure,
     plan_recovery_evidence_based,
+    repeat_assessment,
     schedule_recovery,
 )
 from src.humanoids.scene_transition_analysis import (
@@ -59,12 +61,14 @@ from src.utils import (
     get_validator_output_cycle_dir,
     get_validation_loop_output_dir,
     get_validation_loop_cycle_dir,
+    get_prompt_scenario_cycle_dir,
+    get_output_cycle_dir,
     try_parse_json,
     write_json,
     read_json,
 )
 
-SUPPORTED_MODELS = ["o3", "gpt-5.2"]
+SUPPORTED_MODELS = ["o3", "gpt-5.2", "gemini-robotics-er-1.6-preview"]
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
 
 
@@ -150,6 +154,31 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--plan-model", type=str, required=True, choices=SUPPORTED_MODELS)
     parser.add_argument("--sim-model", type=str, required=True, choices=SUPPORTED_MODELS)
     parser.add_argument("--validator-model", type=str, required=True, choices=SUPPORTED_MODELS)
+    parser.add_argument(
+        "--mod-v",
+        type=str,
+        default="v1",
+        help=(
+            "Prompt version for the modification-proposal step, invoked "
+            "only when repeat is no longer admissible for a failed stage."
+        ),
+    )
+    parser.add_argument(
+        "--mod-model",
+        type=str,
+        default="gpt-5.2",
+        choices=SUPPORTED_MODELS,
+        help="Model used for the modification-proposal step.",
+    )
+    parser.add_argument(
+        "--interactive",
+        action="store_true",
+        help=(
+            "Pause and ask which image inside --frames-dir to use as I_post "
+            "after each PRE validation, and pause again after each recovery "
+            "decision, instead of consuming --frames-dir automatically."
+        ),
+    )
 
     parser.add_argument(
         "--temperature",
@@ -185,7 +214,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-attempts-per-stage", type=int, default=5)
     parser.add_argument("--max-repeats", type=int, default=1)
     parser.add_argument("--max-modifications", type=int, default=2)
-    parser.add_argument("--max-replacements", type=int, default=1)
     parser.add_argument("--max-total-actions", type=int, default=20)
 
     parser.add_argument(
@@ -458,14 +486,18 @@ def execute_stage_offline(
     attempt: dict[str, Any],
     frame_paths: list[str],
     frame_cursor: int,
+    post_cursor_override: int | None = None,
 ) -> tuple[str, int]:
     """
     Simulate one stage execution by advancing from the current state frame
-    to the immediately following state frame.
+    to the next state frame.
 
-    frame_cursor identifies I_pre. Therefore:
+    frame_cursor identifies I_pre, so by default:
     - I_pre  = frame_paths[frame_cursor]
     - I_post = frame_paths[frame_cursor + 1]
+
+    In interactive mode, post_cursor_override selects any frame in
+    frame_paths as I_post instead of the naturally next one.
 
     The returned cursor points to I_post, so the same image automatically
     becomes I_pre for the following stage.
@@ -496,14 +528,22 @@ def execute_stage_offline(
     attempt["execution"]["started_at"] = datetime.now().isoformat()
     attempt["execution"]["mode"] = "offline_consecutive_state_frames"
 
-    post_cursor = frame_cursor + 1
-    if post_cursor >= len(frame_paths):
-        raise RuntimeError(
-            "No next state frame is available in --frames-dir for "
-            f"attempt {attempt['attempt_id']}. I_pre is "
-            f"'{expected_pre_path}', but an I_post frame at index "
-            f"{post_cursor} is required."
-        )
+    if post_cursor_override is not None:
+        post_cursor = post_cursor_override
+        if post_cursor < 0 or post_cursor >= len(frame_paths):
+            raise RuntimeError(
+                f"Invalid post_cursor_override {post_cursor} for "
+                f"{len(frame_paths)} available frames."
+            )
+    else:
+        post_cursor = frame_cursor + 1
+        if post_cursor >= len(frame_paths):
+            raise RuntimeError(
+                "No next state frame is available in --frames-dir for "
+                f"attempt {attempt['attempt_id']}. I_pre is "
+                f"'{expected_pre_path}', but an I_post frame at index "
+                f"{post_cursor} is required."
+            )
 
     post_image_path = str(Path(frame_paths[post_cursor]).resolve())
 
@@ -673,6 +713,70 @@ def render_goal_baseline_validator_prompt(
     )
 
 
+def render_modification_proposal_prompt(
+    *,
+    base_prompt: str,
+    local_goal: str,
+    failed_conditions: list[dict[str, Any]],
+    failed_actions: list[dict[str, Any]],
+    already_tried_values: list[dict[str, Any]],
+) -> str:
+    """
+    Render the modification-proposal prompt loaded from prompt.txt.
+
+    Supported placeholders:
+      <LOCAL_GOAL>
+      <FAILED_CONDITIONS>
+      <FAILED_ACTIONS>
+      <ALREADY_TRIED_VALUES>
+    """
+    whitelisted_actions = [
+        {
+            "action_index": index,
+            **{
+                field: action[field]
+                for field in SUPPORTED_SYMBOLIC_FIELDS
+                if field in action
+            },
+        }
+        for index, action in enumerate(failed_actions)
+    ]
+
+    replacements = {
+        "<LOCAL_GOAL>": local_goal,
+        "<FAILED_CONDITIONS>": json.dumps(
+            failed_conditions,
+            indent=2,
+            ensure_ascii=False,
+        ),
+        "<FAILED_ACTIONS>": json.dumps(
+            whitelisted_actions,
+            indent=2,
+            ensure_ascii=False,
+        ),
+        "<ALREADY_TRIED_VALUES>": json.dumps(
+            already_tried_values,
+            indent=2,
+            ensure_ascii=False,
+        ),
+    }
+
+    prompt = base_prompt
+    for placeholder, value in replacements.items():
+        prompt = prompt.replace(placeholder, value)
+
+    unresolved = sorted(
+        set(re.findall(r"<[A-Z][A-Z0-9_]*>", prompt))
+    )
+    if unresolved:
+        raise ValueError(
+            "Unresolved modification-proposal prompt placeholders: "
+            + ", ".join(unresolved)
+        )
+
+    return prompt.strip()
+
+
 def _replace_validator_leaf(version: str, leaf: str) -> str:
     """
     Replace the last validator-version component.
@@ -754,7 +858,6 @@ def validate_args(args: argparse.Namespace) -> None:
         "max_attempts_per_stage",
         "max_repeats",
         "max_modifications",
-        "max_replacements",
         "max_total_actions",
     ):
         if getattr(args, name) < 0:
@@ -795,6 +898,51 @@ def list_frame_paths(frames_dir: str | Path) -> list[str]:
         raise ValueError(f"No image files found inside frames-dir: {frames_dir}")
 
     return [str(p.resolve()) for p in frames]
+
+
+def prompt_for_post_image(
+    frame_paths: list[str],
+    frame_cursor: int,
+) -> int:
+    """
+    Ask the user, in the terminal, which image inside --frames-dir to use as
+    I_post for the current attempt. Any image in frame_paths is selectable,
+    not only the naturally next one. Returns the chosen index.
+    """
+    default_cursor = frame_cursor + 1
+    default_name = (
+        Path(frame_paths[default_cursor]).name
+        if default_cursor < len(frame_paths)
+        else None
+    )
+
+    print("\n[INTERACTIVE] Available images in --frames-dir:")
+    for index, path in enumerate(frame_paths):
+        marker = " (natural next)" if index == default_cursor else ""
+        print(f"  [{index}] {Path(path).name}{marker}")
+
+    prompt = "[INTERACTIVE] Choose I_post (index or filename"
+    prompt += f", Enter for '{default_name}'): " if default_name else "): "
+
+    while True:
+        raw = input(prompt).strip()
+        if not raw:
+            if default_name is None:
+                print("[INTERACTIVE] No natural next frame exists; you must choose one.")
+                continue
+            return default_cursor
+
+        if raw.isdigit():
+            index = int(raw)
+            if 0 <= index < len(frame_paths):
+                return index
+            print(f"[INTERACTIVE] Index out of range: {index}")
+            continue
+
+        matches = [i for i, p in enumerate(frame_paths) if Path(p).name == raw]
+        if matches:
+            return matches[0]
+        print(f"[INTERACTIVE] No frame named '{raw}' found. Try again.")
 
 
 def print_pose_dict_for_image(
@@ -1134,7 +1282,6 @@ def build_global_config(args: argparse.Namespace) -> dict[str, Any]:
         "max_attempts_per_stage": args.max_attempts_per_stage,
         "max_repeats": args.max_repeats,
         "max_modifications": args.max_modifications,
-        "max_replacements": args.max_replacements,
         "max_total_actions": args.max_total_actions,
     }
 
@@ -1231,7 +1378,7 @@ def execute_scene_description_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -1417,7 +1564,7 @@ def execute_vlm_planning_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -1525,7 +1672,7 @@ def execute_simultaneous_actions_step(
         prompt_text=system_prompt,
     )
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=system_prompt,
@@ -1660,7 +1807,7 @@ def execute_validator_step(
     prompt_path = prompt_dir / "prompt.txt"
     write_text(prompt_path, system_prompt)
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=validator_model,
         system_prompt=system_prompt,
@@ -1849,7 +1996,7 @@ def execute_goal_baseline_validator_step(
     prompt_path = prompt_dir / "prompt.txt"
     write_text(prompt_path, system_prompt)
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=validator_model,
         system_prompt=system_prompt,
@@ -2040,7 +2187,7 @@ def execute_postcondition_validator_step(
     write_text(prompt_path, system_prompt)
 
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=validator_model,
         system_prompt=system_prompt,
@@ -2169,6 +2316,146 @@ def execute_postcondition_validator_step(
     }
 
 
+def execute_modification_proposal_step(
+    settings,
+    scenario_name: str,
+    version: str,
+    model_name: str,
+    loop_timestamp: str,
+    cycle_name: str,
+    cycle_idx: int,
+    cycle_timestamp: str,
+    stage_id: int,
+    local_goal: str,
+    failed_conditions: list[dict[str, Any]],
+    failed_actions: list[dict[str, Any]],
+    already_tried_values: list[dict[str, Any]],
+    attempt_image_paths: list[str],
+    temperature: float,
+    top_p: float,
+) -> dict[str, Any]:
+    """
+    Ask the model whether a concrete symbolic-field change (restricted to
+    SUPPORTED_SYMBOLIC_FIELDS) is supported by the repeated I_pre/I_post
+    evidence for a stage whose repeat budget is no longer justified.
+    """
+    stage_name = make_stage_name(stage_id)
+
+    base_prompt = load_base_prompt(settings, "modification_proposal", version)
+    system_prompt = render_modification_proposal_prompt(
+        base_prompt=base_prompt,
+        local_goal=local_goal,
+        failed_conditions=failed_conditions,
+        failed_actions=failed_actions,
+        already_tried_values=already_tried_values,
+    )
+
+    prompt_dir = (
+        get_prompt_scenario_cycle_dir(
+            settings=settings,
+            module_name="modification_proposal",
+            scenario_name=scenario_name,
+            version=version,
+            loop_timestamp=loop_timestamp,
+            model_name=model_name,
+            cycle_name=cycle_name,
+        )
+        / stage_name
+    )
+    prompt_path = prompt_dir / "prompt.txt"
+    write_text(prompt_path, system_prompt)
+
+    result = call_llm_completion(
+        settings=settings,
+        model_name=model_name,
+        system_prompt=system_prompt,
+        user_text=(
+            "Judge, from the repeated I_pre/I_post image pairs shown in "
+            "order, whether a concrete change to one allowed symbolic field "
+            "is supported. Return valid JSON only."
+        ),
+        image_path=None,
+        image_paths=attempt_image_paths,
+        temperature=temperature,
+        top_p=top_p,
+    )
+
+    parse_ok, parsed_response = try_parse_json(result["raw_response"])
+    if not parse_ok:
+        raise ValueError(
+            f"[modification_proposal:{stage_id}] Model response could not "
+            f"be parsed as valid JSON.\n\nRaw response:\n{result['raw_response']}"
+        )
+
+    if not isinstance(parsed_response.get("modifications"), list):
+        parsed_response["modifications"] = []
+    parsed_response["modification_supported"] = bool(
+        parsed_response.get("modification_supported")
+    ) and bool(parsed_response["modifications"])
+
+    output_dir = (
+        get_output_cycle_dir(
+            settings=settings,
+            module_name="modification_proposal",
+            scenario_name=scenario_name,
+            version=version,
+            loop_timestamp=loop_timestamp,
+            model_name=model_name,
+            cycle_name=cycle_name,
+        )
+        / stage_name
+    )
+    ensure_dir(output_dir)
+
+    parsed_path = save_json_file(output_dir / "response_parsed.json", parsed_response)
+    run_info = {
+        "module": "modification_proposal",
+        "scenario_name": scenario_name,
+        "prompt_version": version,
+        "loop_timestamp": loop_timestamp,
+        "cycle_name": cycle_name,
+        "cycle_index": cycle_idx,
+        "cycle_timestamp": cycle_timestamp,
+        "stage_id": stage_id,
+        "stage_name": stage_name,
+        "local_goal": local_goal,
+        "failed_conditions": failed_conditions,
+        "failed_actions": failed_actions,
+        "already_tried_values": already_tried_values,
+        "model": result["model_name"],
+        "deployment_name": result["deployment_name"],
+        "execution_time_seconds": result["execution_time_seconds"],
+        "timestamp": datetime.now().isoformat(),
+        "attempt_image_paths": attempt_image_paths,
+        "sampling_config": {"temperature": temperature, "top_p": top_p},
+        "response_parsed": parsed_response,
+    }
+    run_info_path = save_json_file(output_dir / "run_info.json", run_info)
+
+    print(f"[OK][modification_proposal:{stage_id}] Prompt saved to:        {prompt_path}")
+    print(
+        f"[OK][modification_proposal:{stage_id}] Images shown:            "
+        f"{len(attempt_image_paths)}"
+    )
+    print(
+        f"[OK][modification_proposal:{stage_id}] modification_supported:  "
+        f"{parsed_response['modification_supported']}"
+    )
+    print(f"[OK][modification_proposal:{stage_id}] Parsed output saved to: {parsed_path}")
+    print(f"[OK][modification_proposal:{stage_id}] Run info saved to:      {run_info_path}")
+
+    return {
+        "output": parsed_response,
+        "paths": {
+            "prompt": str(prompt_path),
+            "response_parsed": str(parsed_path),
+            "run_info": str(run_info_path),
+        },
+        "model_name": result["model_name"],
+        "execution_time_seconds": result["execution_time_seconds"],
+    }
+
+
 def get_evidence_round_dir(
     settings,
     scenario_name: str,
@@ -2248,7 +2535,7 @@ def execute_scene_perception_for_state(
     ensure_dir(output_dir)
 
     base_prompt = load_base_prompt(settings, "scene_description", scene_version)
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=scene_model,
         system_prompt=base_prompt,
@@ -2447,7 +2734,7 @@ Preserve condition text and order. Return JSON only.
     prompt_path = output_dir / "prompt.txt"
     write_text(prompt_path, system_prompt)
 
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=validator_model,
         system_prompt=system_prompt,
@@ -2750,7 +3037,7 @@ Return JSON only.
 
     prompt_path = output_dir / "prompt.txt"
     write_text(prompt_path, prompt)
-    result = call_azure_chat_completion(
+    result = call_llm_completion(
         settings=settings,
         model_name=model_name,
         system_prompt=prompt,
@@ -3267,8 +3554,8 @@ def main() -> None:
     print(f"Max attempts/stage:        {args.max_attempts_per_stage}")
     print(f"Max repeats:               {args.max_repeats}")
     print(f"Max modifications:         {args.max_modifications}")
-    print(f"Max replacements:          {args.max_replacements}")
     print(f"Max total actions:         {args.max_total_actions}")
+    print(f"Modification proposal:     {args.mod_v} / {args.mod_model}")
     print("======================================================")
 
     while not task_completed:
@@ -3711,17 +3998,22 @@ def main() -> None:
                             "max_attempts_per_stage": args.max_attempts_per_stage,
                             "max_repeats": args.max_repeats,
                             "max_modifications": args.max_modifications,
-                            "max_replacements": args.max_replacements,
                             "max_replans": args.max_replans,
                             "max_total_actions": args.max_total_actions,
                         },
                         counters=full_summary["recovery_counters"],
+                    )
+                    post_cursor_override = (
+                        prompt_for_post_image(frame_paths, frame_cursor)
+                        if args.interactive
+                        else None
                     )
                     try:
                         post_image, frame_cursor = execute_stage_offline(
                             attempt=attempt_record,
                             frame_paths=frame_paths,
                             frame_cursor=frame_cursor,
+                            post_cursor_override=post_cursor_override,
                         )
                     except Exception as execution_exc:
                         failure_report = build_failure_report(
@@ -4267,7 +4559,6 @@ def main() -> None:
                         "max_attempts_per_stage": args.max_attempts_per_stage,
                         "max_repeats": args.max_repeats,
                         "max_modifications": args.max_modifications,
-                        "max_replacements": args.max_replacements,
                         "max_replans": args.max_replans,
                         "max_total_actions": args.max_total_actions,
                     }
@@ -4313,6 +4604,8 @@ def main() -> None:
                         f"{failure_interpretation['goal_progress']} | "
                         f"target_state_changed="
                         f"{failure_interpretation['target_state_changed']} | "
+                        f"post_validator_progress_observed="
+                        f"{failure_interpretation['post_validator_progress_observed']} | "
                         f"stage_still_applicable="
                         f"{failure_interpretation['stage_still_applicable']}"
                     )
@@ -4320,11 +4613,93 @@ def main() -> None:
                         "[RECOVERY][INTERPRETATION] "
                         f"supported_modifications="
                         f"{len(failure_interpretation['supported_symbolic_modifications'])} | "
-                        f"replacement_supported="
-                        f"{failure_interpretation['replacement_supported']} | "
                         f"replan_required="
                         f"{failure_interpretation['replan_required']}"
                     )
+
+                    repeat_ok, _ = repeat_assessment(
+                        interpretation=failure_interpretation,
+                    )
+                    if (
+                        not repeat_ok
+                        and not failure_interpretation["replan_required"]
+                        and failure_interpretation["evidence_status"]
+                        == "sufficient"
+                    ):
+                        already_tried_values = [
+                            {
+                                "action_index": field_change.get("action_index"),
+                                "field": field_change.get("field"),
+                                "new_value": field_change.get("new_value"),
+                            }
+                            for attempt in relevant_history.get(
+                                "strategies_already_tried", []
+                            )
+                            if attempt.get("recovery_type") == "modify"
+                            for field_change in attempt.get(
+                                "changes", {}
+                            ).get("symbolic_modifications", [])
+                        ]
+                        already_tried_values.extend(
+                            {
+                                "action_index": index,
+                                "field": field,
+                                "new_value": action[field],
+                            }
+                            for index, action in enumerate(failed_actions)
+                            for field in SUPPORTED_SYMBOLIC_FIELDS
+                            if field in action
+                        )
+                        attempt_image_paths = [
+                            path
+                            for attempt in relevant_history.get(
+                                "same_stage_attempts", []
+                            )
+                            for path in (
+                                attempt.get("pre", {}).get("image_path"),
+                                attempt.get("post", {}).get("image_path"),
+                            )
+                            if path
+                        ]
+                        modification_proposal = execute_modification_proposal_step(
+                            settings=settings,
+                            scenario_name=args.scenario,
+                            version=args.mod_v,
+                            model_name=args.mod_model,
+                            loop_timestamp=loop_timestamp,
+                            cycle_name=cycle_name,
+                            cycle_idx=cycle_idx,
+                            cycle_timestamp=cycle_timestamp,
+                            stage_id=failed_stage_id,
+                            local_goal=failed_stage.get("Local_goal", ""),
+                            failed_conditions=failure_report.get(
+                                "failed_conditions", []
+                            ),
+                            failed_actions=failed_actions,
+                            already_tried_values=already_tried_values,
+                            attempt_image_paths=attempt_image_paths,
+                            temperature=args.temperature,
+                            top_p=args.top_p,
+                        )
+                        cycle_record["modification_proposal"] = deepcopy(
+                            modification_proposal["output"]
+                        )
+                        if modification_proposal["output"]["modification_supported"]:
+                            failure_report["supported_symbolic_modifications"] = (
+                                modification_proposal["output"]["modifications"]
+                            )
+                            failure_interpretation = interpret_failure(
+                                failure_report=failure_report,
+                                relevant_history=relevant_history,
+                                failed_stage=failed_stage,
+                                actions=failed_actions,
+                                scene_transition=scene_transition,
+                            )
+                            print(
+                                "[RECOVERY][MODIFICATION_PROPOSAL] "
+                                "supported_modifications="
+                                f"{len(failure_interpretation['supported_symbolic_modifications'])}"
+                            )
 
                     recovery_plan = plan_recovery_evidence_based(
                         failure_report=failure_report,
@@ -4353,9 +4728,6 @@ def main() -> None:
                         failed_stage=failed_stage,
                         failed_actions=failed_actions,
                         remaining_stages=remaining_stages,
-                        next_stage_id=max(
-                            [item.get("Stage_id", 0) for item in stages] + [0]
-                        ) + 1,
                         parent_attempt_id=failed_attempt["attempt_id"],
                         next_attempt_number=failed_attempt["attempt_index"] + 1,
                     )
@@ -4394,6 +4766,12 @@ def main() -> None:
                         print(
                             f"[RECOVERY] Resume from current image: "
                             f"{current_image}"
+                        )
+
+                    if args.interactive:
+                        input(
+                            "\n[INTERACTIVE] Press Enter to continue to the "
+                            "next cycle..."
                         )
 
         except Exception as exc:

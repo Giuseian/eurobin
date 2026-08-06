@@ -1,0 +1,17 @@
+[LOG] Complete terminal output: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/a_data_analysis_final/terminal_logs/long_horizon/gpt/validation_loop_2026-07-28_07-02-46.txt
+[LOG] Started at: 2026-07-28T07:02:46.426960
+======================================================
+
+[LOG] Unhandled exception:
+Traceback (most recent call last):
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 3510, in run_with_terminal_log
+    main()
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/humanoids/run_validation_loop_replan_with_feedback_soft_guidance.py", line 3549, in main
+    scenario_data = load_scenario(settings, args.scenario)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/src/scenario_loader.py", line 34, in load_scenario
+    raise FileNotFoundError(f"scenario.json not found: {scenario_file}")
+FileNotFoundError: scenario.json not found: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/long_horizon/scenario.json
+======================================================
+[LOG] Finished at: 2026-07-28T07:02:46.428516
+[LOG] Exit code: 1

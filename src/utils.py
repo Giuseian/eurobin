@@ -21,6 +21,7 @@ VALID_MODULES = {
     "vlm_planning",
     "simultaneous_actions",
     "validator",
+    "modification_proposal",
 }
 
 VALID_VALIDATOR_CONDITION_KINDS = {
@@ -316,13 +317,42 @@ def try_parse_json(text: str) -> tuple[bool, Any]:
 def extract_first_json_block(text: str) -> str | None:
     text = text.strip()
 
-    array_match = re.search(r"(\[\s*[\s\S]*\])", text)
-    if array_match:
-        return array_match.group(1)
+    start = None
+    for index, char in enumerate(text):
+        if char in "{[":
+            start = index
+            break
 
-    obj_match = re.search(r"(\{\s*[\s\S]*\})", text)
-    if obj_match:
-        return obj_match.group(1)
+    if start is None:
+        return None
+
+    open_char = text[start]
+    close_char = "}" if open_char == "{" else "]"
+
+    depth = 0
+    in_string = False
+    escape = False
+
+    for index in range(start, len(text)):
+        char = text[index]
+
+        if in_string:
+            if escape:
+                escape = False
+            elif char == "\\":
+                escape = True
+            elif char == '"':
+                in_string = False
+            continue
+
+        if char == '"':
+            in_string = True
+        elif char == open_char:
+            depth += 1
+        elif char == close_char:
+            depth -= 1
+            if depth == 0:
+                return text[start : index + 1]
 
     return None
 

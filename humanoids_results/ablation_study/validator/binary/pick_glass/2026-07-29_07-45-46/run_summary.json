@@ -1,0 +1,95 @@
+{
+  "module": "full_pipeline_summary",
+  "scenario_name": "pick_glass",
+  "loop_timestamp": "2026-07-29_07-45-46",
+  "timestamp": "2026-07-29T07:45:46.045063",
+  "initial_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+  "frames_dir": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/image_data/pick_glass",
+  "poses_by_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/poses_by_image.json",
+  "config": {
+    "sampling": {
+      "temperature": 0.0,
+      "top_p": 1.0
+    },
+    "scene_description": {
+      "prompt_version": "v6",
+      "model": "gpt-5.2"
+    },
+    "scene_description_full": {
+      "stored_under_module": "scene_description",
+      "artifact_filename": "scene_description_full.json",
+      "prompt_version": "v6",
+      "model": "gpt-5.2",
+      "mode": "deterministic_scene_enrichment_per_image",
+      "grounding_safety_threshold": 0.21,
+      "grounding_debug_mapping": false
+    },
+    "vlm_planning": {
+      "prompt_version": "v5",
+      "model": "o3"
+    },
+    "simultaneous_actions": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "validator": {
+      "prompt_version": "v5",
+      "model": "gpt-5.2"
+    },
+    "max_replans": 3
+  },
+  "replans_done": 0,
+  "task_completed": false,
+  "final_image_path": null,
+  "cycles": [
+    {
+      "cycle_name": "cycle_001",
+      "cycle_index": 1,
+      "cycle_timestamp": "2026-07-29_07-45-46",
+      "start_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+      "start_image_name": "1.png",
+      "scene_description": {
+        "output": {
+          "scene_description": {
+            "objects": [
+              {
+                "name": "cup",
+                "category": "cup",
+                "color": "black"
+              }
+            ],
+            "end_effectors": [
+              {
+                "name": "end_effector_left",
+                "grasping": "nothing"
+              },
+              {
+                "name": "end_effector_right",
+                "grasping": "nothing"
+              }
+            ],
+            "spatial_relationships": []
+          }
+        },
+        "paths": {
+          "prompt": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/prompt.txt",
+          "response_parsed": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/response_parsed.json",
+          "run_info": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/run_info.json",
+          "scene_object_list": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/scene_object_list.json"
+        },
+        "model_name": "gpt-5.2",
+        "deployment_name": "hhcm-FoundationModels_gpt52",
+        "execution_time_seconds": 5.726491293986328
+      },
+      "scene_description_full": null,
+      "vlm_planning": null,
+      "simultaneous_actions": null,
+      "stages": [],
+      "outcome": "cycle_error: No mesh_assignments.json files found under shared_data outputs.\ndata_root: /workspace/shared_data/realsense\nExpected under:\n  - /workspace/shared_data/realsense/outputs_by_object\n  - /workspace/shared_data/realsense/outputs_by_objects",
+      "end_image_path": "/home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png",
+      "end_image_name": "1.png"
+    }
+  ],
+  "replan_timings": [],
+  "error": "No mesh_assignments.json files found under shared_data outputs.\ndata_root: /workspace/shared_data/realsense\nExpected under:\n  - /workspace/shared_data/realsense/outputs_by_object\n  - /workspace/shared_data/realsense/outputs_by_objects"
+}

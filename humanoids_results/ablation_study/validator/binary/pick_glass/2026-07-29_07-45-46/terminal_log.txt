@@ -1,0 +1,78 @@
+
+======================================================
+VALIDATION LOOP CONFIG (binary validator, interactive frames)
+Scenario:                  pick_glass
+Temperature:               0.0
+Top-p:                     1.0
+Max replans:               3
+Run output dir:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/validator/binary/pick_glass/2026-07-29_07-45-46
+======================================================
+
+======================================================
+VALIDATION LOOP CYCLE STARTED | cycle=1 | cycle_001
+Current image:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/scenarios/pick_glass/1.png
+Loop ts:         2026-07-29_07-45-46
+Cycle ts meta:   2026-07-29_07-45-46
+======================================================
+[OK][scene_description] Prompt saved to:         /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/prompts_scenarios/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/prompt.txt
+[OK][scene_description] Parsed output saved to:  /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/response_parsed.json
+[OK][scene_description] Run info saved to:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/run_info.json
+[OK][scene_description] Scene object list saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/scene_description/pick_glass/v6/2026-07-29_07-45-46/gpt-5.2/cycle_001/scene_object_list.json
+[OK][scene_description] Execution time:          5.726s
+
+[scene_description] Parsed JSON:
+{
+  "scene_description": {
+    "objects": [
+      {
+        "name": "cup",
+        "category": "cup",
+        "color": "black"
+      }
+    ],
+    "end_effectors": [
+      {
+        "name": "end_effector_left",
+        "grasping": "nothing"
+      },
+      {
+        "name": "end_effector_right",
+        "grasping": "nothing"
+      }
+    ],
+    "spatial_relationships": []
+  }
+}
+
+[DEBUG] mesh_assignments.json was not found next to pose_file.
+[DEBUG] pose_file: /tmp/tmpjj68zsd8.json
+[DEBUG] pose_dir:  /tmp
+[DEBUG] This is expected if live2 passed a temporary poses file in /tmp.
+[DEBUG] Searching shared_data outputs instead...
+
+[OK][validation_loop] Cycle summary saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/cycles/cycle_001/cycle_summary.json
+
+======================================================
+VALIDATION LOOP COMPLETED
+Scenario:                  pick_glass
+Loop timestamp:            2026-07-29_07-45-46
+Temperature:               0.0
+Top-p:                     1.0
+Task completed:            False
+Replans done:              0
+Run info saved:            /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/run_info.json
+Loop summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/loop_summary.json
+Scene summary saved:       /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/scene_description_summary.json
+Planning summary saved:    /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/vlm_planning_summary.json
+Sim-actions summary saved: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/simultaneous_actions_summary.json
+Validator summary saved:   /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/validator_summary.json
+Full summary saved:        /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/outputs/validation_loop/pick_glass/2026-07-29_07-45-46/full_pipeline_summary.json
+======================================================
+
+======================================================
+FULL REPLAN LATENCY (binary validator baseline)
+Each entry: wall-clock time from the validator call that returned 'non_matching' until the PRE validation status of the first stage of the next cycle is known -- i.e. scene_description + scene_description_full + vlm_planning + simultaneous_actions + PRE validation, rerun unconditionally on every mismatch.
+------------------------------------------------------
+No full replan was triggered during this run.
+======================================================
+[OK][validation_loop] Run summary (incl. replan_timings) saved to: /home/giannotti-iit.local/Documents/GITHUB_PROJECTS/SHARED/eurobin/humanoids_results/ablation_study/validator/binary/pick_glass/2026-07-29_07-45-46/run_summary.json
